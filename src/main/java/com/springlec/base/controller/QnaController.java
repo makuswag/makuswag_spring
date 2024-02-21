@@ -7,27 +7,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.springlec.base.model.FaqDto;
-import com.springlec.base.service.FaqDaoService;
+import com.springlec.base.model.QnaDto;
+import com.springlec.base.service.QnaDaoService;
 
 @Controller
-public class FaqController {
-	
+public class QnaController {
 	@Autowired
-	FaqDaoService service;
+	QnaDaoService service;
 	
-	//FAQ 보여주기
+	// Q&A 엿보기 구멍
 	
-	
-	@GetMapping("faq_view")
+	@GetMapping("qna_view")
 	public String list(Model model) throws Exception{
-		List<FaqDto> listDao = service.listDao();
-		model.addAttribute("FaqList", listDao);
+		List<QnaDto> listDao = service.listDao();
+		model.addAttribute("QnaList", listDao);
 		
-		return "./board/faq";
+		return "./board/qna";
 	}
-	
-	
-	
 	
 }
