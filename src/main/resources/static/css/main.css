@@ -1,0 +1,64 @@
+@charset "UTF-8";
+/* 태그안에 작성된 class선택자의 이름이다
+   <div class="container">
+   태그에는 블록요소와 인라인요소가 있다
+   블록요소에는 자체 크기가 있어서 줄바꿈<br>이 아니어도 자동으로 줄바꿈됨
+   나머지 공간은 모두 여백(margin-밖, padding-안)으로 채움 
+   인라인 요소 : <img> <span>
+*/ 
+.container {
+	display: flex;/* block, inline, inline-block, flex box */
+	flex-direction: column; 
+	width: 100%;
+	align-items: center;
+	margin: 50px 0px 50px 0px;
+}
+.main_header {
+	display: flex;
+	max-width: 1200px;
+	justify-content: space-between;
+	margin-bottom:20px;	
+}
+.main {
+	display: flex;
+	text-align: center;
+	flex-direction: column; 
+	border: 2px solid lightGray;
+	border-radius: 20px;
+	padding: 10px;
+	max-width: 1200px;
+	min-height: 650px;
+	justify-content: space-between;	
+}
+.main_footer {
+	display: flex;
+	max-width: 1200px;
+	justify-content: space-between;
+	margin-bottom:20px;	
+}
+.mapwrap {
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:space-around;	
+}
+.map {
+	max-width:500px;/* 최대폭 */
+	height:400px;/* 지도가 표시될 높이 */
+	width:100%;/* 화면 전체를 100 */
+	margin-bottom:20px; /* 아래쪽 외부여백을 위아래 20px 띄어줌 */
+	border:2px solid lightgray; /* 테두리선 두께 2px 실선 선색상 */
+	border-radius:20px;/* 모서리 20px 굴려줌 */
+}
+.btnGeoloc{
+  border-radius: 10px;
+  border: 1px solid white;
+  background-color: rgb(105, 175, 245);
+  color: white;
+  width:80px;
+  height:38px;
+  font-weight: bold;
+}
+.btnGeoloc:hover{
+  background-color: rgb(58, 129, 200);		
+}

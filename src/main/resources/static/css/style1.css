@@ -1,0 +1,113 @@
+@charset "UTF-8";
+header {
+    margin: 0;
+    font-family: 'Jua';
+    height: 155px;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: beige;
+    padding: 8px 12px;
+    height: 155px;
+}
+
+
+.navbar__menu {
+    display: flex;
+    justify-content: flex-end; /* 가로 방향으로 오른쪽 정렬 */
+    align-items: center; /* 세로 방향으로 가운데 정렬 */
+    list-style: none;
+    background-color: beige;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.navbar__menu li {
+    padding: 8px 12px;
+    
+
+}
+
+.navbar__menu li:hover {
+    background-color: grey;
+    border-radius: 4px;
+}
+
+.navbar__links {
+    list-style: none;
+    color: teal;
+    display: flex;
+    background-color: beige;
+    left: 0;
+    width: 100%;
+      justify-content: flex-end;
+      margin-top: 20px;
+}
+
+.navbar__links li {
+    padding: 8px 12px;
+}
+
+.navbar__toggleBtn {
+    display: none;
+    position: absolute;
+    margin-top:70px;
+    right: 12px;
+    font-size: 24px;
+}
+
+@media screen and (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 8px 24px;
+        z-index: 999;
+        background-color: beige;
+    }
+    .navbar__menu {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        top: 100px;
+        z-index: 999;
+        background-color: beige;
+        position: absolute;
+    }
+    .navbar__menu li {
+        width: 100%;
+        text-align: center;
+    }
+    .navbar__links {
+        display: none;
+        justify-content: center;
+        width: 100%;
+        z-index: 999;
+        background-color: beige;
+        position: absolute;
+        left: 0;
+    }
+    .navbar__toggleBtn {
+        display: block;
+    }
+
+    .navbar__menu.active,
+    .navbar__links.active {
+        display: flex;
+    }
+}
+
+.navbar__links.active {
+    top: calc(100% + 10px + 75px); /* 로그아웃 아래로 내리기 */
+}

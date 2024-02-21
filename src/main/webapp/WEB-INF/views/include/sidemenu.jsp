@@ -1,0 +1,84 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<script src="https://kit.fontawesome.com/177bef69e2.js"
+	crossorigin="anonymous"></script>
+<div class="site-nav sidebar fixed">
+	<div class="nav-col col-left">
+		<div class="site-menu">
+			<ul>
+				<li class="menu-item"><a href="about.do">About us</a></li>
+			</ul>
+		</div>
+		<div class="xans-element- xans-layout xans-layout-category site-menu">
+			<ul>
+				<li class="menu-item xans-record-"><a href="best100.do">BEST 100</a></li>
+				<li class="menu-item xans-record-"><a href="all_in_one.do">All-in-one</a></li>
+				<li class="menu-item xans-record-"><a href="outer.do">Outer</a></li>
+				<li class="menu-item xans-record-"><a href="topshort.do">Top(short sleeve)</a></li>
+				<li class="menu-item xans-record-"><a href="toplong.do">Top(long sleeve)</a></li>
+				<li class="menu-item xans-record-"><a href="bottoms.do">Bottoms</a></li>
+				<li class="menu-item xans-record-"><a href="bags.do">Bags</a></li>
+				<li class="menu-item xans-record-"><a href="accessories.do">Accessories</a></li>
+				<li class="menu-item xans-record-"><a href="shoes.do">Shoes</a></li>
+				<li class="menu-item xans-record-"><a href="women.do">Women only</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="nav-col col-right">
+		<div class="site-menu">
+			<ul
+				class="xans-element- xans-layout xans-layout-statelogoff user-menu ">
+				<li class="menu-item"><a href="login.do">Login</a></li>
+				<li class="menu-item"><a
+					href="/member/login.html?noMemberOrder&amp;returnUrl=%2Fmyshop%2Forder%2Flist.html">Mypage</a></li>
+			</ul>
+		</div>
+		<div class="site-menu">
+			<ul>
+				<li class="menu-item"><a
+					href="https://www.youtube.com/channel/UCNzODSZC2sraPyh4lDMQhpQ?view_as=subscriber"
+					target="_blank">YouTube</a>&nbsp;<i class="fa-brands fa-youtube"></i></li>
+				<li class="menu-item"><a
+					href="https://www.instagram.com/faderoom_official/" target="_blank">Instagram</a>&nbsp;<i
+					class="fa-brands fa-instagram"></i></li>
+			</ul>
+		</div>
+		<div class="site-menu">
+			<ul>
+				<li class="menu-item"><a href="notice.do">Notice</a></li>
+				<li class="menu-item"><a href="review.do">Review</a></li>
+				<li class="menu-item"><a href="qna.do">Q&amp;A</a></li>
+				<li class="menu-item"><a href="faq.do">FAQ</a></li>
+			</ul>
+		</div>
+		<div class="cs-info">
+			<ul>
+				<li>Counseling Center <br>02 123 4567
+				</li>
+				<li>13:00 - 18:00 <br>sat.sun.holiday off
+				</li>
+			</ul>
+		</div>
+		<form id="searchBarForm" name="" action="search.do"
+			method="post" target="_self" enctype="multipart/form-data">
+			<input id="banner_action" name="banner_action" value="" type="hidden">
+			<div
+				class="xans-element- xans-layout xans-layout-searchside search-bar ">
+				<!--
+	                    $search_page = /product/search.html
+	                    $product_page = /product/detail.html
+	                -->
+				<fieldset>
+					<legend>검색</legend>
+					<input id="keyword" name="keyword" fw-filter="" fw-label="검색어"
+						fw-msg="" class="inputTypeText" placeholder=""
+						onmousedown="SEARCH_BANNER.clickSearchForm(this)" value=""
+						type="text"><input type="image"
+						src="./images/search-icon.png" alt="검색"
+						onclick="SEARCH_BANNER.submitSearchBanner(this); return false;">
+				</fieldset>
+			</div>
+		</form>
+	</div>
+</div>
+

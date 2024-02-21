@@ -1,0 +1,118 @@
+@charset "UTF-8";
+body .content2 {
+    display: flex; /* 일단 이거 */
+     justify-content: center;
+}
+
+body .content2 .possibilities {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    overflow: hidden;
+    max-width: 970px;
+    height: 400px;
+}
+body .content2 .possibilities .option {
+  position: relative;
+  overflow: hidden;
+  min-width: 220px;
+  margin: 10px;
+  background: var(--optionBackground, var(--defaultBackground, #e6e9ed));
+  background-size: auto 100%;
+  background-position: center;
+  cursor: pointer;
+  transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+}
+/* 아이콘 색깔들 */
+body .content2 .possibilities .option:nth-child(1) {
+  --defaultBackground: #ed5565;
+}
+body .content2 .possibilities .option:nth-child(2) {
+  --defaultBackground: #fc6e51;
+}
+body .content2 .possibilities .option:nth-child(3) {
+  --defaultBackground: #ffce54;
+}
+body .content2 .possibilities .option:nth-child(4) {
+  --defaultBackground: #2ecc71;
+}
+body .content2 .possibilities .option.active {
+  flex-grow: 10000;
+  transform: scale(1);
+  margin: 0px;
+  border-radius: 40px;
+  background-size: auto 100%;
+}
+body .content2 .possibilities .option.active .shadow {
+  box-shadow: inset 0 -250px 250px -150px black,
+    inset 0 -120px 120px -100px black;
+}
+body .content2 .possibilities .option.active .label {
+  bottom: 20px;
+}
+body .content2 .possibilities .option.active .label .info > div {
+  left: 0px;
+  opacity: 1;
+}
+body .content2 .possibilities .option:not(.active) {
+  flex-grow: 1;
+  border-radius: 30px;
+}
+body .content2 .possibilities .option:not(.active) .shadow {
+  bottom: -40px;
+  box-shadow: inset 0 -120px 0px -120px black, inset 0 -120px 0px -100px black;
+}
+body .content2 .possibilities .option:not(.active) .label {
+  bottom: 10px;
+}
+body .content2 .possibilities .option:not(.active) .label .info > div {
+  left: 20px;
+  opacity: 0;
+}
+body .content2 .possibilities .option .shadow {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: 120px;
+  transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+}
+body .content2 .possibilities .option .label {
+  display: flex;
+  position: absolute;
+  right: 0px;
+  height: 40px;
+  transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+}
+/* 지우면 안됨 */
+body .content2 .possibilities .option .label .icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-width: 40px;
+  max-width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background-color: white;
+  color: var(--defaultBackground);
+}
+body .content2 .possibilities .option .label .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
+  color: white;
+  white-space: pre;
+}
+body .content2 .possibilities .option .label .info > div {
+  position: relative;
+  transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95), opacity 0.5s ease-out;
+}
+body .content2 .possibilities .option .label .info .main {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+body .content2 .possibilities .option .label .info .sub {
+  transition-delay: 0.1s;
+}

@@ -1,0 +1,46 @@
+0
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+.search {
+  position: fixed;
+  width: 300px;
+}
+
+input {
+  width: 50%;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+img {
+  position : absolute;
+  width: 40px;
+  top: 10px;
+  right: 120px;
+  margin: 0;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div class="search">
+  <input type="text" id="searchInput" placeholder="검색어 입력">
+  </div>
+
+  <script>
+    // 검색어 입력란에 엔터 키 이벤트를 추가
+    var searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('keyup', function(event) {
+      if (event.key === 'Enter') {
+        var searchTerm = searchInput.value;
+        alert('엔터');
+        // 여기에 검색어에 따른 실제 동작을 추가하면 됩니다.
+      }
+    });
+  </script>
+  </body>'

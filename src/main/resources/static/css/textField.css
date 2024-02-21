@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+
+input {
+    background-color: #D4CCBB; 
+    color: #D4CCBB;
+}
+input::placeholder {
+    color: #D4CCBB;
+}

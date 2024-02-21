@@ -1,0 +1,106 @@
+@import
+	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&family=Noto+Serif+KR:wght@200;300;400;500;600;700&display=swap')
+	;
+
+html, body {
+	font-family: "Noto Sans KR", sans-serif;
+}
+
+html, body, ul, li {
+	margin: 0;
+	padding: 0;
+}
+
+ul, li, ol {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.wrap {
+	max-width: 1200px;
+	margin: 100px auto;
+}
+
+/* 아코디언 메뉴 */
+.accordion-list {
+	border-top: 2px solid #777;
+}
+
+.accordion-list .accordion-item {
+	border-bottom: 1px solid #ddd;
+}
+
+.accordion-list .accordion-item .accordion-link {
+	display: block;
+	position: relative;
+	padding: 25px 20px;
+	border-bottom: 1px solid #ddd;
+	transition: all 0.3s;
+}
+
+.accordion-list .accordion-item.active .accordion-link {
+	background-color: #fff;
+}
+
+.accordion-list .accordion-item .accordion-link::before {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	transform: translateY(-50%);
+	width: 14px;
+	height: 4px;
+	background-color: #999;
+}
+
+.accordion-list .accordion-item.active .accordion-link::before {
+	background-color: #15989f
+}
+
+.accordion-list .accordion-name {
+	position: relative;
+	width: calc(100% - 50px);
+	padding-left: 40px;
+	font-size: 17px;
+	font-weight: bold;
+}
+
+.accordion-list .accordion-name .icon {
+	display: inline-block;
+	position: absolute;
+	top: 3px;
+	left: 0;
+	font-family: 'gmarket';
+	font-weight: bold;
+	font-size: 17px;
+	color: #15989f;
+	vertical-align: middle;
+}
+
+.accordion-list .accordion-item .accordion-desc {
+	display: none;
+	padding: 30px 40px;
+	background-color: #f9f9f9;
+	color: #777;
+}
+
+@media ( max-width :767px) {
+	.accordion-list .accordion-name {
+		font-size: 16px;
+	}
+	.accordion-list .accordion-item .accordion-desc {
+		padding: 20px 30px;
+		font-size: 15px;
+	}
+}
+
+@media ( max-width :500px) {
+	.accordion-list .accordion-item a {
+		padding: 20px 10px;
+	}
+}

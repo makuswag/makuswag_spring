@@ -1,0 +1,45 @@
+@charset "UTF-8";
+  /* Datepicker 스타일 */
+  .ui-datepicker {
+    font-size: 14px;
+    width: 300px; /* 달력의 너비 설정 */
+  }
+  .ui-datepicker-header {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    color: #333;
+  }
+  .ui-datepicker-title {
+    font-weight: bold;
+  }
+  .ui-datepicker-prev, .ui-datepicker-next {
+    font-size: 16px;
+  }
+  .ui-datepicker-calendar {
+    border-collapse: collapse;
+    width: 100%; /* 달력의 너비를 100%로 설정하여 깨지지 않도록 함 */
+  }
+  .ui-datepicker-calendar th, .ui-datepicker-calendar td {
+    padding: 8px;
+    text-align: center;
+  }
+  .ui-datepicker-calendar th {
+    font-weight: bold;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+  }
+  .ui-datepicker-calendar td {
+    color: #666;
+  }
+  .ui-datepicker-calendar .ui-state-default {
+    background-color: #fff;
+    border: 1px solid #ddd;
+  }
+  .ui-datepicker-calendar .ui-state-hover {
+    background-color: #f5f5f5;
+    cursor: pointer;
+  }
+  .ui-datepicker-calendar .ui-state-active {
+    background-color: #e0e0e0;
+    border: 1px solid #ddd;
+  }

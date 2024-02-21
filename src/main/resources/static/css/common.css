@@ -1,0 +1,130 @@
+@charset "UTF-8";
+
+body {
+	background-color: #d4ccbb;
+	color: #0e3773;
+	font-size: 14px;
+	font-family: 'Avenir Next', 'KoPub Dotum', sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	line-height: 1.65;
+}
+
+html,
+body {
+	height: 5000px;
+	padding: 0px;
+	margin: 0px;
+	background-color: #FFFFFF;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style: none;
+}
+
+header {
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	/* 헤더 상단 고정 */
+	position: sticky;
+	top: 0;
+}
+
+.header_wrap {
+	width: 80%;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header_wrap h1 {
+	color: #FFFFFF;
+}
+
+.header_wrap .gnb {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header_wrap .gnb li {
+	color: #000000;
+	margin: 0 10px;
+}
+
+#wrap {
+	min-height: calc(100% - 120px);
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	z-index: 1;
+}
+
+
+
+.content {
+	width: 80%;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	background: linear-gradient(180deg, rgba(228, 220, 207, 1) 0%, rgba(245, 240, 187, 1) 38%, rgba(125, 157, 156, 1) 100%);
+	height: 2000px;
+}
+
+.logo-img {
+	max-width: 50%;
+	/* 최대 너비를 부모 요소의 100%로 설정 */
+	height: auto;
+	/* 높이를 자동으로 조절하여 비율 유지 */
+}
+
+.site-footer {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 60%;
+	/* 푸터의 높이를 필요에 따라 조절하세요 */
+	transform: translateY(0%);
+}
+
+.site-footer ul {
+	list-style: none;
+	padding: 0;
+	text-align: center;
+}
+
+.site-footer span,
+.site-footer a {
+	margin-right: 10px;
+	/* 각 요소 사이의 간격을 조절하세요 */
+	color: #000000;
+	/* 텍스트 색상을 원하는 색상으로 지정하세요 */
+}
+
+.site-footer a {
+	text-decoration: none;
+}
+
+.legal-links a {
+	color: #fff;
+	/* 법적 링크 색상을 원하는 색상으로 지정하세요 */
+}
+
+.copyright {
+	margin-top: 10px;
+	/* 저작권 텍스트와 다른 요소 사이의 간격을 조절하세요 */
+}
