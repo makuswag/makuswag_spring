@@ -1,4 +1,4 @@
-package com.springlec.base.dto;
+package com.springlec.base.model;
 
 public class TestDto {
 
