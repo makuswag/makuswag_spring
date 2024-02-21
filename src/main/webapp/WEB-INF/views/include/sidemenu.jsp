@@ -6,7 +6,7 @@
 	<div class="nav-col col-left">
 		<div class="site-menu">
 			<ul>
-				<li class="menu-item"><a href="about.do">About us</a></li>
+				<li class="menu-item"><a href="about">About us</a></li>
 			</ul>
 		</div>
 		<div class="xans-element- xans-layout xans-layout-category site-menu">
@@ -28,9 +28,9 @@
 		<div class="site-menu">
 			<ul
 				class="xans-element- xans-layout xans-layout-statelogoff user-menu ">
-				<li class="menu-item"><a href="login.do">Login</a></li>
+				<li class="menu-item"><a href="login">Login</a></li>
 				<li class="menu-item"><a
-					href="/member/login.html?noMemberOrder&amp;returnUrl=%2Fmyshop%2Forder%2Flist.html">Mypage</a></li>
+					href="myPage">MyPage</a></li>
 			</ul>
 		</div>
 		<div class="site-menu">
@@ -59,7 +59,7 @@
 				</li>
 			</ul>
 		</div>
-		<form id="searchBarForm" name="" action="search.do"
+		<form id="searchBarForm" name="" action="search"
 			method="post" target="_self" enctype="multipart/form-data">
 			<input id="banner_action" name="banner_action" value="" type="hidden">
 			<div
