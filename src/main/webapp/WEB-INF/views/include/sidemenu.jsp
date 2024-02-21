@@ -6,21 +6,21 @@
 	<div class="nav-col col-left">
 		<div class="site-menu">
 			<ul>
-				<li class="menu-item"><a href="about.do">About us</a></li>
+				<li class="menu-item"><a href="about">About us</a></li>
 			</ul>
 		</div>
 		<div class="xans-element- xans-layout xans-layout-category site-menu">
 			<ul>
-				<li class="menu-item xans-record-"><a href="best100.do">BEST 100</a></li>
-				<li class="menu-item xans-record-"><a href="all_in_one.do">All-in-one</a></li>
-				<li class="menu-item xans-record-"><a href="outer.do">Outer</a></li>
-				<li class="menu-item xans-record-"><a href="topshort.do">Top(short sleeve)</a></li>
-				<li class="menu-item xans-record-"><a href="toplong.do">Top(long sleeve)</a></li>
-				<li class="menu-item xans-record-"><a href="bottoms.do">Bottoms</a></li>
-				<li class="menu-item xans-record-"><a href="bags.do">Bags</a></li>
-				<li class="menu-item xans-record-"><a href="accessories.do">Accessories</a></li>
-				<li class="menu-item xans-record-"><a href="shoes.do">Shoes</a></li>
-				<li class="menu-item xans-record-"><a href="women.do">Women only</a></li>
+				<li class="menu-item xans-record-"><a href="best100">BEST 100</a></li>
+				<li class="menu-item xans-record-"><a href="all_in_one">All-in-one</a></li>
+				<li class="menu-item xans-record-"><a href="outer">Outer</a></li>
+				<li class="menu-item xans-record-"><a href="topshort">Top(short sleeve)</a></li>
+				<li class="menu-item xans-record-"><a href="toplong">Top(long sleeve)</a></li>
+				<li class="menu-item xans-record-"><a href="bottoms">Bottoms</a></li>
+				<li class="menu-item xans-record-"><a href="bags">Bags</a></li>
+				<li class="menu-item xans-record-"><a href="accessories">Accessories</a></li>
+				<li class="menu-item xans-record-"><a href="shoes">Shoes</a></li>
+				<li class="menu-item xans-record-"><a href="women">Women only</a></li>
 			</ul>
 		</div>
 	</div>
@@ -28,9 +28,9 @@
 		<div class="site-menu">
 			<ul
 				class="xans-element- xans-layout xans-layout-statelogoff user-menu ">
-				<li class="menu-item"><a href="login.do">Login</a></li>
+				<li class="menu-item"><a href="login">Login</a></li>
 				<li class="menu-item"><a
-					href="/member/login.html?noMemberOrder&amp;returnUrl=%2Fmyshop%2Forder%2Flist.html">Mypage</a></li>
+					href="myPage">MyPage</a></li>
 			</ul>
 		</div>
 		<div class="site-menu">
@@ -45,10 +45,10 @@
 		</div>
 		<div class="site-menu">
 			<ul>
-				<li class="menu-item"><a href="notice.do">Notice</a></li>
-				<li class="menu-item"><a href="review.do">Review</a></li>
-				<li class="menu-item"><a href="qna.do">Q&amp;A</a></li>
-				<li class="menu-item"><a href="faq.do">FAQ</a></li>
+				<li class="menu-item"><a href="notice_view">Notice</a></li>
+				<li class="menu-item"><a href="review_view">Review</a></li>
+				<li class="menu-item"><a href="qna_view">Q&amp;A</a></li>
+				<li class="menu-item"><a href="faq_view">FAQ</a></li>
 			</ul>
 		</div>
 		<div class="cs-info">
@@ -59,7 +59,7 @@
 				</li>
 			</ul>
 		</div>
-		<form id="searchBarForm" name="" action="search.do"
+		<form id="searchBarForm" name="" action="search"
 			method="post" target="_self" enctype="multipart/form-data">
 			<input id="banner_action" name="banner_action" value="" type="hidden">
 			<div
