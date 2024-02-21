@@ -8,9 +8,9 @@
 ## 개요(수정필요)
 - 프로젝트 이름<br>
 Make U Swag <br>
-(MVC패턴과 AJAX를 활용한 옷가게 WebPage)
-- 프로젝트 지속기간
--2024-00-00~yy.mm.dd
+(MVC패턴과 Spring을 활용한 옷가게 WebPage)
+- 프로젝트 기간
+-2024-02-21~2024.02.29
 - 개발 엔진 및 언어
 - <img alt="Java" src ="https://img.shields.io/badge/Java-007396.svg?&style=for-the-badge&logo=Java&logoColor=white"/> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">  <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
   <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
