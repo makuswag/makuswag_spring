@@ -31,7 +31,7 @@
 
 				<!-- 여기서 부터 작성 -->
 
-				<form id="searchForm" name="" action="search2.do"
+				<form id="searchForm" name="" action="search2"
 					method="post" target="_self" enctype="multipart/form-data">
 					<input id="view_type" name="view_type" value="" type="hidden">
 					<input id="supplier_code" name="supplier_code" value=""
