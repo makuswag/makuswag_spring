@@ -39,112 +39,120 @@ public class MainController {
 	@GetMapping("login")
 	public String login(HttpSession session) throws Exception {
 		session.invalidate();
-		return "./member/login";
+		return "member/login";
 	}
 	
 	// 마이페이지
 	@GetMapping("myPage")
 	public String myPage() throws Exception {
-		return "./member/myPage";
+		return "member/myPage";
 	}
 	
 	// 카트
 	@GetMapping("cart")
 	public String cart() throws Exception {
-		return "./member/cart";
+		return "member/cart";
 	}
 	
 	// ------------------ sidemenu ---------------------
 	// about us
 	@GetMapping("about")
 	public String about() throws Exception {
-		return "./about/aboutUs";
+		return "about/aboutUs";
 	}
 	
 	// ------------------ category ---------------------
 	// best100
 	@GetMapping("best100")
 	public String best100() throws Exception {
-		return "./category/best_100";
+		return "category/best_100";
 	}
+	
 	// all_in_one
 	@GetMapping("all_in_one")
 	public String all_in_one() throws Exception {
-		return "./category/all_in_one";
+		return "category/all_in_one";
 	}
+	
 	// outer
 	@GetMapping("outer")
 	public String outer() throws Exception {
-		return "./category/outer";
+		return "category/outer";
 	}
+	
 	// topshort
 	@GetMapping("topshort")
 	public String topshort() throws Exception {
-		return "./category/topshort_sleeve";
+		return "category/topshort_sleeve";
 	}
+	
 	// toplong
 	@GetMapping("toplong")
 	public String toplong() throws Exception {
-		return "./category/toplong_sleeve";
+		return "category/toplong_sleeve";
 	}
+	
 	// bottoms
 	@GetMapping("bottoms")
 	public String bottoms() throws Exception {
-		return "./category/bottoms";
+		return "category/bottoms";
 	}
+	
 	// bags
 	@GetMapping("bags")
 	public String bags() throws Exception {
-		return "./category/bags";
+		return "category/bags";
 	}
+	
 	// accessories
 	@GetMapping("accessories")
 	public String accessories() throws Exception {
-		return "./category/accessories";
+		return "category/accessories";
 	}
+	
 	// shoes
 	@GetMapping("shoes")
 	public String shoes() throws Exception {
-		return "./category/shoes";
+		return "category/shoes";
 	}
+	
 	// women
 	@GetMapping("women")
 	public String women() throws Exception {
-		return "./category/women_only";
+		return "category/women_only";
 	}
 
 	// ------------------ search ---------------------
 	// search
 	@PostMapping("search")
 	public String search() throws Exception {
-		return "./product/search";
+		return "product/search";
 	}
 	
 	// search1
 	@PostMapping("search1")
 	public String search1() throws Exception {
-		return "./product/search1";
+		return "product/search1";
 	}
 	
 	// search2
 	@PostMapping("search2")
 	public String search2() throws Exception {
-		return "./product/search2";
+		return "product/search2";
 	}
-	
 	
 	// ------------------ footer ---------------------
 	
 	// agreement
 	@GetMapping("agreement")
 	public String agreement() throws Exception {
-		return "./member/agreement";
+		return "member/agreement";
 	}
 	
 	// privacy
 	@GetMapping("privacy")
 	public String privacy() throws Exception {
-		return "./member/privacy";
+		return "member/privacy";
 	}
 	
 }
