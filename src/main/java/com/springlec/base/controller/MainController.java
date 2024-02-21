@@ -17,7 +17,13 @@ public class MainController {
 	
 	// 메인으로
 	@GetMapping("/") 
-	public String menu() throws Exception {
+	public String main() throws Exception {
+		return "index";
+	}
+	
+	// 메인으로
+	@PostMapping("/") 
+	public String main1() throws Exception {
 		return "index";
 	}
 	
@@ -55,6 +61,59 @@ public class MainController {
 		return "./about/aboutUs";
 	}
 	
+	// ------------------ category ---------------------
+	// best100
+	@GetMapping("best100")
+	public String best100() throws Exception {
+		return "./category/best_100";
+	}
+	// all_in_one
+	@GetMapping("all_in_one")
+	public String all_in_one() throws Exception {
+		return "./category/all_in_one";
+	}
+	// outer
+	@GetMapping("outer")
+	public String outer() throws Exception {
+		return "./category/outer";
+	}
+	// topshort
+	@GetMapping("topshort")
+	public String topshort() throws Exception {
+		return "./category/topshort_sleeve";
+	}
+	// toplong
+	@GetMapping("toplong")
+	public String toplong() throws Exception {
+		return "./category/toplong_sleeve";
+	}
+	// bottoms
+	@GetMapping("bottoms")
+	public String bottoms() throws Exception {
+		return "./category/bottoms";
+	}
+	// bags
+	@GetMapping("bags")
+	public String bags() throws Exception {
+		return "./category/bags";
+	}
+	// accessories
+	@GetMapping("accessories")
+	public String accessories() throws Exception {
+		return "./category/accessories";
+	}
+	// shoes
+	@GetMapping("shoes")
+	public String shoes() throws Exception {
+		return "./category/shoes";
+	}
+	// women
+	@GetMapping("women")
+	public String women() throws Exception {
+		return "./category/women_only";
+	}
+
+	// ------------------ search ---------------------
 	// search
 	@PostMapping("search")
 	public String search() throws Exception {
