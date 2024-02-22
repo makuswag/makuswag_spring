@@ -1,4 +1,4 @@
-<%@page import="com.google.gson.Gson"%>
+
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -18,7 +18,7 @@
 
 html,
 body {
-    height: 150%;
+    height: 120%;
     margin: 0;
     padding: 0;
      z-index: 2; 
@@ -72,14 +72,6 @@ body {
     justify-content: space-around;
     z-index: 2; /* z-index 적용 */
 }
-        .manager-iframe {
-            position: absolute;
-            left: calc(70% - 70px);
-            width: calc(20% - 30px);
-            height: calc(50% + 300px);
-            margin-top: 90px;
-            z-index: 2; /* 낮은 z-index 값으로 설정하여 뒤쪽에 배치 */
-        }
 
 
         }
@@ -116,33 +108,11 @@ body {
 <div class="content">
 
     <div class="frame-container" >
-        <iframe src="./admin/Manager.jsp" frameborder="0" style="width: 60%; margin-top: 50px;z-index: 3;"></iframe>
-        <iframe src="./admin/Gender.jsp" frameborder="0" style="position: absolute; left: calc(70% - 70px); width: calc(20% - 30px); height: calc(50% + 300px); margin-top: 90px;"></iframe>
+        <iframe src="day" frameborder="0" style="width: 60%; margin-top: 50px;z-index: 3;"></iframe>
+        <iframe src="chart" frameborder="0" style="position: absolute; left: calc(70% - 70px); width: calc(20% - 30px); height: 50%; margin-top: 90px;"></iframe>
     </div>
-    <iframe src="./UserTable.jsp" frameborder="0" style="position: absolute; width: 80%; height: 45%; margin: 10px auto; align-items: center; z-index: 999"></iframe>
+    <iframe src="table" frameborder="0" style="position: absolute; width: 90%; height: 45%; margin: 600px auto 5px; align-items: center; z-index: 9999;"></iframe>
 </div>
-
-
-<script type="text/javascript" src="/js/queryTable.js"></script>
-<script>
-    // 창 크기가 변경될 때 iframe의 크기를 다시 계산하여 조절하는 함수
-    function resizeIframes() {
-        const frameContainers = document.querySelectorAll('.frame-container');
-        frameContainers.forEach(container => {
-            const iframes = container.querySelectorAll('iframe');
-            iframes.forEach(iframe => {
-                iframe.style.height = `${container.offsetHeight}px`;
-            });
-        });
-    }
-
-    // 문서가 완전히 로드된 후에 실행되는 함수
-    $(document).ready(function() {
-        // 창 크기가 변경될 때 iframe의 크기를 다시 계산하여 조절
-        $(window).resize(resizeIframes);
-        resizeIframes(); // 초기 로드 시 iframe 크기 조절
-    });
-</script>
 
 
 
