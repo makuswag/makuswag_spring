@@ -1,6 +1,6 @@
 package com.springlec.base.dao;
 
-public interface TestDao {
+public interface UserDao {
 
 	// Test
 }

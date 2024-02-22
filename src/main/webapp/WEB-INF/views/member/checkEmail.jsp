@@ -32,7 +32,7 @@
 
 				<!-- 여기서 부터 작성 -->
 				<div class="entry-page">
-					<form id="checkEmail_form" name="" action="memberJoin.do"
+					<form id="checkEmail_form" name="" action="memberJoin"
 						method="post">
 
 						<div class="xans-element- xans-member xans-member-login login ">
