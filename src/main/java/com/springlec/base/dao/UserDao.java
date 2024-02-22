@@ -1,6 +1,8 @@
 package com.springlec.base.dao;
 
+import com.springlec.base.model.UserDto;
+
 public interface UserDao {
 
-	// Test
+	public UserDto whologin(String userId, String userPasswd) throws Exception;
 }
