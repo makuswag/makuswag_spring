@@ -31,7 +31,7 @@
 
 				<!-- 여기서 부터 작성 -->
 				<div class="entry-page">
-					<form id="member_form" name="" action="whologin.do" method="post">
+					<form id="member_form" name="" action="whologin" method="post">
 
 						<div class="xans-element- xans-member xans-member-login login ">
 							<div class="login-header">
@@ -53,7 +53,7 @@
 								</div>
 								<div class="login-footer">
 									<div class="login-extras">
-										<a href="findId.do">아이디 찾기</a> <a href="findPasswd.do">비밀번호
+										<a href="findId">아이디 찾기</a> <a href="findPasswd">비밀번호
 											찾기</a>
 									</div>
 									<div class="login-actions">
@@ -61,7 +61,7 @@
 											style="margin: 0 auto;">
 										<!-- <a href="#none" class="primary-button"
 											onclick="MemberAction.login('member_form'); return false;"><span>Login</span></a> -->
-										<a href="agree.do" class="primary-button"><span>Join</span></a>
+										<a href="agree" class="primary-button"><span>Join</span></a>
 									</div>
 								</div>
 							</fieldset>

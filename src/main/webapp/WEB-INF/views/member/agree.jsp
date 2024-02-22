@@ -302,11 +302,11 @@
 									</div>
 								</div>
 								<p class="check">
-									<span>이용약관에 동의하십니까?</span> <input id="agree_service_check0"
+									<span>이용약관에 동의하십니까?</span> <input id="agree_service_check"
 										name="agree_service_check[]" fw-filter="/1/"
 										fw-label="이용약관 동의" fw-msg="이용약관에 동의 하세요" class="ec-base-chk"
 										value="1" type="checkbox"><label
-										for="agree_service_check0">동의함</label>
+										for="agree_service_check">동의함</label>
 								</p>
 							</div>
 							<div class="agreement-block">
@@ -349,10 +349,10 @@
 								</div>
 								<p class="check">
 									<span>개인정보 수집 및 이용에 동의하십니까?</span> <input
-										id="agree_privacy_check0" name="agree_privacy_check[]"
+										id="agree_privacy_check" name="agree_privacy_check[]"
 										fw-filter="/1/" fw-label="개인정보 수집 및 이용 방침"
 										fw-msg="개인정보 수집 및 이용 방침에 동의하세요" class="ec-base-chk" value="1"
-										type="checkbox"><label for="agree_privacy_check0">동의함</label>
+										type="checkbox"><label for="agree_privacy_check">동의함</label>
 								</p>
 							</div>
 							<div class="agreement-block ">
@@ -366,9 +366,9 @@
 								</div>
 								<ul class="check">
 									<li class=""><span>이메일 수신을 동의하십니까?</span> <input
-										id="is_news_mail0" name="is_news_mail" fw-label="is_news_mail"
+										id="is_news_mail" name="is_news_mail" fw-label="is_news_mail"
 										fw-msg="" class="ec-base-chk" value="T" type="checkbox"><label
-										for="is_news_mail0">동의함</label></li>
+										for="is_news_mail">동의함</label></li>
 								</ul>
 							</div>
 						</div>
@@ -378,17 +378,14 @@
 									.getElementById('sAgreeAllChecked');
 							// 개별 동의 체크박스들
 							var agreeServiceCheckbox = document
-									.getElementById('agree_service_check0');
+									.getElementById('agree_service_check');
 							var agreePrivacyCheckbox = document
-									.getElementById('agree_privacy_check0');
+									.getElementById('agree_privacy_check');
 							var emailCheckbox = document
-									.getElementById('is_news_mail0');
+									.getElementById('is_news_mail');
 
 							// 전체 동의 체크박스 클릭 시 개별 동의 체크박스들의 상태 변경
-							agreeAllCheckbox
-									.addEventListener(
-											'click',
-											function() {
+							agreeAllCheckbox.addEventListener('click', function() {
 												var isChecked = agreeAllCheckbox.checked;
 												agreeServiceCheckbox.checked = isChecked;
 												agreePrivacyCheckbox.checked = isChecked;
@@ -396,28 +393,19 @@
 											});
 
 							// 개별 동의 체크박스들이 모두 체크되었을 때 전체 동의 체크박스도 체크되도록 설정
-							[ agreeServiceCheckbox, agreePrivacyCheckbox,
-									emailCheckbox ]
-									.forEach(function(checkbox) {
-										checkbox
-												.addEventListener(
-														'click',
-														function() {
-															var allChecked = [
-																	agreeServiceCheckbox,
-																	agreePrivacyCheckbox,
-																	emailCheckbox ]
-																	.every(function(
-																			checkbox) {
-																		return checkbox.checked;
-																	});
-															agreeAllCheckbox.checked = allChecked;
+							[ agreeServiceCheckbox, agreePrivacyCheckbox, emailCheckbox ]
+									.forEach(function(checkbox) {checkbox.addEventListener('click', function() {
+												var allChecked = [agreeServiceCheckbox, agreePrivacyCheckbox, emailCheckbox ]
+														.every(function(checkbox) {
+															return checkbox.checked;
 														});
+												agreeAllCheckbox.checked = allChecked;
+											});
 									});
-							function checkAction() {
-							    var agreeServiceCheckbox = document.getElementById('agree_service_check0');
-							    var agreePrivacyCheckbox = document.getElementById('agree_privacy_check0');
-							    var emailCheckbox = document.getElementById('is_news_mail0');
+							function checkAction(event) {
+							    var agreeServiceCheckbox = document.getElementById('agree_service_check');
+							    var agreePrivacyCheckbox = document.getElementById('agree_privacy_check');
+							    var emailCheckbox = document.getElementById('is_news_mail');
 
 							    // 필수 항목 체크 여부 확인
 							    if (agreeServiceCheckbox.checked && agreePrivacyCheckbox.checked) {
@@ -427,12 +415,14 @@
 							        alert('본인 인증을 진행합니다.');
 							    } else {
 							        alert('이용약관 및 개인정보 수집 및 이용에 동의해야 회원가입이 가능합니다.');
+							     // 필수 항목이 모두 체크되지 않았으므로 회원가입을 진행하지 않음
+							     	event.preventDefault(); // 기본 동작을 막음
+							        return false;
 							    }
 							}
 						</script>
 						<div class="ec-base-button">
-							<a href="identity.do" class="primary-button"
-								onclick="checkAction()"><span>JOIN</span></a>
+							<a href="identity" class="primary-button" onclick="checkAction(event)"><span>JOIN</span></a>
 						</div>
 					</div>
 				</div>
