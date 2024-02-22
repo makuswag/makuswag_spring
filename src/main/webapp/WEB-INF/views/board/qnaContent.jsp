@@ -57,16 +57,16 @@
 				</div>
 						<div class="xans-element- xans-board xans-board-read ">
 							<div class="post-header">
-											<h3 class = "number">${qnaTitle}</h3>
+											<h3 class = "number">${content_view.qnaTitle }</h3>
 											<div class="post-meta">
-												<span class="date">${qnaDate }</span>
+												<span class="date">${content_view.qnaDate }</span>
 											</div>
 										</div>
 							<div class="post-content">
 											<div class="content">
 												<div class="images"></div>
-												<div class="article"><div class="fr-view fr-view-article"><p>${qnaContent }</p><br></div></div>
-												<div><img src="${pageContext.request.contextPath}/images/${qnaImage}" width="100" height="100"></div>
+												 <div class="article"><div class="fr-view fr-view-article"><p>${content_view.qnaContent }</p><br></div></div>
+												<div><img src="${pageContext.request.contextPath}/images/${content_view.qnaImage}" width="100" height="100"></div>
 											</div>
 										</div>
 							<div class="post-footer">
