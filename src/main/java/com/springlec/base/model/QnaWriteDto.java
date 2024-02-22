@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 public class QnaWriteDto {
 	int qnaseq;
+	String userId;
 	String qnaTitle;
 	String qnaCategory;
 	String qnaContent;
@@ -86,6 +87,18 @@ public class QnaWriteDto {
 
 	public void setQnaDate(Timestamp qnaDate) {
 		this.qnaDate = qnaDate;
+	}
+
+
+
+	public String getUserId() {
+		return userId;
+	}
+
+
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	
 	
