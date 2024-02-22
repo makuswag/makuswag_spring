@@ -17,7 +17,7 @@ public class MyPageDaoServiceImpl implements MyPageDaoService {
 	@Override
 	public List<MyPageDto> purchaseListDao() throws Exception {
 		// TODO Auto-generated method stub
-		return dao.purchaseListDao();
+		return null ;
 	}
 
 }
