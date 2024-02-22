@@ -74,10 +74,25 @@ public class UserController {
 	public String loginError() {
 		return "status/loginerror";
 	}
-	
+
+	// 로그인 에러 페이지로 이동
+	@GetMapping("onlyAdmin")
+	public String onlyAdmin() {
+		return "status/onlyAdmin";
+	}
+
 	// 관리자 페이지로 이동
 	@GetMapping("manager")
-	public String maneger() {
+	public String maneger(HttpSession session) {
+		// 세션에서 사용자 정보를 가져옴
+		UserDto user = (UserDto) session.getAttribute("user");
+
+		// 사용자 정보가 없거나 관리자가 아닌 경우 예외 처리
+		if (user == null || !user.getUserId().equals("admin1")) {
+			// 관리자 아이디로 로그인 안했을 경우 localhost:8080/ 뒤에 적어도 관리자 페이지를 볼수 없다
+			return "redirect:/onlyAdmin";
+		}
+
 		return "admin/UserManageAdmin";
 	}
 

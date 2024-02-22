@@ -1,5 +1,7 @@
 package com.springlec.base.controller;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,12 +102,36 @@ public class AdminController {
     	return "admin/UserTable";
     	
     }
-	@PostMapping("listQuery")
-	public String listQuery(HttpServletRequest request, Model model) throws Exception {
-		List<AdminDto> listDao =service.listQuery(request.getParameter("query"),request.getParameter("content") );
-		model.addAttribute("list",listDao);
-		return "admin/UserTable";
-	}
-	
+    @PostMapping("listQuery")
+    public String listQuery(HttpServletRequest request, Model model) throws Exception {
+        
+        String query = request.getParameter("query");
+        System.out.println(query);
+        String content = request.getParameter("content");
+        System.out.println(content);
+        List<AdminDto> listDao;
 
+        // 생년월일인 경우에는 listQueryForBirthday 메서드를 호출
+        if ("birthday".equals(query)) {
+            // listQueryForBirthday 메서드 호출
+            listDao = service.listQueryForBirthday(content);
+            System.out.println(listDao);
+        } else if ("active".equals(query)) {
+            // 가입일인 경우에는 listQueryForActive 메서드를 호출
+            listDao = service.listQueryForActive(content);
+            System.out.println(listDao);
+        } else if ("deactive".equals(query)) {
+            // 탈퇴일인 경우에는 listQueryForDeactive 메서드를 호출
+            listDao = service.listQueryForDeactive(content);
+            System.out.println(listDao);
+        } else {
+            // 나머지 경우에는 기본적인 listQuery 메서드를 호출
+            listDao = service.listQuery(query, content);
+            System.out.println(listDao);
+        }
+
+        model.addAttribute("list", listDao);
+        return "admin/UserTable";
+    }
+    
 }

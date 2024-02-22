@@ -18,7 +18,7 @@ public class AdminDto {
     private String address;
     private String phone;
     private String email;
-    private Date birthday;
+    private String birthday;
     private String howToLogin;
     private String active;
     private String deactive;
@@ -59,10 +59,10 @@ public class AdminDto {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 	public String getHowToLogin() {

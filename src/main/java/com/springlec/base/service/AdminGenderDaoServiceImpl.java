@@ -1,5 +1,6 @@
 package com.springlec.base.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,24 @@ public class AdminGenderDaoServiceImpl implements AdminGenderDaoService {
 		// TODO Auto-generated method stub
 		content='%'+content+'%';
 		return dao.listQuery(query, content);
+	}
+
+	@Override
+	public List<AdminDto> listQueryForBirthday(String birthday) {
+		// TODO Auto-generated method stub
+		return dao.listQueryForBirthday(birthday);
+	}
+
+	@Override
+	public List<AdminDto> listQueryForActive(String active) {
+		// TODO Auto-generated method stub
+		return dao.listQueryForActive(active);
+	}
+
+	@Override
+	public List<AdminDto> listQueryForDeactive(String deactive) {
+		// TODO Auto-generated method stub
+		return dao.listQueryForDeactive(deactive);
 	}
 
 
