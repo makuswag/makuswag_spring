@@ -4,10 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.springlec.base.model.QnaContentDto;
+import com.springlec.base.model.UserDto;
 import com.springlec.base.service.QnaWriteService;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+import jakarta.websocket.Session;
 
 @Controller
 public class QnaWriteController {
@@ -17,19 +23,33 @@ public class QnaWriteController {
 	
 	// Q&A 입력 화면 보여주기
 	@GetMapping("qnaWrite_view")
-	public String writeview() throws Exception{
+	public String writeview(HttpSession session) throws Exception{
+		
+		
 		
 		return "/board/qnaWrite";
 		
 	}
 	
 	@PostMapping("qnaWriteSubmit")
-	public String write(HttpServletRequest request) throws Exception{
-		service.writeDao(request.getParameter("qnaTitle"),
-						 request.getParameter("qnaCategory"),
-						 request.getParameter("qnaContent"),
-						 request.getParameter("qnaImage"),
-						 request.getParameter("qnaDate"));
+	public String write(HttpServletRequest request, @RequestParam (name = "image", required = false)MultipartFile file) throws Exception{
+		HttpSession session = request.getSession();
+		UserDto user = (UserDto) session.getAttribute("user");
+		String userId = user.getUserId();
+		
+		String qnaImage = null;
+		
+		if(file != null && !file.isEmpty()) {
+			qnaImage = service.uploadFile(file);
+		}
+		String qnaTitle = request.getParameter("qnaTitle");
+		String qnaCategory = request.getParameter("qnaCategory");
+		String qnaContent = request.getParameter("qnaContent");
+		
+		
+		service.writeDao(qnaTitle, qnaCategory, qnaContent, qnaImage, userId);
+		
+		
 		
 		return "redirect:qna";
 		
