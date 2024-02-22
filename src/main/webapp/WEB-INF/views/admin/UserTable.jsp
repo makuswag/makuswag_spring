@@ -4,53 +4,113 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>AJAX MySQL Table Query1</title>
-<link rel="stylesheet" type="text/css" href="./css/style.css">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome CDN 추가 -->
-<style>
-
-
-</style>
-
+    <meta charset="UTF-8">
+    <title>AJAX MySQL Table Query1</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome CDN 추가 -->
+    <style>
+    </style>
 <script>
-    $( function() {
-        $( "#datepicker" ).datepicker();
-        $( "#birthday-icon" ).click(function() {
-            $( "#datepicker" ).datepicker("show");
-        });
-        // 생년월일 옵션 선택 시에만 캘린더 보이도록 설정
-        $( "#query" ).change(function() {
-            if ($(this).val() === "birthday") {
-                $( "#datepicker" ).show();
-                $( "#birthday-icon" ).show();
-            } else {
-                $( "#birthday-icon" ).hide();
-            }
-        });
-    } );
+$(function() {
+    $("#datepicker").datepicker({
+        dateFormat: 'yy-mm-dd', // 날짜 형식을 년-월-일로 설정
+        onSelect: function(dateText) { // 날짜를 선택할 때 이벤트 처리
+            $("#content").val(dateText); // 선택한 날짜를 content 필드에 설정
+        }
+    });
+    $("#active-datepicker").datepicker({
+        dateFormat: 'yy-mm-dd', // 날짜 형식을 년-월-일로 설정
+        onSelect: function(dateText) { // 날짜를 선택할 때 이벤트 처리
+            $("#content").val(dateText); // 선택한 날짜를 content 필드에 설정
+        }
+    });
+    $("#deactive-datepicker").datepicker({
+        dateFormat: 'yy-mm-dd', // 날짜 형식을 년-월-일로 설정
+        onSelect: function(dateText) { // 날짜를 선택할 때 이벤트 처리
+            $("#content").val(dateText); // 선택한 날짜를 content 필드에 설정
+        }
+    });
+
+    // 각 캘린더 아이콘 클릭 시 해당 캘린더 필드만 표시되도록 설정
+    $("#birthday-icon").click(function() {
+        $("#datepicker").datepicker("show");
+    });
+
+    $("#active-icon").click(function() {
+        $("#active-datepicker").datepicker("show");
+    });
+
+    $("#deactive-icon").click(function() {
+        $("#deactive-datepicker").datepicker("show");
+    });
+
+    // 옵션 선택 시에만 캘린더 보이도록 설정
+    $("#query").change(function() {
+        if ($(this).val() === "birthday") {
+            $("#datepicker").show();
+            $("#birthday-icon").show();
+            $("#active-datepicker").hide();
+            $("#active-icon").hide();
+            $("#deactive-datepicker").hide();
+            $("#deactive-icon").hide();
+            $("#content").hide();
+        } else if ($(this).val() === "active") {
+            $("#datepicker").hide();
+            $("#birthday-icon").hide();
+            $("#active-datepicker").show();  
+            $("#active-icon").show();  
+            $("#deactive-datepicker").hide();
+            $("#deactive-icon").hide();
+            $("#content").hide(); // 수정된 부분
+        } else if ($(this).val() === "deactive") {
+            $("#datepicker").hide();
+            $("#birthday-icon").hide();
+            $("#active-datepicker").hide();
+            $("#active-icon").hide();
+            $("#deactive-datepicker").show();  
+            $("#deactive-icon").show();  
+            $("#content").hide(); // 수정된 부분
+        } else {
+            $("#datepicker").hide();
+            $("#birthday-icon").hide();
+            $("#active-datepicker").hide();
+            $("#active-icon").hide();
+            $("#deactive-datepicker").hide();
+            $("#deactive-icon").hide();
+            $("#content").show();
+        }
+    });
+});
 </script>
+
+
 
 </head>
 <body>
-
-<form action="listQuery" method="post">
-    <select name="query" id="query">
-        <option value="userId">아이디</option> 
-        <option value="name">이름</option>
-        <option value="address" selected="selected">주소</option>
-        <option value="phone">전화번호</option>
-        <option value="email">전자우편</option>
-        <option value="gender">성별</option>
-        <option value="birthday">생년월일</option> <!-- 새로운 옵션 추가 -->
-    </select>&nbsp;&nbsp;&nbsp;
-    <input type="text" name="content" id="datepicker" size="20" style="display: none;"> <!-- display 속성으로 숨김 -->
-    <i id="birthday-icon" class="far fa-calendar-alt" style="display: none;"></i> <!-- display 속성으로 숨김 -->
-    <input type="submit" value="검색">  
-</form>
+    <form action="listQuery" method="post">
+        <select name="query" id="query">
+            <option value="userId">아이디</option> 
+            <option value="name">이름</option>
+            <option value="address" selected="selected">주소</option>
+            <option value="phone">전화번호</option>
+            <option value="email">전자우편</option>
+            <option value="gender">성별</option>
+            <option value="birthday">생년월일</option> <!-- 새로운 옵션 추가 -->
+            <option value="active">가입일</option>
+            <option value="deactive">탈퇴일</option>
+        </select>&nbsp;&nbsp;&nbsp;
+        <input type="text" name="content" id="content" size="20"> <!-- 텍스트 필드는 기본적으로 보이도록 설정 -->
+        <input type="text" name="content" id="datepicker" size="20" style="display: none;"> <!-- display 속성으로 숨김 -->
+        <input type="text" name="content" id="active-datepicker" size="20" style="display: none;"> <!-- display 속성으로 숨김 -->
+        <input type="text" name="content" id="deactive-datepicker" size="20" style="display: none;"> <!-- display 속성으로 숨김 -->
+        <i id="birthday-icon" class="far fa-calendar-alt" style="display: none;"></i> <!-- display 속성으로 숨김 -->
+        <i id="active-icon" class="far fa-calendar-alt" style="display: none;"></i> <!-- display 속성으로 숨김 -->
+        <i id="deactive-icon" class="far fa-calendar-alt" style="display: none;"></i> <!-- display 속성으로 숨김 -->
+        <input type="submit" value="검색">  
+    </form>
 	<br><br>
    <table id="result" cellpadding="0" cellspacing="4" border="4" style="max-width: 100%; width: 100%; max-height: 500px; overflow-y: auto; z-index: 9999;">
 		<tr>
