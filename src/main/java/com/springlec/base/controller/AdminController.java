@@ -53,11 +53,7 @@ public class AdminController {
             return "error";
         }
     }
-    @GetMapping("manager")
-    public String Manager() {
 
-            return "admin/UserManageAdmin"; // 반환할 view의 이름
-    }
     
     @GetMapping("day")
     public String day() {
