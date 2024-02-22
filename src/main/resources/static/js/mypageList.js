@@ -1,6 +1,6 @@
 /* 윈도우가 실행될 때 처음부터 값을 가져온다 */
 window.onload = function() {
-
+	console.log("js실행됨1");
 	// 오늘 날짜를 가져옴
 	function getCurrentDate() {
 		const today = new Date();
@@ -10,14 +10,14 @@ window.onload = function() {
 		const month = String(today.getMonth() + 1).padStart(2, '0');
 		const day = String(today.getDate()).padStart(2, '0');
 		return `${year}-${month}-${day}`;
-	}
+	}console.log("js실행됨2");
 	// 각 버튼에 클릭 이벤트 추가
 	document.querySelectorAll('.period a').forEach(function(button) {
 		button.addEventListener('click', function() {
 			const daysToSubtract = parseInt(this.getAttribute('days'), 10);
 			document.getElementById('history_start_date').value = adjustDate(daysToSubtract);
 		});
-	});
+	});console.log("js실행됨3");
 	// 날짜 조정(클릭된 날짜)
 	function adjustDate(daysToSubtract) {
 		const currentDate = new Date();
@@ -29,11 +29,11 @@ window.onload = function() {
 	}
 
 
-
+console.log("js실행됨4");
 	// history_start_date와 history_end_date의 기본값을 오늘 날짜로 설정
 	document.getElementById('history_start_date').value = getCurrentDate();
 	document.getElementById('history_end_date').value = getCurrentDate();
-
+console.log("js실행됨5");
 	//AJAX 요청(조건검색) 
 	$.ajax({
 		type: "POST",
