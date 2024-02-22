@@ -52,7 +52,7 @@
 							</div>
 						</div>
 						<div class="xans-element- xans-board xans-board-list qna-list">
-							<c:forEach items="${list}" var="dto" varStatus="loop">
+							<c:forEach items="${QnaList}" var="dto" varStatus="loop">
 								<div class="list-item xans-record-">
 									<a href="qnaContent.do?qnaSeq=${dto.qnaSeq}" class="post-link"> <span
 										class="number">${dto.qnaSeq}</span><span class="title">${dto.qnaTitle}</span>
