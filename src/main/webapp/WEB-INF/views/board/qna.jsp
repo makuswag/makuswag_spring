@@ -121,7 +121,7 @@
 							</div>
 											<div
 					class="xans-element- xans-board xans-board-buttonlist board-admin-actions  ">
-					<a href="./qnaWrite.do" class="primary-button "><span>WRITE</span></a>
+					<a href="qnaWrite_view" class="primary-button "><span>WRITE</span></a>
 				</div>
 						</form>
 					</div>

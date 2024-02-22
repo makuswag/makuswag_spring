@@ -68,7 +68,7 @@
 							<font color="#555555">Q&A</font>
 						</h3>
 					</div>
-					<form id="boardWriteForm" name="insertQnaForm" action="qnaWriteSubmit.do"
+					<form id="boardWriteForm" name="insertQnaForm" action="qnaWriteSubmit"
 						method="post" target="_self" enctype="multipart/form-data">
 						<input id="board_no" name="board_no" value="5" type="hidden" /> <input
 							id="product_no" name="product_no" value="0" type="hidden" /> <input
