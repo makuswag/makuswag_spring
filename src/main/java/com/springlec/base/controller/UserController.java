@@ -78,7 +78,7 @@ public class UserController {
 	// 관리자 페이지로 이동
 	@GetMapping("manager")
 	public String maneger() {
-		return "admin/Manager";
+		return "admin/UserManageAdmin";
 	}
 
 	// 아이디 찾기
