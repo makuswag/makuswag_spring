@@ -3,8 +3,7 @@
 
 <mapper namespace="com.springlec.base.dao.MyPageDao">
 	<select id="purchaseListDao">
-		SELECT p.purSeq, p.pQty, p.pPrice, p.pStackPoint, p.pDate, pr.proName FROM purchase as p\n"
-		        + "JOIN product as pr ON p.proSeq = pr.proSeq
+		
 		 
 	</select>
 </mapper>
