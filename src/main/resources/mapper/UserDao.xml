@@ -3,4 +3,7 @@
 
 <mapper namespace="com.springlec.base.dao.UserDao">
 
+	<select id="whologin" resultType="com.springlec.base.model.UserDto">
+		SELECT userId, userPw, name FROM user WHERE userId = #{userId} AND userPw = #{userPasswd}
+	</select>
 </mapper>

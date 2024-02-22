@@ -45,13 +45,16 @@ public class MainController {
 	
 	// 마이페이지
 	@GetMapping("myPage")
-	public String myPage() throws Exception {
+	public String myPage(HttpSession session) throws Exception {
+//		if (session == null) {
+//	        throw new IllegalArgumentException(); // 세션이 없으면 예외 발생
+//	    }
 		return "member/myPage";
 	}
 	
 	// 카트
 	@GetMapping("cart")
-	public String cart() throws Exception {
+	public String cart(HttpSession session) throws Exception {
 		return "member/cart";
 	}
 	
