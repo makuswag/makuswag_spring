@@ -1,4 +1,4 @@
-<%@page import="com.javalec.dto.NoticeDtoPJH"%>
+<%@page import="com.springlec.base.model.NoticeDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -80,7 +80,7 @@
 							<!-- 아코디언 메뉴 -->
 							<ul class="accordion-list">
 								<!-- 아코디언 이름,  -->
-								<c:forEach items="${list}" var="dto" varStatus="loop">
+								<c:forEach items="${Noticelist}" var="dto" varStatus="loop">
 									<li class="accordion-item"><a href="#"
 										class="accordion-link">
 											<div class="accordion-name">
