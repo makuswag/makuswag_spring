@@ -29,7 +29,7 @@
 <br>
 <br>
 <br>
-<a href="login.do" class="primary-button"><span>로그인으로</span></a>
+<a href="login" class="primary-button"><span>로그인으로</span></a>
 </div>
 </body>
 </html>

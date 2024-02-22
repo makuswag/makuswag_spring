@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springlec.base.dao.AdminDao">
+
+    <select id="AdminGender" resultType="com.springlec.base.model.AdminDto">
+        SELECT gender,
+            COUNT(CASE WHEN gender = '남' THEN 1 END) AS maleCount,
+            COUNT(CASE WHEN gender = '여' THEN 1 END) AS femaleCount
+        FROM user
+        GROUP BY gender;
+    </select>
+    
+    <select id="managerDay" resultType="com.springlec.base.model.AdminDto">
+    
+    SELECT DATE(active) AS day, COUNT(*) AS count FROM user GROUP BY DATE(active) order by day ASC;
+    
+    </select>
+    <select id="managerMonth" resultType="com.springlec.base.model.AdminDto">
+    
+    SELECT DATE_FORMAT(active, '%Y-%m') AS month, COUNT(*) AS count1 FROM user GROUP BY DATE_FORMAT(active, '%Y-%m') ORDER BY month ASC;
+    </select>
+    <select id="managerYear" resultType="com.springlec.base.model.AdminDto">
+    
+    SELECT DATE_FORMAT(active, '%Y') AS year, COUNT(*) AS count2 FROM user GROUP BY DATE_FORMAT(active, '%Y') ORDER BY year ASC;
+    
+    </select>
+    <select id="listDao" resultType="com.springlec.base.model.AdminDto">
+		SELECT userId,name,address,phone,email,gender,birthday,howToLogin,active,deactive FROM user;
+	</select>
+	
+	<select id="listQuery" resultType="com.springlec.base.model.AdminDto">
+	
+	<!--select * from book where ${query} like concat('%',#{content},'%')-->
+	select userId,name,address,phone,email,gender,birthday,howToLogin,active,deactive from user where ${query} like #{content}
+	
+	</select>
+    
+
+
+</mapper>
