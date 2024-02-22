@@ -1,6 +1,6 @@
 package com.springlec.base.service;
 
-public interface TestDaoService {
+public interface UserDaoService {
 
 	// Test
 }

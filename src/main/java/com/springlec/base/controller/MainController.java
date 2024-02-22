@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.springlec.base.service.TestDaoService;
+import com.springlec.base.service.UserDaoService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -13,17 +13,18 @@ import jakarta.servlet.http.HttpSession;
 public class MainController {
 
 	@Autowired
-	TestDaoService service;
+	UserDaoService service;
+
 	
 	// 메인으로
 	@GetMapping("/") 
-	public String main() throws Exception {
+	public String main(HttpSession session) throws Exception {
 		return "index";
 	}
 	
 	// 메인으로
 	@PostMapping("/") 
-	public String main1() throws Exception {
+	public String main1(HttpSession session) throws Exception {
 		return "index";
 	}
 	
