@@ -111,7 +111,7 @@ body {
         <iframe src="day" frameborder="0" style="width: 60%; margin-top: 50px;z-index: 3;"></iframe>
         <iframe src="chart" frameborder="0" style="position: absolute; left: calc(70% - 70px); width: calc(20% - 30px); height: 50%; margin-top: 90px;"></iframe>
     </div>
-    <iframe src="table" frameborder="0" style="position: absolute; width: 90%; height: 45%; margin: 600px auto 5px; align-items: center; z-index: 9999;"></iframe>
+    <iframe src="table" frameborder="0" style="position: absolute; width: 90%; height: 45%; margin: 600px auto 5px; align-items: center; z-index: 4"></iframe>
 </div>
 
 

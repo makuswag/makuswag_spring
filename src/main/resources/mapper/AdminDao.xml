@@ -32,9 +32,29 @@
 	<select id="listQuery" resultType="com.springlec.base.model.AdminDto">
 	
 	<!--select * from book where ${query} like concat('%',#{content},'%')-->
-	select userId,name,address,phone,email,gender,birthday,howToLogin,active,deactive from user where ${query} like #{content}
+	SELECT userId, name, address, phone, email, gender, birthday , howToLogin, active, deactive 
+FROM user 
+WHERE ${query} LIKE #{content}
 	
 	</select>
+<select id="listQueryForBirthday" resultType="com.springlec.base.model.AdminDto">
+    SELECT userId, name, address, phone, email, gender, birthday, howToLogin, active, deactive 
+    FROM user 
+    WHERE birthday = #{birthday}
+</select>
+
+<select id="listQueryForActive" resultType="com.springlec.base.model.AdminDto">
+    SELECT userId, name, address, phone, email, gender, birthday, howToLogin, active, deactive 
+    FROM user 
+    WHERE active LIKE CONCAT(#{active}, '%')
+</select>
+
+<select id="listQueryForDeactive" resultType="com.springlec.base.model.AdminDto">
+    SELECT userId, name, address, phone, email, gender, birthday, howToLogin, active, deactive 
+    FROM user 
+    WHERE deactive = #{deactive}
+</select>
+
     
 
 
