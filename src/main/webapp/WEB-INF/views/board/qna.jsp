@@ -54,7 +54,7 @@
 						<div class="xans-element- xans-board xans-board-list qna-list">
 							<c:forEach items="${QnaList}" var="dto" varStatus="loop">
 								<div class="list-item xans-record-">
-									<a href="qnaContent.do?qnaSeq=${dto.qnaSeq}" class="post-link"> <span
+									<a href="qnaContent_view?qnaSeq=${dto.qnaSeq}" class="post-link"> <span
 										class="number">${dto.qnaSeq}</span><span class="title">${dto.qnaTitle}</span>
 										<span class="date">${dto.userId}</span>
 									</a>
