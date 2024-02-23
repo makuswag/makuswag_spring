@@ -36,6 +36,8 @@ public class QnaWriteController {
 		HttpSession session = request.getSession();
 		UserDto user = (UserDto) session.getAttribute("user");
 		String userId = user.getUserId();
+		System.out.println(userId);
+		System.out.println(System.getProperty("user.dir") + "/src/main/resources/static/images");
 		
 		String qnaImage = null;
 		
