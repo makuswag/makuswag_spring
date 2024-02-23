@@ -5,15 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>MYPAGE</title>
-<script src="js/mypageList.js"></script>
 <link rel="stylesheet" href="./css/all.css">
 <link rel="stylesheet" href="./css/all2.css">
 <!-- 인터넷 창 아이콘에 로고 나오게 하기 -->
 <link rel="icon" href="./images/CompanyLogo.png">
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <!-- jQuery UI -->
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet"
+	href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <!-- 한국어 지역화  나중에 추가하기-->
 <!-- 스타일 -->
 <link rel="stylesheet" href="./css/calender.css">
@@ -47,8 +48,8 @@
 							</h2>
 						</div>
 						<div class="nav-items">
-							<a href="myPage.do" class="nav-item selected">Orders</a>
-							<a href="/member/modify.html" class="nav-item">My Info</a>
+							<a href="myPage.do" class="nav-item selected">Orders</a> <a
+								href="/member/modify.html" class="nav-item">My Info</a>
 						</div>
 					</div>
 
@@ -69,16 +70,15 @@
 									</div>
 									<div class="date-range">
 										<input id="history_start_date" name="history_start_date"
-											class="fText hasDatepicker"  size="10"
-											value="2000-11-17" type="text">
+											class="fText hasDatepicker" size="10" value="2000-11-17"
+											type="text">
 										<button type="button" class="ui-datepicker-trigger">
 											<img
 												src="//img.echosting.cafe24.com/skin/admin_ko_KR/myshop/ico_cal.gif"
 												alt="..." title="...">
 										</button>
-										
-										<span class="range-mark">~</span>
-										<input id="history_end_date"
+
+										<span class="range-mark">~</span> <input id="history_end_date"
 											name="history_end_date" class="fText hasDatepicker"
 											readonly="readonly" size="10" value="2025-02-15" type="text">
 										<button type="button" class="ui-datepicker-trigger">
@@ -105,14 +105,23 @@
 							<div class="xans-element- xans-board xans-board-list qna-list">
 
 								<div class="list-item xans-record-">
-									<a  class="post-link"> <span
-										class="number1">주문번호</span> <span class="number1">상품명</span><span
-										class="number1">수량</span> <span class="number1">가격</span><span
-										class="number1">적립포인트</span><span class="number1">주문일자</span>
+									<a class="post-link"> <span class="number1">주문번호</span> <span
+										class="number1">상품명</span> <span class="number1">수량</span> <span
+										class="number1">가격</span> <span class="number1">적립포인트</span> <span
+										class="number1">주문일자</span>
 									</a>
 								</div>
-								<!-- 데이터 리스트 불러오는 ajax -->
-								<div id="result"></div>
+
+								<c:forEach var="dto" items="${mypage}">
+									<div class="list-item xans-record-">
+										<a class="post-link"> <span class="number1">${dto.purSeq}</span>
+											<span class="number1">${dto.proName}</span> <span
+											class="number1">${dto.pQty}</span> <span class="number1">${dto.pPrice}</span>
+											<span class="number1">${dto.pStackPoint}</span> <span
+											class="number1">${dto.pDate}</span> <!-- 형식 변환은 서버에서 처리해야 함 -->
+										</a>
+									</div>
+								</c:forEach>
 
 							</div>
 
