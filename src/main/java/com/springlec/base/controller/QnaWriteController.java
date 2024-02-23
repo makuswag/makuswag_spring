@@ -1,20 +1,21 @@
 package com.springlec.base.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.springlec.base.model.QnaContentDto;
 import com.springlec.base.model.UserDto;
 import com.springlec.base.service.QnaWriteService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import jakarta.websocket.Session;
 
+
+@Configuration
 @Controller
 public class QnaWriteController {
 	
@@ -32,18 +33,18 @@ public class QnaWriteController {
 	}
 	
 	@PostMapping("qnaWriteSubmit")
-	public String write(HttpServletRequest request, @RequestParam (name = "image", required = false)MultipartFile file) throws Exception{
+	public String write(HttpServletRequest request, @RequestParam (name = "qnaImage", required = false)MultipartFile file) throws Exception{
 		HttpSession session = request.getSession();
 		UserDto user = (UserDto) session.getAttribute("user");
 		String userId = user.getUserId();
+
 		System.out.println(userId);
 		System.out.println(System.getProperty("user.dir") + "/src/main/resources/static/images");
 		
+		
 		String qnaImage = null;
 		
-		if(file != null && !file.isEmpty()) {
-			qnaImage = service.uploadFile(file);
-		}
+		if (file != null && !file.isEmpty()) qnaImage = service.uploadFile(file);
 		String qnaTitle = request.getParameter("qnaTitle");
 		String qnaCategory = request.getParameter("qnaCategory");
 		String qnaContent = request.getParameter("qnaContent");
@@ -51,9 +52,9 @@ public class QnaWriteController {
 		
 		service.writeDao(qnaTitle, qnaCategory, qnaContent, qnaImage, userId);
 		
+		System.out.println(qnaImage);
 		
-		
-		return "redirect:qna";
+		return "redirect:/qna_view";
 		
 	}
 	
