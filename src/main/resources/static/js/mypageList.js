@@ -37,18 +37,20 @@ console.log("js실행됨5");
 	//AJAX 요청(조건검색) 
 	$.ajax({
 		type: "POST",
-		url: "MypageServlet",
+		url: "/MyPage",
 		data: { name: "" },
 		success: function(response) {
 			/* 서버에서 받은 응답 처리 */
+			console.log("createTable 실행전")
 			createTable(response); // json
+			console.log("createTable 실행후")
 		}
 	})
 }
 
 function createTable(purchaseList) {
 	let accordion = "<div class='accordion-list'>";
-
+		console.log("테이블 만드는거 실행됨");
 	for (let i = 0; i < purchaseList.length; i++) {
 		accordion += "<div class='list-item xans-record-'>";
 		accordion += "<a class='post-link'>";
@@ -75,12 +77,12 @@ function createTable(purchaseList) {
 //조회버튼 눌렀을때 액션
 function searchData() {
 	console.log("서칭 실행됨");
-	// 시작일과 종료일 값을 가져옴 여기가실행안됨(확인하기)내일오전까지 마무리 하자!
+	// 시작일과 종료일 값을 가져옴 
 	const startDate = document.getElementById('history_start_date').value;
 	const endDate = document.getElementById('history_end_date').value;
 	console.log("endDate: " + endDate);
 	console.log("startDate: " + startDate);
-	//시작일이랑 종료일?을 보냄
+	//시작일이랑 종료일을 보냄
 	const searchData = {
 		startDate: startDate,
 		endDate: endDate
@@ -88,7 +90,7 @@ function searchData() {
 console.log(searchData)
 	$.ajax({
 		type: "POST",
-		url: "MypageServlet",
+		url: "/MyPage",
 		data: searchData,
 		success: function(response) {
 			/* 서버에서 받은 응답 처리 */
