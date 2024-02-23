@@ -2,6 +2,7 @@ package com.springlec.base.service;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +14,14 @@ public class MyPageDaoServiceImpl implements MyPageDaoService {
 	
 	@Autowired
 	MyPageDao dao;
-	
 	@Override
-	public List<MyPageDto> purchaseListDao() throws Exception {
-		// TODO Auto-generated method stub
-		return null ;
+	public  List<MyPageDto> myPageDao() throws Exception{
+		
+		
+		
+		return dao.myPageDao();
 	}
+		
+	
 
 }

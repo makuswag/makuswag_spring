@@ -1,11 +1,16 @@
 package com.springlec.base.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.springlec.base.model.MyPageDto;
 import com.springlec.base.model.UserDto;
+import com.springlec.base.service.MyPageDaoService;
 import com.springlec.base.service.UserDaoService;
 
 import jakarta.servlet.http.HttpSession;
@@ -15,6 +20,8 @@ public class MainController {
 
 	@Autowired
 	UserDaoService service;
+	@Autowired
+	MyPageDaoService MyPageDaoService;	
 
 	// 메인으로
 	@GetMapping("/")
@@ -45,7 +52,7 @@ public class MainController {
 
 	// 마이페이지
 	@GetMapping("myPage")
-	public String myPage(HttpSession session) throws Exception {
+	public String myPage(HttpSession session, Model model) throws Exception {
         // 세션에서 사용자 정보를 가져옴
         UserDto user = (UserDto) session.getAttribute("user");
 
@@ -53,6 +60,10 @@ public class MainController {
         if (user == null || user.getUserId().isEmpty()) {
             return "redirect:login"; // 로그인 페이지로
         }
+        List<MyPageDto> mypageDao = MyPageDaoService.myPageDao();
+        model.addAttribute("mypage", mypageDao);
+        System.out.println("마이페이지 컨트롤러 실행됨");
+        
 		return "member/myPage";
 	}
 

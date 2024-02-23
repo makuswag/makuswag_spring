@@ -1,12 +1,12 @@
 package com.springlec.base.dao;
 
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
-@Repository
-public class MyPageDao {
-//	public List<MyPageDto> purchaseListDao() throws Exception {
-//		return null;
-//	}
+import com.springlec.base.model.MyPageDto;
+
+public interface MyPageDao {
+	
+	public  List<MyPageDto> myPageDao() throws Exception;
 
 
 }
