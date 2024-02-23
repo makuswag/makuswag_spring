@@ -52,9 +52,69 @@ WHERE ${query} LIKE #{content}
 <select id="listQueryForDeactive" resultType="com.springlec.base.model.AdminDto">
     SELECT userId, name, address, phone, email, gender, birthday, howToLogin, active, deactive 
     FROM user 
-    WHERE deactive = #{deactive}
+    WHERE deactive LIKE CONCAT(#{deactive}, '%')
 </select>
 
+<select id="product" resultType="com.springlec.base.model.AdminDto">
+	SELECT proName, SUM(proQty) AS totalQty FROM product where prodelDate is null GROUP BY proName;
+</select>
+
+<select id="productper" resultType="com.springlec.base.model.AdminDto">
+
+SELECT pr.proName, SUM(p.pQty) AS totalQuantity, ROUND((SUM(p.pQty) / (SELECT SUM(pQty) FROM purchase)) * 100, 2) AS percentage FROM purchase p INNER JOIN Product pr ON p.proseq = pr.proseq GROUP BY pr.proName ORDER BY pr.proName
+
+</select>
+    <select id="listDao2" resultType="com.springlec.base.model.AdminDto">
+		SELECT proCategory,proName,proGender,proIntroduction,proColor,proQty,proPrice,proDate,proImage1,proImage2,proImage3 FROM product;
+	</select>
+	<select id="listQuery2" resultType="com.springlec.base.model.AdminDto">
+	
+	<!--select * from book where ${query} like concat('%',#{content},'%')-->
+	SELECT proCategory,proName,proGender,proIntroduction,proColor,proQty,proPrice,proDate,proImage1,proImage2,proImage3
+FROM product 
+WHERE ${query} LIKE #{content}
+	
+	</select>
+<select id="listQueryForproDate" resultType="com.springlec.base.model.AdminDto">
+    SELECT proCategory,proName,proGender,proIntroduction,proColor,proQty,proPrice,proDate,proImage1,proImage2,proImage3
+    FROM product 
+    WHERE proDate LIKE CONCAT(#{proDate}, '%')
+</select>
+
+<select id="totalDay" resultType="com.springlec.base.model.AdminDto">
+SELECT purchase.pDate, SUM(purchase.pPrice) AS total_pPrice FROM purchase GROUP BY purchase.pDate order by pDate ASC
+</select>
+
+<select id="totalMonth" resultType="com.springlec.base.model.AdminDto">
+SELECT DATE_FORMAT(purchase.pDate, '%Y-%m') AS month_date, SUM(purchase.pPrice) AS total_pPrice FROM purchase GROUP BY DATE_FORMAT(purchase.pDate, '%Y-%m') ORDER BY month_date ASC
+</select>
+<select id="totalYear" resultType="com.springlec.base.model.AdminDto">
+SELECT DATE_FORMAT(purchase.pDate, '%Y') AS year_date, SUM(purchase.pPrice) AS total_pPrice FROM purchase GROUP BY DATE_FORMAT(purchase.pDate, '%Y') ORDER BY year_date ASC
+
+</select>
+<select id="listDao3" resultType="com.springlec.base.model.AdminDto">
+
+SELECT product.proCategory, product.proName, product.proGender, product.proColor, purchase.pQty, purchase.pPrice, purchase.pMethod, purchase.pDate 
+FROM purchase 
+INNER JOIN product ON purchase.proseq = product.proseq
+</select>
+<select id="listQuery3" resultType="com.springlec.base.model.AdminDto">
+	
+	<!--select * from book where ${query} like concat('%',#{content},'%')-->
+SELECT product.proCategory, product.proName, product.proGender, product.proColor, purchase.pQty, purchase.pPrice, purchase.pMethod, purchase.pDate 
+FROM purchase 
+INNER JOIN product ON purchase.proseq = product.proseq
+WHERE ${query} LIKE #{content}
+</select>
+<select id="listQueryForpDate" resultType="com.springlec.base.model.AdminDto">
+SELECT product.proCategory, product.proName, product.proGender, product.proColor, purchase.pQty, purchase.pPrice, purchase.pMethod, purchase.pDate 
+FROM purchase 
+INNER JOIN product ON purchase.proseq = product.proseq
+WHERE pDate LIKE CONCAT(#{pDate}, '%')
+</select>
+<select id="totalgender" resultType="com.springlec.base.model.AdminDto">
+SELECT product.proGender, SUM(purchase.pPrice) AS total_pPrice FROM product INNER JOIN purchase ON product.proseq = purchase.proseq GROUP BY product.proGender
+</select>
     
 
 
