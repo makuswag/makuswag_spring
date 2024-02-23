@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.springlec.base.dao.QnaWriteDao;
 
+
 @Service
 public class QnaWriteServiceImpl implements QnaWriteService{
 	
@@ -36,7 +37,6 @@ public class QnaWriteServiceImpl implements QnaWriteService{
 	@Override
 	public String uploadFile(MultipartFile file) throws Exception {
 		// TODO Auto-generated method stub
-	
 		String qnaImage = file.getOriginalFilename();
 		UUID uuid = UUID.randomUUID();
 		qnaImage = uuid + qnaImage;
@@ -47,7 +47,7 @@ public class QnaWriteServiceImpl implements QnaWriteService{
 			try {
 				//파일 업로드
 				//저장 경로
-				String path = System.getProperty("user.dir") + "/src/main/resources/static/images";
+				String path = System.getProperty("user.dir") + "/src/main/resources/static/images/board";
 				file.transferTo(new File(path + "/" + qnaImage));
 				
 				
@@ -55,13 +55,13 @@ public class QnaWriteServiceImpl implements QnaWriteService{
 			}catch(IOException i) {
 				i.printStackTrace();
 			}
+			
 		}
 			
  		return qnaImage;
 		
 		
 	}
-	
 	
 	
 }
