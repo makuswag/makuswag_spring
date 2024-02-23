@@ -48,7 +48,7 @@
 								<br> <br> <br>
 								<div class="login-footer">
 									<div class="login-actions">
-										<input type="submit" value="메일 보내기" class="primary-button"
+										<input type="submit" value="인증키 받기" class="primary-button"
 											style="margin: 0 auto;">
 									</div>
 								</div>
