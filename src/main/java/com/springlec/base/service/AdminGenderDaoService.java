@@ -16,6 +16,19 @@ public interface AdminGenderDaoService {
 	 public List<AdminDto> listQueryForBirthday(String birthday);
 	 public List<AdminDto> listQueryForActive(String active);
 	 public List<AdminDto> listQueryForDeactive(String deactive);
+	 public List<AdminDto> product() throws Exception;
+	 public List<AdminDto> productper() throws Exception;
+	 public List<AdminDto> listDao2() throws Exception;
+	 public List<AdminDto> listQuery2(String query, String content) throws Exception;
+	 public List<AdminDto> listQueryForproDate(String proDate);
+	 public List<AdminDto> totalDay() throws Exception;
+	 public List<AdminDto> totalMonth() throws Exception;
+	 public List<AdminDto> totalYear() throws Exception;
+	 public List<AdminDto> listDao3() throws Exception;
+	 public List<AdminDto> listQuery3(String query, String content) throws Exception;
+	 public List<AdminDto> listQueryForpDate(String proDate);
+	 public List<AdminDto> totalgender();
+		
 
 
 

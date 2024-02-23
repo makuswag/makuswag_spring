@@ -1,101 +1,69 @@
-<%@page import="com.google.gson.Gson"%>
-<%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
+<%@page import="com.springlec.base.model.AdminDto"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<style>
-body, html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-.chart-container {
-    width: 120%;
-    height: 80vh; /* 차트 컨테이너의 높이 설정 */
-    margin-right: 20px;
-    margin-left: -10%;
-    
-    
-    }
-    
-.canvas-container {
-    width: 100%;
-    height: 100%;
-}
-
-canvas {
-    width: 100%;
-    height: 100%;
-}
-</style>
+    <meta charset="UTF-8">
+    <title>Total Gender Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<div class="chart-container">
-    <div class="canvas-container">
+    <div class="chart-container">
         <canvas id="myChart"></canvas>
     </div>
-</div>
 
-<%
-    ArrayList<String> labels1 = (ArrayList<String>) session.getAttribute("labels1");
-    ArrayList<Integer> data1 = (ArrayList<Integer>) session.getAttribute("data1"); 
-%>
+    <%
+        // totalgenderList에서 각 성별의 총 구매 가격을 가져와서 labels와 data 배열에 저장
+        List<AdminDto> totalgenderList = (List<AdminDto>) request.getAttribute("totalgenderList");
+        StringBuilder labels = new StringBuilder();
+        StringBuilder data = new StringBuilder();
 
-<script>
-    const labels = <%= new Gson().toJson(labels1) %>;
-    const data = <%= new Gson().toJson(data1) %>;
+        for (AdminDto dto : totalgenderList) {
+            labels.append("'").append(dto.getProGender()).append("',");
+            data.append(dto.getTotal_pPrice()).append(",");
+        }
+    %>
 
-    const ctx = document.getElementById('myChart').getContext('2d');
-    const myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'Price by Gender',
-                data: data,
-                backgroundColor: [
-                    'rgba(54, 162, 235, 0.5)',
-                    'rgba(255, 99, 132, 0.5)'
-                ],
-                borderColor: [
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 99, 132, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-                title: {
-                    display: true,
-                    text: 'Price by Gender'
-                }
+    <script>
+        // labels와 data 배열을 JavaScript 변수로 변환
+        const labels = [<%= labels %>];
+        const data = [<%= data %>];
+
+        // 차트 생성
+        const ctx = document.getElementById('myChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Total Purchase Price by Gender',
+                    data: data,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(54, 162, 235, 0.5)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                    ],
+                    borderWidth: 1
+                }]
             },
-            tooltip: {
-                callbacks: {
-                    label: function(tooltipItem, data) {
-                        var dataset = data.datasets[tooltipItem.datasetIndex];
-                        var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
-                            return previousValue + currentValue;
-                        });
-                        var currentValue = dataset.data[tooltipItem.index];
-                        var percentage = Math.round(((currentValue / total) * 100) * 100) / 100; // 소수점 둘째 자리까지 반올림
-                        return percentage + "%"; // 퍼센트 기호 추가
+            options: {
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Total Purchase Price by Gender'
                     }
                 }
             }
-        }
-    });
-</script>
+        });
+    </script>
 </body>
 </html>

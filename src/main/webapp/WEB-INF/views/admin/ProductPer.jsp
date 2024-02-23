@@ -1,111 +1,76 @@
-<%@page import="com.google.gson.Gson"%>
-<%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
+<%@page import="com.springlec.base.model.AdminDto"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pie Chart</title>
+    <title>Product Percentage Chart</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        .chart-container {
-    width: 113%;
-    height: 80vh; /* 차트 컨테이너의 높이 설정 */
-    margin-right: 20px;
-    margin-left: -10%;
-
-        .canvas-container {
-            width: 100%;
-            height: 100%;
-        }
-
-        canvas {
-            width: 100%;
-            height: 100%;
-        }
-    </style>
 </head>
 <body>
     <div class="chart-container">
-        <div class="canvas-container">
-            <canvas id="myChart"></canvas>
-        </div>
-      
+        <canvas id="myChart"></canvas>
     </div>
-  <%
-    ArrayList<String> labels5 = (ArrayList<String>) session.getAttribute("labels5");
-    ArrayList<Integer> data6 = (ArrayList<Integer>) session.getAttribute("data6"); 
-%>
 
-<script>
-    // JSON 형식의 데이터를 JavaScript 변수에 할당
-    const labels5 = <%= new Gson().toJson(labels5) %>;
-    const data6 = <%= new Gson().toJson(data6) %>;
+    <%
+        // productperList에서 각 상품의 이름과 비율을 가져와서 labels와 data 배열에 저장
+        List<AdminDto> productperList = (List<AdminDto>) request.getAttribute("productperList");
+        StringBuilder labels = new StringBuilder();
+        StringBuilder data = new StringBuilder();
 
-    // 전체 판매 갯수 계산
-    const totalQuantity = data6.reduce((acc, cur) => acc + cur, 0);
+        for (AdminDto dto : productperList) {
+            labels.append("'").append(dto.getProName()).append("',");
+            data.append(dto.getPercentage()).append(",");
+        }
+    %>
 
-    // 각 상품의 판매 비율 계산 및 퍼센트로 변환
-    const percentages = data6.map(quantity => ((quantity / totalQuantity) * 100).toFixed(2) + '%');
+    <script>
+        // labels와 data 배열을 JavaScript 변수로 변환
+        const labels = [<%= labels %>];
+        const data = [<%= data %>];
 
-    // 차트 생성
-    const ctx = document.getElementById('myChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: labels5,
-            datasets: [{
-                label: '상품별 판매 비율',
-                data: data6,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: false,
-            plugins: {
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            var label = context.label || '';
-                            var value = context.parsed || 0;
-                            var percentage = (value / totalQuantity) * 100;
-                            percentage = parseFloat(percentage).toFixed(2);
-                            return label + ': ' + value + ' (' + percentage + '%)';
-                        }
+        // 차트 생성
+        const ctx = document.getElementById('myChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Product Percentage',
+                    data: data,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(255, 206, 86, 0.5)',
+                        'rgba(75, 192, 192, 0.5)',
+                        'rgba(153, 102, 255, 0.5)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Product Percentage Chart',
+                        position: 'top'
                     }
-                },
-                title: {
-                    display: true,
-                    text: '상품별 판매 비율',
-                    position: 'top'
                 }
             }
-        }
-    });
-</script>
+        });
+    </script>
 </body>
 </html>

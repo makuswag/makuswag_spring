@@ -1,5 +1,4 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.google.gson.Gson"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -48,7 +47,7 @@
         // Manager.jsp에 있는 iframe의 src 변경
         const managerIframe = document.getElementById('managerFrame');
         if (managerIframe) {
-            managerIframe.src = "TotalDay.jsp";
+            managerIframe.src = "totalday";
         } else {
             console.error("Manager.jsp iframe을 찾을 수 없습니다.");
         }
@@ -60,7 +59,7 @@
         // Manager.jsp에 있는 iframe의 src 변경
         const managerIframe = document.getElementById('managerFrame');
         if (managerIframe) {
-            managerIframe.src = "TotalMonth.jsp";
+            managerIframe.src = "totalmonth";
         } else {
             console.error("Manager.jsp iframe을 찾을 수 없습니다.");
         }
@@ -72,7 +71,7 @@
         // Manager.jsp에 있는 iframe의 src 변경
         const managerIframe = document.getElementById('managerFrame');
         if (managerIframe) {
-            managerIframe.src = "TotalYear.jsp";
+            managerIframe.src = "totalyear";
         } else {
             console.error("Manager.jsp iframe을 찾을 수 없습니다.");
         }
