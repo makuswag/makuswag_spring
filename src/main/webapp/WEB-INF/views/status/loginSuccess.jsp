@@ -8,7 +8,7 @@
         // Regular user is logged in
         UserDto user = (UserDto) userObject;
 
-        // Check if the user's name contains "대표"
+        // Check if the user's name contains "회원"
 %>
         <script type="text/javascript">
             alert('환영합니다, <%= user.getName()+"님" %>!');
