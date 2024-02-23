@@ -22,6 +22,7 @@ public class MyPageController {
 	    public String mypage(Model model) throws Exception {
 	        List<MyPageDto> mypageDao = service.purchaseListDao();
 	        model.addAttribute("mypage",mypageDao);
+	        System.out.println("마이페이지 컨트롤러 실행됨");
 	        return "mypage";
 	    }
 	

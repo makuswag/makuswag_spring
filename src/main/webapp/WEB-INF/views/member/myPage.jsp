@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>MYPAGE</title>
-<script src="/MakUSwag2.5/js/mypageList.js"></script>
+<script src="js/mypageList.js"></script>
 <link rel="stylesheet" href="./css/all.css">
 <link rel="stylesheet" href="./css/all2.css">
 <!-- 인터넷 창 아이콘에 로고 나오게 하기 -->

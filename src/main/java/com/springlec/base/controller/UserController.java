@@ -83,7 +83,7 @@ public class UserController {
 
 	// 관리자 페이지로 이동
 	@GetMapping("manager")
-	public String maneger(HttpSession session) {
+	public String manager(HttpSession session) {
 		// 세션에서 사용자 정보를 가져옴
 		UserDto user = (UserDto) session.getAttribute("user");
 
