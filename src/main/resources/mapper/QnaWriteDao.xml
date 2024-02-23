@@ -8,7 +8,7 @@
 		insert into qna
 		(userId, qnaTitle, qnaCategory, qnaContent, qnaImage, qnaDate) 
 		values
-		(userId = #{userId}, qnaTitle = #{qnaTitle}, qnaCategory = #{qnaCategory}, qnaContent = #{qnaContent}, qnaImage = #{qnaImage}, now())
+		(#{userId}, #{qnaTitle},  #{qnaCategory},  #{qnaContent},  #{qnaImage}, now())
 	</insert>
 
 </mapper>
