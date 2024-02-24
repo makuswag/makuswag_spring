@@ -53,7 +53,7 @@
 									</div>
 								</div>
 							</fieldset>
-						</div>
+						</div> 
 					</form>
 					
 				</div>
