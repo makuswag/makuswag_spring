@@ -3,6 +3,8 @@ package com.springlec.base.dao;
 import java.sql.Date;
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.springlec.base.model.AdminDto;
 
 public interface AdminDao {
@@ -27,6 +29,8 @@ public interface AdminDao {
 	public List<AdminDto> listQuery3(String query, String content) throws Exception;
 	public List<AdminDto> listQueryForpDate(String proDate);
 	public List<AdminDto> totalgender();
+	public void insertDao(String proCategory, String proName, String proGender, String proIntroduction, String proColor, int proQty, int proPrice,String proImage1,String proImage2,String proImage3) throws Exception;
+	public String uploadfile(MultipartFile file) throws Exception;
 	
 
 }

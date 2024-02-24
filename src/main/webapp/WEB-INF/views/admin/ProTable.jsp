@@ -127,9 +127,9 @@ $(function() {
     <fmt:formatNumber value="${dto.proPrice}" pattern="#,###"/>
 </td>
 			<td style="text-align: center;">${dto.proDate}</td>
-			<td style="text-align: center;"><img src="${pageContext.request.contextPath}/images/${dto.proImage1}" alt="이미지1" style="width: 40%; height: auto; object-fit: contain;"></td>
-			<td style="text-align: center;"><img src="${pageContext.request.contextPath}/images/${dto.proImage2}" alt="이미지2" style="width: 40%; height: auto; object-fit: contain;"></td>
-			<td style="text-align: center;"><img src="${pageContext.request.contextPath}/images/${dto.proImage3}" alt="이미지3" style="width: 40%; height: auto; object-fit: contain;"></td>
+			<td style="text-align: center;"><img src="${pageContext.request.contextPath}/images/admin/${dto.proImage1}" alt="이미지1" style="width: 40%; height: auto; object-fit: contain;"></td>
+			<td style="text-align: center;"><img src="${pageContext.request.contextPath}/images/admin/${dto.proImage2}" alt="이미지2" style="width: 40%; height: auto; object-fit: contain;"></td>
+			<td style="text-align: center;"><img src="${pageContext.request.contextPath}/images/admin/${dto.proImage3}" alt="이미지3" style="width: 40%; height: auto; object-fit: contain;"></td>
 		</tr>
 		<c:set var="cnt" value="${cnt=cnt+1 }"/>
 		</c:forEach>
