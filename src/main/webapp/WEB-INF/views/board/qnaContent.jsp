@@ -13,7 +13,7 @@
 <script>
     function confirmDelete(qnaSeq) {
         if (confirm("삭제 하시겠습니까?")) {
-            window.location.href = "qnaDelete.do?qnaSeq=" + qnaSeq;
+            window.location.href = "qnaDelete?qnaSeq=" + qnaSeq;
         } else {
             // 사용자가 "아니오"를 선택한 경우 아무 작업도 수행하지 않습니다.
         }
@@ -21,7 +21,7 @@
     
     function UpdateQna(qnaSeq){
     	if(confirm("수정 하시겠습니까?")){
-    		window.location.href = "qnaUpdate.do?qnaSeq=" + qnaSeq;
+    		window.location.href = "qnaUpdate?qnaSeq=" + qnaSeq;
     	}else{
     		// 사용자가 "아니오"를 선택한 경우 아무 작업도 수행 하지 않습니다.
     	}
