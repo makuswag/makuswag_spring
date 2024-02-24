@@ -4,7 +4,7 @@
 
 <mapper namespace="com.springlec.base.dao.QnaContentDao">
 	<select id="contentDao" resultType="com.springlec.base.model.QnaContentDto">
-		SELECT qnaSeq, qnaTitle, qnaContent, qnaDate 
+		SELECT qnaSeq, qnaTitle, qnaContent,qnaImage, qnaDate 
 		FROM qna
 		WHERE qnaSeq = #{qnaSeq}
 	</select>
