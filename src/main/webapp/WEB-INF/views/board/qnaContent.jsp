@@ -66,7 +66,7 @@
 											<div class="content">
 												<div class="images"></div>
 												 <div class="article"><div class="fr-view fr-view-article"><p>${content_view.qnaContent }</p><br></div></div>
-												<div><img src="${pageContext.request.contextPath}/images/${content_view.qnaImage}" width="100" height="100"></div>
+												<div><img src="${pageContext.request.contextPath}/images/board/${content_view.qnaImage}" width="100" height="100"></div>
 											</div>
 										</div>
 							<div class="post-footer">
