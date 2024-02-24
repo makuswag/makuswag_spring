@@ -16,9 +16,8 @@ public class MyPageDaoServiceImpl implements MyPageDaoService {
 	MyPageDao dao;
 	@Override
 	public  List<MyPageDto> myPageDao() throws Exception{
-		
-		
-		
+		System.out.println("임플란티드키드");
+		System.out.println(dao.myPageDao());
 		return dao.myPageDao();
 	}
 		

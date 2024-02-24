@@ -36,8 +36,8 @@ console.log("js실행됨4");
 console.log("js실행됨5");
 	//AJAX 요청(조건검색) 
 	$.ajax({
-		type: "POST",
-		url: "/MyPage",
+		type: "GET",
+		url: "/myPage",
 		data: { name: "" },
 		success: function(response) {
 			/* 서버에서 받은 응답 처리 */
@@ -48,22 +48,24 @@ console.log("js실행됨5");
 	})
 }
 
-function createTable(purchaseList) {
+function createTable(mypageDao) {
+	console.log("서버에서 받은 데이터:", mypageDao);
 	let accordion = "<div class='accordion-list'>";
 		console.log("테이블 만드는거 실행됨");
-	for (let i = 0; i < purchaseList.length; i++) {
+		console.log("데이터를 다 못가져와서 에러뜨는건가");
+	for (let i = 0; i < mypageDao.length; i++) {
 		accordion += "<div class='list-item xans-record-'>";
 		accordion += "<a class='post-link'>";
-		accordion += "<span class='number1'>" + purchaseList[i].purSeq + "</span>";
-		accordion += "<span class='number1'>" + purchaseList[i].proName + "</span>";
-		accordion += "<span class='number1'>" + purchaseList[i].pQty + "</span>";
-		accordion += "<span class='number1'>" + purchaseList[i].pPrice + "</span>";
-		accordion += "<span class='number1'>" + purchaseList[i].pStackPoint + "</span>";
+		accordion += "<span class='number1'>" + mypageDao[i].purSeq + "</span>";
+		accordion += "<span class='number1'>" + mypageDao[i].proName + "</span>";
+		accordion += "<span class='number1'>" + mypageDao[i].pQty + "</span>";
+		accordion += "<span class='number1'>" + mypageDao[i].pPrice + "</span>";
+		accordion += "<span class='number1'>" + mypageDao[i].pStackPoint + "</span>";
 		// 연월일만 추출
-		let fullDate = purchaseList[i].pDate;
-		let formattedDate = fullDate.substring(0, 10); // 년월일만 추출
+		//let fullDate = purchaseList[i].pDate;
+		//let formattedDate = fullDate.substring(0, 10); // 년월일만 추출
 
-		accordion += "<span class='number1'>" + formattedDate + "</span>";
+		accordion += "<span class='number1'>" + mypageDao[i].pDate + "</span>";
 
 		  accordion += "<button class='number1' data-index='" + i + "'>리뷰작성</button>";
 		accordion += "</a>";
@@ -89,8 +91,8 @@ function searchData() {
 	};
 console.log(searchData)
 	$.ajax({
-		type: "POST",
-		url: "/MyPage",
+		type: "GET",
+		url: "/myPage",
 		data: searchData,
 		success: function(response) {
 			/* 서버에서 받은 응답 처리 */

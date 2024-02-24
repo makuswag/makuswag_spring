@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>MYPAGE</title>
+<script src="js/mypageList.js"></script>
+
 <link rel="stylesheet" href="./css/all.css">
 <link rel="stylesheet" href="./css/all2.css">
 <!-- 인터넷 창 아이콘에 로고 나오게 하기 -->
@@ -111,8 +114,10 @@
 										class="number1">주문일자</span>
 									</a>
 								</div>
-
-								<c:forEach var="dto" items="${mypage}">
+								<div id="result"></div>
+								
+								
+								<%-- <c:forEach var="dto" items="${mypage}">
 									<div class="list-item xans-record-">
 										<a class="post-link"> <span class="number1">${dto.purSeq}</span>
 											<span class="number1">${dto.proName}</span> <span
@@ -121,7 +126,7 @@
 											class="number1">${dto.pDate}</span> <!-- 형식 변환은 서버에서 처리해야 함 -->
 										</a>
 									</div>
-								</c:forEach>
+								</c:forEach> --%>
 
 							</div>
 
