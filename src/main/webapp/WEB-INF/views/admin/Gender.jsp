@@ -51,7 +51,7 @@
                     },
                     title: {
                         display: true,
-                        text: '가입자 성별 비율',
+                        text: 'Gender ratio of registrants',
                         position: 'top'
                     }
                 }

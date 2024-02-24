@@ -29,7 +29,7 @@
             data: {
                 labels: labels,
                 datasets: [{
-                    label: 'Total Day Data',
+                    label: 'Daily sales volume',
                     data: data,
                     backgroundColor: 'rgba(54, 162, 235, 0.5)',
                     borderColor: 'rgba(54, 162, 235, 1)',

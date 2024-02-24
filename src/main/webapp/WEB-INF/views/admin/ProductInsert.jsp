@@ -89,7 +89,7 @@
 </head>
 <body>
     <h3 style="font-size: 30px;">제품 등록</h3>
-    <form action="insert.do" method="post" enctype="multipart/form-data">
+    <form action="insert" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>ProCategory:</td>
@@ -132,7 +132,7 @@
             </tr>
             <tr>
                 <td>ProIntroduction:</td>
-                <td><input type="text"id="proIntroduction" name="proIntroduction" size="30"></td>
+               <td><textarea id="proIntroduction" name="proIntroduction" rows="4" cols="30"></textarea></td>
                 
             </tr>
             <tr>
