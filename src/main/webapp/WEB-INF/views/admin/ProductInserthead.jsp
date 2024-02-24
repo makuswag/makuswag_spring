@@ -35,9 +35,9 @@
 </a>
         </div>
                 <ul class="navbar__menu">
-            <li><a href="manager.do">회원관리</a></li>
-            <li><a href="productmanager.do">상품관리</a></li>
-            <li><a href="totalmanager.do">매출</a></li>
+            <li><a href="manager1">회원관리</a></li>
+            <li><a href="productmanager">상품관리</a></li>
+            <li><a href="totalmanager">매출</a></li>
             <li><a href="#">게시판관리</a></li>
             <li><a href="logout.do">로그아웃</a></li>
             

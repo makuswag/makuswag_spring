@@ -89,9 +89,9 @@ body {
 </a>
         </div>
                 <ul class="navbar__menu">
-            <li><a href="manager.do">회원관리</a></li>
-            <li><a href="productmanager.do">상품관리</a></li>
-            <li><a href="totalmanager.do">매출</a></li>
+            <li><a href="manager1">회원관리</a></li>
+            <li><a href="productmanager">상품관리</a></li>
+            <li><a href="totalmanager">매출</a></li>
             <li><a href="#">게시판관리</a></li>
             <li><a href="logout.do">로그아웃</a></li>
             
@@ -108,7 +108,7 @@ body {
 <div class="content">
 
     <div class="frame-container" >
-        <iframe src="day" frameborder="0" style="width: 60%; margin-top: 50px;z-index: 3;"></iframe>
+        <iframe src="day" frameborder="0" style="width: 60%; margin-top: 100px;z-index: 3;"></iframe>
         <iframe src="chart" frameborder="0" style="position: absolute; left: calc(70% - 70px); width: calc(20% - 30px); height: 50%; margin-top: 90px;"></iframe>
     </div>
     <iframe src="table" frameborder="0" style="position: absolute; width: 90%; height: 45%; margin: 600px auto 5px; align-items: center; z-index: 4"></iframe>

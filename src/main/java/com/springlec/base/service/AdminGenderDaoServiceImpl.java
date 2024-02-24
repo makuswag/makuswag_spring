@@ -71,5 +71,79 @@ public class AdminGenderDaoServiceImpl implements AdminGenderDaoService {
 		return dao.listQueryForDeactive(deactive);
 	}
 
+	@Override
+	public List<AdminDto> product() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.product();
+	}
+
+	@Override
+	public List<AdminDto> productper() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.productper();
+	}
+
+	@Override
+	public List<AdminDto> listDao2() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.listDao2();
+	}
+
+	@Override
+	public List<AdminDto> listQuery2(String query, String content) throws Exception {
+		// TODO Auto-generated method stub
+		content='%'+content+'%';
+		return dao.listQuery2(query, content);
+	}
+
+	@Override
+	public List<AdminDto> listQueryForproDate(String proDate) {
+		// TODO Auto-generated method stub
+		return dao.listQueryForproDate(proDate);
+	}
+
+	@Override
+	public List<AdminDto> totalDay() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.totalDay();
+	}
+
+	@Override
+	public List<AdminDto> totalMonth() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.totalMonth();
+	}
+
+	@Override
+	public List<AdminDto> totalYear() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.totalYear();
+	}
+
+	@Override
+	public List<AdminDto> listDao3() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.listDao3();
+	}
+
+	@Override
+	public List<AdminDto> listQuery3(String query, String content) throws Exception {
+		// TODO Auto-generated method stub
+		content='%'+content+'%';
+		return dao.listQuery3(query, content);
+	}
+
+	@Override
+	public List<AdminDto> listQueryForpDate(String proDate) {
+		// TODO Auto-generated method stub
+		return dao.listQueryForpDate(proDate);
+	}
+
+	@Override
+	public List<AdminDto> totalgender() {
+		// TODO Auto-generated method stub
+		return dao.totalgender();
+	}
+
 
 }

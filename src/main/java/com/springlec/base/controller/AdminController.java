@@ -134,4 +134,157 @@ public class AdminController {
         return "admin/UserTable";
     }
     
+    @GetMapping("product")
+    public String showChart(Model model) {
+    	try {
+            List<AdminDto> productList = service.product();
+            model.addAttribute("productList", productList);
+            return "admin/ProductBar"; // 반환할 view의 이름
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error"; // 에러 발생 시 에러 페이지로 리다이렉트
+        }
+    }
+    @GetMapping("productper")
+    public String productchart(Model model) {
+        try {
+            List<AdminDto> productperList = service.productper();
+            model.addAttribute("productperList",productperList);
+            System.out.println(service.productper());
+            return "admin/ProductPer";
+        }catch (Exception e) {
+        	e.printStackTrace();
+        }return "error";
+    
+    	
+    }
+    @GetMapping("table2")
+    public String table2(Model model) throws Exception {
+    	List<AdminDto> listDao2 = service.listDao2();
+    	model.addAttribute("list",listDao2);
+    	return "admin/ProTable";
+    	
+    }
+    @PostMapping("listQuery2")
+    public String listQuery2(HttpServletRequest request, Model model) throws Exception {
+        
+        String query = request.getParameter("query");
+        System.out.println(query);
+        String content = request.getParameter("content");
+        System.out.println(content);
+        List<AdminDto> listDao;
+
+        // 생년월일인 경우에는 listQueryForBirthday 메서드를 호출
+        if ("proDate".equals(query)) {
+            // listQueryForBirthday 메서드 호출
+            listDao = service.listQueryForproDate(content);
+            System.out.println(listDao);
+        } else {
+            // 나머지 경우에는 기본적인 listQuery 메서드를 호출
+            listDao = service.listQuery2(query, content);
+            System.out.println(listDao);
+        }
+
+        model.addAttribute("list", listDao);
+        return "admin/ProTable";
+    }
+
+    @GetMapping("productmanager")
+    public String a() {
+    	return "admin/ProductManager";
+    }
+    
+    @GetMapping("manager1")
+    public String b() {
+    	return "admin/UserManageAdmin";
+    }
+    
+    @GetMapping("totalday")
+    public String gettotalDay(Model model) {
+        try {
+            List<AdminDto> totalDayList = service.totalDay();
+            model.addAttribute("totalDayList", totalDayList);
+            return "admin/TotalDay"; // 반환할 view의 이름
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error"; // 에러 발생 시 에러 페이지로 리다이렉트
+        }
+    }
+    @GetMapping("totalmonth")
+    public String gettotalMonth(Model model) {
+        try {
+            List<AdminDto> totalMonthList = service.totalMonth();
+            model.addAttribute("totalMonthList", totalMonthList);
+            return "admin/TotalMonth"; // 반환할 view의 이름
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error"; // 에러 발생 시 에러 페이지로 리다이렉트
+        }
+    }
+    @GetMapping("totalyear")
+    public String gettotalYear(Model model) {
+        try {
+            List<AdminDto> totalYearList = service.totalYear();
+            model.addAttribute("totalYearList", totalYearList);
+            return "admin/TotalYear"; // 반환할 view의 이름
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error"; // 에러 발생 시 에러 페이지로 리다이렉트
+        }
+    }
+    @GetMapping("a")
+    public String total() {
+    	return "admin/Total";
+    }
+    @GetMapping("totalmanager")
+    public String totalmanager() {
+    	return "admin/TotalAdmin";
+    }
+    
+    @GetMapping("table3")
+    public String table3(Model model) throws Exception {
+    	List<AdminDto> listDao3 = service.listDao3();
+    	model.addAttribute("list",listDao3);
+    	return "admin/TotalTable";
+    	
+    }
+    @PostMapping("listQuery3")
+    public String listQuery3(HttpServletRequest request, Model model) throws Exception {
+        
+        String query = request.getParameter("query");
+        System.out.println(query);
+        String content = request.getParameter("content");
+        System.out.println(content);
+        List<AdminDto> listDao;
+
+        // 생년월일인 경우에는 listQueryForBirthday 메서드를 호출
+        if ("pDate".equals(query)) {
+            // listQueryForBirthday 메서드 호출
+            listDao = service.listQueryForpDate(content);
+            System.out.println(listDao);
+        } else {
+            // 나머지 경우에는 기본적인 listQuery 메서드를 호출
+            listDao = service.listQuery3(query, content);
+            System.out.println(listDao);
+        }
+
+        model.addAttribute("list", listDao);
+        return "admin/TotalTable";
+    }
+    @GetMapping("totalgender")
+    public String totalchart(Model model) {
+        try {
+            List<AdminDto> totalgenderList = service.totalgender();
+            model.addAttribute("totalgenderList",totalgenderList);
+            System.out.println(service.totalgender());
+            return "admin/TotalGender";
+        }catch (Exception e) {
+        	e.printStackTrace();
+        }return "error";
+    
+    	
+    }
+
 }
+    
+

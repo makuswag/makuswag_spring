@@ -1,4 +1,4 @@
-<%@page import="com.google.gson.Gson"%>
+
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -87,21 +87,8 @@ body {
 </style>
 </head>
 <body>
-<%
-    ArrayList<String> labels = (ArrayList<String>) session.getAttribute("labels");
-    ArrayList<Integer> data = (ArrayList<Integer>) session.getAttribute("data");
 
-  
-%>
 
-<script>
-    // 세션에서 가져온 labels와 data 데이터가 null인지 확인
-    // JSON 형식의 데이터를 JavaScript 변수에 할당
-    
-    // JSON 형식의 데이터를 JavaScript 변수에 할당
-    const labels = JSON.parse('<%= new Gson().toJson(labels) %>');
-    const data = JSON.parse('<%= new Gson().toJson(data) %>');
-</script>
 
 
 <header>
@@ -113,9 +100,9 @@ body {
 </a>
         </div>
                 <ul class="navbar__menu">
-            <li><a href="manager.do">회원관리</a></li>
-            <li><a href="productmanager.do">상품관리</a></li>
-            <li><a href="totalmanager.do">매출</a></li>
+            <li><a href="manager1">회원관리</a></li>
+            <li><a href="productmanager">상품관리</a></li>
+            <li><a href="totalmanager">매출</a></li>
             <li><a href="#">게시판관리</a></li>
             <li><a href="logout.do">로그아웃</a></li>
             
@@ -134,10 +121,10 @@ body {
 <div class="content">
 
     <div class="frame-container" >
-        <iframe src="./admin/ProductBar.jsp" frameborder="0" style="width: 60%; margin-top: 50px;z-index: 3;"></iframe>
-         <iframe src="./admin/ProductPer.jsp" frameborder="0" style="position: absolute; left: calc(70% - 70px); width: calc(20% - 30px); height: calc(50% + 300px); margin-top: 90px;"></iframe>
+        <iframe src="product" frameborder="0" style="width: 60%; margin-top: 100px;z-index: 3;"></iframe>
+         <iframe src="productper" frameborder="0" style="position: absolute; left: calc(70% - 70px); width: calc(20% - 30px); height: calc(50% + 300px); margin-top: 90px;"></iframe>
     </div>
- <iframe src="./ProTable.jsp" frameborder="0" style="position: absolute; width: 70%; height: 45%;align-items: center; z-index: 999; overflow: hidden;"></iframe>
+ <iframe src="table2" frameborder="0" style="position: absolute; width: 90%; height: 45%; margin: 500px auto 5px; align-items: center; z-index: 4"></iframe>
 </div>
 
 

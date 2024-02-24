@@ -197,15 +197,15 @@ body {
     <li>
        <a href="#"><i class="fa-solid fa-user" style="color: white;"> </i> 회원</a>
       <ul>
-        <li><a href="manager.do">회원관리</a></li>
+        <li><a href="manager1">회원관리</a></li>
       </ul>
     </li>
     <li>
       <a href="#"><i class="fa-solid fa-gift" style="color: white;"></i> 상품</a>
       <ul>
-        <li><a href="productmanager.do">상품관리</a></li>
-        <li><a href="productinsert.do">상품등록</a></li>
-        <li><a href="productupdate.do">상품수정</a></li>
+        <li><a href="productmanager">상품관리</a></li>
+        <li><a href="productinsert">상품등록</a></li>
+        <li><a href="productupdate">상품수정</a></li>
       </ul>
     </li>
     <li>
@@ -217,7 +217,7 @@ body {
       </ul>
     </li>
     <li>
-      <a href="totalmanager.do"><i class="fa-solid fa-cart-plus" style="color:white;"></i> 매출</a>
+      <a href="totalmanager"><i class="fa-solid fa-cart-plus" style="color:white;"></i> 매출</a>
     </li>
    <li><br><br><br><br><br><br> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Counseling Center</span><br>
 		<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;02 436 1009</span><br>

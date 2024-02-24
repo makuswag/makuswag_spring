@@ -21,7 +21,7 @@
         var labels = [];
         var data = [];
         <%for (AdminDto dto : managerDayList) {%>
-            labels.push("<%= dto.getDay() %>"); // dto.getDay()는 날짜를 가져오는 메서드입니다.
+            labels.push("<%= dto.getDay() %>"); 
             data.push(<%= dto.getCount() %>); // dto.getCount()는 카운트를 가져오는 메서드입니다.
         <% } %>
 
