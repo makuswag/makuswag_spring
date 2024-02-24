@@ -65,7 +65,7 @@
                     },
                     title: {
                         display: true,
-                        text: 'Product Percentage Chart',
+                        text: 'Product purchase Percentage',
                         position: 'top'
                     }
                 }

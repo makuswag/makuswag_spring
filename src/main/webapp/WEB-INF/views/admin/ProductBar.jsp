@@ -34,7 +34,7 @@
             data: {
                 labels: labels,
                 datasets: [{
-                    label: '상품 재고량',
+                    label: 'Product inventory quantity',
                     data: data,
                     backgroundColor: 'rgba(54, 162, 235, 0.5)',
                     borderColor: 'rgba(54, 162, 235, 1)',

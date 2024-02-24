@@ -1,26 +1,42 @@
 package com.springlec.base.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.springlec.base.model.AdminDto;
 
 import com.springlec.base.service.AdminGenderDaoService;
 
+import ch.qos.logback.core.Context;
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class AdminController {
+	
+	
     
     @Autowired
     AdminGenderDaoService service;
+
     
     @GetMapping("chart")
     public String list(Model model) {
@@ -284,7 +300,49 @@ public class AdminController {
     
     	
     }
-
-}
+    
     
 
+    @PostMapping("insert")
+    public String insertProduct(HttpServletRequest request, 
+                                @RequestParam("proImage1") MultipartFile proImage4, 
+                                @RequestParam("proImage2") MultipartFile proImage5, 
+                                @RequestParam("proImage3") MultipartFile proImage6) throws Exception {
+        
+        // 파일을 저장할 디렉토리 경로 설정
+    	String proPrice = request.getParameter("proPrice").replace(",", "");
+        
+        String proImage1 = null;
+        if(proImage4!=null && !proImage4.isEmpty()) proImage1= service.uploadfile(proImage4);
+        String proImage2 = null;
+        if(proImage5!=null && !proImage5.isEmpty()) proImage2= service.uploadfile(proImage5);
+        String proImage3 = null;
+        if(proImage6!=null && !proImage6.isEmpty()) proImage3= service.uploadfile(proImage6);
+        
+        // 각 이미지 파일의 원본 이름 추출
+
+        
+
+        // insertDao 메서드에 이미지 파일 이름을 전달
+        service.insertDao(request.getParameter("proCategory"),
+                          request.getParameter("proName"),
+                          request.getParameter("proGender"), 
+                          request.getParameter("proIntroduction"), 
+                          request.getParameter("proColor"), 
+                          Integer.parseInt(request.getParameter("proQty")), 
+                          Integer.parseInt(proPrice),
+                          proImage1,
+                          proImage2,
+                          proImage3);
+
+        return "redirect:productinsert";
+    }
+    // 파일을 저장하는 메서드
+
+    // 이미지를 저장하는 메서드
+
+    @GetMapping("productinsert")
+    public String d() {
+    	return "admin/ProductInsert";
+    }
+}
