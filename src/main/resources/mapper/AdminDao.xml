@@ -115,6 +115,10 @@ WHERE pDate LIKE CONCAT(#{pDate}, '%')
 <select id="totalgender" resultType="com.springlec.base.model.AdminDto">
 SELECT product.proGender, SUM(purchase.pPrice) AS total_pPrice FROM product INNER JOIN purchase ON product.proseq = purchase.proseq GROUP BY product.proGender
 </select>
+<insert id="insertDao" parameterType="com.springlec.base.model.AdminDto">
+    INSERT INTO product (proCategory, proName, proGender, proIntroduction, proColor, proQty, proPrice, proDate, proImage1, proImage2, proImage3)
+    VALUES (#{proCategory}, #{proName}, #{proGender}, #{proIntroduction}, #{proColor}, #{proQty}, #{proPrice}, now(), #{proImage1}, #{proImage2}, #{proImage3})
+</insert>
     
 
 

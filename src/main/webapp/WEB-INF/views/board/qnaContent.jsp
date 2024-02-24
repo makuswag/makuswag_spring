@@ -13,7 +13,7 @@
 <script>
     function confirmDelete(qnaSeq) {
         if (confirm("삭제 하시겠습니까?")) {
-            window.location.href = "qnaDelete.do?qnaSeq=" + qnaSeq;
+            window.location.href = "qnaDelete?qnaSeq=" + qnaSeq;
         } else {
             // 사용자가 "아니오"를 선택한 경우 아무 작업도 수행하지 않습니다.
         }
@@ -21,7 +21,7 @@
     
     function UpdateQna(qnaSeq){
     	if(confirm("수정 하시겠습니까?")){
-    		window.location.href = "qnaUpdate.do?qnaSeq=" + qnaSeq;
+    		window.location.href = "qnaUpdate?qnaSeq=" + qnaSeq;
     	}else{
     		// 사용자가 "아니오"를 선택한 경우 아무 작업도 수행 하지 않습니다.
     	}
@@ -66,7 +66,7 @@
 											<div class="content">
 												<div class="images"></div>
 												 <div class="article"><div class="fr-view fr-view-article"><p>${content_view.qnaContent }</p><br></div></div>
-												<div><img src="${pageContext.request.contextPath}/images/${content_view.qnaImage}" width="100" height="100"></div>
+												<div><img src="${pageContext.request.contextPath}/images/board/${content_view.qnaImage}" width="100" height="100"></div>
 											</div>
 										</div>
 							<div class="post-footer">

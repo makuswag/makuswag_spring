@@ -19,11 +19,21 @@ public class QnaContentController {
 	
 	@GetMapping("qnaContent_view")
 	public String contentview(HttpServletRequest request, Model model) throws Exception {
+		
+		
+		
 		int qnaSeq = Integer.parseInt(request.getParameter("qnaSeq"));
-		QnaContentDto contentDao = service.contentDao(qnaSeq);
+		String qnaTitle = request.getParameter("qnaTitle");
+		String qnaContent = request.getParameter("qnaContent");
+		String qnaImage = request.getParameter("qnaImage");
+		String qnaDate = request.getParameter("qnaDate");
+		QnaContentDto contentDao = service.contentDao(qnaSeq, qnaTitle, qnaContent, qnaImage, qnaDate);
+				
 		model.addAttribute("content_view", contentDao);
 		
+		
 		return "board/qnaContent";
+		
 	}
 	
 }

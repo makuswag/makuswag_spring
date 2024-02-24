@@ -81,7 +81,7 @@
 											style="display: inline-block; margin: 10px; font-weight: bold;">&nbsp;${page}</span>
 									</c:when>
 									<c:otherwise>
-										<a href="qna.do?page=${page}"
+										<a href="qna_view?page=${page}"
 											style="display: inline-block; margin: 10px;">&nbsp;${page}</a>
 									</c:otherwise>
 								</c:choose>

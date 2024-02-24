@@ -59,7 +59,7 @@
                     },
                     title: {
                         display: true,
-                        text: 'Total Purchase Price by Gender'
+                        text: 'Gender ratio of buyers'
                     }
                 }
             }
