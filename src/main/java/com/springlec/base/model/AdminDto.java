@@ -22,6 +22,28 @@ public class AdminDto {
     private String howToLogin;
     private String active;
     private String deactive;
+    private String proName;
+    private int totalQty;
+    private int totalQuantity;
+    private double percentage;
+    private String proCategory;
+    private String proGender;
+    private String proIntroduction;
+    private String proColor;
+    private int proQty;
+    private int proPrice;
+    private String proDate;
+    private String proImage1;
+    private String proImage2;
+    private String proImage3;
+    private int total_pPrice;
+    private String month_date;
+    private String year_date;
+    private int pQty;
+    private int pPrice;
+    private String pMethod;
+    private String pDate;
+    private double totalPPrice;
     
     
     
@@ -29,6 +51,139 @@ public class AdminDto {
     
     
     
+    
+	public double getTotalPPrice() {
+		return totalPPrice;
+	}
+	public void setTotalPPrice(double totalPPrice) {
+		this.totalPPrice = totalPPrice;
+	}
+	public int getpQty() {
+		return pQty;
+	}
+	public void setpQty(int pQty) {
+		this.pQty = pQty;
+	}
+	public int getpPrice() {
+		return pPrice;
+	}
+	public void setpPrice(int pPrice) {
+		this.pPrice = pPrice;
+	}
+	public String getpMethod() {
+		return pMethod;
+	}
+	public void setpMethod(String pMethod) {
+		this.pMethod = pMethod;
+	}
+	public String getYear_date() {
+		return year_date;
+	}
+	public void setYear_date(String year_date) {
+		this.year_date = year_date;
+	}
+	public String getMonth_date() {
+		return month_date;
+	}
+	public void setMonth_date(String month_date) {
+		this.month_date = month_date;
+	}
+	public String getpDate() {
+		return pDate;
+	}
+	public void setpDate(String pDate) {
+		this.pDate = pDate;
+	}
+	public int getTotal_pPrice() {
+		return total_pPrice;
+	}
+	public void setTotal_pPrice(int total_pPrice) {
+		this.total_pPrice = total_pPrice;
+	}
+	public String getProCategory() {
+		return proCategory;
+	}
+	public void setProCategory(String proCategory) {
+		this.proCategory = proCategory;
+	}
+	public String getProGender() {
+		return proGender;
+	}
+	public void setProGender(String proGender) {
+		this.proGender = proGender;
+	}
+	public String getProIntroduction() {
+		return proIntroduction;
+	}
+	public void setProIntroduction(String proIntroduction) {
+		this.proIntroduction = proIntroduction;
+	}
+	public String getProColor() {
+		return proColor;
+	}
+	public void setProColor(String proColor) {
+		this.proColor = proColor;
+	}
+	public int getProQty() {
+		return proQty;
+	}
+	public void setProQty(int proQty) {
+		this.proQty = proQty;
+	}
+	public int getProPrice() {
+		return proPrice;
+	}
+	public void setProPrice(int proPrice) {
+		this.proPrice = proPrice;
+	}
+	public String getProDate() {
+		return proDate;
+	}
+	public void setProDate(String proDate) {
+		this.proDate = proDate;
+	}
+	public String getProImage1() {
+		return proImage1;
+	}
+	public void setProImage1(String proImage1) {
+		this.proImage1 = proImage1;
+	}
+	public String getProImage2() {
+		return proImage2;
+	}
+	public void setProImage2(String proImage2) {
+		this.proImage2 = proImage2;
+	}
+	public String getProImage3() {
+		return proImage3;
+	}
+	public void setProImage3(String proImage3) {
+		this.proImage3 = proImage3;
+	}
+	public int getTotalQuantity() {
+		return totalQuantity;
+	}
+	public void setTotalQuantity(int totalQuantity) {
+		this.totalQuantity = totalQuantity;
+	}
+	public double getPercentage() {
+		return percentage;
+	}
+	public void setPercentage(double percentage) {
+		this.percentage = percentage;
+	}
+	public String getProName() {
+		return proName;
+	}
+	public void setProName(String proName) {
+		this.proName = proName;
+	}
+	public int getTotalQty() {
+		return totalQty;
+	}
+	public void setTotalQty(int totalQty) {
+		this.totalQty = totalQty;
+	}
 	public String getUserId() {
 		return userId;
 	}

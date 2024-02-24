@@ -1,26 +1,42 @@
 package com.springlec.base.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.springlec.base.model.AdminDto;
 
 import com.springlec.base.service.AdminGenderDaoService;
 
+import ch.qos.logback.core.Context;
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class AdminController {
+	
+	
     
     @Autowired
     AdminGenderDaoService service;
+
     
     @GetMapping("chart")
     public String list(Model model) {
@@ -134,4 +150,199 @@ public class AdminController {
         return "admin/UserTable";
     }
     
+    @GetMapping("product")
+    public String showChart(Model model) {
+    	try {
+            List<AdminDto> productList = service.product();
+            model.addAttribute("productList", productList);
+            return "admin/ProductBar"; // 반환할 view의 이름
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error"; // 에러 발생 시 에러 페이지로 리다이렉트
+        }
+    }
+    @GetMapping("productper")
+    public String productchart(Model model) {
+        try {
+            List<AdminDto> productperList = service.productper();
+            model.addAttribute("productperList",productperList);
+            System.out.println(service.productper());
+            return "admin/ProductPer";
+        }catch (Exception e) {
+        	e.printStackTrace();
+        }return "error";
+    
+    	
+    }
+    @GetMapping("table2")
+    public String table2(Model model) throws Exception {
+    	List<AdminDto> listDao2 = service.listDao2();
+    	model.addAttribute("list",listDao2);
+    	return "admin/ProTable";
+    	
+    }
+    @PostMapping("listQuery2")
+    public String listQuery2(HttpServletRequest request, Model model) throws Exception {
+        
+        String query = request.getParameter("query");
+        System.out.println(query);
+        String content = request.getParameter("content");
+        System.out.println(content);
+        List<AdminDto> listDao;
+
+        // 생년월일인 경우에는 listQueryForBirthday 메서드를 호출
+        if ("proDate".equals(query)) {
+            // listQueryForBirthday 메서드 호출
+            listDao = service.listQueryForproDate(content);
+            System.out.println(listDao);
+        } else {
+            // 나머지 경우에는 기본적인 listQuery 메서드를 호출
+            listDao = service.listQuery2(query, content);
+            System.out.println(listDao);
+        }
+
+        model.addAttribute("list", listDao);
+        return "admin/ProTable";
+    }
+
+    @GetMapping("productmanager")
+    public String a() {
+    	return "admin/ProductManager";
+    }
+    
+    @GetMapping("manager1")
+    public String b() {
+    	return "admin/UserManageAdmin";
+    }
+    
+    @GetMapping("totalday")
+    public String gettotalDay(Model model) {
+        try {
+            List<AdminDto> totalDayList = service.totalDay();
+            model.addAttribute("totalDayList", totalDayList);
+            return "admin/TotalDay"; // 반환할 view의 이름
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error"; // 에러 발생 시 에러 페이지로 리다이렉트
+        }
+    }
+    @GetMapping("totalmonth")
+    public String gettotalMonth(Model model) {
+        try {
+            List<AdminDto> totalMonthList = service.totalMonth();
+            model.addAttribute("totalMonthList", totalMonthList);
+            return "admin/TotalMonth"; // 반환할 view의 이름
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error"; // 에러 발생 시 에러 페이지로 리다이렉트
+        }
+    }
+    @GetMapping("totalyear")
+    public String gettotalYear(Model model) {
+        try {
+            List<AdminDto> totalYearList = service.totalYear();
+            model.addAttribute("totalYearList", totalYearList);
+            return "admin/TotalYear"; // 반환할 view의 이름
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error"; // 에러 발생 시 에러 페이지로 리다이렉트
+        }
+    }
+    @GetMapping("a")
+    public String total() {
+    	return "admin/Total";
+    }
+    @GetMapping("totalmanager")
+    public String totalmanager() {
+    	return "admin/TotalAdmin";
+    }
+    
+    @GetMapping("table3")
+    public String table3(Model model) throws Exception {
+    	List<AdminDto> listDao3 = service.listDao3();
+    	model.addAttribute("list",listDao3);
+    	return "admin/TotalTable";
+    	
+    }
+    @PostMapping("listQuery3")
+    public String listQuery3(HttpServletRequest request, Model model) throws Exception {
+        
+        String query = request.getParameter("query");
+        System.out.println(query);
+        String content = request.getParameter("content");
+        System.out.println(content);
+        List<AdminDto> listDao;
+
+        // 생년월일인 경우에는 listQueryForBirthday 메서드를 호출
+        if ("pDate".equals(query)) {
+            // listQueryForBirthday 메서드 호출
+            listDao = service.listQueryForpDate(content);
+            System.out.println(listDao);
+        } else {
+            // 나머지 경우에는 기본적인 listQuery 메서드를 호출
+            listDao = service.listQuery3(query, content);
+            System.out.println(listDao);
+        }
+
+        model.addAttribute("list", listDao);
+        return "admin/TotalTable";
+    }
+    @GetMapping("totalgender")
+    public String totalchart(Model model) {
+        try {
+            List<AdminDto> totalgenderList = service.totalgender();
+            model.addAttribute("totalgenderList",totalgenderList);
+            System.out.println(service.totalgender());
+            return "admin/TotalGender";
+        }catch (Exception e) {
+        	e.printStackTrace();
+        }return "error";
+    
+    	
+    }
+    
+    
+
+    @PostMapping("insert")
+    public String insertProduct(HttpServletRequest request, 
+                                @RequestParam("proImage1") MultipartFile proImage4, 
+                                @RequestParam("proImage2") MultipartFile proImage5, 
+                                @RequestParam("proImage3") MultipartFile proImage6) throws Exception {
+        
+        // 파일을 저장할 디렉토리 경로 설정
+    	String proPrice = request.getParameter("proPrice").replace(",", "");
+        
+        String proImage1 = null;
+        if(proImage4!=null && !proImage4.isEmpty()) proImage1= service.uploadfile(proImage4);
+        String proImage2 = null;
+        if(proImage5!=null && !proImage5.isEmpty()) proImage2= service.uploadfile(proImage5);
+        String proImage3 = null;
+        if(proImage6!=null && !proImage6.isEmpty()) proImage3= service.uploadfile(proImage6);
+        
+        // 각 이미지 파일의 원본 이름 추출
+
+        
+
+        // insertDao 메서드에 이미지 파일 이름을 전달
+        service.insertDao(request.getParameter("proCategory"),
+                          request.getParameter("proName"),
+                          request.getParameter("proGender"), 
+                          request.getParameter("proIntroduction"), 
+                          request.getParameter("proColor"), 
+                          Integer.parseInt(request.getParameter("proQty")), 
+                          Integer.parseInt(proPrice),
+                          proImage1,
+                          proImage2,
+                          proImage3);
+
+        return "redirect:productinsert";
+    }
+    // 파일을 저장하는 메서드
+
+    // 이미지를 저장하는 메서드
+
+    @GetMapping("productinsert")
+    public String d() {
+    	return "admin/ProductInsert";
+    }
 }

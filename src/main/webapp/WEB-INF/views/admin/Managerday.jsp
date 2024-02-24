@@ -21,7 +21,7 @@
         var labels = [];
         var data = [];
         <%for (AdminDto dto : managerDayList) {%>
-            labels.push("<%= dto.getDay() %>"); // dto.getDay()는 날짜를 가져오는 메서드입니다.
+            labels.push("<%= dto.getDay() %>"); 
             data.push(<%= dto.getCount() %>); // dto.getCount()는 카운트를 가져오는 메서드입니다.
         <% } %>
 
@@ -31,7 +31,7 @@
             data: {
                 labels: labels,
                 datasets: [{
-                    label: 'Manager Day Data',
+                    label: 'Daily registration date',
                     data: data,
                     backgroundColor: 'rgba(54, 162, 235, 0.5)',
                     borderColor: 'rgba(54, 162, 235, 1)',

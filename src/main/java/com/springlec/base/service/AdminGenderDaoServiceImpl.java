@@ -1,10 +1,14 @@
 package com.springlec.base.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.springlec.base.dao.AdminDao;
 import com.springlec.base.model.AdminDto;
@@ -69,6 +73,106 @@ public class AdminGenderDaoServiceImpl implements AdminGenderDaoService {
 	public List<AdminDto> listQueryForDeactive(String deactive) {
 		// TODO Auto-generated method stub
 		return dao.listQueryForDeactive(deactive);
+	}
+
+	@Override
+	public List<AdminDto> product() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.product();
+	}
+
+	@Override
+	public List<AdminDto> productper() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.productper();
+	}
+
+	@Override
+	public List<AdminDto> listDao2() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.listDao2();
+	}
+
+	@Override
+	public List<AdminDto> listQuery2(String query, String content) throws Exception {
+		// TODO Auto-generated method stub
+		content='%'+content+'%';
+		return dao.listQuery2(query, content);
+	}
+
+	@Override
+	public List<AdminDto> listQueryForproDate(String proDate) {
+		// TODO Auto-generated method stub
+		return dao.listQueryForproDate(proDate);
+	}
+
+	@Override
+	public List<AdminDto> totalDay() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.totalDay();
+	}
+
+	@Override
+	public List<AdminDto> totalMonth() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.totalMonth();
+	}
+
+	@Override
+	public List<AdminDto> totalYear() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.totalYear();
+	}
+
+	@Override
+	public List<AdminDto> listDao3() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.listDao3();
+	}
+
+	@Override
+	public List<AdminDto> listQuery3(String query, String content) throws Exception {
+		// TODO Auto-generated method stub
+		content='%'+content+'%';
+		return dao.listQuery3(query, content);
+	}
+
+	@Override
+	public List<AdminDto> listQueryForpDate(String proDate) {
+		// TODO Auto-generated method stub
+		return dao.listQueryForpDate(proDate);
+	}
+
+	@Override
+	public List<AdminDto> totalgender() {
+		// TODO Auto-generated method stub
+		return dao.totalgender();
+	}
+
+	@Override
+	public void insertDao(String proCategory, String proName, String proGender, String proIntroduction, String proColor, int proQty, int proPrice,String proImage1,String proImage2,String proImage3) throws Exception {
+		// TODO Auto-generated method stub
+		dao.insertDao(proCategory, proName, proGender, proIntroduction, proColor, proQty, proPrice, proImage1,proImage2,proImage3);
+		
+	}
+
+	@Override
+	public String uploadfile(MultipartFile file) throws Exception {
+		// TODO Auto-generated method stub
+		String proImage1 = file.getOriginalFilename();
+		UUID uuid =UUID.randomUUID();
+		proImage1 = uuid+proImage1;
+		
+		if(proImage1 != null) {
+			try {
+				
+				String path = System.getProperty("user.dir")+"/src/main/resources/static/images/admin";
+				file.transferTo(new File(path + "/"+proImage1));
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return proImage1;
 	}
 
 
