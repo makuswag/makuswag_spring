@@ -34,38 +34,43 @@ console.log("js실행됨4");
 	document.getElementById('history_start_date').value = getCurrentDate();
 	document.getElementById('history_end_date').value = getCurrentDate();
 console.log("js실행됨5");
-	//AJAX 요청(조건검색) 
-	$.ajax({
-		type: "GET",
-		url: "/myPage",
-		data: { name: "" },
-		success: function(response) {
-			/* 서버에서 받은 응답 처리 */
-			console.log("createTable 실행전")
-			createTable(response); // json
-			console.log("createTable 실행후")
-		}
-	})
+	// AJAX 요청(조건검색) 
+$.ajax({
+   type: "GET",
+   url: "/MyPageController",
+   data: {},
+   success: function(_data) {
+      /* 서버에서 받은 응답 처리 */
+      console.log("createTable 실행전");
+      createTable(_data); // json
+      console.log("createTable 실행후");
+   },
+   error: function(jqXHR, textStatus, errorThrown) {
+      /* 실패 시 처리 */
+      console.error("AJAX Error:", textStatus, errorThrown);
+   }
+});
+
 }
 
-function createTable(mypageDao) {
-	console.log("서버에서 받은 데이터:", mypageDao);
+function createTable(_data) {
+	console.log("서버에서 받은 데이터:", _data);
 	let accordion = "<div class='accordion-list'>";
 		console.log("테이블 만드는거 실행됨");
 		console.log("데이터를 다 못가져와서 에러뜨는건가");
-	for (let i = 0; i < mypageDao.length; i++) {
+	for (let i = 0; i < _data.length; i++) {
 		accordion += "<div class='list-item xans-record-'>";
 		accordion += "<a class='post-link'>";
-		accordion += "<span class='number1'>" + mypageDao[i].purSeq + "</span>";
-		accordion += "<span class='number1'>" + mypageDao[i].proName + "</span>";
-		accordion += "<span class='number1'>" + mypageDao[i].pQty + "</span>";
-		accordion += "<span class='number1'>" + mypageDao[i].pPrice + "</span>";
-		accordion += "<span class='number1'>" + mypageDao[i].pStackPoint + "</span>";
+		accordion += "<span class='number1'>" + _data[i].purSeq + "</span>";
+		accordion += "<span class='number1'>" + _data[i].proName + "</span>";
+		accordion += "<span class='number1'>" + _data[i].pQty + "</span>";
+		accordion += "<span class='number1'>" + _data[i].pPrice + "</span>";
+		accordion += "<span class='number1'>" + _data[i].pStackPoint + "</span>";
 		// 연월일만 추출
 		//let fullDate = purchaseList[i].pDate;
 		//let formattedDate = fullDate.substring(0, 10); // 년월일만 추출
 
-		accordion += "<span class='number1'>" + mypageDao[i].pDate + "</span>";
+		accordion += "<span class='number1'>" + _data[i].pDate + "</span>";
 
 		  accordion += "<button class='number1' data-index='" + i + "'>리뷰작성</button>";
 		accordion += "</a>";
@@ -92,7 +97,7 @@ function searchData() {
 console.log(searchData)
 	$.ajax({
 		type: "GET",
-		url: "/myPage",
+		url: "/MyPageController",
 		data: searchData,
 		success: function(response) {
 			/* 서버에서 받은 응답 처리 */
