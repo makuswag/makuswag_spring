@@ -13,11 +13,13 @@ public class QnaContentServiceImpl implements QnaContentService{
 	QnaContentDao dao;
 	
 	
+
+
 	@Override
-	public QnaContentDto contentDao(int qnaSeq) throws Exception {
-		System.out.println("******************"+qnaSeq+"**************");
+	public QnaContentDto contentDao(int qnaSeq, String qnaTitle, String qnaContent, String qnaImage, String qnaDate)
+			throws Exception {
 		// TODO Auto-generated method stub
-		return dao.contentDao(qnaSeq);
+		return dao.contentDao(qnaSeq, qnaTitle, qnaContent, qnaImage, qnaDate);
 	}
 	
 	
