@@ -42,7 +42,7 @@
 								<legend>이메일 인증</legend>
 								<div class="form-field">
 									<label for="email">Email</label> <input id="email" name="email"
-										class="inputTypeText" placeholder="" value="" type="email"
+										class="inputTypeText" placeholder="ex)makuswag@makuswag.com" value="" type="email"
 										required>
 								</div>
 								<br> <br> <br>
@@ -55,11 +55,11 @@
 							</fieldset>
 						</div>
 					</form>
-
+					
 				</div>
 				<script>
 			    // 이메일 유효성 검사 정규식
-			    const emailRegex = /^[a-z0-9]+@[a-z]+\.[a-z]{2,}$/;
+			    const emailRegex = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
 			
 			    document.getElementById('email_form').addEventListener('submit', function (e) {
 			        e.preventDefault(); // 기본 동작 중단
@@ -92,6 +92,19 @@
 			            }
 			        }
 			    });
+			    
+				$("#email_form").click(function() {
+					$.ajax({
+						method : "POST",
+						url : "duplicatedCheck",
+						data : {
+							email : email
+						},
+						success : function(response) {
+							$("#sysAuthentic").val(response.authentication);
+						},
+					})
+				});
 				</script>
 
 				<!-- 여기까지 작성 -->
