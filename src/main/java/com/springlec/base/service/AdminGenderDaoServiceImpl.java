@@ -175,5 +175,30 @@ public class AdminGenderDaoServiceImpl implements AdminGenderDaoService {
 		return proImage1;
 	}
 
+	@Override
+	public List<AdminDto> listDao4() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.listDao4();
+	}
+
+	@Override
+	public List<AdminDto> listQuery4(String query, String content) throws Exception {
+		// TODO Auto-generated method stub
+		content='%'+content+'%';
+		return dao.listQuery4(query, content);
+	}
+
+	@Override
+	public List<AdminDto> listQueryForproDate1(String proDate) {
+		// TODO Auto-generated method stub
+		return dao.listQueryForproDate1(proDate);
+	}
+
+	@Override
+	public AdminDto selectDao(int proSeq) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectDao(proSeq);
+	}
+
 
 }
