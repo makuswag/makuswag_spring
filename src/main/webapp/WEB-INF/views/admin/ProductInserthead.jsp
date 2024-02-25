@@ -30,7 +30,7 @@
     <nav class="navbar">
         <div class="navbar__logo">
             
-            <a href="manager.do">
+            <a href="manager1">
     <img src="./images/CompanyLogo.png" alt="로고" style="width: 82.2px; margin-top:45.2px; margin-left: 38.5px;">
 </a>
         </div>

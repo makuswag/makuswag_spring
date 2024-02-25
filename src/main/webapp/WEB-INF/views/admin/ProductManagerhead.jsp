@@ -124,30 +124,10 @@ body {
         <iframe src="product" frameborder="0" style="width: 60%; margin-top: 100px;z-index: 3;"></iframe>
          <iframe src="productper" frameborder="0" style="position: absolute; left: calc(70% - 70px); width: calc(20% - 30px); height: calc(50% + 300px); margin-top: 90px;"></iframe>
     </div>
- <iframe src="table2" frameborder="0" style="position: absolute; width: 90%; height: 45%; margin: 500px auto 5px; align-items: center; z-index: 4"></iframe>
+ <iframe src="table2" frameborder="0" style="position: absolute; width: 90%; height: 45%; margin: 500px auto 5px; align-items: center; z-index: 4; margin-left: 40px;"></iframe>
 </div>
 
 
-<script src="queryTablePro.js"></script>
-<script>
-    // 창 크기가 변경될 때 iframe의 크기를 다시 계산하여 조절하는 함수
-    function resizeIframes() {
-        const frameContainers = document.querySelectorAll('.frame-container');
-        frameContainers.forEach(container => {
-            const iframes = container.querySelectorAll('iframe');
-            iframes.forEach(iframe => {
-                iframe.style.height = `${container.offsetHeight}px`;
-            });
-        });
-    }
-
-    // 문서가 완전히 로드된 후에 실행되는 함수
-    $(document).ready(function() {
-        // 창 크기가 변경될 때 iframe의 크기를 다시 계산하여 조절
-        $(window).resize(resizeIframes);
-        resizeIframes(); // 초기 로드 시 iframe 크기 조절
-    });
-</script>
 
 
 

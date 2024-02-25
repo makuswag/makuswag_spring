@@ -15,6 +15,7 @@
     <style>
     </style>
 <script>
+
 $(document).ready(function() {
     // 카테고리 옵션 변경 시 동작
     $('#query').change(function() {
@@ -85,6 +86,7 @@ $(function() {
 
 </head>
 <body>
+
     <form action="listQuery2" method="post">
         <select name="query" id="query">
             <option value="proCategory">카테고리</option> 
