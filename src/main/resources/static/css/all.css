@@ -4646,5 +4646,11 @@ my-account .local-nav {
     width: 150px;
     text-align: center;
 }
+.qna-list .list-item .post-link .number2 {
+    display: inline-block;
+    font-weight: 500;
+    width: 100px;
+    text-align: center;
+}
 
 
