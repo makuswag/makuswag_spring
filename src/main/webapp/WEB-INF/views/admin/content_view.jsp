@@ -8,164 +8,23 @@
 <title>AJAX MySQL Table Query1</title>
 <link rel="stylesheet" type="text/css" href="./css/style.css"> <!-- style.css 파일을 불러옴 -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<style>
-    body {
-    	height: 300vh;
-        background :   linear-gradient(180deg, rgba(228, 220, 207, 1) 0%, rgba(245, 240, 187, 1) 38%, rgba(125, 157, 156, 1) 100%); /* 짝수 행의 배경색을 지정합니다. */
-    }
-   select option {
-        text-align: center;
-    }
-#searchContainer {
-    top: 10%;
-    right: 7%;
-    width: 100%;
-    background-color: linear-gradient(180deg, rgba(228, 220, 207, 1) 0%, rgba(245, 240, 187, 1) 38%, rgba(125, 157, 156, 1) 100%);
-    padding: 10px;
-    z-index: 2; /* 다른 요소들 위에 보이도록 z-index 설정 */
-    margin-top: 5%;
-    margin-left: 150px;
-}
 
-#result { /* 검색창과 겹치지 않게 여백 추가 */
-    /* 여기에 테이블 결과의 스타일을 추가하세요 */
-    margin-top: 10px;
-    overflow-y: auto; /* 테이블 결과가 넘칠 경우 스크롤 표시 */
-    max-height: calc(100vh - 200px); /* 화면 높이의 100%에서 검색창과 여백 높이만큼 제외한 값으로 최대 높이 지정 */
-    max-width: calc(100vh - 200px);
-    margin: 0 auto 0; /* 수평 가운데 정렬을 위해 좌우 여백을 자동으로 설정 */
-    padding: 0; /* 패딩 제거 */
-    box-sizing: border-box; /* 박스 모델 속성 설정 */
-    margin-left:80px;
-    
-}
-
-#result table {
-    width: 150%; /* 테이블 너비를 100%로 설정 */
-    border-collapse: collapse; /* 테이블 셀 경계를 병합하여 테두리를 생성 */
-
-}
-
-#result th, #result td {
-    border: 1px solid #dddddd; /* 테이블 셀의 테두리 스타일 지정 */
-    padding: 8px; /* 셀 안의 콘텐츠와 경계 사이의 공간 설정 */
-    text-align: center; /* 텍스트 가운데 정렬 */
-}
-
-#result th {
-    background-color: #f2f2f2; /* 테이블 머리글의 배경색 설정 */
-}
-
-#result td {
-    background-color: #ffffff; /* 테이블 셀의 배경색 설정 */
-}
-
-#result tr:nth-child(even) {
-    background-color: #f2f2f2; /* 짝수 번째 행의 배경색 설정 */
-}
-
-#container {
-    display: flex;
-    align-items: center; /* 수직 방향으로 위쪽 정렬 */
-    margin-right: 10%;
-    background-color: linear-gradient(180deg, rgba(228, 220, 207, 1) 0%, rgba(245, 240, 187, 1) 38%, rgba(125, 157, 156, 1) 100%);
-    z-index: 2;
-     /* 테이블과 텍스트 사이 여백 */
-     
-}
-
-#submitBtn{
-	float: right;
-	margin-left: 200px;
-	width: 100px;
-	height: 30px;
-}
-#delBtn{
-	float: right;
-	margin-left: 170px;
-	width: 100px;
-	height: 30px;
-}
-#result {
-    max-width: 100%; /* 테이블의 최대 너비 설정 */
-}
-#text {
-        float: left; /* 왼쪽으로 이동 */
-        width: 30%; /* 너비 설정 유지 */
-        margin-right: 30px; /* 오른쪽 여백 추가 */
-    }
-
-#text input[type="text"] {
-    text-align: center;
-}
-
-#text table {
-    width: 120%; /* 텍스트 필드 테이블 너비를 100%로 설정 */
-    border-collapse: collapse; /* 테이블 셀 경계를 병합하여 테두리를 생성 */
-    margin-left: 70px;
-}
-
-#text th, #text td {
-    border: 1px solid #dddddd; /* 테이블 셀의 테두리 스타일 지정 */
-    padding: 20px; /* 셀 안의 콘텐츠와 경계 사이의 공간 설정 */
-}
-
-#text th {
-    background-color: #f2f2f2; /* 테이블 머리글의 배경색 설정 */
-    width:150px;
-}
-
-#text td {
-    background-color: #ffffff; /* 테이블 셀의 배경색 설정 */
-}
-#imagePreview {
-    width: 100px; /* 미리보기 컨테이너 고정 너비 */
-    height: 100px; /* 미리보기 컨테이너 고정 높이 */
-    overflow: auto; /* 이미지가 컨테이너를 벗어나면 스크롤 표시 */
-    margin: auto; /* 가운데 정렬 */
-}
-
-#imagePreview img {
-    max-width: 100%; /* 이미지 너비를 최대 100%로 설정 */
-    max-height: 100%; /* 이미지 높이를 최대 100%로 설정 */
-    display: block; /* 블록 요소로 설정하여 중앙 정렬을 위한 margin을 적용하기 위해 */
-    margin: auto; /* 가로 중앙 정렬을 위해 */
-}
-
-#imagePreview2,
-#imagePreview3 {
-    width: 100px; /* 미리보기 컨테이너 고정 너비 */
-    height: 100px; /* 미리보기 컨테이너 고정 높이 */
-    overflow: auto; /* 이미지가 컨테이너를 벗어나면 스크롤 표시 */
-    margin: auto; /* 가운데 정렬 */
-}
-
-#imagePreview2 img,
-#imagePreview3 img {
-    max-width: 100%; /* 이미지 너비를 최대 100%로 설정 */
-    max-height: 100%; /* 이미지 높이를 최대 100%로 설정 */
-    display: block; /* 블록 요소로 설정하여 중앙 정렬을 위한 margin을 적용하기 위해 */
-    margin: auto; /* 가로 중앙 정렬을 위해 */
-}
-</style>
 </head>
 <body>
-    <div id="searchContainer">
-        <input type="text" id="name" placeholder="성명 입력">
-        <button id="queryButton">검색</button>
-    </div>
+
+<form action="modify" method="post">
     <div id="container">
         <div id="result"></div>
         <div id="text">
             <table>
                 <tr>
                 <th>제품번호</th>
-                    <td><input type="text" id="proSeq" readonly="readonly" size="5"></td>
+                    <td><input type="text" id="proSeq" value="${content_view.proSeq}" readonly="readonly" size="5"></td>
                 </tr>
                 <tr>    
              <th>카테고리</th>
                 <td>
-                    <select id="Category" name="Category" disabled="disabled">
+                    <select id="Category" name="Category">
                     	<option value="default">선택하세요</option>
                         <option value="BEST 100">BEST 100</option>
                         <option value="All-in-one">All-in-one</option>
@@ -179,47 +38,53 @@
                         <option value="Woman only">Woman only</option>
                         <!-- 다른 카테고리 옵션들 -->
                     </select>
-                    <input type="text" id="proCategory" name="proCategory" readonly="readonly" size="14" >
+                    <input type="text" id="proCategory" name="proCategory" value="${content_view.proCategory}"  size="14" readonly="readonly" >
                 </td>
                 </tr>
                 <tr>
                     <th>제품이름</th>
-                    <td><input type="text" id="proName" readonly="readonly"></td>
+                    <td><input type="text" id="proName" value="${content_view.proName}"></td>
                 </tr>
                 <tr>
                     <th>성별</th>
                 <td>
-                    <select id="Gender" name="Gender" disabled="disabled">
+                    <select id="Gender" name="Gender" >
                     	<option value="default">선택하세요</option>
+                    	<option value="공용">공용</option>
                         <option value="남">남</option>
                         <option value="여">여</option>
                         <!-- 다른 카테고리 옵션들 -->
                     </select>
-                    <input type="text" id="proGender"  name="proGender" size="5" readonly="readonly">
+                    <input type="text" id="proGender"  name="proGender" value="${content_view.proGender}" size="5" readonly="readonly">
                 </td>
                 </tr>
                 <tr>
                     <th>수량</th>
                 <td>
-                    <select id="quantity" name="quantity" disabled="disabled">
+                    <select id="quantity" name="quantity" >
                     <option value="default">선택하세요</option>
                         <% for (int i = 1; i <= 1000; i++) { %>
                             <option value="<%= i %>"> <%= i %> </option>
                         <% } %>
                     </select>
                     <!-- 텍스트 필드 추가 -->
-                    <input type="text" id="proQty" name="proQty" size="5" readonly="readonly" > ea
+                    <input type="text" id="proQty" name="proQty" size="5" value="${content_view.proQty}" readonly="readonly" > ea
+                </td>
+                </tr>
+                <tr>
+                	<th>제품소개</th>
+                	<td><textarea id="proIntroduction" name="proIntroduction" >${content_view.proIntroduction}</textarea>
                 </td>
                 </tr>
                 <tr>
                     <th>가격</th>
-                    <td><input type="text" id="proPrice" name="proPrice" readonly="readonly"></td>
+                    <td><input type="text" id="proPrice" name="proPrice" value="${content_view.proPrice}"></td>
                 </tr>
                 <tr>
                      <th>색상</th>
                 <td>
                 
-                	<select id="Color" name="Color" disabled="disabled">
+                	<select id="Color" name="Color" >
                     	<option value="default">선택하세요</option>
                         <option value="Red">Red</option>
                         <option value="Blue">Blue</option>
@@ -232,12 +97,12 @@
                         <!-- 다른 카테고리 옵션들 -->
                     </select>
                 
-                    <input type="text" id="proColor" name="proColor" readonly="readonly" size="10">
+                    <input type="text" id="proColor" name="proColor" value="${content_view.proColor}" readonly="readonly" size="10">
                 </td>
                 </tr>
                 <tr>
                     <th>현재<br>이미지</th>
-                    <td><input type="text" id="proImage" size="30" readonly="readonly"></td>
+                    <td><input type="text" id="proImage" size="30" value="${content_view.proImage1}" readonly="readonly"></td>
                 </tr>
                  <tr>
                     <th>이미지</th>
@@ -246,7 +111,7 @@
                 </tr>
                 <tr>
                     <th>현재<br>이미지</th>
-                    <td><input type="text" id="proImage2" size="30" readonly="readonly"></td>
+                    <td><input type="text" id="proImage2" size="30" value="${content_view.proImage2}" readonly="readonly"></td>
                 </tr>
                  <tr>
                     <th>이미지</th>
@@ -255,7 +120,7 @@
                 </tr>
                 <tr>
                     <th>현재<br>이미지</th>
-                    <td><input type="text" id="proImage4" size="30" readonly="readonly"></td>
+                    <td><input type="text" id="proImage4" size="30" value="${content_view.proImage3}" readonly="readonly"></td>
                 </tr>
                  <tr>
                     <th>이미지</th>
@@ -264,12 +129,12 @@
                 </tr>
             </table>
             <br>
-            <button type="button" id="submitBtn">수정</button>
-            <button type="button" id="delBtn">삭제</button>
+            <input type="submit" value="수정" id="submitBtn">
+            <input type="submit"  value="삭제" id="delBtn">
         </div>
     </div>
+    </form>
     
-    <script src="js/queryupdate.js"></script> <!-- queryTable.js 파일을 불러옴 -->
     <script>
     $(document).ready(function() {
         // 파일 선택(input) 요소의 변경 이벤트 리스너 등록
@@ -378,18 +243,6 @@
             $(this).val(filteredValue);
         });
     });
-        $(document).ready(function() {
-            // 검색 버튼 클릭 시 결과 영역의 높이를 조절
-            $('#queryButton').click(function() {
-                adjustResultHeight();
-            });
-
-            // 페이지 로드 시 테이블 결과 영역의 높이를 조절
-            adjustResultHeight();
-
-            // 윈도우 크기가 변경될 때 테이블 결과 영역의 높이를 다시 조절
-            $(window).resize(adjustResultHeight);
-        });
 
         // 테이블 결과 영역의 높이를 조절하는 함수
         function adjustResultHeight() {
@@ -529,14 +382,14 @@
                 // 각 필드의 값 가져오기
                 var proName = $('#proName').val();
                 var proGender = $('#proGender').val();
+                var proCategory = $('#proCategory').val();
                 var proQty = $('#proQty').val();
                 var proPrice = $('#proPrice').val();
                 var proColor = $('#proColor').val();
-                var proImage = $('#proImage').val();
-                var proImage1 = $('#proImage1').val(); // 이미지 파일 경로
+
                 
                 // 값이 비어 있는지 확인 (나머지 필드가 모두 null이고, proImage나 proImage1이 모두 null일 경우에만 오류 메시지 표시)
-                if ((proName === '' || proGender === '' || proQty === '' || proPrice === '' || proColor === '')) {
+                if ((proCategory === '' || proName === '' || proGender === '' || proQty === '' || proPrice === '' || proColor === '')) {
                     // 오류 메시지 표시
                     alert('모든 필드를 입력하세요.');
                 }

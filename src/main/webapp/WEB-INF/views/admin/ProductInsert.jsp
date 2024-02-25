@@ -123,6 +123,7 @@
                 <td>
                     <select id="Gender" name="Gender">
                     	<option value="default">선택하세요</option>
+                    	<option value="공용">공용</option>
                         <option value="남">남</option>
                         <option value="여">여</option>
                     </select>
