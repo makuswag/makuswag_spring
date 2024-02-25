@@ -4653,4 +4653,11 @@ my-account .local-nav {
     text-align: center;
 }
 
+.qna-list .list-item .post-link .number3 {
+    display: inline-block;
+    font-weight: 500;
+    width: 160px;
+    text-align: center;
+}
+
 

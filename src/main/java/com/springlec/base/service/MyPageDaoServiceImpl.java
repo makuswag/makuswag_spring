@@ -15,10 +15,10 @@ public class MyPageDaoServiceImpl implements MyPageDaoService {
 	@Autowired
 	MyPageDao dao;
 	@Override
-	public  List<MyPageDto> myPageDao() throws Exception{
+	public  List<MyPageDto> myPageDao(String startDate, String endDate) throws Exception{
 		System.out.println("임플란티드키드");
-		System.out.println(dao.myPageDao());
-		return dao.myPageDao();
+		System.out.println(dao.myPageDao(startDate, endDate));
+		return dao.myPageDao(startDate, endDate);
 	}
 		
 	

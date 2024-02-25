@@ -31,14 +31,17 @@ window.onload = function() {
 
 console.log("js실행됨4");
 	// history_start_date와 history_end_date의 기본값을 오늘 날짜로 설정
-	document.getElementById('history_start_date').value = getCurrentDate();
+	//document.getElementById('history_start_date').value = getCurrentDate();
 	document.getElementById('history_end_date').value = getCurrentDate();
 console.log("js실행됨5");
 	// AJAX 요청(조건검색) 
 $.ajax({
    type: "GET",
    url: "/MyPageController",
-   data: {},
+  data: {
+        startDate: getCurrentDate(),
+        endDate: getCurrentDate()
+    },
    success: function(dataarray) {
       /* 서버에서 받은 응답 처리 */
       console.log("createTable 실행전");
@@ -51,6 +54,7 @@ $.ajax({
 
 function createTable(jsonString) {
     // JSON 문자열을 파싱하여 배열로 변환
+    //'{"name": "John", "age": 30, "city": "New York"}' json 은 이런형태로 데이터가 들어오기때문에 JavaScript 객체로 변환해야지 사용가능함
     let dataarray = JSON.parse(jsonString);
 
     console.log("서버에서 받은 데이터:", dataarray);
@@ -65,9 +69,9 @@ function createTable(jsonString) {
 
         accordion += "<div class='list-item xans-record-'>";
         accordion += "<a class='post-link'>";
-        accordion += "<span class='number1'>" + dataarray[i].purSeq + "</span>";
-        accordion += "<span class='number1'>" + dataarray[i].proName + "</span>";
-        accordion += "<span class='number1'>" + dataarray[i].pQty + "</span>";
+        accordion += "<span class='number3'>" + dataarray[i].purSeq + "</span>";
+        accordion += "<span class='number3'>" + dataarray[i].proName + "</span>";
+        accordion += "<span class='number3'>" + dataarray[i].pQty + "</span>";
         accordion += "<span class='number1'>" + dataarray[i].pPrice + "</span>";
         accordion += "<span class='number1'>" + dataarray[i].pStackPoint + "</span>";
         

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
@@ -31,8 +32,11 @@ public class MyPageController {
 	// 마이페이지
 	  @GetMapping("/MyPageController")
 	    @ResponseBody
-	    public String myPage() throws Exception {
-	        List<MyPageDto> mypageDao = service.myPageDao();
+	    public String myPage(HttpSession session,@RequestParam(required = false) String startDate, @RequestParam(required = false) String endDate) throws Exception {
+	        List<MyPageDto> mypageDao = service.myPageDao(startDate, endDate);
+	        UserDto user = (UserDto) session.getAttribute("user");
+	        System.out.println("유저이름"+user);
+	        	System.out.println("날짜 가져오는지 테스트 :"+startDate+endDate);
 	        String jsonData = gson.toJson(mypageDao);
 	        System.out.println("마이페이지 컨트롤러 실행됨");
 	        System.out.println(jsonData);
