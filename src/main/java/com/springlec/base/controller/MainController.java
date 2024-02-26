@@ -60,10 +60,6 @@ public class MainController {
         if (user == null || user.getUserId().isEmpty()) {
             return "redirect:login"; // 로그인 페이지로
         }
-        List<MyPageDto> mypageDao = MyPageDaoService.myPageDao(null, null);
-        model.addAttribute("mypage", mypageDao);
-        System.out.println("마이페이지 컨트롤러(메인) 실행됨");
-        System.out.println(mypageDao);
 		return "member/myPage";
 	}
 
