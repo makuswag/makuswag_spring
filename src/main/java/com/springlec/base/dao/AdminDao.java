@@ -31,6 +31,9 @@ public interface AdminDao {
 	public List<AdminDto> totalgender();
 	public void insertDao(String proCategory, String proName, String proGender, String proIntroduction, String proColor, int proQty, int proPrice,String proImage1,String proImage2,String proImage3) throws Exception;
 	public String uploadfile(MultipartFile file) throws Exception;
-	
+	public List<AdminDto> listDao4() throws Exception;
+	public List<AdminDto> listQuery4(String query, String content) throws Exception;
+	public List<AdminDto> listQueryForproDate1(String proDate);
+	public AdminDto selectDao(int proSeq) throws Exception;
 
 }

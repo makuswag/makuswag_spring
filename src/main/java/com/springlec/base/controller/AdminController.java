@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.springlec.base.model.AdminDto;
-
 import com.springlec.base.service.AdminGenderDaoService;
 
 import ch.qos.logback.core.Context;
@@ -343,6 +342,65 @@ public class AdminController {
 
     @GetMapping("productinsert")
     public String d() {
-    	return "admin/ProductInsert";
+    	return "admin/ProductInsertAdmin";
     }
+    
+    @GetMapping("table4")
+    public String table4(Model model) throws Exception {
+    	List<AdminDto> listDao4 = service.listDao4();
+    	model.addAttribute("list",listDao4);
+    	return "admin/proUpdate";
+    	
+    }
+    @PostMapping("listQuery4")
+    public String listQuery4(HttpServletRequest request, Model model) throws Exception {
+        
+        String query = request.getParameter("query");
+        System.out.println(query);
+        String content = request.getParameter("content");
+        System.out.println(content);
+        List<AdminDto> listDao;
+
+        // 생년월일인 경우에는 listQueryForBirthday 메서드를 호출
+        if ("proDate".equals(query)) {
+            // listQueryForBirthday 메서드 호출
+            listDao = service.listQueryForproDate1(content);
+            System.out.println(listDao);
+        } else {
+            // 나머지 경우에는 기본적인 listQuery 메서드를 호출
+            listDao = service.listQuery4(query, content);
+            System.out.println(listDao);
+        }
+
+        model.addAttribute("list", listDao);
+        return "admin/ProductUpdateAdmin";
+    }
+    @GetMapping("content_view")
+    public String content(HttpServletRequest request, @RequestParam("proSeq") int proSeq, Model model) throws Exception {
+        AdminDto content_view = service.selectDao(proSeq); // proSeq에 해당하는 상품 정보를 가져옴
+        model.addAttribute("content_view", content_view); // 모델에 상품 정보를 추가
+
+        // 추가된 부분: 상품 목록을 가져와 모델에 추가
+        List<AdminDto> listDao4 = service.listDao4();
+        model.addAttribute("list", listDao4);
+
+        return "admin/ProductUpdateAdmin"; // content_view 페이지로 이동
+    }
+	
+	@GetMapping("productupdate")
+	public String u(Model model) throws Exception {
+		 List<AdminDto> listDao4 = service.listDao4();
+	     model.addAttribute("list", listDao4);
+		return "admin/ProductUpdateAdmin";
+
+	}
+	@PostMapping("modify")
+	public String update(Model model) throws Exception {
+	    // 업데이트 메소드 호출
+		List<AdminDto> listDao4 = service.listDao4();
+	     model.addAttribute("list", listDao4);
+	    return "redirect:productupdate"; // 수정 후 목록 페이지로 이동
+	}
+
+
 }

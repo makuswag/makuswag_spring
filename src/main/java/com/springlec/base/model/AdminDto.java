@@ -44,6 +44,7 @@ public class AdminDto {
     private String pMethod;
     private String pDate;
     private double totalPPrice;
+    private int proSeq;
     
     
     
@@ -52,6 +53,14 @@ public class AdminDto {
     
     
     
+    
+    
+	public int getProSeq() {
+		return proSeq;
+	}
+	public void setProSeq(int proSeq) {
+		this.proSeq = proSeq;
+	}
 	public double getTotalPPrice() {
 		return totalPPrice;
 	}

@@ -119,7 +119,25 @@ SELECT product.proGender, SUM(purchase.pPrice) AS total_pPrice FROM product INNE
     INSERT INTO product (proCategory, proName, proGender, proIntroduction, proColor, proQty, proPrice, proDate, proImage1, proImage2, proImage3)
     VALUES (#{proCategory}, #{proName}, #{proGender}, #{proIntroduction}, #{proColor}, #{proQty}, #{proPrice}, now(), #{proImage1}, #{proImage2}, #{proImage3})
 </insert>
-    
+<select id="listDao4" resultType="com.springlec.base.model.AdminDto">
 
+SELECT proSeq, proCategory, proName, proGender, proIntroduction, proColor, proQty, proPrice,proImage1,proImage2,proImage3,proDate
+FROM product
+</select>    
+<select id="listQuery4" resultType="com.springlec.base.model.AdminDto">
+	
+	<!--select * from book where ${query} like concat('%',#{content},'%')-->
+SELECT proSeq, proCategory, proName, proGender, proIntroduction, proColor, proQty, proPrice,proImage1,proImage2,proImage3,proDate
+FROM product
+WHERE ${query} LIKE #{content}
+</select>
+<select id="listQueryForproDate1" resultType="com.springlec.base.model.AdminDto">
+    SELECT proSeq, proCategory, proName, proGender, proIntroduction, proColor, proQty, proPrice,proImage1,proImage2,proImage3,proDate
+FROM product
+    WHERE proDate LIKE CONCAT(#{proDate}, '%')
+</select>
+	<select id="selectDao" parameterType="int" resultType="com.springlec.base.model.AdminDto">
+    SELECT * FROM product WHERE proSeq = #{proSeq}
+</select>
 
 </mapper>
