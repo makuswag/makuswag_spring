@@ -2,8 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.springlec.base.dao.NoticeDao">
-	<select id="listDao">
-		SELECT noCategory, noTitle, noDate, noContent, noImage 
+	<select id="listDao"
+		resultType="com.springlec.base.model.NoticeDto">
+		SELECT noSeq, noCategory, noTitle, DATE(noDate) AS noDate, noContent,
+		noImage
 		FROM notice
+		LIMIT #{requestPage}, #{numOfTuplePerPage}
+	</select>
+	<select id="getTotalCount" resultType="int">
+		SELECT COUNT(*) FROM notice
 	</select>
 </mapper>
