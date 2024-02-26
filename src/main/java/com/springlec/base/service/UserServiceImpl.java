@@ -112,4 +112,10 @@ public class UserServiceImpl implements UserDaoService {
 		// TODO Auto-generated method stub
 		return authentication(email, request);
 	}
+
+	@Override
+	public UserDto findId(String name, String email) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.findId(name, email);
+	}
 }
