@@ -83,6 +83,12 @@ public class UserController {
 	public String onlyAdmin() {
 		return "status/onlyAdmin";
 	}
+	
+	// 아이디 찾기 에러 페이지로 이동
+	@GetMapping("findError")
+	public String findError() {
+		return "status/findError";
+	}
 
 	// 관리자 페이지로 이동
 	@GetMapping("manager")
@@ -99,24 +105,216 @@ public class UserController {
 		return "admin/UserManageAdmin";
 	}
 
-	// 아이디 찾기
+	// 아이디 찾기(이메일 인증)
+	@GetMapping("idEmail")
+	public String idEmail() throws Exception {
+		return "identity/idEmail";
+	}
+	
+	// 비밀번호 찾기(이메일 인증)
+	@GetMapping("passwdEmail")
+	public String passwdEmail() throws Exception {
+		return "identity/passwdEmail";
+	}
+	
+	// 아이디 찾기(본인 인증키 입력)
+	@PostMapping("idCheckEmail")
+	public String idCheckEmail(HttpServletRequest request, HttpSession session) throws Exception {
+		// mail server 설정
+		String smtpEmail = "foejakzm@gmail.com";
+		String password = "mfpxcsvsahgnhxtr";
+
+		// 메일 받을 주소
+		String to_email = request.getParameter("email");
+		/* Properties p = new Properties(); */
+		Properties p = System.getProperties();
+		p.setProperty("mail.transport.protocol", "smtp");
+		/* p.setProperty("mail.host", "smtp.gmail.com"); */
+		p.put("mail.smtp.host", "smtp.gmail.com");
+		p.put("mail.smtp.port", "587");
+		p.put("mail.smtp.auth", "true");
+		p.put("mail.smtp.debug", "true");
+		p.put("mail.smtp.starttls.enable", "true");
+		p.put("mail.smtp.ssl.protocols", "TLSv1.2");
+		p.put("mail.smtp.socketFactory.port", "587");
+		p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+
+		// 인증 번호 생성기
+		StringBuffer temp = new StringBuffer();
+		Random rnd = new Random();
+		for (int i = 0; i < 10; i++) {
+			int rIndex = rnd.nextInt(3);
+			switch (rIndex) {
+			case 0:
+				// a-z
+				temp.append((char) ((int) (rnd.nextInt(26)) + 97));
+				break;
+			case 1:
+				// A-Z
+				temp.append((char) ((int) (rnd.nextInt(26)) + 65));
+				break;
+			case 2:
+				// 0-9
+				temp.append((rnd.nextInt(10)));
+				break;
+			}
+		}
+		String AuthenticationKey = temp.toString();
+		System.out.println(AuthenticationKey);
+
+		javax.mail.Session session3 = javax.mail.Session.getInstance(p, new javax.mail.Authenticator() {
+			protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+				return new javax.mail.PasswordAuthentication(smtpEmail, password);
+			}
+		});
+
+		// email 전송
+		try {
+			javax.mail.internet.MimeMessage msg = new javax.mail.internet.MimeMessage(session3);
+
+			msg.addRecipient(javax.mail.Message.RecipientType.TO, new javax.mail.internet.InternetAddress(to_email));
+
+			// 메일 제목
+			msg.setSubject("Mak U Swag의 회원가입 인증번호");
+			// 메일 내용
+			msg.setText("Mak U Swag의 회원가입을 위한 인증 번호는 [" + temp + "] 입니다");
+
+			javax.mail.Transport t = session3.getTransport("smtp");
+			t.connect(smtpEmail, password);
+			t.sendMessage(msg, msg.getAllRecipients());
+			t.close();
+
+			// session4는 인증키용
+			jakarta.servlet.http.HttpSession session4 = request.getSession();
+
+			session4.setAttribute("authentication", AuthenticationKey);
+		} catch (Exception e) {
+			e.printStackTrace();// TODO: handle exception
+		}
+
+		return "identity/idCheckEmail";
+	}
+	
+	// 비밀번호 찾기(본인 인증키 입력)
+	@PostMapping("passwdCheckEmail")
+	public String passwdCheckEmail(HttpServletRequest request, HttpSession session) throws Exception {
+		// mail server 설정
+		String smtpEmail = "foejakzm@gmail.com";
+		String password = "mfpxcsvsahgnhxtr";
+		
+		// 메일 받을 주소
+		String to_email = request.getParameter("email");
+		/* Properties p = new Properties(); */
+		Properties p = System.getProperties();
+		p.setProperty("mail.transport.protocol", "smtp");
+		/* p.setProperty("mail.host", "smtp.gmail.com"); */
+		p.put("mail.smtp.host", "smtp.gmail.com");
+		p.put("mail.smtp.port", "587");
+		p.put("mail.smtp.auth", "true");
+		p.put("mail.smtp.debug", "true");
+		p.put("mail.smtp.starttls.enable", "true");
+		p.put("mail.smtp.ssl.protocols", "TLSv1.2");
+		p.put("mail.smtp.socketFactory.port", "587");
+		p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+		
+		// 인증 번호 생성기
+		StringBuffer temp = new StringBuffer();
+		Random rnd = new Random();
+		for (int i = 0; i < 10; i++) {
+			int rIndex = rnd.nextInt(3);
+			switch (rIndex) {
+			case 0:
+				// a-z
+				temp.append((char) ((int) (rnd.nextInt(26)) + 97));
+				break;
+			case 1:
+				// A-Z
+				temp.append((char) ((int) (rnd.nextInt(26)) + 65));
+				break;
+			case 2:
+				// 0-9
+				temp.append((rnd.nextInt(10)));
+				break;
+			}
+		}
+		String AuthenticationKey = temp.toString();
+		System.out.println(AuthenticationKey);
+		
+		javax.mail.Session session3 = javax.mail.Session.getInstance(p, new javax.mail.Authenticator() {
+			protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+				return new javax.mail.PasswordAuthentication(smtpEmail, password);
+			}
+		});
+		
+		// email 전송
+		try {
+			javax.mail.internet.MimeMessage msg = new javax.mail.internet.MimeMessage(session3);
+			
+			msg.addRecipient(javax.mail.Message.RecipientType.TO, new javax.mail.internet.InternetAddress(to_email));
+			
+			// 메일 제목
+			msg.setSubject("Mak U Swag의 회원가입 인증번호");
+			// 메일 내용
+			msg.setText("Mak U Swag의 회원가입을 위한 인증 번호는 [" + temp + "] 입니다");
+			
+			javax.mail.Transport t = session3.getTransport("smtp");
+			t.connect(smtpEmail, password);
+			t.sendMessage(msg, msg.getAllRecipients());
+			t.close();
+			
+			// session4는 인증키용
+			jakarta.servlet.http.HttpSession session4 = request.getSession();
+			
+			session4.setAttribute("authentication", AuthenticationKey);
+		} catch (Exception e) {
+			e.printStackTrace();// TODO: handle exception
+		}
+		
+		return "identity/passwdCheckEmail";
+	}
+	
+	// 아이디 찾기(정보 입력)
 	@GetMapping("findId")
 	public String findId() throws Exception {
 		return "member/findId";
 	}
 	
-	// 아이디 찾기(이메일 발송)
-	@PostMapping("findIdEmail")
-	public String findIdEmail(HttpServletRequest request) throws Exception {
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
-		return "member/findIdEmail";
-	}
-
-	// 비밀번호 찾기
+	// 비밀번호 찾기(정보 입력)
 	@GetMapping("findPasswd")
 	public String findPasswd() throws Exception {
 		return "member/findPasswd";
+	}
+	
+	// 아이디 찾기(정보 가져오기)
+	@PostMapping("findIdEmail")
+	public String findIdEmail(HttpServletRequest request, HttpSession session, Model model) throws Exception {
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		
+		try {
+			// 사용자 정보 조회
+			UserDto user = service.findId(name, email);
+			session.setAttribute("user", user);
+			
+			if (user != null && user.getName().equals(name) && user.getEmail().equals(email)) {
+				
+				// 고객님의 정보를 조회
+			    String message = "정보를 조회합니다.";
+			    model.addAttribute("message", message);
+				
+				return "status/userId";
+			} else {
+				
+				// 정보를 잘 못 입력하였을시
+				model.addAttribute("error", "입력하신 정보가 없습니다.");
+				return "redirect:/findError";
+			}
+		} catch (Exception e) {
+			// 예외 처리
+			e.printStackTrace();
+			model.addAttribute("error", "입력하신 정보가 없습니다.");
+			return "redirect:/findError";
+		}
 	}
 
 	// 회원 동의창으로
@@ -128,7 +326,7 @@ public class UserController {
 	// 본인인증(이메일 발송)
 	@GetMapping("identity")
 	public String identity() throws Exception {
-		return "member/sendEmail";
+		return "identity/sendEmail";
 	}
 
 	// 본인인증(인증키 입력)
@@ -208,7 +406,7 @@ public class UserController {
 			e.printStackTrace();// TODO: handle exception
 		}
 
-		return "member/checkEmail";
+		return "identity/checkEmail";
 	}
 
 	// 회원가입

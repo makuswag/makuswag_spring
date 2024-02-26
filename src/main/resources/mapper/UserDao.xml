@@ -6,4 +6,9 @@
 	<select id="whologin" resultType="com.springlec.base.model.UserDto">
 		SELECT userId, userPw, name FROM user WHERE userId = #{userId} AND userPw = #{userPasswd}
 	</select>
+	
+	<select id="findId" resultType="com.springlec.base.model.UserDto">
+		SELECT userId, name, email FROM user WHERE name = #{name} AND email = #{email}
+	</select>
+	
 </mapper>

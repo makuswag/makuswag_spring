@@ -53,7 +53,7 @@
 								</div>
 								<div class="login-footer">
 									<div class="login-extras">
-										<a href="findId">아이디 찾기</a> <a href="findPasswd">비밀번호
+										<a href="idEmail">아이디 찾기</a> <a href="passwdEmail">비밀번호
 											찾기</a>
 									</div>
 									<div class="login-actions">
