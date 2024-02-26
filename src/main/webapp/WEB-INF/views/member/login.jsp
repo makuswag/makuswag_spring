@@ -35,7 +35,7 @@
 
 						<div class="xans-element- xans-member xans-member-login login ">
 							<div class="login-header">
-								<h2>LOGIN</h2>
+								<h2 style="text-align: center;">LOGIN</h2>
 							</div>
 							<fieldset>
 								<legend>회원로그인</legend>

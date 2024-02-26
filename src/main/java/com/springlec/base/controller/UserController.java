@@ -104,6 +104,14 @@ public class UserController {
 	public String findId() throws Exception {
 		return "member/findId";
 	}
+	
+	// 아이디 찾기(이메일 발송)
+	@PostMapping("findIdEmail")
+	public String findIdEmail(HttpServletRequest request) throws Exception {
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		return "member/findIdEmail";
+	}
 
 	// 비밀번호 찾기
 	@GetMapping("findPasswd")
@@ -205,7 +213,8 @@ public class UserController {
 
 	// 회원가입
 	@PostMapping("memberJoin")
-	public String memberJoin() throws Exception {
+	public String memberJoin(HttpSession session) throws Exception {
+		session.invalidate();
 		return "member/join";
 	}
 

@@ -167,6 +167,8 @@
 												fw-filter="isFill&amp;isFill&amp;isMin[4]&amp;isMax[16]&amp;isIdentity"
 												fw-label="아이디" fw-msg="" class="inputTypeText"
 												placeholder="" value="" type="text">
+												<a href="#none" class="field-button" onclick=""
+														id="postBtn">중복확인</a><br>
 												<div class="form-description">
 													<span id="idMsg"></span>
 												</div></td>
@@ -242,7 +244,10 @@
 											<th scope="row">이메일</th>
 											<td><input id="email1" name="email1"
 												fw-filter="isFill&amp;isEmail" fw-label="이메일" fw-alone="N"
-												fw-msg="" placeholder="" value="" type="text"> <span
+												fw-msg="" placeholder="" value="" type="text"> 
+												<a href="#none" class="field-button" onclick=""
+														id="postBtn">중복확인</a><br> 
+												<span
 												id="emailMsg"></span></td>
 										</tr>
 									</tbody>
@@ -364,7 +369,13 @@
 				<!-- ============================== [[ Body  section]] ==============================-->
 
 				<!-- =============================  [[ Footer section ]]  ============================= -->
-
+				<div class="login-actions">
+					<div class="ec-base-button">
+						<a href="identity" class="primary-button" onclick="checkAction(event)"><span>작성 완료</span></a>
+						&nbsp;&nbsp;&nbsp;
+						<a href="/" class="primary-button"><span>가입 취소</span></a>
+					</div>
+				</div>
 				<%@ include file="../include/footer.jsp"%>
 
 			</div>
