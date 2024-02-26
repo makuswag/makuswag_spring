@@ -15,9 +15,14 @@ public class QnaDaoServiceImpl implements QnaDaoService{
 	QnaDao dao;
 	
 	@Override
-	public List<QnaDto> listDao() throws Exception {
+    public List<QnaDto> listDao(int requestPage, int numOfTuplePerPage) throws Exception {
+        return dao.listDao(requestPage, numOfTuplePerPage);
+    }
+
+	@Override
+	public int getTotalCount() throws Exception {
 		// TODO Auto-generated method stub
-		return dao.listDao();
+		return dao.getTotalCount();
 	}
 	
 }
