@@ -92,19 +92,6 @@
 			            }
 			        }
 			    });
-			    
-				$("#email_form").click(function() {
-					$.ajax({
-						method : "POST",
-						url : "duplicatedCheck",
-						data : {
-							email : email
-						},
-						success : function(response) {
-							$("#sysAuthentic").val(response.authentication);
-						},
-					})
-				});
 				</script>
 
 				<!-- 여기까지 작성 -->
