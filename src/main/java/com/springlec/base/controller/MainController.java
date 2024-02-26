@@ -62,7 +62,7 @@ public class MainController {
         }
         List<MyPageDto> mypageDao = MyPageDaoService.myPageDao();
         model.addAttribute("mypage", mypageDao);
-        System.out.println("마이페이지 컨트롤러 실행됨");
+        System.out.println("마이페이지 컨트롤러(메인) 실행됨");
         System.out.println(mypageDao);
 		return "member/myPage";
 	}
