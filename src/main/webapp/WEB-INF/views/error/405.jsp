@@ -5,11 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>413 Error</title>
+    <title>405 - Page Not Found</title>
 </head>
 <body>
     <script>
-        alert("413Error : 올리는 파일이 큽니다 커요.");
+        alert("405Error : Post 방식이라 뒤에 경로 입력 안됩니다~!!");
         window.location.href = "/";
     </script>
 </body>
