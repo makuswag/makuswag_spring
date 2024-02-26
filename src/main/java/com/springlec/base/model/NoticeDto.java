@@ -10,7 +10,7 @@ public class NoticeDto {
 	String noContent;
 	String noImage;
 	int noCount;
-	Timestamp noDate;
+	String noDate;
 	
 	public NoticeDto() {
 		
@@ -72,11 +72,11 @@ public class NoticeDto {
 		this.noCount = noCount;
 	}
 
-	public Timestamp getNoDate() {
+	public String getNoDate() {
 		return noDate;
 	}
 
-	public void setNoDate(Timestamp noDate) {
+	public void setNoDate(String noDate) {
 		this.noDate = noDate;
 	}
 	
