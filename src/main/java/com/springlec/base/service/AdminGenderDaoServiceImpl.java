@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -199,6 +200,58 @@ public class AdminGenderDaoServiceImpl implements AdminGenderDaoService {
 		// TODO Auto-generated method stub
 		return dao.selectDao(proSeq);
 	}
+
+	@Override
+	public void updateDao(AdminDto adminDto) throws Exception {
+		// TODO Auto-generated method stub
+		dao.updateDao(adminDto);
+	}
+
+	@Override
+	public void updateDao1(AdminDto adminDto) throws Exception {
+		// TODO Auto-generated method stub
+		dao.updateDao1(adminDto);
+	}
+
+	@Override
+	public void updateDao2(AdminDto adminDto) throws Exception {
+		// TODO Auto-generated method stub
+		dao.updateDao2(adminDto);
+	}
+
+	@Override
+	public void updateDao3(AdminDto adminDto) throws Exception {
+		// TODO Auto-generated method stub
+		dao.updateDao3(adminDto);
+	}
+
+	@Override
+	public void updateDao4(AdminDto adminDto) throws Exception {
+		// TODO Auto-generated method stub
+		dao.updateDao4(adminDto);
+	}
+
+	@Override
+	public void updateDao5(AdminDto adminDto) throws Exception {
+		// TODO Auto-generated method stub
+		dao.updateDao5(adminDto);
+		
+	}
+
+	@Override
+	public void updateDao6(AdminDto adminDto) throws Exception {
+		// TODO Auto-generated method stub
+		dao.updateDao6(adminDto);
+	}
+
+	@Override
+	public void updateDao7(AdminDto adminDto) throws Exception {
+		// TODO Auto-generated method stub
+		dao.updateDao7(adminDto);
+	}
+
+
+
 
 
 }

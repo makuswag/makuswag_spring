@@ -139,5 +139,45 @@ FROM product
 	<select id="selectDao" parameterType="int" resultType="com.springlec.base.model.AdminDto">
     SELECT * FROM product WHERE proSeq = #{proSeq}
 </select>
+<update id="updateDao" parameterType="com.springlec.base.model.AdminDto">
+    UPDATE product
+    SET proCategory = #{proCategory}, proName = #{proName}, proGender = #{proGender},proIntroduction = #{proIntroduction},proColor = #{proColor},proQty=#{proQty},proPrice=#{proPrice},proDate=now(),proImage1=#{proImage1},proImage2=#{proImage2},proImage3=#{proImage3}
+    WHERE proSeq = #{proSeq}
+</update>
+<update id="updateDao1" parameterType="com.springlec.base.model.AdminDto">
+    UPDATE product
+    SET proCategory = #{proCategory}, proName = #{proName}, proGender = #{proGender},proIntroduction = #{proIntroduction},proColor = #{proColor},proQty=#{proQty},proPrice=#{proPrice},proDate=now(),proImage1=#{proImage1}
+    WHERE proSeq = #{proSeq}
+</update>
+<update id="updateDao2" parameterType="com.springlec.base.model.AdminDto">
+    UPDATE product
+    SET proCategory = #{proCategory}, proName = #{proName}, proGender = #{proGender},proIntroduction = #{proIntroduction},proColor = #{proColor},proQty=#{proQty},proPrice=#{proPrice},proDate=now(),proImage2=#{proImage2}
+    WHERE proSeq = #{proSeq}
+</update>
+<update id="updateDao3" parameterType="com.springlec.base.model.AdminDto">
+    UPDATE product
+    SET proCategory = #{proCategory}, proName = #{proName}, proGender = #{proGender},proIntroduction = #{proIntroduction},proColor = #{proColor},proQty=#{proQty},proPrice=#{proPrice},proDate=now(),proImage3=#{proImage3}
+    WHERE proSeq = #{proSeq}
+</update>
+<update id="updateDao4" parameterType="com.springlec.base.model.AdminDto">
+    UPDATE product
+    SET proCategory = #{proCategory}, proName = #{proName}, proGender = #{proGender},proIntroduction = #{proIntroduction},proColor = #{proColor},proQty=#{proQty},proPrice=#{proPrice},proDate=now(),proImage1=#{proImage1},proImage2=#{proImage2}
+    WHERE proSeq = #{proSeq}
+</update>
+<update id="updateDao5" parameterType="com.springlec.base.model.AdminDto">
+    UPDATE product
+    SET proCategory = #{proCategory}, proName = #{proName}, proGender = #{proGender},proIntroduction = #{proIntroduction},proColor = #{proColor},proQty=#{proQty},proPrice=#{proPrice},proDate=now(),proImage1=#{proImage1},proImage3=#{proImage3}
+    WHERE proSeq = #{proSeq}
+</update>
+<update id="updateDao6" parameterType="com.springlec.base.model.AdminDto">
+    UPDATE product
+    SET proCategory = #{proCategory}, proName = #{proName}, proGender = #{proGender},proIntroduction = #{proIntroduction},proColor = #{proColor},proQty=#{proQty},proPrice=#{proPrice},proDate=now(),proImage2=#{proImage2},proImage3=#{proImage3}
+    WHERE proSeq = #{proSeq}
+</update>
+<update id="updateDao7" parameterType="com.springlec.base.model.AdminDto">
+    UPDATE product
+    SET proCategory = #{proCategory}, proName = #{proName}, proGender = #{proGender},proIntroduction = #{proIntroduction},proColor = #{proColor},proQty=#{proQty},proPrice=#{proPrice},proDate=now()
+    WHERE proSeq = #{proSeq}
+</update>
 
 </mapper>
