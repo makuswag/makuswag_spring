@@ -3,9 +3,16 @@
 
 <mapper namespace="com.springlec.base.dao.MyPageDao">
 
-	<select id="myPageDao" resultType="com.springlec.base.model.MyPageDto">
-        SELECT p.purSeq, p.pQty, p.pPrice, p.pStackPoint, p.pDate, pr.proName
-		FROM purchase as p
-		JOIN product as pr ON p.proSeq = pr.proSeq
+	<select id="myPageDao"
+		resultType="com.springlec.base.model.MyPageDto">
+
+
+		SELECT p.purSeq, p.pQty, p.pPrice, p.pStackPoint, p.pDate, pr.proName
+		FROM purchase AS p
+		JOIN product AS pr ON p.proSeq = pr.proSeq
+		WHERE p.pDate BETWEEN #{startDate} AND #{endDate}
+		AND p.userId = #{getUserId} 
+
+
 	</select>
 </mapper>

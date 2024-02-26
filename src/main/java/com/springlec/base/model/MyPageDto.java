@@ -13,6 +13,7 @@ public class MyPageDto {
 	String pDate;
 	String pCancelDate;
 	String proName;//purchase 테이블에는 없지만 마이페이지 표에 보여줘야되서 가져옴
+	String getUserId;
 	
 	
 	public MyPageDto() {

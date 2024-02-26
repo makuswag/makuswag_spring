@@ -97,8 +97,8 @@ public class UserServiceImpl implements UserDaoService {
 			jakarta.servlet.http.HttpSession session1 = request.getSession();
 
 			session1.setAttribute("authentication", AuthenticationKey);
-			data.put("authentication", AuthenticationKey);
-			data.put("result", "true");
+//			data.put("authentication", AuthenticationKey);
+//			data.put("result", "true");
 
 		} catch (Exception e) {
 			e.printStackTrace();// TODO: handle exception

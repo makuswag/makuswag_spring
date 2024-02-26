@@ -31,55 +31,74 @@ window.onload = function() {
 
 console.log("js실행됨4");
 	// history_start_date와 history_end_date의 기본값을 오늘 날짜로 설정
-	document.getElementById('history_start_date').value = getCurrentDate();
+	//document.getElementById('history_start_date').value = getCurrentDate();
 	document.getElementById('history_end_date').value = getCurrentDate();
+	const startDate = document.getElementById('history_start_date').value;
+	const endDate = document.getElementById('history_end_date').value;
+	console.log("endDate: " + endDate);
+	console.log("startDate: " + startDate);
+		//시작일이랑 종료일을 보냄
+	const searchData = {
+		startDate: startDate,
+		endDate: endDate
+	};
+	JSON.stringify(searchData)
+	console.log("시작일자 확인"+searchData)
 console.log("js실행됨5");
 	// AJAX 요청(조건검색) 
 $.ajax({
    type: "GET",
    url: "/MyPageController",
-   data: {},
-   success: function(_data) {
+  data: {
+        searchData
+    },
+   success: function(response) {
       /* 서버에서 받은 응답 처리 */
       console.log("createTable 실행전");
-      createTable(_data); // json
+      createTable(response); // json
       console.log("createTable 실행후");
-   },
-   error: function(jqXHR, textStatus, errorThrown) {
-      /* 실패 시 처리 */
-      console.error("AJAX Error:", textStatus, errorThrown);
    }
 });
 
 }
 
-function createTable(_data) {
-	console.log("서버에서 받은 데이터:", _data);
-	let accordion = "<div class='accordion-list'>";
-		console.log("테이블 만드는거 실행됨");
-		console.log("데이터를 다 못가져와서 에러뜨는건가");
-	for (let i = 0; i < _data.length; i++) {
-		accordion += "<div class='list-item xans-record-'>";
-		accordion += "<a class='post-link'>";
-		accordion += "<span class='number1'>" + _data[i].purSeq + "</span>";
-		accordion += "<span class='number1'>" + _data[i].proName + "</span>";
-		accordion += "<span class='number1'>" + _data[i].pQty + "</span>";
-		accordion += "<span class='number1'>" + _data[i].pPrice + "</span>";
-		accordion += "<span class='number1'>" + _data[i].pStackPoint + "</span>";
-		// 연월일만 추출
-		//let fullDate = purchaseList[i].pDate;
-		//let formattedDate = fullDate.substring(0, 10); // 년월일만 추출
+function createTable(jsonString) {
+    // JSON 문자열을 파싱하여 배열로 변환
+    //'{"name": "John", "age": 30, "city": "New York"}' json 은 이런형태로 데이터가 들어오기때문에 JavaScript 객체로 변환해야지 사용가능함
+    let dataarray = JSON.parse(jsonString);
 
-		accordion += "<span class='number1'>" + _data[i].pDate + "</span>";
+    console.log("서버에서 받은 데이터:", dataarray);
 
-		  accordion += "<button class='number1' data-index='" + i + "'>리뷰작성</button>";
-		accordion += "</a>";
-		accordion += "</div>";
-	}
+    let accordion = "<div class='accordion-list'>";
+    console.log("테이블 만드는거 실행됨");
 
-	accordion += "</div>";
-	$("#result").html(accordion);
+    for (let i = 0; i < dataarray.length; i++) {
+        console.log("현재 데이터 배열 요소:", dataarray[i]);
+        let purSeq = dataarray[i].purSeq;
+        console.log("purSeq:", purSeq);
+
+        accordion += "<div class='list-item xans-record-'>";
+        accordion += "<a class='post-link'>";
+        accordion += "<span class='number3'>" + dataarray[i].purSeq + "</span>";
+        accordion += "<span class='number3'>" + dataarray[i].proName + "</span>";
+        accordion += "<span class='number3'>" + dataarray[i].pQty + "</span>";
+        accordion += "<span class='number1'>" + dataarray[i].pPrice + "</span>";
+        accordion += "<span class='number1'>" + dataarray[i].pStackPoint + "</span>";
+        
+        // 연월일만 추출
+        let fullDate = dataarray[i].pDate;
+        let formattedDate = fullDate.substring(0, 10); // 년월일만 추출
+        accordion += "<span class='number1'>" + formattedDate + "</span>";
+
+        accordion += "<button class='number2' data-index='" + i + "'>리뷰작성</button>";
+        accordion += "</a>";
+        accordion += "</div>";
+    }
+
+    accordion += "</div>";
+    $("#result").html(accordion);
 }
+
 
 //조회버튼 눌렀을때 액션
 function searchData() {
