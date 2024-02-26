@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="jakarta.servlet.http.HttpSession"%>
+<%
+// session4는 인증키용
+HttpSession session4 = request.getSession();
+// 세션에 저장된 인증키를 담아줌
+String authenticationKey = (String) session4.getAttribute("authentication");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,8 +39,7 @@
 
 				<!-- 여기서 부터 작성 -->
 				<div class="entry-page">
-					<form id="checkEmail_form" name="" action="memberJoin"
-						method="post">
+					<form id="checkEmail_form" name="" action="memberJoin" method="post">
 
 						<div class="xans-element- xans-member xans-member-login login ">
 							<div class="login-header">
@@ -45,6 +51,7 @@
 									<label for="key">인증키</label> <input id="key" name="key"
 										class="inputTypeText" placeholder="" value="" type="text"
 										required>
+									<input type="hidden" id="authenticationKey" value="<%=authenticationKey%>">
 								</div>
 								<br> <br> <br>
 								<div class="login-footer">
@@ -56,39 +63,46 @@
 							</fieldset>
 						</div>
 					</form>
-
 				</div>
-				<script>
-					// 폼 제출 함수
-					function submitForm() {
-						// 이메일 필드 값 가져오기
-						const keyField = document.getElementById('key');
 
-						// 값이 비어 있는지 확인하고 알림 창 띄우기
-						if (keyField.value.trim() === '') {
+				<script>
+				document.getElementById('checkEmail_form').addEventListener('submit', function (e) {
+			        e.preventDefault(); // 기본 동작 중단
+					const keyField = document.getElementById('key');
+					const userKey = keyField.value.trim();
+					const authenticationKey = document.getElementById('authenticationKey').value;
+			
+					// 인증키 비교
+					if (userKey === authenticationKey) {
+						alert('회원가입을 진행합니다.');
+				        this.submit();
+					} else {
+						alert('인증키를 다시 입력하세요.');
+						return;
+					}
+			        // 유효성 검사 통과 시 폼 제출
+			    });
+				
+				// Enter 키 이벤트 리스너 등록
+				document.addEventListener('keydown', function(e) {
+					if (e.key === 'Enter') {
+						const keyField = document.getElementById('key');
+						const userKey = keyField.value.trim();
+						// 값이 비어 있는지 확인
+						if (userKey === '') {
 							alert('인증키를 입력하세요.');
 							return;
 						}
-
-						// 폼 제출
-						document.getElementById('checkEmail_form').submit();
 					}
-
-					// Enter 키 이벤트 리스너 등록
-					document.addEventListener('keydown', function(e) {
-						if (e.key === 'Enter') {
-							// 폼 제출 함수 호출
-							submitForm();
-						}
-					});
+				});
 				</script>
 
-				<!-- 여기까지 작성 -->
+					<!-- 여기까지 작성 -->
 
-				<!-- ============================== [[ Body  section]] ==============================-->
+					<!-- ============================== [[ Body  section]] ==============================-->
 
-				<!-- =============================  [[ Footer section ]]  ============================= -->
-
+					<!-- =============================  [[ Footer section ]]  ============================= -->
+				
 				<%@ include file="../include/footer.jsp"%>
 
 			</div>

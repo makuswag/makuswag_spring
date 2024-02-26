@@ -17,6 +17,16 @@ public class ErrorController {
 		return "error/404";
 	}
 	
+	@GetMapping("/error/413")
+	public String handle413_1() {
+		return "error/413";
+	}
+	
+	@PostMapping("/error/413")
+	public String handle413_2() {
+		return "error/413";
+	}
+	
 	@GetMapping("/error/500")
 	public String handle500_1() {
 		return "error/500";

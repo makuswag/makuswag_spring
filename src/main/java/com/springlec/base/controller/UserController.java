@@ -1,5 +1,8 @@
 package com.springlec.base.controller;
 
+import java.util.Properties;
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -122,7 +125,81 @@ public class UserController {
 
 	// 본인인증(인증키 입력)
 	@PostMapping("checkEmail")
-	public String checkEmail() throws Exception {
+	public String checkEmail(HttpServletRequest request, HttpSession session) throws Exception {
+		// mail server 설정
+		String smtpEmail = "foejakzm@gmail.com";
+		String password = "mfpxcsvsahgnhxtr";
+
+		// 메일 받을 주소
+		String to_email = request.getParameter("email");
+		/* Properties p = new Properties(); */
+		Properties p = System.getProperties();
+		p.setProperty("mail.transport.protocol", "smtp");
+		/* p.setProperty("mail.host", "smtp.gmail.com"); */
+		p.put("mail.smtp.host", "smtp.gmail.com");
+		p.put("mail.smtp.port", "587");
+		p.put("mail.smtp.auth", "true");
+		p.put("mail.smtp.debug", "true");
+		p.put("mail.smtp.starttls.enable", "true");
+		p.put("mail.smtp.ssl.protocols", "TLSv1.2");
+		p.put("mail.smtp.socketFactory.port", "587");
+		p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+
+		// 인증 번호 생성기
+		StringBuffer temp = new StringBuffer();
+		Random rnd = new Random();
+		for (int i = 0; i < 10; i++) {
+			int rIndex = rnd.nextInt(3);
+			switch (rIndex) {
+			case 0:
+				// a-z
+				temp.append((char) ((int) (rnd.nextInt(26)) + 97));
+				break;
+			case 1:
+				// A-Z
+				temp.append((char) ((int) (rnd.nextInt(26)) + 65));
+				break;
+			case 2:
+				// 0-9
+				temp.append((rnd.nextInt(10)));
+				break;
+			}
+		}
+		String AuthenticationKey = temp.toString();
+		System.out.println(AuthenticationKey);
+
+		javax.mail.Session session3 = javax.mail.Session.getInstance(p, new javax.mail.Authenticator() {
+			protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+				return new javax.mail.PasswordAuthentication(smtpEmail, password);
+			}
+		});
+
+		// email 전송
+		try {
+			javax.mail.internet.MimeMessage msg = new javax.mail.internet.MimeMessage(session3);
+
+			msg.addRecipient(javax.mail.Message.RecipientType.TO, new javax.mail.internet.InternetAddress(to_email));
+
+			// 메일 제목
+			msg.setSubject("Mak U Swag의 회원가입 인증번호");
+			// 메일 내용
+			msg.setText("Mak U Swag의 회원가입을 위한 인증 번호는 [" + temp + "] 입니다");
+
+			javax.mail.Transport t = session3.getTransport("smtp");
+			t.connect(smtpEmail, password);
+			t.sendMessage(msg, msg.getAllRecipients());
+			t.close();
+
+			// session4는 인증키용
+			jakarta.servlet.http.HttpSession session4 = request.getSession();
+
+			session4.setAttribute("authentication", AuthenticationKey);
+//					data.put("authentication", AuthenticationKey);
+//					data.put("result", "true");
+		} catch (Exception e) {
+			e.printStackTrace();// TODO: handle exception
+		}
+
 		return "member/checkEmail";
 	}
 
