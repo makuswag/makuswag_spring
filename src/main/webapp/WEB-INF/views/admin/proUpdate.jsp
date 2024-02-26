@@ -131,16 +131,16 @@
                     <fmt:formatNumber value="${dto.proPrice}" pattern="#,###"/>
                 </td>
                 <td style="text-align: center;">${dto.proDate}</td>
-                <td style="text-align: center;"><img src="${pageContext.request.contextPath}/images/admin/${dto.proImage1}" alt="이미지1" style="width: 40%; height: auto; object-fit: contain;"></td>
-                <td style="text-align: center;"><img src="${pageContext.request.contextPath}/images/admin/${dto.proImage2}" alt="이미지2" style="width: 40%; height: auto; object-fit: contain;"></td>
-                <td style="text-align: center;"><img src="${pageContext.request.contextPath}/images/admin/${dto.proImage3}" alt="이미지3" style="width: 40%; height: auto; object-fit: contain;"></td>
+                <td style="text-align: center;"><img src="${pageContext.request.contextPath}/images/admin/${dto.proImage1}" alt="" style="width: 40%; height: auto; object-fit: contain;"></td>
+                <td style="text-align: center;"><img src="${pageContext.request.contextPath}/images/admin/${dto.proImage2}" alt="" style="width: 40%; height: auto; object-fit: contain;"></td>
+                <td style="text-align: center;"><img src="${pageContext.request.contextPath}/images/admin/${dto.proImage3}" alt="" style="width: 40%; height: auto; object-fit: contain;"></td>
             </tr>
             <c:set var="cnt" value="${cnt=cnt+1 }"/>
         </c:forEach>
     </table>
     
     <!-- content_view.jsp의 내용 시작 -->
-    <form action="modify" method="post">
+    <form action="modify" method="post" enctype="multipart/form-data">
      <input type="hidden" name="proSeq" value="${content_view.proSeq}">
     <div id="container">
         <div id="result"></div>
@@ -172,7 +172,7 @@
                 </tr>
                 <tr>
                     <th>제품이름</th>
-                    <td><input type="text" id="proName" value="${content_view.proName}"></td>
+                    <td><input type="text" id="proName" name="proName" value="${content_view.proName}"></td>
                 </tr>
                 <tr>
                     <th>성별</th>
@@ -235,25 +235,25 @@
                 </tr>
                  <tr>
                     <th>이미지</th>
-                    <td><input type="file" id="proImage1">
+                    <td><input type="file" id="proImage1" name="proImage1">
                     <div id="imagePreview"></div></td>
                 </tr>
                 <tr>
                     <th>현재<br>이미지</th>
-                    <td><input type="text" id="proImage2" size="30" value="${content_view.proImage2}" readonly="readonly"></td>
+                    <td><input type="text" id="proImage4" size="30" value="${content_view.proImage2}" readonly="readonly"></td>
                 </tr>
                  <tr>
                     <th>이미지</th>
-                    <td><input type="file" id="proImage3">
+                    <td><input type="file" id="proImage2" name="proImage2">
                     <div id="imagePreview2"></div></td>
                 </tr>
                 <tr>
                     <th>현재<br>이미지</th>
-                    <td><input type="text" id="proImage4" size="30" value="${content_view.proImage3}" readonly="readonly"></td>
+                    <td><input type="text" id="proImage5" size="30" value="${content_view.proImage3}" readonly="readonly"></td>
                 </tr>
                  <tr>
                     <th>이미지</th>
-                    <td><input type="file" id="proImage5">
+                    <td><input type="file" id="proImage3" name="proImage3">
                     <div id="imagePreview3"></div></td>
                 </tr>
                 <tr>
@@ -307,7 +307,7 @@
     });
     $(document).ready(function() {
         // 파일 선택(input) 요소의 변경 이벤트 리스너 등록
-        $('#proImage3').change(function(event) {
+        $('#proImage2').change(function(event) {
             var file = event.target.files[0]; // 선택된 파일 가져오기
 
             // FileReader 객체 생성
@@ -324,7 +324,7 @@
                 imagePreview.appendChild(imageElement); // 미리보기 엘리먼트에 이미지 추가
 
                 // 파일이 선택되었으므로 현재 이미지 텍스트 숨기기
-                $('#proImage2').hide();
+                $('#proImage4').hide();
             };
             if (file) {
                 reader.readAsDataURL(file);
@@ -332,14 +332,14 @@
                 // 파일이 선택되지 않은 경우 미리보기 이미지 제거 및 현재 이미지 텍스트 보이기
                 var imagePreview = document.getElementById('imagePreview2');
                 imagePreview.innerHTML = '';
-                $('#proImage2').show();
+                $('#proImage4').show();
             }
         });
     });
 
             $(document).ready(function() {
                 // 파일 선택(input) 요소의 변경 이벤트 리스너 등록
-                $('#proImage5').change(function(event) {
+                $('#proImage3').change(function(event) {
                     var file = event.target.files[0]; // 선택된 파일 가져오기
 
                     // FileReader 객체 생성
@@ -356,7 +356,7 @@
                         imagePreview.appendChild(imageElement); // 미리보기 엘리먼트에 이미지 추가
 
                         // 파일이 선택되었으므로 현재 이미지 텍스트 숨기기
-                        $('#proImage4').hide();
+                        $('#proImage5').hide();
                     };
                     if (file) {
                         reader.readAsDataURL(file);
@@ -364,7 +364,7 @@
                         // 파일이 선택되지 않은 경우 미리보기 이미지 제거 및 현재 이미지 텍스트 보이기
                         var imagePreview = document.getElementById('imagePreview3');
                         imagePreview.innerHTML = '';
-                        $('#proImage4').show();
+                        $('#proImage5').show();
                     }
                 });
             });
