@@ -33,19 +33,29 @@ console.log("js실행됨4");
 	// history_start_date와 history_end_date의 기본값을 오늘 날짜로 설정
 	//document.getElementById('history_start_date').value = getCurrentDate();
 	document.getElementById('history_end_date').value = getCurrentDate();
+	const startDate = document.getElementById('history_start_date').value;
+	const endDate = document.getElementById('history_end_date').value;
+	console.log("endDate: " + endDate);
+	console.log("startDate: " + startDate);
+		//시작일이랑 종료일을 보냄
+	const searchData = {
+		startDate: startDate,
+		endDate: endDate
+	};
+	JSON.stringify(searchData)
+	console.log("시작일자 확인"+searchData)
 console.log("js실행됨5");
 	// AJAX 요청(조건검색) 
 $.ajax({
    type: "GET",
    url: "/MyPageController",
   data: {
-        startDate: getCurrentDate(),
-        endDate: getCurrentDate()
+        searchData
     },
-   success: function(dataarray) {
+   success: function(response) {
       /* 서버에서 받은 응답 처리 */
       console.log("createTable 실행전");
-      createTable(dataarray); // json
+      createTable(response); // json
       console.log("createTable 실행후");
    }
 });
