@@ -95,12 +95,12 @@
 										<div class="form-field subject">
 											<div class="field-label">제목</div>
 											<select id="board_category" name="qnaCategory">
-												<option value="1">입급/결제관련 문의</option>
-												<option value="2">배송관련 문의</option>
-												<option value="3">배송 전 변경/취소 문의</option>
-												<option value="4">교환/반품 문의</option>
-												<option value="5">상품관련 문의</option>
-												<option value="6">기타 문의</option>
+												<option value="입급/결제관련 문의">입급/결제관련 문의</option>
+												<option value="배송관련 문의">배송관련 문의</option>
+												<option value="배송 전 변경/취소 문의">배송 전 변경/취소 문의</option>
+												<option value="교환/반품 문의">교환/반품 문의</option>
+												<option value="상품관련 문의">상품관련 문의</option>
+												<option value="기타 문의">기타 문의</option>
 											</select><input id="subject" name="qnaTitle" value = "${qnaTitle }" class="inputTypeText"
 												placeholder="제목을 입력하세요" maxLength="125" type="text" />
 											<div class="checkbox"></div>

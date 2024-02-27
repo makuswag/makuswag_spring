@@ -36,6 +36,7 @@
 					<h3>
 						<font color="#555555">&nbsp;&nbsp;FAQ</font>
 					</h3>
+					</div>
 					<div class="wrap">
 
 						<!-- 아코디언 메뉴 -->
