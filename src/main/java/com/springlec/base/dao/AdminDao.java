@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.springlec.base.model.AdminDto;
 
+
 public interface AdminDao {
 	public List<AdminDto> AdminGender() throws Exception;
 	public List<AdminDto> managerDay() throws Exception;
@@ -44,4 +45,6 @@ public interface AdminDao {
 	public void updateDao5(AdminDto adminDto) throws Exception;
 	public void updateDao6(AdminDto adminDto) throws Exception;
 	public void updateDao7(AdminDto adminDto) throws Exception;
+	public List<AdminDto> allinone() throws Exception;
+	public AdminDto detail(String proName) throws Exception;
 }
