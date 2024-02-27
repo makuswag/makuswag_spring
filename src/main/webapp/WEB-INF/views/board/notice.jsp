@@ -51,6 +51,7 @@
 						<h3>
 							<font color="#555555">&nbsp;&nbsp;NOTICE</font>
 						</h3>
+						</div>
 						<div class="wrap">
 
 

@@ -4,7 +4,7 @@
 <mapper namespace="com.springlec.base.dao.QnaDao">
 	<select id="listDao"
 		resultType="com.springlec.base.model.QnaDto">
-		SELECT qnaSeq, qnaTitle, userId
+		SELECT qnaSeq, qnaCategory, userId
 		FROM qna
 		ORDER BY qnaSeq DESC
 		LIMIT #{requestPage}, #{numOfTuplePerPage}

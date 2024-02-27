@@ -19,8 +19,6 @@ public class FaqDaoServiceImpl implements FaqDaoService {
 	@Override
 	public List<FaqDto> listDao() throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("임플란티드키드");
-//		System.out.println(listDao());
 		return dao.listDao();
 	}
 
