@@ -23,6 +23,18 @@ public class ReviewWriteDaoServiceImpl implements ReviewWriteDaoService {
 	    }
 
 
+	@Override
+	public void reviewWriteDao(int proSeq, String userId, String revTitle, String revContent) throws Exception {
+		// TODO Auto-generated method stub
+	
+		
+		dao.reviewWriteDao(proSeq, userId, revTitle, revContent);
+
+	}
+
+
+
+
 //	@Override
 //	public ReviewWriteDto getReviewWriteDao(String proName ) throws Exception {
 //		return dao.getReviewWriteDao(proName);	

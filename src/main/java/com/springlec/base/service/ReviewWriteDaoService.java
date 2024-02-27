@@ -7,7 +7,7 @@ import com.springlec.base.model.ReviewWriteDto;
 
 public interface ReviewWriteDaoService {
     public ReviewWriteDto getReviewWriteDao(String proName) throws Exception;
-
+    public void reviewWriteDao(int proSeq,String userId,String revTitle, String revContent) throws Exception;	
 
 
 }
