@@ -161,7 +161,7 @@ h2 {
         <div class="product-tiles">
             <c:forEach items="${listPerPage}" var="dto">
                 <div class="tile xans-record-">
-                    <a href="allinone_detail?product=${dto.proName}">  
+                    <a href="allinone_detail?proName=${dto.proName}">  
                         <div class="product-image">
                             <img src="${pageContext.request.contextPath}/images/admin/${dto.proImage1}" class="primary-image" alt="${dto.proName}">
                             <img src="${pageContext.request.contextPath}/images/admin/${dto.proImage2}" class="secondary-image" alt="${dto.proName}">

@@ -47,6 +47,7 @@ public interface AdminGenderDaoService {
 	 public void updateDao7(AdminDto adminDto) throws Exception;
 	 public List<AdminDto> allinone() throws Exception;
 	 public AdminDto detail(String proName) throws Exception;
+	 public List<String> color(String proName) throws Exception;
 
 
 

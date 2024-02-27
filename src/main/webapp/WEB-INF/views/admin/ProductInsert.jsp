@@ -93,22 +93,23 @@
         <table>
             <tr>
                 <td>Category:</td>
-                <td>
-                    <select id="proCategory" name="proCategory">
-                    	<option value="default">선택하세요</option>
-                        <option value="BEST 100">BEST 100</option>
-                        <option value="All-in-one">All-in-one</option>
-                        <option value="Outer">Outer</option>
-                        <option value="Top(short sleeve)">Top(short sleeve)</option>
-                        <option value="Top(long sleeve)">Top(long sleeve)</option>
-                        <option value="Bottoms">Bottoms</option>
-                        <option value="Bags">Bags</option>
-                        <option value="Accessories">Accessories</option>
-                        <option value="Shoes">Shoes</option>
-                        <option value="Woman only">Woman only</option>
-                        <!-- 다른 카테고리 옵션들 -->
-                    </select>
-                </td>
+<td>
+    <select id="proCategory" name="proCategory" onchange="updateTextField(this)">
+        <option value="default">선택하세요</option>
+        <option value="BEST 100">BEST 100</option>
+        <option value="All-in-one">All-in-one</option>
+        <option value="Outer">Outer</option>
+        <option value="Top(short sleeve)">Top(short sleeve)</option>
+        <option value="Top(long sleeve)">Top(long sleeve)</option>
+        <option value="Bottoms">Bottoms</option>
+        <option value="Bags">Bags</option>
+        <option value="Accessories">Accessories</option>
+        <option value="Shoes">Shoes</option>
+        <option value="Woman only">Woman only</option>
+        <!-- 다른 카테고리 옵션들 -->
+    </select>
+</td>
+<td><input type="text" id="selectedCategory" readonly></td>
             </tr>
         <tr>
     	<td>ProName:</td>
@@ -199,6 +200,12 @@
         <input type="submit" id="queryButton" value="등록하기" onclick="insert()"/>
         <span id="errorMessage1" class="error-message"></span>
     </form>
+    <script>
+    function updateTextField(select) {
+        var selectedValue = select.options[select.selectedIndex].text;
+        document.getElementById("selectedCategory").value = selectedValue;
+    }
+</script>
     <script type="text/javascript">
         function previewImage(event) {
             var reader = new FileReader();

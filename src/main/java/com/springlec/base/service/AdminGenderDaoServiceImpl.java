@@ -262,6 +262,12 @@ public class AdminGenderDaoServiceImpl implements AdminGenderDaoService {
 		return dao.detail(proName);
 	}
 
+	@Override
+	public List<String> color(String proName) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.color(proName);
+	}
+
 
 
 
