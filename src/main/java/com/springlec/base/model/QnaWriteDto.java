@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 public class QnaWriteDto {
 	int qnaseq;
+	int proseq;
 	String userId;
 	String qnaTitle;
 	String qnaCategory;
@@ -15,6 +16,18 @@ public class QnaWriteDto {
 	
 	public QnaWriteDto() {
 		
+	}
+
+
+
+	public int getProseq() {
+		return proseq;
+	}
+
+
+
+	public void setProseq(int proseq) {
+		this.proseq = proseq;
 	}
 
 
