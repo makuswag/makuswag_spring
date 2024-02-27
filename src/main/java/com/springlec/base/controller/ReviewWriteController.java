@@ -48,7 +48,7 @@ public class ReviewWriteController {
 
 	        // 모델에 ReviewWriteDto 추가
 	        model.addAttribute("reviewWriteDto", reviewWriteDto);
-	        
+	        System.out.println("ReviewWriteDto: " + reviewWriteDto);
 	        // proSeq 값을 세션에 저장
 	        session.setAttribute("proSeq", reviewWriteDto.getProSeq());
 	        System.out.println("리뷰 불러오는 값 확인"+reviewWriteDto.getProSeq());

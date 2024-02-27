@@ -8,23 +8,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.springlec.base.model.ReviewDto;
-import com.springlec.base.service.ReviewService;
+import com.springlec.base.model.OuterDto;
+import com.springlec.base.service.OuterDaoService;
 
 @Controller
-public class ReviewController {
-	
+public class OuterController {
 	@Autowired
-	ReviewService service;
+	OuterDaoService service;
 	
-	@GetMapping("review_view")
+	@GetMapping("outer")
 	public String list(@RequestParam(defaultValue = "1") int page, Model model) throws Exception {
 	    int numOfTuplePerPage = 10; // 페이지당 튜플 개수
-	    List<ReviewDto> listDao = service.listDao(page, numOfTuplePerPage);// 서비스 계층에서 데이터 조회
-	    model.addAttribute("reviewlist", listDao);
+	    List<OuterDto> listDao = service.listDao(page, numOfTuplePerPage); // 서비스 계층에서 데이터 조회
+	    model.addAttribute("productlist", listDao);
 
-	    
-	    //여기서부터 페이징
 	    int totalCount = service.getTotalCount(); // 전체 데이터 개수 조회
 	    int totalPage = (int) Math.ceil((double) totalCount / numOfTuplePerPage); // 전체 페이지 개수 계산
 	    int pageBlockSize = 5;
@@ -35,7 +32,8 @@ public class ReviewController {
 	    model.addAttribute("totalPage", totalPage);
 	    model.addAttribute("startPage", startPage);
 	    model.addAttribute("endPage", endPage);
-
-	    return "./board/review";
+	    System.out.println("간다간다 뿅간다 뿅뿅뿅 간다");
+	    return "./category/outer";
 	}
+	
 }
