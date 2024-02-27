@@ -20,6 +20,13 @@ public class MyPageDaoServiceImpl implements MyPageDaoService {
 		System.out.println(dao.myPageDao(startDate, endDate, getUserId));
 		return dao.myPageDao(startDate, endDate, getUserId);
 	}
+	@Override
+	public MyPageDto reviewWriteDao(String proName, String proImage1) throws Exception {
+		// TODO Auto-generated method stub
+		
+		
+		return dao.reviewWriteDao(proName, proImage1);
+	}
 		
 	
 
