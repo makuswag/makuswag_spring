@@ -8,6 +8,8 @@ public class ReviewDto {
 	String revContent;
 	String revImage;
 	String revDate;
+	String proImage1;
+	String proName;
 	
 	public ReviewDto() {
 		
@@ -67,6 +69,22 @@ public class ReviewDto {
 
 	public void setRevDate(String revDate) {
 		this.revDate = revDate;
+	}
+
+	public String getProImage1() {
+		return proImage1;
+	}
+
+	public void setProImage1(String proImage1) {
+		this.proImage1 = proImage1;
+	}
+
+	public String getProName() {
+		return proName;
+	}
+
+	public void setProName(String proName) {
+		this.proName = proName;
 	}
 	
 	

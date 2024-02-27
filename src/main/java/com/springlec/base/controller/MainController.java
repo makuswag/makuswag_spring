@@ -96,11 +96,11 @@ public class MainController {
 		return "category/all_in_one";
 	}
 
-	// outer
-	@GetMapping("outer")
-	public String outer() throws Exception {
-		return "category/outer";
-	}
+//	// outer
+//	@GetMapping("outer")
+//	public String outer() throws Exception {
+//		return "category/outer";
+//	}
 
 	// topshort
 	@GetMapping("topshort")

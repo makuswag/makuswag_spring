@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,21 +60,76 @@
 						</div>
 					</div>
 				</div>
-				
+				<div class="product-tiles">
+					<div class="tile xans-record-">
+						<a href="/product/next-short-yasang/526/category/24/display/1/">
+							<c:forEach items="${productlist }" var="dto" varStatus="loop">
+								<div class="product-image">
+									<img
+										src="${pageContext.request.contextPath}/images/product/${dto.proImage1}"
+										class="primary-image" alt="NEXT SHORT YASANG"> 
+									<img
+										src="${pageContext.request.contextPath}/images/product/${dto.proImage2}"
+										class="secondary-image" alt="NEXT SHORT YASANG">
+								</div>
+								<div class="product-name">
+									<span style="font-size: 12px; color: #555555;">${dto.proName }</span>
+								</div>
+								<div class="product-price" data-price-was="" data-price-now=""
+									data-stock=""></div>
+								<div class="product-info"></div>
+								<ul
+									class="xans-element- xans-product xans-product-listitem product-meta">
+									<li class=" xans-record-"><span
+										style="font-size: 12px; color: #555555;">${dto.proColor }/${proGender }
+									</span></li>
+									<li class=" xans-record-"><span
+										style="font-size: 12px; color: #555555;">${dto.proPrice }</span><span
+										id="span_product_tax_type_text" style=""> </span></li>
+								</ul>
+						</a>
+					</div>
+					</c:forEach>
+					<div style="text-align: center;">
 
+						<c:if test="${currentPage > 1}">
+							<a href="review.do?page=${currentPage - 1}"
+								style="display: inline-block; margin: 10px;">&nbsp;이전</a>
+						</c:if>
 
+						<c:forEach items="${pageList}" var="page">
+							<c:choose>
+								<c:when test="${page == currentPage}">
+									<span
+										style="display: inline-block; margin: 10px; font-weight: bold;">&nbsp;${page}</span>
+								</c:when>
+								<c:otherwise>
+									<a href="review.do?page=${page}"
+										style="display: inline-block; margin: 10px;">&nbsp;${page}</a>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
 
-
-				<!-- 여기까지 작성 -->
-
-				<!-- ============================== [[ Body  section]] ==============================-->
-
-				<!-- =============================  [[ Footer section ]]  ============================= -->
-
-				<%@ include file="../include/footer.jsp"%>
-
+						<c:if test="${currentPage < totalPage}">
+							<a href="review.do?page=${currentPage + 1}"
+								style="display: inline-block; margin: 10px;">&nbsp;다음</a>
+						</c:if>
+					</div>
+				</div>
 			</div>
+
+
+
+			<!-- 여기까지 작성 -->
+
+			<!-- ============================== [[ Body  section]] ==============================-->
+
+			<!-- =============================  [[ Footer section ]]  ============================= -->
+
+			<%@ include file="../include/footer.jsp"%>
+
 		</div>
+	</div>
 	</div>
 	<!-- =============================  [[ Footer section ]]  ============================= -->
 </body>

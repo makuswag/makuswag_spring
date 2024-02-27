@@ -64,9 +64,9 @@
 
                                             <span class="date">${dto.revDate}</span>
                                             <div class="title-range">
-                                                <img src="//faderoom.co.kr/web/product/tiny/202311/416e1c58fbe02289e0598b83fd2277b8.jpg"
-                                                    border="0" alt="" width=58px> <span>FELT WOOL
-                                                    BLAZER JACKET <br>${dto.revTitle}</span>
+                                                <img src="${pageContext.request.contextPath}/images/product/${dto.proImage1}"
+                                                    border="0" alt="" width=58px>
+                                                     <span>${dto.proName}<br>${dto.revTitle}</span>
                                             </div>
                                         </div>
                                     </a>
@@ -102,7 +102,6 @@
                 </div>
 
                 <div class="xans-element- xans-board xans-board-buttonlist board-admin-actions  ">
-                    <a href="/noticeWrite.do" class="primary-button "><span>WRITE</span></a>
                 </div>
 
                 <!-- 여기까지 작성 -->

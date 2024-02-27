@@ -5,9 +5,10 @@
 <mapper namespace="com.springlec.base.dao.ReviewDao">
 	<select id="listDao"
 		resultType="com.springlec.base.model.ReviewDto">
-		SELECT revSeq, revTitle, DATE(revDate) AS revDate, revContent,
-		revImage
-		FROM review
+		 SELECT r.proseq, r.revSeq, r.revTitle, DATE(r.revDate) AS revDate, r.revContent, r.revImage,
+      			 p.proName, p.proImage1
+		FROM review r
+		JOIN product p ON r.proSeq = p.proSeq
 		LIMIT #{requestPage}, #{numOfTuplePerPage}
 	</select>
 	<select id="getTotalCount" resultType="int">

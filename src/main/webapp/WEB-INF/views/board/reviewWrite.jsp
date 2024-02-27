@@ -97,7 +97,7 @@ String uploadPath = context.getRealPath("/images");
 										<div class="form-field subject">
 											<div class="title-range">
 												<img
-													src="${pageContext.request.contextPath}/images/board/${reviewWriteDto.proImage1}"
+													src="${pageContext.request.contextPath}/images/product/${reviewWriteDto.proImage1}"
 													width="100" height="100"> <span>${reviewWriteDto.proName}<br>${dto.revTitle}</span>
 											</div>
 											<br>
