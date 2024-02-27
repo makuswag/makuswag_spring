@@ -476,4 +476,46 @@ public class AdminController {
 	
     
 	
-	}}
+	}
+	@GetMapping("allinone")
+    public String all(Model model, HttpServletRequest request) {
+        try {
+            List<AdminDto> allinone = service.allinone();
+
+            int productsPerPage = 9;
+            int totalProducts = allinone.size();
+            int totalPages = (int) Math.ceil((double) totalProducts / productsPerPage);
+            int currentPage = 1;
+            String pageParam = request.getParameter("page");
+
+            if (pageParam != null && !pageParam.isEmpty()) {
+                currentPage = Integer.parseInt(pageParam);
+            }
+
+            int startIndex = (currentPage - 1) * productsPerPage;
+            int endIndex = Math.min(startIndex + productsPerPage, totalProducts);
+
+            List<AdminDto> listPerPage = allinone.subList(startIndex, endIndex);
+
+            model.addAttribute("totalPages", totalPages);
+            model.addAttribute("currentPage", currentPage);
+            model.addAttribute("productsPerPage", productsPerPage);
+            model.addAttribute("listPerPage", listPerPage);
+
+            // 버튼 스타일을 생성하여 모델에 추가
+            String buttonStyle = "background-color: white; border: 1px solid black; padding: 5px 10px; margin: 0 5px;";
+            model.addAttribute("buttonStyle", buttonStyle);
+
+            return "category/all_in_one";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error"; // 예외 발생 시 에러 페이지로 이동
+        }
+    }
+		@GetMapping("allinone_detail")
+		public String detail(HttpServletRequest request, @RequestParam("proName") String proName, Model model) throws Exception{
+			AdminDto allinone_detail = service.detail(proName); // bId에 해당하는 게시물 정보를 가져옴
+			model.addAttribute("allinone_detail", allinone_detail); // 모델에 게시물 정보를 추가
+			return "category/allinone_detail"; // content_view 페이지로 이동
+	}
+}

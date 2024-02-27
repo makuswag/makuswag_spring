@@ -250,6 +250,20 @@ public class AdminGenderDaoServiceImpl implements AdminGenderDaoService {
 		dao.updateDao7(adminDto);
 	}
 
+	@Override
+	public List<AdminDto> allinone() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.allinone();
+	}
+
+	@Override
+	public AdminDto detail(String proName) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.detail(proName);
+	}
+
+
+
 
 
 
