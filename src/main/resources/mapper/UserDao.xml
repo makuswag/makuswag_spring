@@ -15,4 +15,8 @@
 		SELECT userId, userPw, name, email FROM user WHERE userId = #{userId} AND name = #{name} AND email = #{email}
 	</select>
 	
+	<update id="changePasswd">
+		UPDATE user SET userPw = #{userPasswd} WHERE userId = #{userId}
+	</update>
+	
 </mapper>

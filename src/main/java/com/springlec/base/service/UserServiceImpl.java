@@ -39,4 +39,11 @@ public class UserServiceImpl implements UserDaoService {
 		// TODO Auto-generated method stub
 		return dao.findPw(userId, name, email);
 	}
+
+	@Override
+	public void changePasswd(String userPasswd, String userId) throws Exception {
+		// TODO Auto-generated method stub
+		dao.changePasswd(userPasswd, userId);
+	}
+
 }

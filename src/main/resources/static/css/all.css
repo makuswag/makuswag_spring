@@ -1274,7 +1274,7 @@ to {
 }
 
 .site-header {
-	padding-top: 10px;
+	padding-top: 25px;
 	padding-bottom: 30px;
 	position: relative;
 	width: 100%;
@@ -1311,7 +1311,7 @@ to {
 @media ( min-width : 1200px) {
 	.site-nav.fixed {
 		position: fixed;
-		top: 100px;
+		top: 135px;
 	}
 }
 
