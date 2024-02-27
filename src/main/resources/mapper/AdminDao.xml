@@ -179,5 +179,11 @@ FROM product
     SET proCategory = #{proCategory}, proName = #{proName}, proGender = #{proGender},proIntroduction = #{proIntroduction},proColor = #{proColor},proQty=#{proQty},proPrice=#{proPrice},proDate=now()
     WHERE proSeq = #{proSeq}
 </update>
+<select id="allinone" resultType="com.springlec.base.model.AdminDto">
+	SELECT min(proSeq) as proSeq, proName, min(proPrice) as proPrice,min(proImage1) as proImage1,min(proImage2) as proImage2, sum(proQty) as totalProQty FROM product  WHERE proCategory = 'All-in-one' group by proName
+</select>
+<select id="detail" parameterType="String" resultType="com.springlec.base.model.AdminDto">
+    SELECT * FROM book WHERE proSeq = #{proSeq}
+</select>
 
 </mapper>

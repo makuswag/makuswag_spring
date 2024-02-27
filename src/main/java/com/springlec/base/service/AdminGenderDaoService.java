@@ -45,6 +45,8 @@ public interface AdminGenderDaoService {
 	 public void updateDao5(AdminDto adminDto) throws Exception;
 	 public void updateDao6(AdminDto adminDto) throws Exception;
 	 public void updateDao7(AdminDto adminDto) throws Exception;
+	 public List<AdminDto> allinone() throws Exception;
+	 public AdminDto detail(String proName) throws Exception;
 
 
 
