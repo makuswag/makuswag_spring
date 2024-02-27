@@ -109,7 +109,6 @@
         <!-- 다른 카테고리 옵션들 -->
     </select>
 </td>
-<td><input type="text" id="selectedCategory" readonly></td>
             </tr>
         <tr>
     	<td>ProName:</td>

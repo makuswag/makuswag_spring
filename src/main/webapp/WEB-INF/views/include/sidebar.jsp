@@ -211,9 +211,9 @@ body {
     <li>
       <a href="#"><i class="fa-solid fa-list" style="color: white;"></i> 게시판</a>
       <ul>
-        <li><a href="noticemanager.do">게시판 관리</a></li>
-        <li><a href="noticeinsert.do">게시판 작성</a></li>
-        <li><a href="noticeupdate.do">게시판 수정</a></li>
+        <li><a href="FAQ">FAQ</a></li>
+        <li><a href="QNA">QNA</a></li>
+        <li><a href="NOTICE">NOTICE</a></li>
       </ul>
     </li>
     <li>

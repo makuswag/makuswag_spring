@@ -1,0 +1,220 @@
+@charset "UTF-8";
+@charset "UTF-8";
+
+
+.board {
+	width: 100%;
+	max-width: 800px;
+	min-height: calc(100vh - 510px);
+	margin: 0 auto;
+}
+
+.board-header {
+	margin-bottom: 60px;
+}
+
+
+.board-admin-actions {
+	margin-top: 60px;
+	text-align: center;
+}
+.navbar__logo{
+	
+	margin-top: 4px;
+	
+}
+
+html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre,
+	code, form, fieldset, legend, input, textarea, p, blockquote, th, td,
+	img {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #d4ccbb !important;
+	color: #0e3773;
+	font-size: 16px;
+	font-family: 'Avenir Next', 'KoPub Dotum', sans-serif;
+	font-weight: 270;
+	font-style: normal;
+	line-height: 1.9;
+}
+
+h1 {
+	font-size: 50px;
+}
+
+h3{
+	margin-top: 10%;
+}
+h3 font{
+	color: #0e3773 !important;
+}
+.accordion-name{
+	color: #0e3773 !important;
+}
+
+li {
+	list-style: none;
+	margin-bottom: 0; /* 줄 사이의 여백 제거 */
+        line-height: 1.2; /* 줄 간격 조정 */
+}
+
+
+.primary-button {
+	background-color: transparent;
+	border: 4px solid #0e3773;
+	color: #0e3773;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 700;
+	overflow: hidden;
+	padding: 12px 40px;
+	position: relative;
+	text-align: center;
+	transition: border-color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+	transform: translateX(6px);
+}
+
+.primary-button .naver-pay-icon {
+	background-image: url('/_fm/images/naver-pay-icon.png');
+	background-size: contain;
+	display: block;
+	width: 50px;
+	height: 20px;
+}
+
+.field-button {
+	background-color: transparent;
+	border: 1px solid #0e3773;
+	color: #0e3773;
+	display: inline-block;
+	font-size: 13px;
+	padding: 9px 15px;
+}
+
+button.field-button {
+	padding: 11px 15px;
+	position: relative;
+	top: 1px;
+}
+
+@media ( max-width : 600px) {
+	.primary-button {
+		border-width: 3px;
+		padding: 8px 15px;
+	}
+}
+
+.form-header {
+	text-transform: uppercase;
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+.form-group {
+	margin-bottom: 50px;
+}
+
+.form-group .form-row {
+	margin: 0 -5px;
+}
+
+.form-group .form-row:after {
+	content: '';
+	clear: both;
+	display: table;
+}
+
+
+.form-group textarea {
+	width: 100%;
+}
+
+.form-group label {
+	line-height: 44px;
+}
+
+.form-group .field-label {
+	display: block;
+}
+
+.select-field {
+	border: 1px solid #0e3773;
+	display: inline-block;
+	overflow: hidden;
+	position: relative;
+	vertical-align: middle;
+}
+
+
+
+
+/* 아코디언 메뉴 */
+.accordion-list {
+	border-top: 2px solid #777;
+}
+
+.accordion-list .accordion-item {
+	border-bottom: 1px solid #ddd;
+}
+
+.accordion-list .accordion-item .accordion-link {
+	display: block;
+	position: relative;
+	padding: 10px 15px;
+	border-bottom: 1px solid #ddd;
+	transition: all 0.3s;
+}
+
+.accordion-list .accordion-item .accordion-link::before {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	transform: translateY(-50%);
+	width: 14px;
+	height: 4px;
+	background-color: #999;
+}
+
+.accordion-list .accordion-item.active .accordion-link::before {
+	background-color: #15989f
+}
+
+.accordion-list .accordion-name {
+	position: relative;
+	width: calc(100% - 50px);
+	font-size: 14px;
+	font-weight: bold;
+	padding-left: 20px;
+}
+
+.accordion-list .accordion-name .number {
+	display: inline-block;
+	font-family: 'gmarket';
+	font-weight: 500;
+	font-size: 14px;
+	width: 85px;
+	color: #0e3773;
+	vertical-align: middle;
+}
+
+.accordion-list .accordion-name .date {
+	font-family: 'gmarket';
+	font-weight: 500;
+	font-size: 14px;
+	float: right;
+}
+
+.accordion-list .accordion-item .accordion-desc {
+	display: none;
+	padding: 30px 40px;
+	color: #777;
+}
+
+
