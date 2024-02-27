@@ -1,0 +1,186 @@
+@charset "UTF-8";
+
+  .product-name h2 {
+    margin-bottom: 5px; /* 제목과 가격 사이의 간격을 조정합니다. */
+    top:20px;
+}
+
+.product-price {
+    margin-top: 5px; /* 가격과 다음 요소 사이의 간격을 조정합니다. */
+    top:20px;
+}
+.product-images img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background-color: #e6e5e0;
+    padding: 20px;
+    width: 90%;
+    
+    overflow-y: auto; /* 내용이 넘칠 경우 스크롤이 생기도록 설정 */
+    max-width: 420px;
+    padding: 30px;
+    height: 70%;
+    z-index: 9999;
+    transition: transform 0.5s ease;
+}
+
+.popup.show {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+    transition: background-color 0.5s ease;
+}
+#selectedColor {
+    position: relative;
+    z-index: 10000;
+}
+.overlay.show {
+    background-color: rgba(0, 0, 0, 0.5); /* 어두운 색상으로 변경 */
+}
+
+.product-description {
+   position: relative;
+   top:-50px;
+}
+        /* 네모로 변경할 스타일 */
+        body {
+            font-family: 'Avenir Next', 'KoPub Dotum', sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            line-height: 1.65;
+        }
+
+        .carousel-indicators li {
+            border-radius: 0;
+            width: 30px; /* 네모의 가로 길이 조절 */
+            height: 10px; /* 네모의 세로 길이 조절 */
+            background-color: #ddd; /* 네모의 배경색 */
+            margin: 0 3px; /* 네모 간의 간격 조절 */
+            cursor: pointer;
+        }
+
+        /* 활성화된 네모의 스타일 */
+        .carousel-indicators .active {
+            border-radius: 0;
+            width: 30px; /* 네모의 가로 길이 조절 */
+            height: 10px; /* 네모의 세로 길이 조절 */
+            background-color: #333; /* 활성화된 네모의 배경색 */
+        }
+
+        .nav-button:hover {
+            background-color: lightgray; /* 마우스를 올렸을 때 배경색 변경 */
+            cursor: pointer; /* 커서 모양 변경 */
+            font-weight: bold; /* 마우스를 올렸을 때 볼드체 스타일 적용 */
+        }
+
+        h2 {
+            display: block;
+            font-size: 1.5em;
+            margin-block-start: 0.83em;
+            margin-block-end: 0.83em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            font-weight: bold;
+        }
+
+        .tile .product-image {
+            margin-bottom: 30px;
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-top: 125%;
+            overflow: hidden;
+        }
+
+        .tile .product-image img {
+            width: 100%;
+            height: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity 0.15s ease-out;
+        }
+
+        .tile .product-image .secondary-image, .tile:hover .product-image .primary-image {
+            opacity: 0;
+        }
+
+        .xans-element- .pagination ul {
+            text-align: center !important;
+        }
+
+        .xans-element- .pagination li {
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+
+        .tile .product-info {
+            font-size: 11px;
+            margin-top: 12px;
+        }
+
+.product-essential {
+    line-height: 1.4;
+    width: 300px;
+    position: fixed; /* 화면 상단에 고정 */
+    top: -50px; /* 원하는 높이로 조정 */
+    right: 50px; /* 원하는 위치로 조정 */
+    font-weight: 700;
+}
+.product-essential .product-name h2, .product-essential .product-price {
+    font-size: 18px;
+}
+.product-essential .product-description span:first-child {
+    color: inherit !important;
+    display: block;
+    white-space: pre;
+    margin-bottom: 20px;
+}
+.product-essential .product-description .more-info span {
+    display: inline-block;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 13px;
+    margin-right: 7px;
+}
+.product-essential .product-description {
+    color: #0e3773;
+    margin: 50px 0;
+}
+.product-essential .product-description span:first-child {
+    color: inherit !important;
+    display: block;
+    white-space: pre;
+    
+}
+.product-description{
+	margin-left: 200px;
+	top: 100%;
+	z-index: 100;
+
+}
+
+
+.single-product {
+    position: relative;
+    width: 50%;
+}
+
+
