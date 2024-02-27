@@ -26,6 +26,13 @@ public class FaqController {
 		
 		return "./board/faq";
 	}
+	@GetMapping("faq_admin")
+	public String faq_admin(Model model) throws Exception{ //관리자 라서 관리자 관련아닌 id막기 필요.
+		List<FaqDto> listDao = service.listDao();
+		model.addAttribute("FaqList", listDao);
+		
+		return "./board/faq_admin";
+	}
 	
 	
 	

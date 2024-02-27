@@ -1,6 +1,7 @@
 package com.springlec.base.model;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 
 public class AdminDto {
@@ -45,6 +46,11 @@ public class AdminDto {
     private String pDate;
     private double totalPPrice;
     private int proSeq;
+	private String noTitle;
+	private String noCategory;
+	private String noContent;
+	private String noImage;
+	private String noDate;
     
     
     
@@ -55,6 +61,36 @@ public class AdminDto {
     
     
     
+	public String getNoTitle() {
+		return noTitle;
+	}
+	public void setNoTitle(String noTitle) {
+		this.noTitle = noTitle;
+	}
+	public String getNoCategory() {
+		return noCategory;
+	}
+	public void setNoCategory(String noCategory) {
+		this.noCategory = noCategory;
+	}
+	public String getNoContent() {
+		return noContent;
+	}
+	public void setNoContent(String noContent) {
+		this.noContent = noContent;
+	}
+	public String getNoImage() {
+		return noImage;
+	}
+	public void setNoImage(String noImage) {
+		this.noImage = noImage;
+	}
+	public String getNoDate() {
+		return noDate;
+	}
+	public void setNoDate(String noDate) {
+		this.noDate = noDate;
+	}
 	public int getProSeq() {
 		return proSeq;
 	}
