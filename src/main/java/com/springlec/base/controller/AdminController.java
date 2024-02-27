@@ -8,7 +8,9 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -395,12 +397,83 @@ public class AdminController {
 
 	}
 	@PostMapping("modify")
-	public String update(Model model) throws Exception {
-	    // 업데이트 메소드 호출
-		List<AdminDto> listDao4 = service.listDao4();
-	     model.addAttribute("list", listDao4);
-	    return "redirect:productupdate"; // 수정 후 목록 페이지로 이동
-	}
-
-
-}
+	public String modifyProduct(HttpServletRequest request, 
+	                            @RequestParam("proImage1") MultipartFile proImage4, 
+	                            @RequestParam("proImage2") MultipartFile proImage5, 
+	                            @RequestParam("proImage3") MultipartFile proImage6) throws Exception { 
+	   
+		String proPrice = request.getParameter("proPrice").replace(",", "");
+	    // 변경된 내용을 AdminDto 객체에 설정
+	    AdminDto adminDto = new AdminDto();
+	    adminDto.setProCategory(request.getParameter("proCategory"));
+	    adminDto.setProName(request.getParameter("proName"));
+	    adminDto.setProGender(request.getParameter("proGender"));
+	    adminDto.setProIntroduction(request.getParameter("proIntroduction"));
+	    adminDto.setProColor(request.getParameter("proColor"));
+	    adminDto.setProPrice(Integer.parseInt(proPrice));
+	    adminDto.setProQty(Integer.parseInt(request.getParameter("proQty")));
+	    adminDto.setProSeq(Integer.parseInt(request.getParameter("proSeq")));
+	    
+	    // 변경된 이미지가 있는 경우 해당 이미지를 서버에 업로드하고 AdminDto 객체에 추가
+	    //전부 있는경우
+	    if (!proImage4.isEmpty() && !proImage5.isEmpty() && !proImage6.isEmpty()) {
+	        String proImage1 = service.uploadfile(proImage4);
+	        String proImage2 = service.uploadfile(proImage5);
+	        String proImage3 = service.uploadfile(proImage6);
+	        adminDto.setProImage1(proImage1);
+	        adminDto.setProImage2(proImage2);
+	        adminDto.setProImage3(proImage3);
+	        service.updateDao(adminDto);
+	    }
+	    // proImage4와 proImage5가 비어 있지 않은 경우
+	    else if (!proImage4.isEmpty() && !proImage5.isEmpty() && proImage6.isEmpty()) {
+	        String proImage1 = service.uploadfile(proImage4);
+	        String proImage2 = service.uploadfile(proImage5);
+	        adminDto.setProImage1(proImage1);
+	        adminDto.setProImage2(proImage2);
+	        service.updateDao4(adminDto);
+	    }
+	    // proImage4와 proImage6가 비어 있지 않은 경우
+	    else if (!proImage4.isEmpty() && proImage5.isEmpty() && !proImage6.isEmpty()) {
+	        String proImage1 = service.uploadfile(proImage4);
+	        String proImage3 = service.uploadfile(proImage6);
+	        adminDto.setProImage1(proImage1);
+	        adminDto.setProImage3(proImage3);
+	        service.updateDao5(adminDto);
+	    }
+	    // proImage5와 proImage6가 비어 있지 않은 경우
+	    else if (proImage4.isEmpty() && !proImage5.isEmpty() && !proImage6.isEmpty()) {
+	        String proImage2 = service.uploadfile(proImage5);
+	        String proImage3 = service.uploadfile(proImage6);
+	        adminDto.setProImage2(proImage2);
+	        adminDto.setProImage3(proImage3);
+	        service.updateDao6(adminDto);
+	    }
+	    // proImage4만 비어 있지 않은 경우
+	    else if (!proImage4.isEmpty() && proImage5.isEmpty() && proImage6.isEmpty()) {
+	        String proImage1 = service.uploadfile(proImage4);
+	        adminDto.setProImage1(proImage1);
+	        service.updateDao1(adminDto);
+	    }
+	    // proImage5만 비어 있지 않은 경우
+	    else if (proImage4.isEmpty() && !proImage5.isEmpty() && proImage6.isEmpty()) {
+	        String proImage2 = service.uploadfile(proImage5);
+	        adminDto.setProImage2(proImage2);
+	        service.updateDao2(adminDto);
+	    }
+	    // proImage6만 비어 있지 않은 경우
+	    else if (proImage4.isEmpty() && proImage5.isEmpty() && !proImage6.isEmpty()) {
+	        String proImage3 = service.uploadfile(proImage6);
+	        adminDto.setProImage3(proImage3);
+	        service.updateDao3(adminDto);
+	    }else {
+	    	service.updateDao7(adminDto);
+	    	
+	    }
+	    
+	    
+	    return "redirect:productupdate";
+	
+    
+	
+	}}

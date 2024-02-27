@@ -13,6 +13,13 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome CDN 추가 -->
     <style>
+     #searchForm {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }    
     </style>
 <script>
 
@@ -87,7 +94,7 @@ $(function() {
 </head>
 <body>
 
-    <form action="listQuery2" method="post">
+    <form action="listQuery2" method="post" id="searchForm">
         <select name="query" id="query">
             <option value="proCategory">카테고리</option> 
             <option value="proName">이름</option>
@@ -129,9 +136,9 @@ $(function() {
     <fmt:formatNumber value="${dto.proPrice}" pattern="#,###"/>
 </td>
 			<td style="text-align: center;">${dto.proDate}</td>
-			<td style="text-align: center;"><img src="${pageContext.request.contextPath}/images/admin/${dto.proImage1}" alt="이미지1" style="width: 40%; height: auto; object-fit: contain;"></td>
-			<td style="text-align: center;"><img src="${pageContext.request.contextPath}/images/admin/${dto.proImage2}" alt="이미지2" style="width: 40%; height: auto; object-fit: contain;"></td>
-			<td style="text-align: center;"><img src="${pageContext.request.contextPath}/images/admin/${dto.proImage3}" alt="이미지3" style="width: 40%; height: auto; object-fit: contain;"></td>
+			<td style="text-align: center;"><img src="${pageContext.request.contextPath}/images/admin/${dto.proImage1}" alt="" style="width: 40%; height: auto; object-fit: contain;"></td>
+			<td style="text-align: center;"><img src="${pageContext.request.contextPath}/images/admin/${dto.proImage2}" alt="" style="width: 40%; height: auto; object-fit: contain;"></td>
+			<td style="text-align: center;"><img src="${pageContext.request.contextPath}/images/admin/${dto.proImage3}" alt="" style="width: 40%; height: auto; object-fit: contain;"></td>
 		</tr>
 		<c:set var="cnt" value="${cnt=cnt+1 }"/>
 		</c:forEach>

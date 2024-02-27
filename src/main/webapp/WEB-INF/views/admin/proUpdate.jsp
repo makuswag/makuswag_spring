@@ -14,7 +14,49 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome CDN 추가 -->
     <style>
+    @media screen and (max-width: 768px) {
+    /* 화면 폭이 작을 때 */
+    #result {
+        display: block;
+        overflow-x: hidden;
+        width: calc(100% - 50px);
+        max-height:500px;
+        overflow-y: auto;
+       	margin-top:10%;
+        margin-left: 50px;
+       
+         /* 위에서 10% 떨어지도록 설정 */
+        /* 위에 올 수 있도록 설정 */
+    }
+    #b {
+        display: none; /* 화면이 작을 때 숨김 */
+    }
+}
 
+/* 화면 폭이 769px 이상일 때 */
+@media screen and (min-width: 769px) {
+    #result {
+        display: block;
+        margin-left: 70px;
+        width: 65%;
+        max-height: 500px;
+        overflow-y: auto;
+        
+        margin-top: 10%;
+        position: absolute; /* 겹치도록 설정 */
+         /* 위에서 10% 떨어지도록 설정 */
+    }
+    #b {
+        position: absolute; /* 겹치도록 설정 */
+        right: 3%; /* 오른쪽 여백 설정 */
+        width: auto;
+        max-height: 500px;
+        overflow-y: auto;
+        margin-top: 10%;
+        margin-left: 0;
+        
+    }
+}
 #imagePreview {
     width: 100px; /* 미리보기 컨테이너 고정 너비 */
     height: 100px; /* 미리보기 컨테이너 고정 높이 */
@@ -53,24 +95,7 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }    
           
-#result {
-    float: left; /* 왼쪽으로 이동하도록 float 속성 추가 */
-    margin-left: 70px; /* 오른쪽과의 간격 조정을 위한 마진 추가 */
-    width: 65%;
-    max-height: 500px;
-    overflow-y: auto;
-    z-index: 9999;
-    margin-top: 10%;
-}
-        #b{
-        	position: absolute;
-        	right:3%;
-            width: auto;
-            max-height: 500px;
-            overflow-y: auto;
-            margin-top: 10%;
-        
-        }
+
         
         /* 기존 스타일 */
         a {
@@ -82,6 +107,28 @@
             color: inherit; /* 호버 시 색상 변경하지 않음 */
         }
     </style>
+    <script>
+    // 화면 폭에 따라 링크 활성화/비활성화 함수
+    function toggleLink() {
+        var proSeqLinks = document.querySelectorAll('#result a'); // proSeq 링크 모두 선택
+        var isSmallScreen = window.innerWidth <= 768; // 화면 폭이 768px 이하인지 확인
+
+        proSeqLinks.forEach(function(link) {
+            // 화면이 축소된 경우
+            if (isSmallScreen) {
+                link.removeAttribute('href'); // 링크 href 속성 제거하여 비활성화
+            } else { // 화면이 확장된 경우
+                link.setAttribute('href', 'content_view?proSeq=' + link.innerText); // 링크 href 속성 추가하여 활성화
+            }
+        });
+    }
+
+    // 페이지 로드 시 toggleLink 함수 호출
+    window.addEventListener('load', toggleLink);
+
+    // 화면 크기가 변경될 때 toggleLink 함수 호출
+    window.addEventListener('resize', toggleLink);
+</script>
     <script>
         // JavaScript 코드는 동일하게 유지됩니다.
     </script>
@@ -101,7 +148,7 @@
         <i id="proDate-icon" class="far fa-calendar-alt" style="display: none;"></i> <!-- display 속성으로 숨김 -->
         <input type="submit" value="검색">  
     </form>
- 
+ <div class="table-container">
    <table id="result" cellpadding="0" cellspacing="4" border="4">
         <tr>
             <th bgcolor="#808080" width="50px" style="text-align: center;" >번호</th>
@@ -131,16 +178,18 @@
                     <fmt:formatNumber value="${dto.proPrice}" pattern="#,###"/>
                 </td>
                 <td style="text-align: center;">${dto.proDate}</td>
-                <td style="text-align: center;"><img src="${pageContext.request.contextPath}/images/admin/${dto.proImage1}" alt="이미지1" style="width: 40%; height: auto; object-fit: contain;"></td>
-                <td style="text-align: center;"><img src="${pageContext.request.contextPath}/images/admin/${dto.proImage2}" alt="이미지2" style="width: 40%; height: auto; object-fit: contain;"></td>
-                <td style="text-align: center;"><img src="${pageContext.request.contextPath}/images/admin/${dto.proImage3}" alt="이미지3" style="width: 40%; height: auto; object-fit: contain;"></td>
+                <td style="text-align: center;"><img src="${pageContext.request.contextPath}/images/admin/${dto.proImage1}" alt="" style="width: 40%; height: auto; object-fit: contain;"></td>
+                <td style="text-align: center;"><img src="${pageContext.request.contextPath}/images/admin/${dto.proImage2}" alt="" style="width: 40%; height: auto; object-fit: contain;"></td>
+                <td style="text-align: center;"><img src="${pageContext.request.contextPath}/images/admin/${dto.proImage3}" alt="" style="width: 40%; height: auto; object-fit: contain;"></td>
             </tr>
             <c:set var="cnt" value="${cnt=cnt+1 }"/>
         </c:forEach>
     </table>
+    </div>
     
     <!-- content_view.jsp의 내용 시작 -->
-    <form action="modify" method="post">
+    <div class="table-container">
+    <form action="modify" method="post" enctype="multipart/form-data">
      <input type="hidden" name="proSeq" value="${content_view.proSeq}">
     <div id="container">
         <div id="result"></div>
@@ -172,7 +221,7 @@
                 </tr>
                 <tr>
                     <th>제품이름</th>
-                    <td><input type="text" id="proName" value="${content_view.proName}"></td>
+                    <td><input type="text" id="proName" name="proName" value="${content_view.proName}"></td>
                 </tr>
                 <tr>
                     <th>성별</th>
@@ -235,25 +284,25 @@
                 </tr>
                  <tr>
                     <th>이미지</th>
-                    <td><input type="file" id="proImage1">
+                    <td><input type="file" id="proImage1" name="proImage1">
                     <div id="imagePreview"></div></td>
                 </tr>
                 <tr>
                     <th>현재<br>이미지</th>
-                    <td><input type="text" id="proImage2" size="30" value="${content_view.proImage2}" readonly="readonly"></td>
+                    <td><input type="text" id="proImage4" size="30" value="${content_view.proImage2}" readonly="readonly"></td>
                 </tr>
                  <tr>
                     <th>이미지</th>
-                    <td><input type="file" id="proImage3">
+                    <td><input type="file" id="proImage2" name="proImage2">
                     <div id="imagePreview2"></div></td>
                 </tr>
                 <tr>
                     <th>현재<br>이미지</th>
-                    <td><input type="text" id="proImage4" size="30" value="${content_view.proImage3}" readonly="readonly"></td>
+                    <td><input type="text" id="proImage5" size="30" value="${content_view.proImage3}" readonly="readonly"></td>
                 </tr>
                  <tr>
                     <th>이미지</th>
-                    <td><input type="file" id="proImage5">
+                    <td><input type="file" id="proImage3" name="proImage3">
                     <div id="imagePreview3"></div></td>
                 </tr>
                 <tr>
@@ -267,6 +316,7 @@
         </div>
     </div>
     </form>
+    </div>
     
     <!-- content_view.jsp의 내용 끝 -->
     
@@ -307,7 +357,7 @@
     });
     $(document).ready(function() {
         // 파일 선택(input) 요소의 변경 이벤트 리스너 등록
-        $('#proImage3').change(function(event) {
+        $('#proImage2').change(function(event) {
             var file = event.target.files[0]; // 선택된 파일 가져오기
 
             // FileReader 객체 생성
@@ -324,7 +374,7 @@
                 imagePreview.appendChild(imageElement); // 미리보기 엘리먼트에 이미지 추가
 
                 // 파일이 선택되었으므로 현재 이미지 텍스트 숨기기
-                $('#proImage2').hide();
+                $('#proImage4').hide();
             };
             if (file) {
                 reader.readAsDataURL(file);
@@ -332,14 +382,14 @@
                 // 파일이 선택되지 않은 경우 미리보기 이미지 제거 및 현재 이미지 텍스트 보이기
                 var imagePreview = document.getElementById('imagePreview2');
                 imagePreview.innerHTML = '';
-                $('#proImage2').show();
+                $('#proImage4').show();
             }
         });
     });
 
             $(document).ready(function() {
                 // 파일 선택(input) 요소의 변경 이벤트 리스너 등록
-                $('#proImage5').change(function(event) {
+                $('#proImage3').change(function(event) {
                     var file = event.target.files[0]; // 선택된 파일 가져오기
 
                     // FileReader 객체 생성
@@ -356,7 +406,7 @@
                         imagePreview.appendChild(imageElement); // 미리보기 엘리먼트에 이미지 추가
 
                         // 파일이 선택되었으므로 현재 이미지 텍스트 숨기기
-                        $('#proImage4').hide();
+                        $('#proImage5').hide();
                     };
                     if (file) {
                         reader.readAsDataURL(file);
@@ -364,7 +414,7 @@
                         // 파일이 선택되지 않은 경우 미리보기 이미지 제거 및 현재 이미지 텍스트 보이기
                         var imagePreview = document.getElementById('imagePreview3');
                         imagePreview.innerHTML = '';
-                        $('#proImage4').show();
+                        $('#proImage5').show();
                     }
                 });
             });

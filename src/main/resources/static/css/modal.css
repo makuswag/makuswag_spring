@@ -1,0 +1,43 @@
+@charset "EUC-KR";
+/* Modal style */
+.modal {
+    position: absolute;
+    display: none;
+    justify-content: center;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    left: 0; width : 100%; height : 100%; overflow : auto;
+    background-color: #d4ccbb;
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+}
+
+/* Modal content */
+.modal-content {
+    position: absolute;
+    top: 0; 
+    left: 50%;
+    width : 400px;
+    padding : 40px;
+    text-align: center;
+    background-color: rgb(255, 255, 255); 
+    border-radius : 10px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+}
+
+/* Close button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

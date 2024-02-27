@@ -124,7 +124,7 @@ body {
         <iframe src="product" frameborder="0" style="width: 60%; margin-top: 100px;z-index: 3;"></iframe>
          <iframe src="productper" frameborder="0" style="position: absolute; left: calc(70% - 70px); width: calc(20% - 30px); height: calc(50% + 300px); margin-top: 90px;"></iframe>
     </div>
- <iframe src="table2" frameborder="0" style="position: absolute; width: 90%; height: 45%; margin: 500px auto 5px; align-items: center; z-index: 4; margin-left: 40px;"></iframe>
+ <iframe src="table2" frameborder="0" style="position: absolute; width: 90%; height: 45%; margin: 500px auto 5px; align-items: center; z-index: 4; margin-left: 40px; top: 20%;"></iframe>
 </div>
 
 

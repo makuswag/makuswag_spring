@@ -2,6 +2,7 @@ package com.springlec.base.dao;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -35,5 +36,12 @@ public interface AdminDao {
 	public List<AdminDto> listQuery4(String query, String content) throws Exception;
 	public List<AdminDto> listQueryForproDate1(String proDate);
 	public AdminDto selectDao(int proSeq) throws Exception;
-
+	public void updateDao(AdminDto adminDto) throws Exception;
+	public void updateDao1(AdminDto adminDto) throws Exception;
+	public void updateDao2(AdminDto adminDto) throws Exception;
+	public void updateDao3(AdminDto adminDto) throws Exception;
+	public void updateDao4(AdminDto adminDto) throws Exception;
+	public void updateDao5(AdminDto adminDto) throws Exception;
+	public void updateDao6(AdminDto adminDto) throws Exception;
+	public void updateDao7(AdminDto adminDto) throws Exception;
 }
