@@ -10,7 +10,7 @@ function handleYes() {
 function handleNo() {
 
 	alert('로그인 화면으로 이동합니다.');
-	window.location.href = '<%= "login" %>';
+	window.location.href = 'login';
 }
 // 모달 열기 함수
 function openModal() {
