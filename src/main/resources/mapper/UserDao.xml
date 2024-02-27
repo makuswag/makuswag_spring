@@ -11,4 +11,8 @@
 		SELECT userId, name, email FROM user WHERE name = #{name} AND email = #{email}
 	</select>
 	
+	<select id="findPw" resultType="com.springlec.base.model.UserDto">
+		SELECT userId, userPw, name, email FROM user WHERE userId = #{userId} AND name = #{name} AND email = #{email}
+	</select>
+	
 </mapper>

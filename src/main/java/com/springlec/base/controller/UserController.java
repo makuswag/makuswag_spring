@@ -316,6 +316,40 @@ public class UserController {
 			return "redirect:/findError";
 		}
 	}
+	
+	// 비밀번호 찾기(정보 가져오기)
+	@PostMapping("findPwEmail")
+	public String findPwEmail(HttpServletRequest request, HttpSession session, Model model) throws Exception {
+		String userId = request.getParameter("userId");
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		
+		try {
+			// 사용자 정보 조회
+			UserDto user = service.findPw(userId, name, email);
+			session.setAttribute("user", user);
+			
+			if (user != null && user.getUserId().equals(userId) && user.getName().equals(name) 
+							 && user.getEmail().equals(email)) {
+				
+				// 고객님의 정보를 조회
+				String message = "정보를 조회합니다.";
+				model.addAttribute("message", message);
+				
+				return "status/userPw";
+			} else {
+				
+				// 정보를 잘 못 입력하였을시
+				model.addAttribute("error", "입력하신 정보가 없습니다.");
+				return "redirect:/findError";
+			}
+		} catch (Exception e) {
+			// 예외 처리
+			e.printStackTrace();
+			model.addAttribute("error", "입력하신 정보가 없습니다.");
+			return "redirect:/findError";
+		}
+	}
 
 	// 회원 동의창으로
 	@GetMapping("agree")
