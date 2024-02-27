@@ -83,7 +83,7 @@ public class UserController {
 	public String onlyAdmin() {
 		return "status/onlyAdmin";
 	}
-	
+
 	// 아이디 찾기 에러 페이지로 이동
 	@GetMapping("findError")
 	public String findError() {
@@ -110,13 +110,13 @@ public class UserController {
 	public String idEmail() throws Exception {
 		return "identity/idEmail";
 	}
-	
+
 	// 비밀번호 찾기(이메일 인증)
 	@GetMapping("passwdEmail")
 	public String passwdEmail() throws Exception {
 		return "identity/passwdEmail";
 	}
-	
+
 	// 아이디 찾기(본인 인증키 입력)
 	@PostMapping("idCheckEmail")
 	public String idCheckEmail(HttpServletRequest request, HttpSession session) throws Exception {
@@ -194,14 +194,14 @@ public class UserController {
 
 		return "identity/idCheckEmail";
 	}
-	
+
 	// 비밀번호 찾기(본인 인증키 입력)
 	@PostMapping("passwdCheckEmail")
 	public String passwdCheckEmail(HttpServletRequest request, HttpSession session) throws Exception {
 		// mail server 설정
 		String smtpEmail = "foejakzm@gmail.com";
 		String password = "mfpxcsvsahgnhxtr";
-		
+
 		// 메일 받을 주소
 		String to_email = request.getParameter("email");
 		/* Properties p = new Properties(); */
@@ -216,7 +216,7 @@ public class UserController {
 		p.put("mail.smtp.ssl.protocols", "TLSv1.2");
 		p.put("mail.smtp.socketFactory.port", "587");
 		p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-		
+
 		// 인증 번호 생성기
 		StringBuffer temp = new StringBuffer();
 		Random rnd = new Random();
@@ -239,72 +239,72 @@ public class UserController {
 		}
 		String AuthenticationKey = temp.toString();
 		System.out.println(AuthenticationKey);
-		
+
 		javax.mail.Session session3 = javax.mail.Session.getInstance(p, new javax.mail.Authenticator() {
 			protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
 				return new javax.mail.PasswordAuthentication(smtpEmail, password);
 			}
 		});
-		
+
 		// email 전송
 		try {
 			javax.mail.internet.MimeMessage msg = new javax.mail.internet.MimeMessage(session3);
-			
+
 			msg.addRecipient(javax.mail.Message.RecipientType.TO, new javax.mail.internet.InternetAddress(to_email));
-			
+
 			// 메일 제목
 			msg.setSubject("Mak U Swag의 회원가입 인증번호");
 			// 메일 내용
 			msg.setText("Mak U Swag의 회원가입을 위한 인증 번호는 [" + temp + "] 입니다");
-			
+
 			javax.mail.Transport t = session3.getTransport("smtp");
 			t.connect(smtpEmail, password);
 			t.sendMessage(msg, msg.getAllRecipients());
 			t.close();
-			
+
 			// session4는 인증키용
 			jakarta.servlet.http.HttpSession session4 = request.getSession();
-			
+
 			session4.setAttribute("authentication", AuthenticationKey);
 		} catch (Exception e) {
 			e.printStackTrace();// TODO: handle exception
 		}
-		
+
 		return "identity/passwdCheckEmail";
 	}
-	
+
 	// 아이디 찾기(정보 입력)
 	@GetMapping("findId")
 	public String findId() throws Exception {
 		return "member/findId";
 	}
-	
+
 	// 비밀번호 찾기(정보 입력)
 	@GetMapping("findPasswd")
 	public String findPasswd() throws Exception {
 		return "member/findPasswd";
 	}
-	
+
 	// 아이디 찾기(정보 가져오기)
 	@PostMapping("findIdEmail")
 	public String findIdEmail(HttpServletRequest request, HttpSession session, Model model) throws Exception {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
-		
+
 		try {
 			// 사용자 정보 조회
 			UserDto user = service.findId(name, email);
 			session.setAttribute("user", user);
-			
+
 			if (user != null && user.getName().equals(name) && user.getEmail().equals(email)) {
-				
+
 				// 고객님의 정보를 조회
-			    String message = "정보를 조회합니다.";
-			    model.addAttribute("message", message);
-				
+				String message = "정보를 조회합니다.";
+				model.addAttribute("message", message);
+
 				return "status/userId";
 			} else {
-				
+
 				// 정보를 잘 못 입력하였을시
 				model.addAttribute("error", "입력하신 정보가 없습니다.");
 				return "redirect:/findError";
@@ -316,29 +316,29 @@ public class UserController {
 			return "redirect:/findError";
 		}
 	}
-	
+
 	// 비밀번호 찾기(정보 가져오기)
 	@PostMapping("findPwEmail")
 	public String findPwEmail(HttpServletRequest request, HttpSession session, Model model) throws Exception {
 		String userId = request.getParameter("userId");
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
-		
+
 		try {
 			// 사용자 정보 조회
 			UserDto user = service.findPw(userId, name, email);
 			session.setAttribute("user", user);
-			
-			if (user != null && user.getUserId().equals(userId) && user.getName().equals(name) 
-							 && user.getEmail().equals(email)) {
-				
+
+			if (user != null && user.getUserId().equals(userId) && user.getName().equals(name)
+					&& user.getEmail().equals(email)) {
+
 				// 고객님의 정보를 조회
 				String message = "정보를 조회합니다.";
 				model.addAttribute("message", message);
-				
+
 				return "status/userPw";
 			} else {
-				
+
 				// 정보를 잘 못 입력하였을시
 				model.addAttribute("error", "입력하신 정보가 없습니다.");
 				return "redirect:/findError";
@@ -441,6 +441,30 @@ public class UserController {
 		}
 
 		return "identity/checkEmail";
+	}
+
+	// 비밀번호 변경
+	@PostMapping("changePasswd")
+	public String changePasswd(HttpServletRequest request, HttpSession session, Model model) throws Exception {
+		Object userObject = session.getAttribute("user");
+		UserDto user = (UserDto) userObject;
+
+		String userId = user.getUserId();
+		String userPasswd = request.getParameter("newUserPw");
+		
+		try {
+			// 사용자 정보 수정 
+			service.changePasswd(userPasswd, userId);
+			
+			return "status/changedPasswd";
+			
+		} catch (Exception e) {
+			// 예외 처리
+			e.printStackTrace();
+			model.addAttribute("error", "입력하신 정보가 잘못됐습니다.");
+			return "redirect:/findError";
+		}
+		
 	}
 
 	// 회원가입
