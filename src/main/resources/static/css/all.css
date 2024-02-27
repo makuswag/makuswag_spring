@@ -1,4 +1,35 @@
 @charset "UTF-8";
+.catalog-bestseller {
+    background-color: #d0c9ba;
+    padding: 30px;
+    margin-bottom: 120px;
+    text-align: center;
+}
+.catalog-header {
+    margin-bottom: 20px;
+}
+.catalog-header .category-title {
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.catalog-header .catalog-nav {
+    display: flex;
+    flex-wrap: wrap;
+}
+.catalog-header .catalog-nav .item {
+    display: inline-block;
+    margin-right: 12px;
+    margin-bottom: 12px;
+}
+
+.catalog-header .catalog-nav .item a {
+    background-color: #c7bfae;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 13px 20px;
+}
+
 
 .board {
 	width: 100%;
