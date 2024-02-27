@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class HashMapConfig {
  
+	
 	@Bean
     HashMap<String, Object> hashMap() {
     	return new HashMap<String, Object>();

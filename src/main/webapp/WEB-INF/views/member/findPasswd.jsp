@@ -8,7 +8,8 @@
 <link rel="stylesheet" href="./css/all.css">
 <link rel="stylesheet" href="./css/all2.css">
 <link rel="stylesheet" href="./css/login.css">
-<link rel="icon" href="./images/CompanyLogo.png"> <!-- 인터넷 창 아이콘에 로고 나오게 하기 -->
+<link rel="icon" href="./images/CompanyLogo.png">
+<!-- 인터넷 창 아이콘에 로고 나오게 하기 -->
 </head>
 <body class="nav-expended">
 	<!-- ============================== [[ Header  section]] ==============================-->
@@ -31,7 +32,8 @@
 
 				<!-- 여기서 부터 작성 -->
 				<div class="entry-page">
-					<form id="findIdEmail_form" name="" action="findPwEmail" method="post">
+					<form id="findIdEmail_form" name="" action="findPwEmail"
+						method="post">
 
 						<div class="xans-element- xans-member xans-member-login login ">
 							<div class="login-header">
@@ -40,12 +42,14 @@
 							<fieldset>
 								<legend>비밀번호 찾기</legend>
 								<div class="form-field">
-									<label for="name">아이디</label> <input id="userId" name="userId"
-										class="inputTypeText" placeholder="" value="" type="text" required>
-									<label for="name">이름</label> <input id="name" name="name"
-										class="inputTypeText" placeholder="" value="" type="text" required>
-									<label for="email">Email</label> <input id="email" name="email"
-										class="inputTypeText" placeholder="가입 당시 이메일을 작성하여 주세요." value="" type="email" required>
+									<label for="userId">아이디</label> <input id="userId"
+										name="userId" class="inputTypeText" placeholder="" value=""
+										type="text" required> <label for="name">이름</label> <input
+										id="name" name="name" class="inputTypeText" placeholder=""
+										value="" type="text" required> <label for="email">Email</label>
+									<input id="email" name="email" class="inputTypeText"
+										placeholder="가입 당시 이메일을 작성하여 주세요." value="" type="email"
+										required>
 								</div>
 								<br> <br> <br>
 								<div class="login-footer">
@@ -55,12 +59,13 @@
 									</div>
 								</div>
 							</fieldset>
-						</div> 
+						</div>
 					</form>
-					
+				
 				</div>
 				<script>
 			    // 이메일 유효성 검사 정규식
+			    const idRegex = /^[a-z0-9]{4,16}$/;
 			    const nameCheck = /^[가-힣a-zA-Z]{1,10}$/;
 			    const emailRegex = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
 			
@@ -68,10 +73,16 @@
 			        e.preventDefault(); // 기본 동작 중단
 			
 			        // 필드 값 가져오기
+			        const idField = document.getElementById('userId');
 			        const nameField = document.getElementById('name');
 			        const emailField = document.getElementById('email');
 			
 			        // 이름 유효성 검사
+			        if (!idRegex.test(idField.value)) {
+						alert('아이디는 영문 소문자, 숫자로 4자 이상, 16자 이하여야만 합니다.');
+						return;
+					}
+			        
 			        if (!nameCheck.test(nameField.value)) {
 			            alert('이름을 제대로 입력해주세요.');
 			            return;
@@ -87,14 +98,21 @@
 			        this.submit();
 			    });
 			
+			    
 			    // Enter 키 이벤트 리스너 등록
 			    document.addEventListener('keydown', function (e) {
 			        if (e.key === 'Enter') {
 			            // 필드 값 가져오기
+			            const idField = document.getElementById('userId');
 				        const nameField = document.getElementById('name');
 			            const emailField = document.getElementById('email');
 			
 			            // 값이 비어 있는지 확인하고 알림 창 띄우기
+		             	if (idField.value.trim() === '') {
+			                alert('아이디는 필수 입력 값입니다.');
+			                return;
+			            }
+			            
 			            if (nameField.value.trim() === '') {
 			                alert('이름은 필수 입력 값입니다.');
 			                return;
@@ -108,12 +126,11 @@
 			        }
 			    });
 				</script>
-				
 				<!-- 여기까지 작성 -->
 
-			<!-- ============================== [[ Body  section]] ==============================-->
+				<!-- ============================== [[ Body  section]] ==============================-->
 
-			<!-- =============================  [[ Footer section ]]  ============================= -->
+				<!-- =============================  [[ Footer section ]]  ============================= -->
 
 				<%@ include file="../include/footer.jsp"%>
 
