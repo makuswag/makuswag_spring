@@ -6,6 +6,21 @@
     <meta charset="UTF-8">
     <title>Product Bar Chart</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+    
+     body {
+            font-size: 14px; /* 기본 폰트 크기 */
+        }
+ @media screen and (max-width: 768px) {
+            /* 화면 너비가 768px 이하일 때 적용되는 스타일 */
+            /* 예시: 너비가 축소되면 폰트 크기를 줄입니다. */
+            body {
+                font-size: 14px;
+            }
+        }
+    
+    
+    </style>
 </head>
 <body>
     <div class="chart-container">
@@ -42,6 +57,7 @@
                 }]
             },
             options: {
+                maintainAspectRatio: false,
                 scales: {
                     y: {
                         beginAtZero: true

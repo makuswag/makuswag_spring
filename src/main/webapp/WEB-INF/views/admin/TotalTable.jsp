@@ -13,7 +13,32 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome CDN 추가 -->
     <style>
+    #searchForm {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        } 
+        
+     @media screen and (max-width: 768px) {
+    /* 화면 폭이 작을 때 */
+    #result {
+        display: block;
+        overflow-x: hidden;
+        width: calc(100% - 200px);
+        max-height:500px;
+        margin-left:10px;
+        overflow-y: auto;
+       
+         /* 위에서 10% 떨어지도록 설정 */
+        /* 위에 올 수 있도록 설정 */
+    }#searchForm{
+    
+    margin-left: 20px;}   
+           
     </style>
+    
 <script>
 $(document).ready(function() {
     // 카테고리 옵션 변경 시 동작
@@ -85,7 +110,7 @@ $(function() {
 
 </head>
 <body>
-    <form action="listQuery3" method="post">
+    <form action="listQuery3" method="post" id="searchForm">
         <select name="query" id="query">
             <option value="proCategory">카테고리</option> 
             <option value="proName">제품이름</option>

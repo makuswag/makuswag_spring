@@ -197,25 +197,25 @@
 <div class="single-product">
 
 	<div class="xans-element- xans-product xans-product-image product-images">
-	<div class="slide "><img src="${pageContext.request.contextPath}/images/${detailDto.proImage1}" class="primary-image" alt="${detailDto.proName}"></div>
-	<div class="slide "><img src="${pageContext.request.contextPath}/images/${detailDto.proImage2}" class="primary-image" alt="${detailDto.proName}"></div>
-	<div class="slide "><img src="${pageContext.request.contextPath}/images/${detailDto.proImage3}" class="primary-image" alt="${detailDto.proName}"></div>
+	<div class="slide "><img src="${pageContext.request.contextPath}/images/admin/${allinone_detail.proImage1}" class="primary-image" alt="${detailDto.proName}"></div>
+	<div class="slide "><img src="${pageContext.request.contextPath}/images/admin/${allinone_detail.proImage2}" class="primary-image" alt="${detailDto.proName}"></div>
+	<div class="slide "><img src="${pageContext.request.contextPath}/images/admin/${allinone_detail.proImage3}" class="primary-image" alt="${detailDto.proName}"></div>
 </div>
 </div>
                 <div class="product-essential"style="top: 15%;">
                 
                     <div class="xans-element- xans-product xans-product-detail product-info sidebar">
                         <div class="product-name">
-                            <h2>${detailDto.proName}</h2>
+                            <h2>${allinone_detail.proName}</h2>
                         </div>
                         <div class="product-price" data-price-was="0.00" data-price-now="68000" data-stock>
-                            <span class="price-now">${detailDto.proPrice}KRW<br><br><br></span>
+                            <span class="price-now">${allinone_detail.proPrice}KRW<br><br><br></span>
                         </div>
                      <div class="product-description" style="margin-left: -40px; margin-top: 0px !important;">
                       
     <span style="font-size:12px;color:#555555; line-height: 1; padding-left: 40px;">
 
-		${detailDto.proIntroduction }
+		${allinone_detail.proIntroduction }
     </span>
 <div class="more-info" style="margin-left: 35px; padding-left: 10px; ">
     <span class="sizeguide-button" style="display: inline-block; margin-right: 10px;">Size Guide</span>
@@ -256,7 +256,7 @@
 
         <!-- =============================  [[ Footer section ]]  ============================= -->
   <script>
-        var stockQuantity = ${detailDto.proQty}; // 상품의 재고량
+        var stockQuantity = ${allinone_detail.proQty}; // 상품의 재고량
         var soldOutButton = document.querySelector('.sold-out');
         var buyNowButton = document.querySelector('.buy-now');
 
