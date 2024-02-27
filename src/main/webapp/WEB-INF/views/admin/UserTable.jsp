@@ -12,6 +12,13 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome CDN 추가 -->
     <style>
+         #searchForm {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }    
     </style>
 <script>
 $(function() {
@@ -85,12 +92,12 @@ $(function() {
     });
 });
 </script>
-
+ 
 
 
 </head>
 <body>
-    <form action="listQuery" method="post">
+    <form action="listQuery" method="post" id="searchForm">
         <select name="query" id="query">
             <option value="userId">아이디</option> 
             <option value="name">이름</option>
