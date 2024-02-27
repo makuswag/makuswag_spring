@@ -183,7 +183,10 @@ FROM product
 	SELECT min(proSeq) as proSeq, proName, min(proPrice) as proPrice,min(proImage1) as proImage1,min(proImage2) as proImage2, sum(proQty) as totalProQty FROM product  WHERE proCategory = 'All-in-one' group by proName
 </select>
 <select id="detail" parameterType="String" resultType="com.springlec.base.model.AdminDto">
-    SELECT * FROM book WHERE proSeq = #{proSeq}
+    SELECT min(proSeq) as proSeq, proName, min(proPrice) as proPrice, min(proImage1) as proImage1, min(proImage2) as proImage2,min(proImage3) as proImage3,min(proIntroduction) as proIntroduction,sum(proQty) as proQty FROM product WHERE proName=#{proName} group by proName
+</select>
+<select id="color" parameterType="String" resultType="String" >
+    SELECT DISTINCT proColor FROM product WHERE proName=#{proName}
 </select>
 
 </mapper>

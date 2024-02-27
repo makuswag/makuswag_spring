@@ -516,6 +516,8 @@ public class AdminController {
 		public String detail(HttpServletRequest request, @RequestParam("proName") String proName, Model model) throws Exception{
 			AdminDto allinone_detail = service.detail(proName); // bId에 해당하는 게시물 정보를 가져옴
 			model.addAttribute("allinone_detail", allinone_detail); // 모델에 게시물 정보를 추가
+			List<String> colors = service.color(proName);
+			model.addAttribute("colors", colors);
 			return "category/allinone_detail"; // content_view 페이지로 이동
 	}
 }

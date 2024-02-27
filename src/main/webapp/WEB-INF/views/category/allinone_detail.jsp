@@ -34,6 +34,46 @@
     width: 100%;
     height: auto;
 }
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background-color: #e6e5e0;
+    padding: 20px;
+    width: 90%;
+    
+    overflow-y: auto; /* 내용이 넘칠 경우 스크롤이 생기도록 설정 */
+    max-width: 420px;
+    padding: 30px;
+    height: 70%;
+    z-index: 9999;
+    transition: transform 0.5s ease;
+}
+
+.popup.show {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+    transition: background-color 0.5s ease;
+}
+#selectedColor {
+    position: relative;
+    z-index: 10000;
+}
+.overlay.show {
+    background-color: rgba(0, 0, 0, 0.5); /* 어두운 색상으로 변경 */
+}
+
 .product-description {
    position: relative;
    top:-50px;
@@ -167,7 +207,7 @@
 <body class="nav-expended">
     <!-- ============================== [[ Header  section]] ==============================-->
 
-    <%@ include file="include/header.jsp"%>
+    <%@ include file="../include/header.jsp"%>
 
     <!-- ============================== [[ Header  section]] ==============================-->
 
@@ -175,7 +215,7 @@
     <div class="site-main">
         <div class="container">
 
-            <%@ include file="include/sidemenu.jsp"%>
+            <%@ include file="../include/sidemenu.jsp"%>
 
             <!-- ============================== [[ Sidebar  section]] ==============================-->
 
@@ -248,13 +288,73 @@
 
                 <!-- 여기서 부터 작성 -->
 
-
-
-                <%@ include file="include/footer.jsp"%>
-
+<!-- 팝업에 표시할 내용 -->
+<div class="popup-content" style="display:none; align-content: center;">
+    <br><br><h2>${allinone_detail.proName}</h2><br><br>
+    <div class="xans-element- xans-product xans-product-option product-options xans-record-">
+        <ul class="xans-element- xans-product xans-product-option xans-record-">
+            <li>
+                <div class="option-label" style="font-weight: 900; font-size:18px; font-style: italic; font-family: 'Avenir Next', 'KoPub Dotum', sans-serif;">Colors</div>
+                <div class="option-value">
+                    <span class="select-field">
+                        <select id="colorSelect" style="width:350px;" onchange="updateSelectedOption('colorSelect')">
+                            <option value="" selected>-[필수]색상을 선택해 주세요-</option>
+                            <option value="" disabled="disabled">---------------------</option>
+                            <!-- colors 변수를 반복하여 옵션을 추가 -->
+                            <c:forEach var="color" items="${colors}" varStatus="status">
+                                <option value="${color}">${color}</option>
+                            </c:forEach>
+                        </select>
+                    </span>
+                </div>
+            </li>
+            <li>
+                <br> <div class="option-label" style="font-weight: 900; font-size:18px; font-style: italic;">Size</div>
+                <div class="option-value">
+                    <span class="select-field">
+                        <select id="sizeSelect" style="width:350px;" onchange="updateSelectedOption('sizeSelect')">
+                            <option value="" selected>-[필수]사이즈를 선택해 주세요-</option>
+                            <option value="" disabled="disabled">---------------------</option>
+                            <option value="FREE">FREE</option> <!-- 수정된 부분 -->
+                        </select><br>
+                    </span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- 선택한 사이즈와 컬러를 표시할 영역 -->
+    <div id="selectedSizeAndColor" style="margin-top: 20px;">
+        <p id="selectedSize"></p>
+        <p id="selectedColor"></p>
+    </div>
 </div>
+<script>
+function updateSelectedOption(selectId) {
+    var selectedColor = document.getElementById("colorSelect").value;
+    var selectedSize = document.getElementById("sizeSelect").value;
+    
+    updateSelectedLabel(selectedColor, selectedSize); // 선택된 옵션에 따라 라벨 업데이트
+}
 
-        <!-- =============================  [[ Footer section ]]  ============================= -->
+function updateSelectedLabel(selectedColor, selectedSize) {
+    var colorText = (selectedColor !== "") ? selectedColor : "-[필수]색상을 선택해 주세요-";
+    var sizeText = (selectedSize !== "") ? selectedSize : "-[필수]사이즈를 선택해 주세요-";
+    
+    document.getElementById("selectedColor").innerText = colorText;
+    document.getElementById("selectedSize").innerText = sizeText;
+    
+    var label = document.getElementById("selectedSizeAndColor");
+    if (colorText !== "-[필수]색상을 선택해 주세요-" && sizeText !== "-[필수]사이즈를 선택해 주세요-") {
+        label.innerHTML = "<p>선택한 사이즈: " + sizeText + "</p><p>선택한 컬러: " + colorText + "</p>";
+    } else {
+        label.innerHTML = "";
+    }
+}
+</script>
+
+
+
+
   <script>
         var stockQuantity = ${allinone_detail.proQty}; // 상품의 재고량
         var soldOutButton = document.querySelector('.sold-out');
@@ -269,5 +369,36 @@
             buyNowButton.classList.remove('displaynone');
         }
     </script>
+<script>
+//BUY NOW 버튼 클릭 시 모달 창 표시
+$('.buy-now').on('click', function() {
+    var overlay = document.createElement('div');
+    overlay.classList.add('overlay');
+    document.body.appendChild(overlay);
+
+    var popup = document.createElement('div');
+    popup.classList.add('popup');
+
+    // 팝업에 내용을 추가하는 부분 수정
+    var popupContent = $('.popup-content').html();
+    popup.innerHTML = popupContent;
+
+    // 모달 창에 추가
+    document.body.appendChild(popup);
+
+    // 요소를 추가한 직후에 클래스를 추가하여 애니메이션 효과 시작
+setTimeout(function() {
+    overlay.classList.add('show');
+    popup.classList.add('show');
+    // 팝업이 표시된 후에 값을 가져옴
+    var productName = '${allinone_detail.proName}';
+    document.getElementById('selectedSize').innerText = '선택된 사이즈: ';
+    document.getElementById('selectedColor').innerText = '선택된 컬러: ' + productName;
+}, 100); // 0.1초 후에 애니메이션 시작 // 0.1초 후에 애니메이션 시작
+});
+</script>
+
+	<%@ include file="../include/footer.jsp"%>
+    
     </body>
     </html>
