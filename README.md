@@ -1,3 +1,11 @@
+  <p align="center" >
+  당신을 Swag 있게 만들어줄 쇼핑몰
+  </p>
+
+<p align="center">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=Mak&nbsp;&nbsp;U&nbsp;&nbsp;Swag&fontSize=90" />
+</p>
+
 
 
 <h2>Mak U Swag 로고 들어갈 자리</h2>
@@ -101,6 +109,68 @@ qnaContent 구현
 
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=tjdwlsaos22&show_icons=true&theme=radical)
 <br>
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=Mak&nbsp;&nbsp;U&nbsp;&nbsp;Swag&fontSize=90" />
+</p>
+
+<h1 align="center">당신을 Swag 있게 만들어줄 쇼핑몰</h1>
+
+<h2 align="center">목차</h2>
+
+1. [개요](#개요)
+2. [프로젝트 정보](#프로젝트-정보)
+3. [진행상황](#진행상황)
+4. [팀원 깃 활동](#팀원-깃-활동)
+
+## 개요
+
+- **프로젝트 이름:** Make U Swag
+- **프로젝트 기간:** 2024-02-21 ~ 2024-02-29
+- **개발 엔진 및 언어:**
+  - <img alt="Java" src ="https://img.shields.io/badge/Java-007396.svg?&style=for-the-badge&logo=Java&logoColor=white"/>
+  - <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+  - <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
+  - <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+  - <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+- **팀원:**
+  - 팀장: 진성진
+  - 팀원: 박정민, 이대근, 박지환
+
+## 프로젝트 정보
+
+프로젝트에 대한 정보를 여기에 작성합니다.
+
+## 진행상황
+
+- **2024-01-30:** Clone Site List UP
+- **2024-01-31:** ERD 작성
+- **2024-02-01:**
+  - DB, EER 구성
+  - ERD 수정
+  - SFD 작성
+  - Project PPT 작성
+- **2024-02-02:**
+  - Git Project 생성
+  - Chart.js를 활용한 chart R&D
+- **2024-02-03:**
+  - RestfulAPI (카카오, 구글, 네이버 API) R&D
+
+... (진행상황을 계속 업데이트)
+
+## 팀원 깃 활동
+
+- **박지환:**
+  ![GitHub stats](https://github-readme-stats.vercel.app/api?username=zlzlwn&show_icons=true&theme=radical)
+
+- **박정민:**
+  ![GitHub stats](https://github-readme-stats.vercel.app/api?username=tom3017&show_icons=true&theme=radical)
+
+- **이대근:**
+  ![GitHub stats](https://github-readme-stats.vercel.app/api?username=GerrardCoding&show_icons=true&theme=radical)
+
+- **진성진:**
+  ![GitHub stats](https://github-readme-stats.vercel.app/api?username=tjdwlsaos22&show_icons=true&theme=radical)
 
 
 
