@@ -2,6 +2,8 @@ package com.springlec.base.service;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,11 @@ public class ProductDetailInformationDaoServiceImpl implements ProductDetailInfo
 	public ProductDetailInformationDto productdetail() throws Exception {
 		// TODO Auto-generated method stub
 		return dao.productdetail();
+	}
+	@Override
+	public List<String> color() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.color();
 	}
 
 
