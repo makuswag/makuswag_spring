@@ -123,7 +123,7 @@
 			style="display: none; align-content: center;">
 			<span data-remodal-action="close" class="close-button"></span>
 			<div class = "product-name">			
-			<h2>${productDetailInformation.proName}</h2>
+			<h2>${productDetailInformation.proName}</h2><br><br>
 			</div>
 			<div
 				class="xans-element- xans-product xans-product-option product-options xans-record-">

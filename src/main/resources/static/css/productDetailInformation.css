@@ -97,6 +97,7 @@ table {
 .product-name h2 {
 	font-size: 18px;
 	margin-top: 5px;
+	text-align: center;
 }
 
 .product-price {
