@@ -11,11 +11,24 @@ public class QnaWriteDto {
 	String qnaContent;
 	String qnaImage;
 	Timestamp qnaDate;
+	int parents1;
 	
 	
 	
 	public QnaWriteDto() {
 		
+	}
+
+
+
+	public int getParents1() {
+		return parents1;
+	}
+
+
+
+	public void setParents1(int parents1) {
+		this.parents1 = parents1;
 	}
 
 

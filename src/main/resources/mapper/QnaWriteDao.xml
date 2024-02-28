@@ -6,9 +6,9 @@
 <mapper namespace="com.springlec.base.dao.QnaWriteDao">
 	<insert id="writeDao">
 		insert into qna
-		(userId, qnaTitle, qnaCategory, qnaContent, qnaImage, qnaDate) 
+		(userId, qnaTitle, qnaCategory, qnaContent, qnaImage, qnaDate,parents1) 
 		values
-		(#{userId}, #{qnaTitle},  #{qnaCategory},  #{qnaContent},  #{qnaImage}, now())
+		(#{userId}, #{qnaTitle},  #{qnaCategory},  #{qnaContent},  #{qnaImage}, now(),"0")
 	</insert>
 
 </mapper>

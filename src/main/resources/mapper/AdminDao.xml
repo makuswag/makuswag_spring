@@ -215,7 +215,51 @@ FROM product
     SET userId = #{userId}, noCategory = #{noCategory}, noTitle = #{noTitle},noContent = #{noContent},noImage=#{noImage},noDate=now()
     WHERE noSeq = #{noSeq}
 	</select>
+	<select id="modify_no1" parameterType="com.springlec.base.model.AdminDto">
+    UPDATE notice
+    SET userId = #{userId}, noCategory = #{noCategory}, noTitle = #{noTitle},noContent = #{noContent},noDate=now()
+    WHERE noSeq = #{noSeq}
+	</select>
+	<select id="modify_qna" parameterType="com.springlec.base.model.AdminDto">
+    UPDATE qna
+    SET userId = #{userId}, qnaCategory = #{qnaCategory}, qnaTitle = #{qnaTitle},qnaContent = #{qnaContent},qnaImage=#{qnaImage},qnaDate=now()
+    WHERE qnaSeq = #{qnaSeq}
+	</select>
+	<select id="modify_qna1" parameterType="com.springlec.base.model.AdminDto">
+    UPDATE qna
+    SET userId = #{userId}, qnaCategory = #{qnaCategory}, qnaTitle = #{qnaTitle},qnaContent = #{qnaContent},qnaDate=now()
+    WHERE qnaSeq = #{qnaSeq}
+	</select>
 	<select id="modifyselect" parameterType="int" resultType="com.springlec.base.model.AdminDto">
     SELECT * FROM notice WHERE noSeq = #{noSeq}
 	</select>
+	<select id="modifyselect1" parameterType="int" resultType="com.springlec.base.model.AdminDto">
+    SELECT * FROM qna WHERE qnaSeq = #{qnaSeq}
+	</select>
+		<insert id="writeDao1">
+		insert into qna
+		(userId, qnaTitle, qnaCategory, qnaContent, qnaImage, qnaDate,parents1) 
+		values
+		(#{userId}, #{qnaTitle},  #{qnaCategory},  #{qnaContent},  #{qnaImage}, now(),"0")
+	</insert>
+	<select id="qnaQueryadmin" resultType="com.springlec.base.model.AdminDto">
+	<!--select * from book where ${query} like concat('%',#{content},'%')-->
+	SELECT qnaSeq,userId,qnaTitle,qnaCategory,qnaContent,qnaDate
+FROM qna 
+WHERE ${query} LIKE #{content} ORDER BY qnaSeq DESC
+	
+	</select>
+	<insert id="parents">
+		insert into qna
+		(parents) 
+		values
+		(#{parents})
+	</insert>
+			<insert id="writeanswer">
+		insert into qna
+		(userId, qnaTitle, qnaCategory, qnaContent, qnaImage, qnaDate,parents1,parents) 
+		values
+		(#{userId}, #{qnaTitle},  #{qnaCategory},  #{qnaContent},  #{qnaImage}, now(),"1",#{parents})
+	</insert>
+
 </mapper>

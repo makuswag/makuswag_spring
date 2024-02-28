@@ -57,6 +57,9 @@ public class AdminDto {
 	private String qnaImage;
 	private String qnaDate;
 	private int noSeq;
+	private int parents1;
+	private int parents;
+	private String qnaCategory;
     
     
     
@@ -65,6 +68,24 @@ public class AdminDto {
     
     
     
+	public int getParents1() {
+		return parents1;
+	}
+	public void setParents1(int parents1) {
+		this.parents1 = parents1;
+	}
+	public int getParents() {
+		return parents;
+	}
+	public void setParents(int parents) {
+		this.parents = parents;
+	}
+	public String getQnaCategory() {
+		return qnaCategory;
+	}
+	public void setQnaCategory(String qnaCategory) {
+		this.qnaCategory = qnaCategory;
+	}
 	public int getNoSeq() {
 		return noSeq;
 	}

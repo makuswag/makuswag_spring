@@ -90,11 +90,7 @@ public class MainController {
 		return "category/best_100";
 	}
 
-	// all_in_one
-	@GetMapping("all_in_one")
-	public String all_in_one() throws Exception {
-		return "category/all_in_one";
-	}
+
 
 //	// outer
 //	@GetMapping("outer")

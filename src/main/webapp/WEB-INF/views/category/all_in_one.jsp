@@ -142,26 +142,13 @@ h2 {
             <div class= "xans-element- xans-product xans-product-headcategory category-title">
             <h2>All-in-one</h2>
             </div>
-            <div class="catalog-nav">
-                <div class="xans-element- xans-product xans-product-headcategory categories">
-                    <span class="item">
-                        <a href="#">All</a>
-                    </span>    
-                    <span style="display: ;" class="xans-element- xans-product xans-product-displaycategory item  xans-record-">
-                        <a href="#">Jump Suit</a>
-                    </span>
-                    <span style="display: ;" class="xans-element- xans-product xans-product-displaycategory item  xans-record-">
-                        <a href="#">Overalls</a>
-                    </span>
-                </div> 
-            </div>
         </div>
         <div class="xans-element- xans-product xans-product-normalpackage catalog">
     <div class="xans-element- xans-product xans-product-listnormal">
         <div class="product-tiles">
             <c:forEach items="${listPerPage}" var="dto">
                 <div class="tile xans-record-">
-                    <a href="allinone_detail?proName=${dto.proName}">  
+                    <a href="productDetailInformation?proName=${dto.proName}">  
                         <div class="product-image">
                             <img src="${pageContext.request.contextPath}/images/product/${dto.proImage1}" class="primary-image" alt="${dto.proName}">
                             <img src="${pageContext.request.contextPath}/images/product/${dto.proImage2}" class="secondary-image" alt="${dto.proName}">

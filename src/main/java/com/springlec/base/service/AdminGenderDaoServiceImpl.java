@@ -300,6 +300,8 @@ public class AdminGenderDaoServiceImpl implements AdminGenderDaoService {
 			
  		return noImage;}
 
+	
+	
 	@Override
 	public AdminDto contentDao(int qnaSeq, String qnaTitle, String qnaContent, String qnaImage, String qnaDate)
 			throws Exception {
@@ -338,6 +340,85 @@ public class AdminGenderDaoServiceImpl implements AdminGenderDaoService {
 		return dao.modifyselect(noSeq);
 	}
 
+	@Override
+	public void modify_no1(AdminDto adminDto) throws Exception {
+		// TODO Auto-generated method stub
+		dao.modify_no1(adminDto);
+	}
+
+	@Override
+	public void writeDao1(String qnaTitle, String qnaCategory, String qnaContent, String qnaImage, String userId)
+			throws Exception {
+		// TODO Auto-generated method stub
+		dao.writeDao1(qnaTitle, qnaCategory, qnaContent, qnaImage, userId);
+	}
+
+	@Override
+	public String uploadfile2(MultipartFile file) throws Exception {
+		String qnaImage = file.getOriginalFilename();
+		UUID uuid = UUID.randomUUID();
+		qnaImage = uuid + qnaImage;
+		
+		// 파일 업로드 처리
+		
+		if(qnaImage !=null) {
+			try {
+				//파일 업로드
+				//저장 경로
+				String path = System.getProperty("user.dir") + "/src/main/resources/static/images/board";
+				file.transferTo(new File(path + "/" + qnaImage));
+				
+				
+				
+			}catch(IOException i) {
+				i.printStackTrace();
+			}
+			
+		}
+			
+ 		return qnaImage;}
+
+	@Override
+	public AdminDto modifyselect1(int qnaSeq) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.modifyselect1(qnaSeq);
+	}
+
+	@Override
+	public void modify_qna(AdminDto adminDto) throws Exception {
+		// TODO Auto-generated method stub
+		dao.modify_qna(adminDto);
+	}
+
+	@Override
+	public void modify_qna1(AdminDto adminDto) throws Exception {
+		// TODO Auto-generated method stub
+		dao.modify_qna1(adminDto);
+	}
+
+	@Override
+	public List<AdminDto> qnaQueryadmin(String query, String content) throws Exception {
+		// TODO Auto-generated method stub
+		content='%'+content+'%';
+		return dao.qnaQueryadmin(query, content);
+	}
+
+	@Override
+	public void parents(AdminDto adminDto) throws Exception {
+		// TODO Auto-generated method stub
+		dao.parents(adminDto);
+	}
+
+	@Override
+	public void writeanswer(String qnaTitle, String qnaCategory, String qnaContent, String qnaImage, String userId,
+			int qnaSeq) throws Exception {
+		// TODO Auto-generated method stub
+		dao.writeanswer(qnaTitle, qnaCategory, qnaContent, qnaImage, userId, qnaSeq);
+	}
+
+
+
+	
 
 
 
