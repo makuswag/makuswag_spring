@@ -59,21 +59,21 @@
 						<div class="slide ">
 							<img
 								src="${pageContext.request.contextPath}/images/product/${productDetailInformation.proImage1}"
-								class="primary-image">
+								class="primary-image"><br><br>
 						</div>
 						<div class="slide ">
 							<img
 								src="${pageContext.request.contextPath}/images/product/${productDetailInformation.proImage2}"
-								class="primary-image"">
+								class="primary-image""><br><br>
 						</div>
 						<div class="slide ">
 							<img
 								src="${pageContext.request.contextPath}/images/product/${productDetailInformation.proImage3}"
-								class="primary-image"">
+								class="primary-image""><br><br>
 						</div>
 					</div>
 				</div>
-				<div class="product-essential" style="top: 15%;">
+				<div class="product-essential" style="top: 20%;">
 
 					<div
 						class="xans-element- xans-product xans-product-detail product-info sidebar">
@@ -82,16 +82,16 @@
 						</div>
 						<div class="product-price" data-price-was="0.00"
 							data-price-now="68000" data-stock>
-							<span class="price-now">${productDetailInformation.proPrice}KRW<br>
+							<span class="price-now">${productDetailInformation.proPrice} KRW<br>
 								<br> <br></span>
 						</div>
 						<div class="product-description"
-							style="margin-left: -40px; margin-top: 0px !important;">
+							style=" margin-top: 0px !important;">
 
 							<span
-								style="font-size: 12px; color: #555555; line-height: 1; padding-left: 40px;">
+								style="font-size: 12px; color: #555555; line-height: 1;">
 
-								${productDetailInformation.proIntroduction } </span>
+								<br>${productDetailInformation.proIntroduction } </span>
 						</div>
 
 					</div>
