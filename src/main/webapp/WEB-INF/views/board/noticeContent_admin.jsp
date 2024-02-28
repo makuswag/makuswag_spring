@@ -21,7 +21,7 @@
     
     function UpdateQna(noSeq){
     	if(confirm("수정 하시겠습니까?")){
-    		window.location.href = "noUpdate?noSeq=" + noSeq;
+    		window.location.href = "noUpdate?noSeq=${content_view.noSeq}"
     	}else{
     		// 사용자가 "아니오"를 선택한 경우 아무 작업도 수행 하지 않습니다.
     	}

@@ -53,4 +53,7 @@ public interface AdminGenderDaoService {
 	 public AdminDto contentDao(int qnaSeq, String qnaTitle, String qnaContent, String qnaImage, String qnaDate) throws Exception;
 	 public AdminDto contentDao1(int noSeq, String noTitle, String noContent, String noImage, String noDate) throws Exception; 
 	 public void deleteDao(int noSeq) throws Exception;
+	 public void deleteQna(int qnaSeq) throws Exception;
+	 public void modify_no(AdminDto adminDto) throws Exception;
+	 public AdminDto modifyselect(int noSeq) throws Exception;
 }

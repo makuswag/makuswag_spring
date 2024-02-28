@@ -13,7 +13,7 @@
 <script>
     function confirmDelete(noSeq) {
         if (confirm("삭제 하시겠습니까?")) {
-            window.location.href = "qnaDelete?qnaSeq=" + qnaSeq;
+            window.location.href = "qnaDelete_admin?qnaSeq=${content_view.qnaSeq}"
         } else {
             // 사용자가 "아니오"를 선택한 경우 아무 작업도 수행하지 않습니다.
         }

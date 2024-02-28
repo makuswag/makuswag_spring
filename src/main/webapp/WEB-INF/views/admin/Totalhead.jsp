@@ -92,7 +92,7 @@ body {
     <nav class="navbar">
         <div class="navbar__logo">
             
-            <a href="manager.do">
+            <a href="manager1">
     <img src="./images/CompanyLogo.png" alt="로고" style="width: 82.2px; margin-top:45.2px; margin-left: 38.5px;">
 </a>
         </div>
@@ -101,7 +101,7 @@ body {
             <li><a href="productmanager">상품관리</a></li>
             <li><a href="totalmanager">매출</a></li>
             <li><a href="#">게시판관리</a></li>
-            <li><a href="logout.do">로그아웃</a></li>
+            <li><a href="logout">로그아웃</a></li>
             
         </ul>
         <ul class="navbar__links">
