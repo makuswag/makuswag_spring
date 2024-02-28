@@ -46,4 +46,29 @@ public class UserServiceImpl implements UserDaoService {
 		dao.changePasswd(userPasswd, userId);
 	}
 
+	@Override
+	public HashMap<String, Object> checkDuplicatedId(String userId) throws Exception {
+		// 아이디가 중복되었다면 1, 아니면 0
+		if(dao.checkDuplicatedId(userId) == 1) { 
+			data.put("result", "false");
+		}
+		else {
+			data.put("result", "true");
+		}
+		return data;
+	}
+
+	@Override
+	public HashMap<String, Object> checkDuplicatedEmail(String email, HttpServletRequest request) throws Exception {
+		// 아이디가 중복되었다면 1, 아니면 0
+		if(dao.checkDuplicatedEmail(email) != 0) {
+			data.put("result", "false");
+			return data;
+		}
+		else {
+			data.put("result", "true");
+		}
+		return data;
+	}
+
 }
