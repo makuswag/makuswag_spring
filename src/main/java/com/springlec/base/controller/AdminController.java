@@ -24,11 +24,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.springlec.base.model.AdminDto;
+import com.springlec.base.model.FaqDto;
+import com.springlec.base.model.UserDto;
 import com.springlec.base.service.AdminGenderDaoService;
 
 import ch.qos.logback.core.Context;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class AdminController {
@@ -520,4 +523,50 @@ public class AdminController {
 			model.addAttribute("colors", colors);
 			return "category/allinone_detail"; // content_view 페이지로 이동
 	}
+		@GetMapping("FAQ")
+			public String FAQ(Model model) throws Exception{
+			return "redirect:faq_admin";
+		}
+		@GetMapping("QNA")
+		public String QNA() {
+			return "redirect:qna_admin";
+		}
+		@GetMapping("NOTICE")
+		public String NOTICE() {
+			return "redirect:notice_admin";
+		}
+		
+		@GetMapping("noticeWrite_view")
+		public String writeview(HttpSession session) throws Exception{
+			
+			
+			
+			return "board/noticewrite_admin";
+			
+		}
+		@PostMapping("noWriteSubmit")
+		public String write(HttpServletRequest request, @RequestParam (name = "noImage", required = false)MultipartFile file) throws Exception{
+			HttpSession session = request.getSession();
+			UserDto user = (UserDto) session.getAttribute("user");
+			String userId = user.getUserId();
+
+			System.out.println(userId);
+			System.out.println(System.getProperty("user.dir") + "/src/main/resources/static/images");
+			
+			
+			String noImage = null;
+			
+			if (file != null && !file.isEmpty()) noImage = service.uploadfile1(file);
+			String noTitle = request.getParameter("noTitle");
+			String noCategory = request.getParameter("noCategory");
+			String noContent = request.getParameter("noContent");
+			
+			
+			service.writeDao(noTitle, noCategory, noContent, noImage, userId);
+			
+			System.out.println(noImage);
+			
+			return "redirect:notice_admin";
+			
+		}
 }

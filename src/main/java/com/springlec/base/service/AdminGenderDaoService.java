@@ -48,7 +48,8 @@ public interface AdminGenderDaoService {
 	 public List<AdminDto> allinone() throws Exception;
 	 public AdminDto detail(String proName) throws Exception;
 	 public List<String> color(String proName) throws Exception;
-
+	 public void writeDao(String noTitle, String noCategory, String noContent, String noImage, String userId) throws Exception;
+	 public String uploadfile1(MultipartFile file) throws Exception;
 
 
 }

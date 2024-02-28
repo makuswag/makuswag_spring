@@ -268,6 +268,37 @@ public class AdminGenderDaoServiceImpl implements AdminGenderDaoService {
 		return dao.color(proName);
 	}
 
+	@Override
+	public void writeDao(String noTitle, String noCategory, String noContent, String noImage, String userId)
+			throws Exception {
+		// TODO Auto-generated method stub
+		dao.writeDao(noTitle, noCategory, noContent, noImage, userId);
+	}
+
+	@Override
+	public String uploadfile1(MultipartFile file) throws Exception {
+		String noImage = file.getOriginalFilename();
+		UUID uuid = UUID.randomUUID();
+		noImage = uuid + noImage;
+		
+		// 파일 업로드 처리
+		
+		if(noImage !=null) {
+			try {
+				//파일 업로드
+				//저장 경로
+				String path = System.getProperty("user.dir") + "/src/main/resources/static/images/board";
+				file.transferTo(new File(path + "/" + noImage));
+				
+				
+				
+			}catch(IOException i) {
+				i.printStackTrace();
+			}
+			
+		}
+			
+ 		return noImage;}
 
 
 
