@@ -237,15 +237,6 @@
 								const birthdayField2 = document.getElementById('birthMonth').value;
 								const birthdayField3 = document.getElementById('birthDay').value;
 	
-								// 전체 핸드폰 번호를 구성
-								const phone = `${mobileField1}-${mobileField2}-${mobileField3}`;
-	
-								// 주소
-								const address = `${addrField1} ${addrField2}`;
-								
-								// 전체 생일을 구성
-								const birthday = `${birthdayField1}-${birthdayField2}-${birthdayField3}`;
-	
 								// 아이디와 비밀번호의 유효성 검사
 								if (!idRegex.test(idField.value)) {
 									alert('아이디는 영문 소문자, 숫자로 4자 이상, 16자 이하여야만 합니다.');
@@ -285,7 +276,21 @@
 									alert('유효한 이메일 주소를 입력해주세요.');
 									return;
 								}
-	
+								
+								// 중복확인 버튼 클릭 여부 확인
+							    const idDuplicatedCheckBtn = document.getElementById('idDuplicatedCheck');
+							    const emailDuplicatedCheckBtn = document.getElementById('emailDuplicatedCheck');
+							    
+							    if (!idDuplicatedCheckBtn.disabled) {
+							        alert('아이디 중복확인을 해주세요.');
+							        return;
+							    }
+
+							    if (!emailDuplicatedCheckBtn.disabled) {
+							        alert('이메일 중복확인을 해주세요.');
+							        return;
+							    }
+							    
 								// 유효성 검사 통과 시 폼 제출
 								this.submit();
 							});
