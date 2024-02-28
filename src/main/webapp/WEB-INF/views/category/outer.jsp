@@ -48,9 +48,9 @@
 							<a href="/product/next-short-yasang/526/category/24/display/1/">
 								<div class="product-image">
 									<img
-										onmouseout="this.src = '${pageContext.request.contextPath}/images/admin/${dto.proImage1}'"
-										onmouseover="this.src = '${pageContext.request.contextPath}/images/admin/${dto.proImage2}'"
-										src="${pageContext.request.contextPath}/images/admin/${dto.proImage1}"
+										onmouseout="this.src = '${pageContext.request.contextPath}/images/product/${dto.proImage1}'"
+										onmouseover="this.src = '${pageContext.request.contextPath}/images/product/${dto.proImage2}'"
+										src="${pageContext.request.contextPath}/images/product/${dto.proImage1}"
 										class="primary-image" alt="${dto.proName } "> &nbsp
 								</div>
 								<div class="product-name">
