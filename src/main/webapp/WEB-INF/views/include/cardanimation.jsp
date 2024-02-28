@@ -11,7 +11,9 @@
 				</div>
 				<div class="info">
 					<div class="main">Daegeun Lee</div>
-					<div class="sub">Omuke trughte a otufta</div>
+					<div class="sub">Page분할</div>
+					<div>Login&Join</div>
+					<div>CSS</div>
 				</div>
 			</div>
 		</div>
@@ -24,7 +26,9 @@
 				</div>
 				<div class="info">
 					<div class="main">Jungmin Park</div>
-					<div class="sub">Omuke trughte a otufta</div>
+					<div class="sub">Board</div>
+					<div>MyPage</div>
+					<div>CSS</div>
 				</div>
 			</div>
 		</div>
@@ -37,7 +41,9 @@
 				</div>
 				<div class="info">
 					<div class="main">Jihwan Park</div>
-					<div class="sub">Omuke trughte a otufta</div>
+					<div class="sub">Board</div>
+					<div>MyPage</div>
+					<div>CSS</div>
 				</div>
 			</div>
 		</div>
@@ -50,7 +56,9 @@
 				</div>
 				<div class="info">
 					<div class="main">Sungjin Jin</div>
-					<div class="sub">Omuke trughte a otufta</div>
+					<div class="sub">관리자</div>
+					<div>차트</div>
+					<div>CSS</div>
 				</div>
 			</div>
 		</div>

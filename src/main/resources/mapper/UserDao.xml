@@ -4,12 +4,19 @@
 <mapper namespace="com.springlec.base.dao.UserDao">
 
 	<select id="checkDuplicatedId" resultType="Integer">
-		SELECT COUNT(userId) FROM customer WHERE userId = #{userId}
+		SELECT COUNT(userId) FROM user WHERE userId = #{userId}
 	</select>
 	
 	<select id="checkDuplicatedEmail" resultType="Integer">
-		SELECT COUNT(email) FROM customer WHERE email = #{email}
+		SELECT COUNT(email) FROM user WHERE email = #{email}
 	</select>
+
+	<insert id="sign">
+		INSERT INTO user
+		(userId, userPw, name, postcode, address, phone, email, gender, birthday, point, howToLogin, active) 
+		VALUES
+		(#{userId}, #{userPw},  #{name},  #{postcode},  #{address}, #{phone}, #{email}, #{gender}, #{birthday}, '0', #{howToLogin}, now())
+	</insert>
 
 	<select id="whologin" resultType="com.springlec.base.model.UserDto">
 		SELECT userId, userPw, name FROM user WHERE userId = #{userId} AND userPw = #{userPasswd}
