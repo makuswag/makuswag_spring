@@ -6,11 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.springlec.base.model.ProductDetailInformationDto;
+import com.springlec.base.model.UserDto;
 import com.springlec.base.service.ProductDetailInformationDaoService;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class productDetailInformation {
@@ -22,7 +25,7 @@ public class productDetailInformation {
 	@GetMapping("productDetailInformation")
 	public String detail(HttpServletRequest request, Model model) throws Exception{
 		ProductDetailInformationDto productDetailInformation = service.productdetail(); // bId에 해당하는 게시물 정보를 가져옴(사진이랑 상품정보 다 가져옴)
-		model.addAttribute("productDetailInformation", productDetailInformation); // 모델에 게시물 정보를 추가
+		model.addAttribute("productDetailInformation", productDetailInformation); 
 		//컬러값 못가져옴 (js파일 나누는거 완료하고 처리!)
 		List<String> colors = service.color();
 		model.addAttribute("colors", colors);
@@ -31,6 +34,38 @@ public class productDetailInformation {
 		System.out.println("색 정보: "+colors);
 //		List<String> colors = service.color(proName);
 //		model.addAttribute("colors", colors);
-		return "detail/productDetailInformation"; // content_view 페이지로 이동
+		return "detail/productDetailInformation"; 
 }
+	//선택한 상품 구매하는 메소드
+	@PostMapping("productPurchaseSubmit")
+	public String productPurchase(HttpServletRequest request ) throws Exception{
+		//userId 가져오는 session값
+		HttpSession session = request.getSession();
+		// **************세션에서 뭐뭐 가져올껀지,파라미터로 넘길껀지 결정후 재작성 필요
+		HttpSession sessionProductSeq = request.getSession();
+		
+		// ***************세션에서 뭐뭐 가져올껀지,파라미터로 넘길껀지 결정후 재작성 필요
+		int proSeq = (int) sessionProductSeq.getAttribute("proSeq");
+		System.out.println("상품의 시퀀스넘버"+proSeq);
+		//userId값은 세션으로 가져와야됨(fix)
+		UserDto user = (UserDto) session.getAttribute("user");
+		String userId = user.getUserId();
+		
+		System.out.println(userId);
+		
+		String pQty = request.getParameter("pQty");
+		String pPrice = request.getParameter("pPrice");
+//		String proSeq = request.getParameter("proSeq"); //세션으로 받을껀지 아니면 그냥 리퀘로 받을껀지 결정하고나서 주석해
+		System.out.println(pQty+pPrice);
+		String revContent = request.getParameter("reviewContent");
+//		service.
+		
+		//세션정의: 어디서 꺼야하는지 다시 알아보기(여기서 끄면 상품 등록이 안됨
+//		sessionProductSeq.invalidate(); 
+		return "redirect:/productDetailInformation";//메인으로 보내야함?
+		
+	}
+	
+	
+	
 }

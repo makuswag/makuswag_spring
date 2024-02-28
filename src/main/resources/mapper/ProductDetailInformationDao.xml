@@ -18,6 +18,15 @@
 <select id="color" parameterType="String" resultType="String" >
     SELECT DISTINCT proColor FROM product WHERE proName='BAKERSETUPSHIRT'
 </select>
+<!-- id 수정필요 -->
+<insert id="productdetail">
+	<!-- 상품 시퀀스(전페이지에서 넘겨준 값을 가져온다) ,유저아이디(세션에 저장되어있는 값을 가져온다),수량,가격은지금 페이지에서 파라미터값으로 가져와야될듯 -->
+		INSERT INTO purchase
+		(proSeq, userId, pQty, pPrice, pMethod, pStackPoint, pDate)
+		VALUES (#{proSeq}, #{userId}, #{pQty}, #{pPrice},'card',#{pPrice}*0.05, now());
+
+
+	</insert>
 
 
 
