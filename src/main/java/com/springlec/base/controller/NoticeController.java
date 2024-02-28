@@ -24,7 +24,7 @@ public class NoticeController {
 	    int numOfTuplePerPage = 10; // 페이지당 튜플 개수
 	    List<NoticeDto> listDao = service.listDao(page, numOfTuplePerPage); // 서비스 계층에서 데이터 조회
 	    model.addAttribute("Noticelist", listDao);
-
+	    
 	    int totalCount = service.getTotalCount(); // 전체 데이터 개수 조회
 	    int totalPage = (int) Math.ceil((double) totalCount / numOfTuplePerPage); // 전체 페이지 개수 계산
 	    int pageBlockSize = 5;

@@ -18,7 +18,6 @@ public class OuterDaoServiceImpl implements OuterDaoService {
 	@Override
 	public List<OuterDto> listDao(int requestPage, int numOfTuplePerPage) throws Exception {
 		int startIdx = (requestPage - 1) * numOfTuplePerPage; // 시작 인덱스 계산
-		System.out.println("간다간다 뿅간다");
 		return dao.listDao(startIdx, numOfTuplePerPage);
 	}
 
