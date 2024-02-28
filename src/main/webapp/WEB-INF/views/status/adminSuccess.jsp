@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="com.springlec.base.model.UserDto"%>%>
+<%@page import="com.springlec.base.model.UserDto"%>
 <%
     Object userObject = session.getAttribute("user");
 
