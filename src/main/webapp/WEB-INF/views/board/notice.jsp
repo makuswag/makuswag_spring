@@ -51,86 +51,85 @@
 						<h3>
 							<font color="#555555">&nbsp;&nbsp;NOTICE</font>
 						</h3>
-						</div>
-						<div class="wrap">
-
-
-							<!-- 검색 결과를 표시할 영역 (초기에는 숨겨둠) 이거로 검색했을때 데이터를 업데이트 시킬꺼-->
-							<div id="searchResults" style="display: none;"></div>
-							<!-- 아코디언 메뉴 -->
-							<ul class="accordion-list">
-								<!-- 아코디언 이름,  -->
-								<c:forEach items="${Noticelist}" var="dto" varStatus="loop">
-									<li class="accordion-item"><a href="#"
-										class="accordion-link">
-											<div class="accordion-name">
-												<span class="number">${dto.noCategory}</span> <span
-													class="title">${dto.noTitle}</span> <span class="views1">조회수</span>
-												<span class="date">${dto.noDate}</span>
-											</div>
-									</a>
-										<div class="accordion-desc">
-											<span class="title">${dto.noContent}</span>
-											<!-- 이미지가  있으면  출력한다-->
-											<c:if test="${not empty dto.noImage}">
-												<span> <img
-													src="${pageContext.request.contextPath}/images/${dto.noImage}"
-													width="756px" height="945px">
-												</span>
-											</c:if>
-								</c:forEach>
-
-							</ul>
-							<!-- 세션에 담은 페이지수 출력부분 pageList만큼 반복한다-->
-							<div style="text-align: center;">
-								<c:if test="${currentPage > 1}">
-									<a href="notice_view?page=${currentPage - 1}"
-										style="display: inline-block; margin: 10px;">&nbsp;이전</a>
-								</c:if>
-
-								<c:forEach begin="${startPage}" end="${endPage}" var="pageNum">
-									<c:choose>
-										<c:when test="${pageNum == currentPage}">
-											<span
-												style="display: inline-block; margin: 10px; font-weight: bold;">&nbsp;${pageNum}</span>
-										</c:when>
-										<c:otherwise>
-											<a href="notice_view?page=${pageNum}"
-												style="display: inline-block; margin: 10px;">&nbsp;${pageNum}</a>
-										</c:otherwise>
-									</c:choose>
-								</c:forEach>
-
-								<c:if test="${currentPage < totalPage}">
-									<a href="notice_view?page=${currentPage + 1}"
-										style="display: inline-block; margin: 10px;">&nbsp;다음</a>
-								</c:if>
-							</div>
-
-
-
-
-						</div>
 					</div>
+					<div class="wrap">
 
 
-					<div
-						class="xans-element- xans-board xans-board-buttonlist board-admin-actions  ">
-						<a href="/noticeWrite.do" class="primary-button "><span>WRITE</span></a>
+						<!-- 검색 결과를 표시할 영역 (초기에는 숨겨둠) 이거로 검색했을때 데이터를 업데이트 시킬꺼-->
+						<div id="searchResults" style="display: none;"></div>
+						<!-- 아코디언 메뉴 -->
+						<ul class="accordion-list">
+							<!-- 아코디언 이름,  -->
+							<c:forEach items="${Noticelist}" var="dto" varStatus="loop">
+								<li class="accordion-item"><a href="#"
+									class="accordion-link">
+										<div class="accordion-name">
+											<span class="number">${dto.noCategory}</span> <span
+												class="title">${dto.noTitle}</span> <span class="views1">조회수</span>
+											<span class="date">${dto.noDate}</span>
+										</div>
+								</a>
+									<div class="accordion-desc">
+										<span class="title">${dto.noContent}</span>
+										<!-- 이미지가  있으면  출력한다-->
+										<c:if test="${not empty dto.noImage}">
+											<span> <img
+												src="${pageContext.request.contextPath}/images/${dto.noImage}"
+												width="756px" height="945px">
+											</span>
+										</c:if>
+							</c:forEach>
+
+						</ul>
+						<!-- 세션에 담은 페이지수 출력부분 pageList만큼 반복한다-->
+						<div style="text-align: center;">
+							<c:if test="${currentPage > 1}">
+								<a href="notice_view?page=${currentPage - 1}"
+									style="display: inline-block; margin: 10px;">&nbsp;이전</a>
+							</c:if>
+
+							<c:forEach begin="${startPage}" end="${endPage}" var="pageNum">
+								<c:choose>
+									<c:when test="${pageNum == currentPage}">
+										<span
+											style="display: inline-block; margin: 10px; font-weight: bold;">&nbsp;${pageNum}</span>
+									</c:when>
+									<c:otherwise>
+										<a href="notice_view?page=${pageNum}"
+											style="display: inline-block; margin: 10px;">&nbsp;${pageNum}</a>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+
+							<c:if test="${currentPage < totalPage}">
+								<a href="notice_view?page=${currentPage + 1}"
+									style="display: inline-block; margin: 10px;">&nbsp;다음</a>
+							</c:if>
+						</div>
+
+
+
+
 					</div>
-
-
-
-
-					<!-- 여기까지 작성 -->
-
-					<!-- ============================== [[ Body  section]] ==============================-->
-
-					<!-- =============================  [[ Footer section ]]  ============================= -->
 				</div>
-				<%@ include file="../include/footer.jsp"%>
 
+
+				<div
+					class="xans-element- xans-board xans-board-buttonlist board-admin-actions  ">
+					<a href="productDetailInformation" class="primary-button "><span>WRITE</span></a>
+				</div>
+
+
+
+
+				<!-- 여기까지 작성 -->
+
+				<!-- ============================== [[ Body  section]] ==============================-->
+
+				<!-- =============================  [[ Footer section ]]  ============================= -->
+				<%@ include file="../include/footer.jsp"%>
 			</div>
+
 		</div>
 	</div>
 	<!-- =============================  [[ Footer section ]]  ============================= -->

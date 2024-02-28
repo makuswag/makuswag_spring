@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>FAQ - Mak U Swag</title>
-<link rel="stylesheet" href="./css/all.css">
-<link rel="stylesheet" href="./css/all2.css">
+<link rel="stylesheet" href="./css/notice.css">
+<link rel="stylesheet" href="./css/style1.css">
 <link rel="icon" href="./images/CompanyLogo.png">
 <!-- 인터넷 창 아이콘에 로고 나오게 하기 -->
 <script
@@ -15,8 +15,11 @@
 <script type="text/javascript" src="./js/accordion.js"></script>
 </head>
 <!-- ============================== [[ Header  section]] ==============================-->
-
-<%@ include file="../include/header.jsp"%>
+    <div class="sidebar-wrapper">
+        <%@ include file="../include/sidebar.jsp" %>
+    </div>
+	<%@ include file="../admin/ProductInserthead.jsp" %>
+<body>
 
 <!-- ============================== [[ Header  section]] ==============================-->
 
@@ -24,7 +27,6 @@
 <div class="site-main">
 	<div class="container">
 
-		<%@ include file="../include/sidemenu.jsp"%>
 
 		<!-- ============================== [[ Sidebar  section]] ==============================-->
 
@@ -67,6 +69,7 @@
 
 					</div>
 				</div>
+			</div>
 
 
 			<!-- 여기까지 작성 -->
@@ -75,7 +78,6 @@
 
 			<!-- =============================  [[ Footer section ]]  ============================= -->
 
-			<%@ include file="../include/footer.jsp"%>
 
 		</div>
 	</div>

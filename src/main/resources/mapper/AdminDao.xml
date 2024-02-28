@@ -188,5 +188,11 @@ FROM product
 <select id="color" parameterType="String" resultType="String" >
     SELECT DISTINCT proColor FROM product WHERE proName=#{proName}
 </select>
+	<insert id="writeDao">
+		insert into notice
+		(userId, noTitle, noCategory, noContent, noImage, noDate) 
+		values
+		(#{userId}, #{noTitle},  #{noCategory},  #{noContent},  #{noImage}, now())
+	</insert>
 
 </mapper>
