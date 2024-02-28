@@ -1,5 +1,17 @@
 @charset "UTF-8";
 
+.tile .product-image img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.15s ease-out;
+}
+.tile .product-image .secondary-image, .tile:hover .product-image .primary-image {
+    opacity: 0;
+}
+
 .product-tiles {
     display: flex;
     flex-wrap: wrap;

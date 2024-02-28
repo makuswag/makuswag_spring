@@ -66,24 +66,29 @@
 							<a href="/product/next-short-yasang/526/category/24/display/1/">
 								<div class="product-image">
 									<img
-										src="${pageContext.request.contextPath}/images/product/${dto.proImage1}"
-										class="primary-image" alt="NEXT SHORT YASANG"> <img
-										src="${pageContext.request.contextPath}/images/product/${dto.proImage2}"
+										src="${pageContext.request.contextPath}/images/admin/${dto.proImage1}"
+										class="primary-image" alt="NEXT SHORT YASANG"> 
+									<img
+										src="${pageContext.request.contextPath}/images/admin/${dto.proImage2}"
 										class="secondary-image" alt="NEXT SHORT YASANG">
 								</div>
 								<div class="product-name">
 									<span style="font-size: 12px; color: #555555;">${dto.proName}</span>
 								</div>
 								<div class="product-price" data-price-was="" data-price-now=""
-									data-stock=""></div>
-								<div class="product-info"></div>
+									data-stock="">
+									<span style="font-size: 12px; color: #555555;">${dto.proColor} / ${dto.proGender}</span>
+									</li>
+								</div>
+								<div class="product-info">
+								<span
+										style="font-size: 12px; color: #555555;">${dto.proPrice}</span><span
+										id="span_product_tax_type_text" style=""> </span>
+								</div>
 								<ul
 									class="xans-element- xans-product xans-product-listitem product-meta">
-									<li class=" xans-record-"><span
-										style="font-size: 12px; color: #555555;">${dto.proColor}/${proGender}</span></li>
-									<li class=" xans-record-"><span
-										style="font-size: 12px; color: #555555;">${dto.proPrice}</span><span
-										id="span_product_tax_type_text" style=""> </span></li>
+									<li class=" xans-record-">
+									<li class=" xans-record-"></li>
 								</ul>
 							</a>
 						</div>

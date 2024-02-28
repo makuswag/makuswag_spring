@@ -4,7 +4,7 @@
 <mapper namespace="com.springlec.base.dao.OuterDao">
 	<select id="listDao"
 		resultType="com.springlec.base.model.OuterDto">
-		SELECT proName, proPrice, proGender, proColor
+		SELECT proName, proPrice, proGender, proColor, proImage1, proImage2
 		FROM product
 		WHERE proCategory = 'outer'
 		LIMIT #{requestPage}, #{numOfTuplePerPage}
