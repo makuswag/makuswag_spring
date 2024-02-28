@@ -50,6 +50,7 @@ public interface AdminGenderDaoService {
 	 public List<String> color(String proName) throws Exception;
 	 public void writeDao(String noTitle, String noCategory, String noContent, String noImage, String userId) throws Exception;
 	 public String uploadfile1(MultipartFile file) throws Exception;
-
-
+	 public AdminDto contentDao(int qnaSeq, String qnaTitle, String qnaContent, String qnaImage, String qnaDate) throws Exception;
+	 public AdminDto contentDao1(int noSeq, String noTitle, String noContent, String noImage, String noDate) throws Exception; 
+	 public void deleteDao(int noSeq) throws Exception;
 }

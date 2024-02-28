@@ -12,5 +12,5 @@ public interface NoticeService {
 
 	int getTotalCount() throws Exception;
 
-
+	public List<NoticeDto> listDao1(@Param("requestPage") int requestPage, @Param("numOfTuplePerPage") int numOfTuplePerPage) throws Exception;
 }

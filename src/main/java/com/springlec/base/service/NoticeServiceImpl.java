@@ -36,6 +36,16 @@ public class NoticeServiceImpl implements NoticeService{
 
 
 
+	@Override
+	public List<NoticeDto> listDao1(int requestPage, int numOfTuplePerPage) throws Exception {
+		// TODO Auto-generated method stub
+		int startIdx = (requestPage - 1) * numOfTuplePerPage;
+		return dao.listDao1(startIdx, numOfTuplePerPage);
+	}
+
+
+
+
 	
 	
 	

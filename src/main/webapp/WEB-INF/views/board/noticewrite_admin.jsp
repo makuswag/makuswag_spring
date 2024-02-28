@@ -66,7 +66,7 @@
             <div class="xans-element- xans-board xans-board-writepackage board ">
                 <div class="xans-element- xans-board xans-board-title board-header ">
                     <h3>
-                        <font color="#555555">Q&A</font>
+                        <font color="#555555">NOTICE</font>
                     </h3>
                 </div>
                 <form id="boardWriteForm" name="insertnoForm" action="noWriteSubmit"
