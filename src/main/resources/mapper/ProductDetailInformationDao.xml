@@ -5,18 +5,19 @@
 <mapper
 	namespace="com.springlec.base.dao.ProductDetailInformationDao">
 
-
+<!--전 페이지에서 선택된 옷의 값을 가져오는 쿼리  -->
 <select id="productdetail" parameterType="String" resultType="com.springlec.base.model.ProductDetailInformationDto">   
-<!-- select proSeq, proImage1, proImage2, proImage3 
-	from product
-    where proSeq=2; -->                                                                                                                                              <!--정민이형 네임 들어오면#{proName} 수정하기  -->
+                <!--정민이형 네임 들어오면#{proName} 수정하기  -->
    SELECT min(proSeq) as proSeq, proName, min(proPrice) as proPrice, min(proImage1) as proImage1
     , min(proImage2) as proImage2,min(proImage3) as proImage3,min(proIntroduction) as proIntroduction
     ,sum(proQty) as proQty 
     FROM product 
     WHERE proName='BAKERSETUPSHIRT' group by proName; 
 </select>
-
+<!-- 선택된 옷의 색을 가져오는 쿼리 -->
+<select id="color" parameterType="String" resultType="String" >
+    SELECT DISTINCT proColor FROM product WHERE proName='BAKERSETUPSHIRT'
+</select>
 
 
 
