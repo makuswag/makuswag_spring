@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.springlec.base.dao.ProductDetailInformationDao">
+
+
+<select id="productdetail" parameterType="String" resultType="com.springlec.base.model.ProductDetailInformationDto">   
+<!-- select proSeq, proImage1, proImage2, proImage3 
+	from product
+    where proSeq=2; -->                                                                                                                                              <!--정민이형 네임 들어오면#{proName} 수정하기  -->
+   SELECT min(proSeq) as proSeq, proName, min(proPrice) as proPrice, min(proImage1) as proImage1
+    , min(proImage2) as proImage2,min(proImage3) as proImage3,min(proIntroduction) as proIntroduction
+    ,sum(proQty) as proQty 
+    FROM product 
+    WHERE proName='BAKERSETUPSHIRT' group by proName; 
+</select>
+
+
+
+
+</mapper>

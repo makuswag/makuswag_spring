@@ -76,8 +76,8 @@ public class ReviewWriteController {
 			String revContent = request.getParameter("reviewContent");
 			service.reviewWriteDao(proSeq, userId, revTitle, revContent);
 			
-			
-//			sessionProductSeq.invalidate();
+			//세션정의: 어디서 꺼야하는지 다시 알아보기(여기서 끄면 상품 등록이 안됨
+//			sessionProductSeq.invalidate(); 
 			return "redirect:/myPage";
 			
 		}
