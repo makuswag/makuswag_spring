@@ -32,6 +32,18 @@
     		window.location.href="qnaAnswer_admin?qnaSeq=${content_view.qnaSeq}"
     	}
     }
+    window.onload = function() {
+        var qnaCategory = "${content_view.qnaCategory}";
+        var userId = "${content_view.userId}";
+        if (qnaCategory === "답변" ) {
+            var updateButton = document.getElementById("updateButton");
+            var answerButton = document.getElementById("answerButton");
+            if (updateButton && answerButton) {
+                updateButton.style.display = "none";
+                answerButton.style.display = "none";
+            }
+        }
+    };
 </script>
    <link rel="stylesheet" href="./css/notice.css">
    <link rel="stylesheet" href="./css/style1.css">
@@ -79,10 +91,10 @@
 											</div>
 										</div>
 							<div class="post-footer">
-											<span class=""><a href="#" onclick="confirmDelete(${qnaSeq})" class="button" style="color:#0e3773;"><span>삭제</span></a></span>
-								            <span class=""><a href="#" onclick="UpdateQna(${qnaSeq})" class="button" style="color:#0e3773;"><span>수정</span></a></span>
-								            <span class=""><a href="#" onclick="AnswerQna(${qnaSeq})" class="button" style="color:#0e3773;"><span>답변</span></a></span>
-										</div>
+    <span class=""><a id="deleteButton" href="#" onclick="confirmDelete(${qnaSeq})" class="button" style="color:#0e3773;"><span>삭제</span></a></span>
+    <span class=""><a id="updateButton" href="#" onclick="UpdateQna(${qnaSeq})" class="button" style="color:#0e3773;"><span>수정</span></a></span>
+    <span class=""><a id="answerButton" href="#" onclick="AnswerQna(${qnaSeq})" class="button" style="color:#0e3773;"><span>답변</span></a></span>
+</div>
 							</div>
 				
 				

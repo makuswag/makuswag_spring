@@ -117,7 +117,8 @@
                                         <script type="text/javascript" src="./js/write.js"></script>
                                     </div>
                                     <div class="field-label">첨부파일</div>
-                                    <input name="noImage" id="noImage" type="file">
+                                    <input name="noImage" id="noImage" type="file" onchange="previewImage()">
+                                    <img id="image_preview" src="" alt="" width="100" height="100" style="display: none;">
                                 </div>
                             </div>
                         </div>
@@ -135,5 +136,26 @@
     </div>
 </div>
 <!-- =============================  [[ Footer section ]]  ============================= -->
+
+<script>
+function previewImage() {
+    var input = document.getElementById('noImage');
+    var preview = document.getElementById('image_preview');
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            preview.style.display = 'block'; // 이미지 미리보기 보이기
+            preview.src = e.target.result;
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    } else {
+        preview.style.display = 'none'; // 이미지 미리보기 숨기기
+        preview.src = ""; // 이미지 초기화
+    }
+}
+</script>
 </body>
 </html>
