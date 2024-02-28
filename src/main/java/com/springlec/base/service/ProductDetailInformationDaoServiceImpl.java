@@ -17,14 +17,20 @@ public class ProductDetailInformationDaoServiceImpl implements ProductDetailInfo
 	ProductDetailInformationDao dao;
 	//사진 가져오는 리스트
 	@Override
-	public ProductDetailInformationDto productdetail() throws Exception {
+	public ProductDetailInformationDto productdetail(String proName) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.productdetail();
+		return dao.productdetail(proName);
 	}
 	@Override
-	public List<String> color() throws Exception {
+	public List<String> color(String proName) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.color();
+		return dao.color(proName);
+	}
+	
+	@Override
+	public void productPurchaseDao(int proSeq, String userId, int pPrice) throws Exception {
+		// TODO Auto-generated method stub
+		dao.productPurchaseDao(proSeq, userId, pPrice);
 	}
 
 

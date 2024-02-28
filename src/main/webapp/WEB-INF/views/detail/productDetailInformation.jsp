@@ -176,7 +176,7 @@
 				<p id="selectedSize"></p>
 				<p id="selectedColor"></p>
 				<div class="purchase-action">
-				<a href="productPurchaseSubmit" class="primary-button buy-now " ><span id="btnBuy">BUY NOW</span></a>
+				<a class="primary-button buy-now " onclick="submitPurchaseForm()" ><span id="btnBuy">BUY NOW</span></a>
 				<a href="#none" class="primary-button buy-now " onclick="product_submit(1, '/exec/front/order/basket/', this)"><span id="btnBuy">CART</span></a>
 				</div>
 			</div>
@@ -188,7 +188,7 @@
 function updateSelectedOption(selectId) {
     var selectedColor = document.getElementById("colorSelect").value;
     var selectedSize = document.getElementById("sizeSelect").value;
-    
+    console.log("색상 값 확인",selectedColor,selectedSize);
     updateSelectedLabel(selectedColor, selectedSize); // 선택된 옵션에 따라 라벨 업데이트
 }
 //상품선택시,라벨을 업데이트 함
@@ -245,6 +245,18 @@ setTimeout(function() {
     document.getElementById('selectedColor').innerText = '선택된 컬러: ' + productName;
 }, 100); // 0.1초 후에 애니메이션 시작 // 0.1초 후에 애니메이션 시작
 });
+
+function submitPurchaseForm() {
+    var form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'productPurchaseSubmit'; // 해당 URL로 변경
+
+    // 필요한 input 등을 form에 추가
+    // ...
+
+    document.body.appendChild(form);
+    form.submit();
+}
 </script>
 <!--*****************************************js코드*************************************************-->
 
