@@ -207,4 +207,15 @@ FROM product
 	<delete id="deleteDao" parameterType="com.springlec.base.model.AdminDto">
 	    delete from notice where noSeq=#{noSeq}
 	</delete>
+		<delete id="deleteQna" parameterType="com.springlec.base.model.AdminDto">
+	    delete from qna where qnaSeq=#{qnaSeq}
+	</delete>
+	<select id="modify_no" parameterType="com.springlec.base.model.AdminDto">
+    UPDATE notice
+    SET userId = #{userId}, noCategory = #{noCategory}, noTitle = #{noTitle},noContent = #{noContent},noImage=#{noImage},noDate=now()
+    WHERE noSeq = #{noSeq}
+	</select>
+	<select id="modifyselect" parameterType="int" resultType="com.springlec.base.model.AdminDto">
+    SELECT * FROM notice WHERE noSeq = #{noSeq}
+	</select>
 </mapper>

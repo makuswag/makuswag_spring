@@ -39,7 +39,7 @@
             <li><a href="productmanager">상품관리</a></li>
             <li><a href="totalmanager">매출</a></li>
             <li><a href="#">게시판관리</a></li>
-            <li><a href="logout.do">로그아웃</a></li>
+            <li><a href="logout">로그아웃</a></li>
             
         </ul>
         <ul class="navbar__links">
