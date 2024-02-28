@@ -18,8 +18,7 @@
     SELECT DISTINCT proColor FROM product WHERE proName='${proName}'
 </select>
 <!-- id 수정필요 -->
- <insert id="productPurchase">
-	상품 시퀀스(전페이지에서 넘겨준 값을 가져온다) ,유저아이디(세션에 저장되어있는 값을 가져온다),수량,가격은지금 페이지에서 파라미터값으로 가져와야될듯
+ <insert id="productPurchaseDao">
 		INSERT INTO purchase
 		(proSeq, userId, pQty, pPrice, pMethod, pStackPoint, pDate)
 		VALUES (#{proSeq}, #{userId}, '1', #{pPrice},'card',#{pPrice}*0.05, now());
