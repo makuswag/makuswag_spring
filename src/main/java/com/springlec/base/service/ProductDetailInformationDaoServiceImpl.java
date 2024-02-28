@@ -32,6 +32,12 @@ public class ProductDetailInformationDaoServiceImpl implements ProductDetailInfo
 		// TODO Auto-generated method stub
 		dao.productPurchaseDao(proSeq, userId, pPrice);
 	}
+	@Override
+	public void updateProductQuantity(int proSeq) throws Exception {
+		// TODO Auto-generated method stub
+        dao.updateProductQuantity(proSeq);
+
+	}
 
 
 

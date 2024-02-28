@@ -256,6 +256,8 @@ function submitPurchaseForm() {
 
     document.body.appendChild(form);
     form.submit();
+ // "구매 완료되었습니다." 알림 추가
+    alert('구매 완료되었습니다.');
 }
 </script>
 <!--*****************************************js코드*************************************************-->
