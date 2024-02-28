@@ -32,7 +32,7 @@
 				<!-- 여기서 부터 작성 -->
 
 				<script type="text/javascript">
-					alert('준비중입니다.');
+					alert('Arpil COMMING SOON');
 					window.location.href = '/';
 				</script>
 

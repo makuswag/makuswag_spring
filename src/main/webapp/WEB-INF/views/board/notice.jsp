@@ -114,10 +114,6 @@
 				</div>
 
 
-				<div
-					class="xans-element- xans-board xans-board-buttonlist board-admin-actions  ">
-					<a href="productDetailInformation" class="primary-button "><span>WRITE</span></a>
-				</div>
 
 
 
