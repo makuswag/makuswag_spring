@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="./css/all2.css">
 <link rel="icon" href="./images/CompanyLogo.png">
 <!-- 인터넷 창 아이콘에 로고 나오게 하기 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body class="nav-expended">
 	<!-- ============================== [[ Header  section]] ==============================-->
@@ -40,7 +41,7 @@
 							<div class="form-header">
 								<h3>Sign Up</h3>
 							</div>
-							<form id="sign_form" name="" action="memberJoin" method="post">
+							<form id="sign_form" name="" action="sendInformation" method="post">
 							<div class="form-group ">
 								<table border="1" summary="" class="account-info">
 									<caption>회원 기본정보</caption>
@@ -52,7 +53,7 @@
 												fw-label="아이디" fw-msg="" class="inputTypeText"
 												placeholder="" value="" type="text" required>
 												<button class="field-button" type="button"
-													id="checkUserIdDuplicate">
+													id="idDuplicatedCheck">
 													<span class="css-nytqmg e4nu7ef1">중복확인</span>
 												</button> <br>
 												<div class="form-description">
@@ -135,7 +136,10 @@
 											<td><input id="email" name="email"
 												fw-filter="isFill&amp;isEmail" fw-label="이메일" fw-alone="N"
 												fw-msg="" placeholder="" value="" type="text" required>
-												<a href="#none" class="field-button" onclick="" id="postBtn">중복확인</a><br>
+												<button class="field-button" type="button"
+													id="emailDuplicatedCheck">
+													<span class="css-nytqmg e4nu7ef1">중복확인</span>
+												</button> <br>
 												<span id="emailMsg"></span></td>
 										</tr>
 									</tbody>
@@ -285,7 +289,7 @@
 								// 유효성 검사 통과 시 폼 제출
 								this.submit();
 							});
-	
+							
 							// Enter 키 이벤트 리스너 등록
 							document.addEventListener('keydown', function(e) {
 								if (e.key === 'Enter') {
@@ -336,14 +340,16 @@
 	
 								}
 							});
-	
+							
 							$(document).ready(function() {
-								$('#checkUserIdDuplicate').click(function(e) {
+								$('#idDuplicatedCheck').click(function(e) {
 									e.preventDefault(); // 기본 동작 중단
 	
 									const userId = $('#userId').val(); // 입력된 아이디 값 가져오기
 									const idField = document.getElementById('userId');
-	
+									
+									console.log(userId,idField);
+									
 									if (idField.value.trim() === '') {
 										alert('아이디는 필수 입력 값입니다.');
 										return;
@@ -386,7 +392,57 @@
 										}
 									});
 								});
+								$("#emailDuplicatedCheck").click(function() {
+									
+									const email = $("#email").val(); // 입력된 이메일 값 가져오기
+									const emailField = document.getElementById('email');
+									
+									if (emailField.value.trim() === '') {
+										alert('이메일은 필수 입력 값입니다.');
+										return;
+									}
+	
+									// 이메일 유효성 검사
+									if (!emailRegex.test(emailField.value)) {
+										alert('이메일이 유효하지 않습니다.');
+										return;
+									}
+	
+									// AJAX를 통한 중복 확인 요청
+									$.ajax({
+										method : "POST",
+										url : "duplicatedCheck",
+										data : {
+											email : email
+										},
+										success : function(
+												response) {
+											if (response.result === "false") {
+												// 중복된 이메일인 경우
+												alert('이미 사용 중인 이메일입니다.');
+											} else {
+												// 사용 가능한 이에일인 경우
+												alert('사용 가능한 이메일입니다.');
+												// 이메일 입력란을 읽기 전용으로 설정
+												$("#emailDuplicatedCheck").prop("disabled",true); // idDuplicatedCheck 버튼을 비활성화
+												$('#email').prop('readonly',true);
+											}
+										},
+										error : function(
+												xhr,
+												status,
+												error) {
+											// 오류 발생 시 처리
+											console
+													.error(error);
+											alert('중복 확인 중 오류가 발생했습니다.');
+										}
+									});
+								});
 							});
+						    
+							// 초기 로드 시 일 수 옵션 업데이트
+							updateDayOptions();
 							
 							// 생년월일 필드 값 변경 이벤트 추가
 							document.getElementById('birthYear').addEventListener(
@@ -445,33 +501,45 @@
 	
 								return 0; // 잘못된 월이 입력된 경우
 							}
-	
-							// 초기 로드 시 일 수 옵션 업데이트
-							updateDayOptions();
-							</script>
-							<script>
-								function findAddr(){
-									new daum.Postcode({
-								        oncomplete: function(data) {
-								        	
-								        	console.log(data);
-								        	
-								            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-								            // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
-								            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-								            var roadAddr = data.roadAddress; // 도로명 주소 변수
-								            var jibunAddr = data.jibunAddress; // 지번 주소 변수
-								            // 우편번호와 주소 정보를 해당 필드에 넣는다.
-								            document.getElementById('postcode1').value = data.zonecode;
-								            if(roadAddr !== ''){
-								                document.getElementById("addr1").value = roadAddr;
-								            } 
-								            else if(jibunAddr !== ''){
-								                document.getElementById("addr2").value = jibunAddr;
-								            }
-								        }
-								    }).open();
-								}
+							
+							function findAddr(){
+								new daum.Postcode({
+							        oncomplete: function(data) {
+							        	
+							        	console.log(data);
+							        	
+							            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+							            // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+							            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+							            const roadAddr = data.roadAddress; // 도로명 주소 변수
+							            const jibunAddr = data.jibunAddress; // 지번 주소 변수
+							            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+							            document.getElementById('postcode').value = data.zonecode;
+							            if(roadAddr !== ''){
+							                document.getElementById("addr1").value = roadAddr;
+							            } 
+							            else if(jibunAddr !== ''){
+							                document.getElementById("addr2").value = jibunAddr;
+							            }
+							        }
+							    }).open();
+							}
+							
+							document.getElementById('userPasswd').addEventListener('input', validatePassword);
+						    document.getElementById('checkUserPasswd').addEventListener('input', validatePassword);
+
+						    function validatePassword() {
+						        const password = document.getElementById('userPasswd').value;
+						        const confirmPassword = document.getElementById('checkUserPasswd').value;
+
+						        if (password === confirmPassword) {
+						            document.getElementById('pwConfirmMsg').textContent = '비밀번호가 일치합니다.';
+						            document.getElementById('pwConfirmMsg').style.color = 'green';
+						        } else {
+						            document.getElementById('pwConfirmMsg').textContent = '비밀번호가 일치하지 않습니다.';
+						            document.getElementById('pwConfirmMsg').style.color = 'red';
+						        }
+						    }
 							</script>
 							<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 						</div>
