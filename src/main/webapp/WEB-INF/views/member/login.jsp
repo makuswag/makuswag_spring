@@ -59,8 +59,6 @@
 									<div class="login-actions">
 										<input type="submit" value="Login" class="primary-button"
 											style="margin: 0 auto;">
-										<!-- <a href="#none" class="primary-button"
-											onclick="MemberAction.login('member_form'); return false;"><span>Login</span></a> -->
 										<a href="agree" class="primary-button"><span>Join</span></a>
 									</div>
 								</div>

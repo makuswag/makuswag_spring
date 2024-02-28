@@ -23,8 +23,12 @@ public class productDetailInformation {
 	public String detail(HttpServletRequest request, Model model) throws Exception{
 		ProductDetailInformationDto productDetailInformation = service.productdetail(); // bId에 해당하는 게시물 정보를 가져옴(사진이랑 상품정보 다 가져옴)
 		model.addAttribute("productDetailInformation", productDetailInformation); // 모델에 게시물 정보를 추가
+		//컬러값 못가져옴 (js파일 나누는거 완료하고 처리!)
+		List<String> colors = service.color();
+		model.addAttribute("colors", colors);
 		
 		System.out.println("제품정보: "+productDetailInformation);
+		System.out.println("색 정보: "+colors);
 //		List<String> colors = service.color(proName);
 //		model.addAttribute("colors", colors);
 		return "detail/productDetailInformation"; // content_view 페이지로 이동
