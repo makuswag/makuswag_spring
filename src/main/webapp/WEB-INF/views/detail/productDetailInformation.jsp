@@ -82,7 +82,7 @@
 						</div>
 						<div class="product-price" data-price-was="0.00"
 							data-price-now="68000" data-stock>
-							<span class="price-now">${productDetailInformation.proPrice}KRW<br>
+							<span class="price-now">${productDetailInformation.proPrice} KRW<br>
 								<br> <br></span>
 						</div>
 						<div class="product-description"
