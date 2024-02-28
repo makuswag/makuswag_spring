@@ -13,5 +13,7 @@ public interface NoticeDao {
 	List<NoticeDto> searchQna(int requestPage, int numOfTuplePerPage, String keyword, String searchType) throws Exception;
 
 	int getTotalCountBySearch(String keyword, String searchType) throws Exception;
+	
+	public List<NoticeDto> listDao1(int requestPage, int numOfTuplePerPage) throws Exception;
 
 }

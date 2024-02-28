@@ -7,19 +7,29 @@
 <head>
 <meta charset="UTF-8">
 <title>QnA - Mak U Swag</title>
-<link rel="stylesheet" href="./css/all.css">
+<link rel="stylesheet" href="./css/notice.css">
+<link rel="stylesheet" href="./css/style1.css">
 <link rel="stylesheet" href="./css/all2.css">
 <link rel="icon" href="./images/CompanyLogo.png">
 <!-- 인터넷 창 아이콘에 로고 나오게 하기 -->
 </head>
+<style>
+
+
+
+</style>
+    <div class="sidebar-wrapper">
+        <%@ include file="../include/sidebar.jsp" %>
+    </div>
+	<%@ include file="../admin/ProductInserthead.jsp" %>
 <body class="nav-expended">
 	<!-- ============================== [[ Header  section]] ==============================-->
-	<%@ include file="../include/header.jsp"%>
+	
 	<!-- ============================== [[ Header  section]] ==============================-->
 	<!-- ============================== [[ Sidebar  section]] ==============================-->
 	<div class="site-main">
 		<div class="container">
-			<%@ include file="../include/sidemenu.jsp"%>
+
 			<!-- ============================== [[ Sidebar  section]] ==============================-->
 			<!-- ============================== [[ Body  section]] ==============================-->
 			<div class="main">
@@ -36,8 +46,8 @@
 						<div class="xans-element- xans-board xans-board-list qna-list">
 							<c:forEach items="${QnaList}" var="dto" varStatus="loop">
 								<div class="list-item xans-record-">
-									<a href="qnaContent_view?qnaSeq=${dto.qnaSeq}"
-										class="post-link"> <span class="number">${dto.qnaSeq}</span>
+									<a href="qnaContent_admin?qnaSeq=${dto.qnaSeq}"
+										class="post-link"> <span class="number" style="color:#0e3773;">${dto.qnaSeq}</span>
 										<span class="title">${dto.qnaCategory}</span> <span class="date">${dto.userId}</span>
 									</a>
 								</div>
@@ -92,18 +102,9 @@
 							</fieldset>
 						</div>
 						<div
-							class="xans-element- xans-board xans-board-buttonlist board-admin-actions  ">
-							<!-- 로그인 여부에 따라 WRITE 버튼을 표시 또는 숨김 -->
-							<c:choose>
-								<c:when test="${sessionScope.user ne null}">
-									<a href="qnaWrite_view" class="primary-button "><span>WRITE</span></a>
-								</c:when>
-								<c:otherwise>
-									<!-- 비로그인 상태에서는 WRITE 버튼 숨김 -->
-									<div style="display: none;"></div>
-								</c:otherwise>
-							</c:choose>
-						</div>
+						class="xans-element- xans-board xans-board-buttonlist board-admin-actions  ">
+						<a href="noticeWrite_view" class="primary-button "><span>WRITE</span></a>
+					</div>
 					</form>
 				</div>
 				<!-- 여기까지 작성 -->
@@ -113,47 +114,6 @@
 		</div>
 	</div>
 	<!-- =============================  [[ Footer section ]]  ============================= -->
-	<script>
-		// 페이지 로딩 후 실행되는 스크립트
-		window.onload = function() {
-			// 로그인 여부 확인
-			var loggedIn = <c:out value="${sessionScope.user ne null}"/>;
-			if (loggedIn) {
-				// 로그인한 경우에만 작성자와 비교하는 스크립트를 실행
-				var userId = "<c:out value="${sessionScope.user.userId}"/>";
-				var listItems = document.querySelectorAll('.list-item');
-				listItems
-						.forEach(function(item) {
-							var authorId = item.querySelector('.date').innerText
-									.trim();
-							if (authorId !== userId) {
-								item.querySelector('.post-link')
-										.addEventListener('click',
-												function(event) {
-													event.preventDefault();
-													alert("접근 권한이 없습니다.");
-												});
-							}
-						});
-			} else {
-				// 비로그인 상태에서는 모든 게시물을 클릭해도 접근 권한이 없음을 알림
-				var listItems = document.querySelectorAll('.list-item');
-				listItems.forEach(function(item) {
-					item.querySelector('.post-link').addEventListener('click',
-							function(event) {
-								event.preventDefault();
-								alert("로그인 후에 이용 가능합니다.");
-							});
-				});
-			}
-		}
-		function searchQna() {
-			var keyword = document.getElementById("search").value;
-			var searchType = document.getElementById("search_type").value;
-			var url = "qna_search?page=1&keyword="
-					+ encodeURIComponent(keyword) + "&searchType=" + searchType;
-			window.location.href = url;
-		}
-	</script>
+	
 </body>
 </html>
