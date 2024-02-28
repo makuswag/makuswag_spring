@@ -38,7 +38,7 @@
             <li><a href="manager1">회원관리</a></li>
             <li><a href="productmanager">상품관리</a></li>
             <li><a href="totalmanager">매출</a></li>
-            <li><a href="#">게시판관리</a></li>
+            <li><a href="faq_admin">게시판관리</a></li>
             <li><a href="logout">로그아웃</a></li>
             
         </ul>

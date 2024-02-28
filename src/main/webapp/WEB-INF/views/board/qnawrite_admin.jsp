@@ -10,22 +10,23 @@
 <html>
 <head>
     <title>MakUSwag</title>
-    <script type="text/javascript">
-        function insertqna() {
-            // 필수 입력 필드의 값을 가져오기
-            var noCategory = document.getElementById("board_category").value;
-            var noTitle = document.getElementById("subject").value;
-            var noContent = document.getElementById("content").value;
-            // 값이 비어있는지 확인
-            if (noCategory === "" || noTitle === "" || noContent === "") {
-                // 비어있는 필드가 있을 경우 알림창으로 오류 메시지 표시
-                alert("모든 필드를 입력하세요.");
-                return false; // 폼 제출 중지
-            }
-            // 폼을 직접 제출
-            document.getElementById("boardWriteForm").submit();
+<script type="text/javascript">
+    function insertqna() {
+        // 필수 입력 필드의 값을 가져오기
+        var noCategory = document.getElementById("board_category").value;
+        var noTitle = document.getElementById("subject").value;
+        var noContent = document.getElementById("content").value;
+        // 값이 비어있는지 확인
+        if (noCategory === "" || noTitle === "" || noContent === "") {
+            // 비어있는 필드가 있을 경우 알림창으로 오류 메시지 표시
+            alert("모든 필드를 입력하세요.");
+            return false; // 폼 제출 중지
         }
-    </script>
+        // 폼을 직접 제출
+        document.getElementById("boardWriteForm").submit();
+       
+    }
+</script>
     <!-- CSS -->
     <link rel="stylesheet"
           href="//img.echosting.cafe24.com/editors/froala/3.2.2/css/froala_editor.pkgd.min.css?vs=2402071282">
@@ -66,10 +67,10 @@
             <div class="xans-element- xans-board xans-board-writepackage board ">
                 <div class="xans-element- xans-board xans-board-title board-header ">
                     <h3>
-                        <font color="#555555">NOTICE</font>
+                        <font color="#555555">Q&A</font>
                     </h3>
                 </div>
-                <form id="boardWriteForm" name="insertnoForm" action="qnaWriteSubmit"
+                <form id="boardWriteForm" name="insertnoForm" action="qnaWriteSubmit1"
                       method="post" target="_self" enctype="multipart/form-data">
                     <input id="board_no" name="board_no" value="5" type="hidden"/>
                     <input id="product_no" name="product_no" value="0" type="hidden"/>
@@ -121,8 +122,9 @@
                                         <!-- Run Froala Script -->
                                         <script type="text/javascript" src="./js/write.js"></script>
                                     </div>
-                                    <div class="field-label">첨부파일</div>
-                                    <input name="qnaImage" id="qnaImage" type="file">
+                                    <div class="field-label"></div>
+                                    <input name="qnaImage" id="qnaImage" type="file" onchange="previewImage()">
+                                    <img id="image_preview" src="" alt="" width="100" height="100" style="display: none;">
                                 </div>
                             </div>
                         </div>
@@ -140,5 +142,26 @@
     </div>
 </div>
 <!-- =============================  [[ Footer section ]]  ============================= -->
+<script>
+// 파일 입력 필드의 변경(파일 선택) 이벤트 핸들러
+function previewImage() {
+    var input = document.getElementById('qnaImage');
+    var preview = document.getElementById('image_preview');
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            preview.style.display = 'block'; // 이미지 미리보기 보이기
+            preview.src = e.target.result;
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    } else {
+        preview.style.display = 'none'; // 이미지 미리보기 숨기기
+        preview.src = ""; // 이미지 초기화
+    }
+}
+</script>
 </body>
 </html>

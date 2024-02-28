@@ -610,7 +610,7 @@ public class AdminController {
 			
 			return "redirect:notice_admin";
 			
-		}@GetMapping("qnaWriteSubmit")
+		}@PostMapping("qnaWriteSubmit1")
 		public String write1(HttpServletRequest request, @RequestParam (name = "qnaImage", required = false)MultipartFile file) throws Exception{
 			HttpSession session = request.getSession();
 			UserDto user = (UserDto) session.getAttribute("user");
@@ -644,7 +644,8 @@ public class AdminController {
 			String qnaContent = request.getParameter("qnaContent");
 			String qnaImage = request.getParameter("qnaImage");
 			String qnaDate = request.getParameter("qnaDate");
-			AdminDto contentDao = service.contentDao(qnaSeq, qnaTitle, qnaContent, qnaImage, qnaDate);
+			String qnaCategory = request.getParameter("qnaCategory");
+			AdminDto contentDao = service.contentDao(qnaSeq, qnaTitle, qnaContent, qnaImage, qnaDate,qnaCategory);
 					
 			model.addAttribute("content_view", contentDao);
 			
@@ -756,17 +757,39 @@ public class AdminController {
 
 		
 		@GetMapping("qnaAnswer_admin")
-		public String answer() {
+		public String answer1(HttpServletRequest request,Model model ) throws Exception  {
+			int qnaSeq = Integer.parseInt(request.getParameter("qnaSeq"));
+		    AdminDto contentView = service.modifyselect1(qnaSeq);
+		    
+		    // 모델에 contentView를 추가
+		    model.addAttribute("contentView", contentView);
 			return "board/qnaAnswer_admin";
 		}
-		@PostMapping("qnaAnswerSubmit")
-		public String answer(HttpServletRequest request,@RequestParam("qnaSeq") int qnaSeq) throws Exception {
+		@PostMapping("qnaAnswersubmit")
+		public String answer(HttpServletRequest request ,@RequestParam("qnaImage") MultipartFile proImage1) throws Exception {
 			
+			HttpSession session = request.getSession();
+			UserDto user = (UserDto) session.getAttribute("user");
+			String userId = user.getUserId();
 			
-			System.out.println("qnaSeq: " + qnaSeq);
-			
-			
-		    return "redirect:qna_admin";
+			AdminDto adminDto =  new AdminDto();
+			adminDto.setParents(Integer.parseInt(request.getParameter("qnaSeq")));
+			adminDto.setQnaCategory(request.getParameter("qnaCategory"));
+			adminDto.setQnaSeq(Integer.parseInt(request.getParameter("qnaSeq")));
+			adminDto.setQnaTitle(request.getParameter("qnaTitle"));
+			adminDto.setQnaContent(request.getParameter("qnaContent"));
+			adminDto.setUserId(userId);
+			service.parents(adminDto);
+			if(proImage1.isEmpty()) {
+				service.writeanswer1(adminDto);
+			}
+			else{String proImage2 = service.uploadfile2(proImage1);
+	        adminDto.setQnaImage(proImage2);
+	        service.writeanswer(adminDto);
+			}	
+				
+			return "redirect:qna_admin";
+
 		}
 
 		
