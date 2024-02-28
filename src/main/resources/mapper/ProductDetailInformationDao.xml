@@ -26,6 +26,9 @@
 
 	</insert> 
 
+<update id="updateProductQuantity">
+    UPDATE product SET proQty = proQty - 1 WHERE proSeq = #{proSeq}
+</update>
 
 
 </mapper>

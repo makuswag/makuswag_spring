@@ -37,11 +37,13 @@ public class ProductDetailInformationController {
 		 // proSeq 세션에 저장
 	    HttpSession session = request.getSession();
 	    session.setAttribute("proSeq", productDetailInformationDto.getProSeq());
+	    session.setAttribute("pPrice", productDetailInformationDto.getProPrice());
 		List<String> colors = service.color(proName);
 		model.addAttribute("colors", colors);
 		System.out.println("받아온 상품이름"+proName);
+		System.out.println(session.getAttribute("proSeq"));
+		System.out.println(session.getAttribute("pPrice"));
 		System.out.println("제품정보: "+productDetailInformationDto);
-		System.out.println("색 정보: "+colors);
 //		List<String> colors = service.color(proName);
 //		model.addAttribute("colors", colors);
 		return "detail/productDetailInformation"; 
@@ -51,9 +53,12 @@ public class ProductDetailInformationController {
 	public String productPurchase(HttpServletRequest request ) throws Exception{
 		//userId 가져오는 session값
 		HttpSession session = request.getSession();
-		HttpSession sessionProductSeq = request.getSession();
+		HttpSession sessionProduct = request.getSession();
+		System.out.println(sessionProduct.getAttribute("proSeq"));
+		System.out.println(sessionProduct.getAttribute("pPrice"));
+		int proSeq = (int) sessionProduct.getAttribute("proSeq");
+		int pPrice = (int) sessionProduct.getAttribute("pPrice");
 		
-		int proSeq = (int) sessionProductSeq.getAttribute("proSeq");
 		System.out.println("상품의 시퀀스넘버"+proSeq);
 		//userId값은 세션으로 가져와야됨(fix)
 		UserDto user = (UserDto) session.getAttribute("user");
@@ -65,10 +70,13 @@ public class ProductDetailInformationController {
 		String userId = user.getUserId();
 		
 		System.out.println("유저아이디productPurchase"+userId);
-		
+		service.productPurchaseDao(proSeq, userId, pPrice);
+		System.out.println(proSeq+ userId+ pPrice);
 		
 		//세션정의: 어디서 꺼야하는지 다시 알아보기(여기서 끄면 상품 등록이 안됨
 //		sessionProductSeq.invalidate(); 
+		 // 상품 수량 업데이트
+        service.updateProductQuantity(proSeq);
 		return "redirect:/myPage";//메인으로 보내야함?
 		
 	}
