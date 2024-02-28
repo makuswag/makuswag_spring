@@ -476,9 +476,17 @@ public class UserController {
 		return "member/join";
 	}
 	
+	// 주소
+	@GetMapping("addressTest")
+	public String addressTest(HttpSession session) throws Exception {
+		session.invalidate();
+		return "rndTest/addressTest";
+	}
+	
 	// 아이디 중복체크 AJAX 및 email 중복체크 후 인증번호 발송 
 	@PostMapping("/duplicatedCheck")
 	public ResponseEntity<Map<String,Object>> duplicatedCheckAction(HttpServletRequest request) throws Exception {
+		System.out.println(1);
 		return ResponseEntity.ok(request.getParameter("userId") != null ? 
 				service.checkDuplicatedId(request.getParameter("userId")) : 
 					service.checkDuplicatedEmail(request.getParameter("email"), request));

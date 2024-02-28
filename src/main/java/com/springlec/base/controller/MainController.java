@@ -102,23 +102,23 @@ public class MainController {
 //		return "category/outer";
 //	}
 
-	// topshort
-	@GetMapping("topshort")
-	public String topshort() throws Exception {
-		return "category/topshort_sleeve";
-	}
-
-	// toplong
-	@GetMapping("toplong")
-	public String toplong() throws Exception {
-		return "category/toplong_sleeve";
-	}
-
-	// bottoms
-	@GetMapping("bottoms")
-	public String bottoms() throws Exception {
-		return "category/bottoms";
-	}
+//	// topshort
+//	@GetMapping("topshort")
+//	public String topshort() throws Exception {
+//		return "category/topshort_sleeve";
+//	}
+//
+//	// toplong
+//	@GetMapping("toplong")
+//	public String toplong() throws Exception {
+//		return "category/toplong_sleeve";
+//	}
+//
+//	// bottomss
+//	@GetMapping("bottoms")
+//	public String bottoms() throws Exception {
+//		return "category/bottoms";
+//	}
 
 	// bags
 	@GetMapping("bags")

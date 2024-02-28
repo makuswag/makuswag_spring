@@ -12,5 +12,6 @@
 	<select id="getTotalCount" resultType="int">
 		SELECT COUNT(*) FROM
 		product
+		WHERE proCategory = 'outer'
 	</select>
 </mapper>

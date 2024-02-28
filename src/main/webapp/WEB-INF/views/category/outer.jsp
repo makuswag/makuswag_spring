@@ -48,9 +48,9 @@
 							<a href="/product/next-short-yasang/526/category/24/display/1/">
 								<div class="product-image">
 									<img
-										onmouseout="this.src = '${pageContext.request.contextPath}/images/admin/${dto.proImage1}'"
-										onmouseover="this.src = '${pageContext.request.contextPath}/images/admin/${dto.proImage2}'"
-										src="${pageContext.request.contextPath}/images/admin/${dto.proImage1}"
+										onmouseout="this.src = '${pageContext.request.contextPath}/images/product/${dto.proImage1}'"
+										onmouseover="this.src = '${pageContext.request.contextPath}/images/product/${dto.proImage2}'"
+										src="${pageContext.request.contextPath}/images/product/${dto.proImage1}"
 										class="primary-image" alt="${dto.proName } "> &nbsp
 								</div>
 								<div class="product-name">
@@ -77,21 +77,20 @@
 				</div>
 
 				<div style="text-align: center;">
-
 					<c:if test="${currentPage > 1}">
 						<a href="outer?page=${currentPage - 1}"
 							style="display: inline-block; margin: 10px;">&nbsp;이전</a>
 					</c:if>
 
-					<c:forEach items="${pageList}" var="page">
+					<c:forEach begin="${startPage}" end="${endPage}" var="pageNum">
 						<c:choose>
-							<c:when test="${page == currentPage}">
+							<c:when test="${pageNum == currentPage}">
 								<span
-									style="display: inline-block; margin: 10px; font-weight: bold;">&nbsp;${page}</span>
+									style="display: inline-block; margin: 10px; font-weight: bold;">&nbsp;${pageNum}</span>
 							</c:when>
 							<c:otherwise>
-								<a href="outer?page=${page}"
-									style="display: inline-block; margin: 10px;">&nbsp;${page}</a>
+								<a href="outer?page=${pageNum}"
+									style="display: inline-block; margin: 10px;">&nbsp;${pageNum}</a>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>

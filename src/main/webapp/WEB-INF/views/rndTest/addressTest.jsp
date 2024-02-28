@@ -16,13 +16,12 @@
 <p>카카오 주소 R&D</p>
 <div>배송지 주소(test)</div>
 	<!-- placeholder:텍스트필즈 초기 입력값, 클릭하면 findAddr 메소드를 호출 -->
-  <input id="member_post"  type="text" placeholder="주소찾기" readonly="readonly" onclick="findAddr()">
+  <input id="member_post"  type="text" placeholder="주소찾기" readonly="readonly" onclick="findAddr()"><br>
   <input id="member_addr" type="text" placeholder="Address" readonly="readonly"> <br>
   <input type="text" placeholder="Detailed Address">
   
 </body>
 <script>
-
 
 function findAddr(){
 	new daum.Postcode({

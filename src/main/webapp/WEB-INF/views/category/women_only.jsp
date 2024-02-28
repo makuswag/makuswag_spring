@@ -7,7 +7,8 @@
 <title>women_only</title>
 <link rel="stylesheet" href="./css/all.css">
 <link rel="stylesheet" href="./css/all2.css">
-<link rel="icon" href="./images/CompanyLogo.png"> <!-- 인터넷 창 아이콘에 로고 나오게 하기 -->
+<link rel="icon" href="./images/CompanyLogo.png">
+<!-- 인터넷 창 아이콘에 로고 나오게 하기 -->
 </head>
 <body class="nav-expended">
 	<!-- ============================== [[ Header  section]] ==============================-->
@@ -29,17 +30,20 @@
 			<div class="main">
 
 				<!-- 여기서 부터 작성 -->
-				
-				
-				
-				
-				
-				
+
+
+				<script type="text/javascript">
+					alert('준비중입니다.');
+					window.location.href = '/';
+				</script>
+
+
+
 				<!-- 여기까지 작성 -->
 
-			<!-- ============================== [[ Body  section]] ==============================-->
+				<!-- ============================== [[ Body  section]] ==============================-->
 
-			<!-- =============================  [[ Footer section ]]  ============================= -->
+				<!-- =============================  [[ Footer section ]]  ============================= -->
 
 				<%@ include file="../include/footer.jsp"%>
 
