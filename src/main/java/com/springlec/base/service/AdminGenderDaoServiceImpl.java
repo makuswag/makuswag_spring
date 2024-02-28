@@ -303,10 +303,10 @@ public class AdminGenderDaoServiceImpl implements AdminGenderDaoService {
 	
 	
 	@Override
-	public AdminDto contentDao(int qnaSeq, String qnaTitle, String qnaContent, String qnaImage, String qnaDate)
+	public AdminDto contentDao(int qnaSeq, String qnaTitle, String qnaContent, String qnaImage, String qnaDate, String qnaCategory)
 			throws Exception {
 		// TODO Auto-generated method stub
-		return dao.contentDao(qnaSeq, qnaTitle, qnaContent, qnaImage, qnaDate);
+		return dao.contentDao(qnaSeq, qnaTitle, qnaContent, qnaImage, qnaDate,qnaCategory);
 	}
 
 	@Override
@@ -410,11 +410,18 @@ public class AdminGenderDaoServiceImpl implements AdminGenderDaoService {
 	}
 
 	@Override
-	public void writeanswer(String qnaTitle, String qnaCategory, String qnaContent, String qnaImage, String userId,
-			int qnaSeq) throws Exception {
+	public void writeanswer(AdminDto adminDto) throws Exception {
 		// TODO Auto-generated method stub
-		dao.writeanswer(qnaTitle, qnaCategory, qnaContent, qnaImage, userId, qnaSeq);
+		dao.writeanswer(adminDto);
 	}
+
+	@Override
+	public void writeanswer1(AdminDto adminDto) throws Exception {
+		// TODO Auto-generated method stub
+		dao.writeanswer1(adminDto);
+	}
+
+
 
 
 

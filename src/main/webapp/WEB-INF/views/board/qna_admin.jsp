@@ -12,11 +12,19 @@
 <link rel="stylesheet" href="./css/all2.css">
 <link rel="icon" href="./images/CompanyLogo.png">
 <!-- 인터넷 창 아이콘에 로고 나오게 하기 -->
+<script>
+window.onload = function() {
+    var categorySpans = document.querySelectorAll('.title');
+    categorySpans.forEach(function(categorySpan) {
+        if (categorySpan.innerHTML === "답변") {
+            categorySpan.innerHTML = "↳" + categorySpan.innerHTML;
+            categorySpan.style.float = "center"; // 오른쪽으로 10px 이동
+        }
+    });
+};
+</script>
 </head>
 <style>
-
-
-
 </style>
     <div class="sidebar-wrapper">
         <%@ include file="../include/sidebar.jsp" %>
@@ -81,15 +89,7 @@
 						</c:if>
 					</div>
 
-<form id="nameSearchForm" action="qnaSearch_admin" method="post">
-    <select name="query" id="query">
-        <option value="userId">이름</option>
-        <option value="qnaCategory">카테고리</option>
-    </select>
-    <input type="text" name="content" placeholder="검색어 입력">
-    <input type="hidden" name="page" value="${currentPage}"> <!-- 현재 페이지 정보 전달 -->
-    <button type="submit">검색</button>
-</form>
+
 
 
     <div class="xans-element- xans-board xans-board-buttonlist board-admin-actions  ">

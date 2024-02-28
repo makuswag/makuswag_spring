@@ -7,11 +7,11 @@
 		resultType="com.springlec.base.model.MyPageDto">
 
 
-		SELECT p.purSeq, p.pQty, p.pPrice, p.pStackPoint, p.pDate, pr.proName
+		SELECT p.purSeq, p.pQty, p.pPrice, p.pStackPoint, DATE(p.pDate) AS  pDate, pr.proName
 		FROM purchase AS p
 		JOIN product AS pr ON p.proSeq = pr.proSeq
-		WHERE p.pDate BETWEEN #{startDate} AND #{endDate}
-		AND p.userId = #{getUserId} 
+		WHERE DATE(p.pDate) BETWEEN #{startDate} AND #{endDate}
+		<!-- AND p.userId = #{getUserId} --> 
 
 
 	</select>

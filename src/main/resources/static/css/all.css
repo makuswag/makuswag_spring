@@ -4720,21 +4720,23 @@ my-account .local-nav {
 .qna-list .list-item .post-link .number1 {
     display: inline-block;
     font-weight: 500;
-    width: 150px;
+    width: 120px;
     text-align: center;
 }
 .qna-list .list-item .post-link .number2 {
     display: inline-block;
     font-weight: 500;
-    width: 100px;
+    width: 130px;
     text-align: center;
 }
 
 .qna-list .list-item .post-link .number3 {
     display: inline-block;
     font-weight: 500;
-    width: 160px;
+    width: 300px;
     text-align: center;
+    font-size: 11px;
+
 }
 
 

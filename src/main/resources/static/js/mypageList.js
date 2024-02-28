@@ -85,7 +85,7 @@ function createTable(jsonString) {
 		accordion += "<a class='post-link'>";
 		accordion += "<span class='number1'>" + dataarray[i].purSeq + "</span>";
 		accordion += "<span class='number3'>" + dataarray[i].proName + "</span>";
-		accordion += "<span class='number1'>" + dataarray[i].pQty + "</span>";
+		accordion += "<span class='number2'>" + dataarray[i].pQty + "</span>";
 		accordion += "<span class='number1'>" + dataarray[i].pPrice + "</span>";
 		accordion += "<span class='number1'>" + dataarray[i].pStackPoint + "</span>";
 

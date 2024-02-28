@@ -109,7 +109,7 @@
 
 								<div class="list-item xans-record-">
 									<a class="post-link"> <span class="number1">주문번호</span> <span
-										class="number1">상품명</span> <span class="number1">수량</span> <span
+										class="number3" >상품명</span> <span class="number1">수량</span> <span
 										class="number1">가격</span> <span class="number1">적립포인트</span> <span
 										class="number1">주문일자</span>
 									</a>

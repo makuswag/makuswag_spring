@@ -129,7 +129,7 @@
                                     </div>
                                     <div class="field-labdksl el"></div>
                                     <input name="noImage" id="noImage" type="file" onchange="previewImage()">
-                                    <img id="image_preview" src="${pageContext.request.contextPath}/images/board/${contentView.noImage}" alt="" >
+                                     <img id="image_preview" src="${pageContext.request.contextPath}/images/board/${contentView.noImage}" alt="" style="max-width: 100px; max-height: 100px; ${contentView.noImage != null ? '' : 'display: none;'}">
                                 </div>
                             </div>
                         </div>
@@ -150,20 +150,26 @@
 
 <script>
 // 파일 입력 필드의 변경(파일 선택) 이벤트 핸들러
-document.getElementById('noImage').addEventListener('change', function(event) {
-    var input = event.target;
+function previewImage() {
+    var input = document.getElementById('noImage');
     var preview = document.getElementById('image_preview');
 
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
+            preview.style.display = 'block'; // 이미지 미리보기 보이기
             preview.src = e.target.result;
         };
 
         reader.readAsDataURL(input.files[0]);
+    } else {
+        preview.style.display = 'none'; // 이미지 미리보기 숨기기
+        preview.src = ""; // 이미지 초기화
     }
-});
+}
 </script>
+
+
 </body>
 </html>

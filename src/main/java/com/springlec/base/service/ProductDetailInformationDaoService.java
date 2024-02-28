@@ -11,4 +11,7 @@ public interface ProductDetailInformationDaoService {
 	//상품구매(insert)
 	public void productPurchaseDao(int proSeq,String userId,int pPrice) throws Exception;	
 
+	 // 상품 수량 업데이트
+    public void updateProductQuantity(int proSeq) throws Exception;
+
 }

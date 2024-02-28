@@ -6,7 +6,7 @@
 		resultType="com.springlec.base.model.QnaDto">
 		SELECT qnaSeq, qnaCategory, userId
 		FROM qna
-		ORDER BY qnaSeq DESC
+		ORDER BY parents ASC, parents1 ASC
 		LIMIT #{requestPage}, #{numOfTuplePerPage}
 	</select>
 	<select id="getTotalCount" resultType="int">
