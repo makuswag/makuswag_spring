@@ -41,7 +41,7 @@
 				<div class="product-tiles">
 					<c:forEach items="${productlist}" var="dto" varStatus="loop">
 						<div class="tile xans-record-">
-							<a href="/product/next-short-yasang/526/category/24/display/1/">
+							<a href="productDetailInformation?proName=${dto.proName }">
 								<div class="product-image">
 									<img
 										onmouseout="this.src = '${pageContext.request.contextPath}/images/product/${dto.proImage1}'"
