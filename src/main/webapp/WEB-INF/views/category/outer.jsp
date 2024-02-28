@@ -77,21 +77,20 @@
 				</div>
 
 				<div style="text-align: center;">
-
 					<c:if test="${currentPage > 1}">
 						<a href="outer?page=${currentPage - 1}"
 							style="display: inline-block; margin: 10px;">&nbsp;이전</a>
 					</c:if>
 
-					<c:forEach items="${pageList}" var="page">
+					<c:forEach begin="${startPage}" end="${endPage}" var="pageNum">
 						<c:choose>
-							<c:when test="${page == currentPage}">
+							<c:when test="${pageNum == currentPage}">
 								<span
-									style="display: inline-block; margin: 10px; font-weight: bold;">&nbsp;${page}</span>
+									style="display: inline-block; margin: 10px; font-weight: bold;">&nbsp;${pageNum}</span>
 							</c:when>
 							<c:otherwise>
-								<a href="outer?page=${page}"
-									style="display: inline-block; margin: 10px;">&nbsp;${page}</a>
+								<a href="outer?page=${pageNum}"
+									style="display: inline-block; margin: 10px;">&nbsp;${pageNum}</a>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>

@@ -14,7 +14,7 @@
 				<li class="menu-item xans-record-"><a href="best100">BEST 100</a></li>
 				<li class="menu-item xans-record-"><a href="all_in_one">All-in-one</a></li>
 				<li class="menu-item xans-record-"><a href="outer">Outer</a></li>
-				<li class="menu-item xans-record-"><a href="topshort">Top(short sleeve)</a></li>
+				<li class="menu-item xans-record-"><a href="topshort_sleeve">Top(short sleeve)</a></li>
 				<li class="menu-item xans-record-"><a href="toplong">Top(long sleeve)</a></li>
 				<li class="menu-item xans-record-"><a href="bottoms">Bottoms</a></li>
 				<li class="menu-item xans-record-"><a href="bags">Bags</a></li>
