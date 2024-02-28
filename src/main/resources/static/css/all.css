@@ -1,5 +1,16 @@
 @charset "UTF-8";
 
+.tile .product-image img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+
+
 .product-tiles {
     display: flex;
     flex-wrap: wrap;
@@ -828,11 +839,11 @@ button.field-button {
 	max-width: 377px;
 }
 
-.birthday-fieldset #birth_year {
+.birthday-fieldset #birthYear {
 	width: 85px;
 }
 
-.birthday-fieldset #birth_month, .birthday-fieldset #birth_day {
+.birthday-fieldset #birthMonth, .birthday-fieldset #birthDay {
 	width: 68px;
 	margin-left: 5px;
 }
