@@ -30,7 +30,10 @@
 
 				<!-- 여기서 부터 작성 -->
 				
-				
+				<script type="text/javascript">
+					alert('Arpil COMMING SOON');
+					window.location.href = '/';
+				</script>				
 				
 				
 				
