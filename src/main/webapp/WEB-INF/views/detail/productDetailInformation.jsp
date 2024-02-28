@@ -24,8 +24,11 @@
 <!-- css파일 -->
 <link rel="stylesheet" href="./css/productDetailInformation.css">
 
-
 <link rel="icon" href="./images/CompanyLogo.png">
+
+
+
+
 <!-- 인터넷 창 아이콘에 로고 나오게 하기 -->
 
 </head>
@@ -118,9 +121,10 @@
 		<!-- 팝업에 표시할 내용 -->
 		<div class="popup-content"
 			style="display: none; align-content: center;">
-			<br> <br>
-			<h2>${allinone_detail.proName}</h2>
-			<br> <br>
+			<span data-remodal-action="close" class="close-button"></span>
+			<div class = "product-name">			
+			<h2>${productDetailInformation.proName}</h2>
+			</div>
 			<div
 				class="xans-element- xans-product xans-product-option product-options xans-record-">
 				<ul
@@ -157,12 +161,24 @@
 							</span>
 						</div></li>
 				</ul>
-				<a href="#none" class="primary-button buy-now " onclick="product_submit(1, '/exec/front/order/basket/', this)"><span id="btnBuy">BUY NOW</span></a>
 			</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			<!-- 선택한 사이즈와 컬러를 표시할 영역 -->
 			<div id="selectedSizeAndColor" style="margin-top: 20px;">
 				<p id="selectedSize"></p>
 				<p id="selectedColor"></p>
+				<div class="purchase-action">
+				<a href="productPurchaseSubmit" class="primary-button buy-now " ><span id="btnBuy">BUY NOW</span></a>
+				<a href="#none" class="primary-button buy-now " onclick="product_submit(1, '/exec/front/order/basket/', this)"><span id="btnBuy">CART</span></a>
+				</div>
 			</div>
 		</div>
 <!-- 추후에 js파일로 이동시켜서 구현예정(지금 ${productDetailInformation.proQty}이 값을 js파일에서 받아오지 못해서 버튼 display함수가 먹히지 않음 -->
