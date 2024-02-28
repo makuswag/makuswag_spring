@@ -209,6 +209,40 @@ public class AdminController {
         model.addAttribute("list", listDao);
         return "admin/ProTable";
     }
+    @PostMapping("qnaSearch_admin")
+    public String qnaQuery(HttpServletRequest request, Model model) throws Exception {
+        String query = request.getParameter("query");
+        String content = request.getParameter("content");
+        
+        // 현재 페이지 정보 받아오기
+        String currentPageStr = request.getParameter("page");
+        int currentPage = 1; // 기본값 설정
+        
+        if (currentPageStr != null && !currentPageStr.isEmpty()) {
+            currentPage = Integer.parseInt(currentPageStr);
+        }
+
+        // 검색 처리
+        List<AdminDto> listDao = service.qnaQueryadmin(query, content);
+        model.addAttribute("QnaList", listDao);
+
+        // 페이지 관련 정보 계산
+        int totalCount = listDao.size();
+        int numOfTuplePerPage = 10;
+        int totalPage = (int) Math.ceil((double) totalCount / numOfTuplePerPage);
+        int pageBlockSize = 5;
+        int startPage = ((currentPage - 1) / pageBlockSize) * pageBlockSize + 1;
+        int endPage = Math.min(startPage + pageBlockSize - 1, totalPage);
+
+        // 모델에 페이징 정보 추가
+        model.addAttribute("currentPage", currentPage);
+        model.addAttribute("totalPage", totalPage);
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("endPage", endPage);
+              
+        return "board/qna_admin";
+    }
+
 
     @GetMapping("productmanager")
     public String a() {
@@ -481,7 +515,7 @@ public class AdminController {
     
 	
 	}
-	@GetMapping("allinone")
+	@GetMapping("all_in_one")
     public String all(Model model, HttpServletRequest request) {
         try {
             List<AdminDto> allinone = service.allinone();
@@ -545,6 +579,13 @@ public class AdminController {
 			return "board/noticewrite_admin";
 			
 		}
+		
+		@GetMapping("qnaWrite_view1")
+		public String write(HttpSession session) throws Exception{
+			
+			return "board/qnawrite_admin";
+		}
+		
 		@PostMapping("noWriteSubmit")
 		public String write(HttpServletRequest request, @RequestParam (name = "noImage", required = false)MultipartFile file) throws Exception{
 			HttpSession session = request.getSession();
@@ -569,7 +610,30 @@ public class AdminController {
 			
 			return "redirect:notice_admin";
 			
-		}
+		}@GetMapping("qnaWriteSubmit")
+		public String write1(HttpServletRequest request, @RequestParam (name = "qnaImage", required = false)MultipartFile file) throws Exception{
+			HttpSession session = request.getSession();
+			UserDto user = (UserDto) session.getAttribute("user");
+			String userId = user.getUserId();
+
+			System.out.println(userId);
+			System.out.println(System.getProperty("user.dir") + "/src/main/resources/static/images");
+			
+			
+			String qnaImage = null;
+			
+			if (file != null && !file.isEmpty()) qnaImage = service.uploadfile2(file);
+			String qnaTitle = request.getParameter("qnaTitle");
+			String qnaCategory = request.getParameter("qnaCategory");
+			String qnaContent = request.getParameter("qnaContent");
+			
+			
+			service.writeDao1(qnaTitle, qnaCategory, qnaContent, qnaImage, userId);
+			
+			System.out.println(qnaImage);
+			
+			return "redirect:qna_admin";}
+		
 		@GetMapping("qnaContent_admin")
 		public String contentview(HttpServletRequest request, Model model) throws Exception {
 			
@@ -626,28 +690,85 @@ public class AdminController {
 		    // 모델에 contentView를 추가
 		    model.addAttribute("contentView", contentView);
 		    
+		   
 		    return "board/noticeModify_admin";
+		}
+		@GetMapping("qnaUpdate_admin")
+		public String update2(HttpServletRequest request,Model model) throws Exception{
+			int qnaSeq=Integer.parseInt(request.getParameter("qnaSeq"));
+			AdminDto contentView = service.modifyselect1(qnaSeq);
+			
+			model.addAttribute("contentView",contentView);
+			return "board/qnaModify_admin";
 		}
 		@PostMapping("noUpdateSubmit")
 		public String submit(HttpServletRequest request, 
-	                            @RequestParam("content_image") MultipartFile proImage1) throws Exception {
+	                            @RequestParam("noImage") MultipartFile proImage1) throws Exception {
 			
 			HttpSession session = request.getSession();
 			UserDto user = (UserDto) session.getAttribute("user");
 			String userId = user.getUserId();
 			
 			AdminDto adminDto = new AdminDto();
+			adminDto.setNoCategory(request.getParameter("noCategory"));
+			adminDto.setNoSeq(Integer.parseInt(request.getParameter("noSeq")));
+			adminDto.setNoTitle(request.getParameter("noTitle"));
+			adminDto.setNoContent(request.getParameter("noContent"));
+			adminDto.setUserId(userId);
+			if(proImage1.isEmpty()) {
+				service.modify_no1(adminDto);
+			}
+			else {
 	        String proImage2 = service.uploadfile1(proImage1);
 	        adminDto.setNoImage(proImage2);
-	        adminDto.setNoSeq(Integer.parseInt(request.getParameter("noSeq")));
-	        adminDto.setNoTitle(request.getParameter("noTitle"));
-	        adminDto.setNoContent(request.getParameter("noContent"));
-	        adminDto.setUserId(userId);
-			
 	        service.modify_no(adminDto);
-	        
+			}
 			return "redirect:notice_admin";
 			
 		}
+		@PostMapping("qnaUpdateSubmit")
+		public String submit1(HttpServletRequest request, 
+				
+	                            @RequestParam("qnaImage") MultipartFile proImage1) throws Exception {
+			
+			HttpSession session = request.getSession();
+			UserDto user = (UserDto) session.getAttribute("user");
+			String userId = user.getUserId();
+			
+			AdminDto adminDto = new AdminDto();
+			adminDto.setQnaCategory(request.getParameter("qnaCategory"));
+			adminDto.setQnaSeq(Integer.parseInt(request.getParameter("qnaSeq")));
+			adminDto.setQnaTitle(request.getParameter("qnaTitle"));
+			adminDto.setQnaContent(request.getParameter("qnaContent"));
+			adminDto.setUserId(userId);
+			if(proImage1.isEmpty()) {
+				service.modify_qna1(adminDto);
+			}
+			else {
+	        String proImage2 = service.uploadfile2(proImage1);
+	        adminDto.setQnaImage(proImage2);
+	        service.modify_qna(adminDto);
+	        
+			}
+			return "redirect:qna_admin";
+			
+		}
+
+		
+		@GetMapping("qnaAnswer_admin")
+		public String answer() {
+			return "board/qnaAnswer_admin";
+		}
+		@PostMapping("qnaAnswerSubmit")
+		public String answer(HttpServletRequest request,@RequestParam("qnaSeq") int qnaSeq) throws Exception {
+			
+			
+			System.out.println("qnaSeq: " + qnaSeq);
+			
+			
+		    return "redirect:qna_admin";
+		}
+
+		
 		
 }

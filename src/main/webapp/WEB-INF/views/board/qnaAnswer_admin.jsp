@@ -8,16 +8,10 @@
 %>
 <!DOCTYPE html>
 <html>
-<style>
-    #image_preview {
-        max-width: 100px; /* 이미지의 최대 너비를 100px로 설정 */
-        max-height: 100px; /* 이미지의 최대 높이를 100px로 설정 */
-    }
-</style>
 <head>
     <title>MakUSwag</title>
     <script type="text/javascript">
-        function insertno() {
+        function insertqna() {
             // 필수 입력 필드의 값을 가져오기
             var noCategory = document.getElementById("board_category").value;
             var noTitle = document.getElementById("subject").value;
@@ -28,8 +22,6 @@
                 alert("모든 필드를 입력하세요.");
                 return false; // 폼 제출 중지
             }
-            
-            alert("수정이 완료되었습니다.")
             // 폼을 직접 제출
             document.getElementById("boardWriteForm").submit();
         }
@@ -77,9 +69,9 @@
                         <font color="#555555">NOTICE</font>
                     </h3>
                 </div>
-                <form id="boardWriteForm" name="insertnoForm" action="noUpdateSubmit"
+                <form id="boardWriteForm" name="insertnoForm" action="qnaAnswerSubmit"
                       method="post" target="_self" enctype="multipart/form-data">
-                       <input type="hidden" name="noSeq" value="${contentView.noSeq}">
+                       <input type="hidden" name="qnaSeq" value="${contentView.qnaSeq}">
                     <input id="board_no" name="board_no" value="5" type="hidden"/>
                     <input id="product_no" name="product_no" value="0" type="hidden"/>
                     <input id="move_write_after" name="move_write_after"
@@ -101,13 +93,12 @@
                                 <div class="form-block">
                                     <div class="form-field subject">
                                         <div class="field-label">제목</div>
-									<select id="board_category" name="noCategory">
-    							
-                                            <option value="공지">공지</option>
-                                        </select><input id="subject" name="noTitle"
+                                        <select id="board_category" name="qnaCategory">
+												<option value="답변">답변</option>
+                                        </select><input id="subject" name="qnaTitle"
                                                          class="inputTypeText"
                                                          placeholder="제목을 입력하세요" maxLength="125"
-                                                         type="text" value="${contentView.noTitle}"/>
+                                                         type="text"/>
                                         <div class="checkbox"></div>
                                         <div class="checkbox"></div>
                                     </div>
@@ -118,25 +109,23 @@
                                     <div class="form-field post-textarea">
                                         <div class="field-label">내용</div>
                                         <!-- HTML -->
-                                          <textarea style="width: 100%;" name="noContent" id="content"
-                                                  class="ec-fr-never-be-duplicated">${contentView.noContent}</textarea>
-                                                  
+                                        <textarea style="width: 100%;" name="qnaContent" id="content"
+                                                  class="ec-fr-never-be-duplicated"></textarea>
                                         <input type="hidden" id="content_hidden"
                                                fw-filter="isSimplexEditorFill" fw-label="내용"
                                                value="EC_FROALA_INSTANCE"/>
                                         <!-- Run Froala Script -->
                                         <script type="text/javascript" src="./js/write.js"></script>
                                     </div>
-                                    <div class="field-labdksl el"></div>
-                                    <input name="noImage" id="noImage" type="file" onchange="previewImage()">
-                                    <img id="image_preview" src="${pageContext.request.contextPath}/images/board/${contentView.noImage}" alt="" >
+                                    <div class="field-label">첨부파일</div>
+                                    <input name="qnaImage" id="qnaImage" type="file">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="form-action">
                         <input type="button" class="button primary-button" value="SUBMIT"
-                               name="noInsert" onclick="insertno()">
+                               name="qnaAnswer" onclick="insertqna()">
                     </div>
                 </form>
             </div>
@@ -147,23 +136,5 @@
     </div>
 </div>
 <!-- =============================  [[ Footer section ]]  ============================= -->
-
-<script>
-// 파일 입력 필드의 변경(파일 선택) 이벤트 핸들러
-document.getElementById('noImage').addEventListener('change', function(event) {
-    var input = event.target;
-    var preview = document.getElementById('image_preview');
-
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            preview.src = e.target.result;
-        };
-
-        reader.readAsDataURL(input.files[0]);
-    }
-});
-</script>
 </body>
 </html>

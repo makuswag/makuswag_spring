@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <title>${noTitle }Q&A - MakUSwag</title>
 <script>
-    function confirmDelete(noSeq) {
+    function confirmDelete(qnaSeq) {
         if (confirm("삭제 하시겠습니까?")) {
             window.location.href = "qnaDelete_admin?qnaSeq=${content_view.qnaSeq}"
         } else {
@@ -19,11 +19,17 @@
         }
     }
     
-    function UpdateQna(noSeq){
+    function UpdateQna(qnaSeq){
     	if(confirm("수정 하시겠습니까?")){
-    		window.location.href = "qnaUpdate?noSeq=" + qnaSeq;
+    		window.location.href = "qnaUpdate_admin?qnaSeq=${content_view.qnaSeq}"
     	}else{
     		// 사용자가 "아니오"를 선택한 경우 아무 작업도 수행 하지 않습니다.
+    	}
+    }
+    
+    function AnswerQna(qnaSeq){
+    	if(confirm("답변을 작성하시겠습니까?")){
+    		window.location.href="qnaAnswer_admin?qnaSeq=${content_view.qnaSeq}"
     	}
     }
 </script>
@@ -69,12 +75,13 @@
 											<div class="content">
 												<div class="images"></div>
 												 <div class="article"><div class="fr-view fr-view-article"><p>${content_view.qnaContent }</p><br></div></div>
-												<div><img src="${pageContext.request.contextPath}/images/board/${content_view.qnaImage}" width="100" height="100"></div>
+												<div><img src="${pageContext.request.contextPath}/images/board/${content_view.qnaImage}" alt="" width="100" height="100" style="${content_view.qnaImage != null ? '' : 'display: none;'}"></div>
 											</div>
 										</div>
 							<div class="post-footer">
 											<span class=""><a href="#" onclick="confirmDelete(${qnaSeq})" class="button" style="color:#0e3773;"><span>삭제</span></a></span>
 								            <span class=""><a href="#" onclick="UpdateQna(${qnaSeq})" class="button" style="color:#0e3773;"><span>수정</span></a></span>
+								            <span class=""><a href="#" onclick="AnswerQna(${qnaSeq})" class="button" style="color:#0e3773;"><span>답변</span></a></span>
 										</div>
 							</div>
 				

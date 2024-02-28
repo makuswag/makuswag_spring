@@ -81,31 +81,21 @@
 						</c:if>
 					</div>
 
-					<form id="boardSearchForm" action="qnaQueryadmin" method="post"
-						target="_top" enctype="multipart/form-data">
-						<input id="board_no" name="board_no" value="5" type="hidden" /> <input
-							id="page" name="page" value="1" type="hidden" /> <input
-							id="board_sort" name="board_sort" value="" type="hidden" />
-						<div
-							class="xans-element- xans-board xans-board-search board-search-form ">
-							<fieldset>
-								<select id="search_key" name="search_key" fw-filter=""
-									fw-label="" fw-msg="">
-									<option value="subject">제목</option>
-									<option value="content">내용</option>
-									<option value="member_id">아이디</option>
-								</select> 
-									<input type = "text" name="content" fw-filter="" fw-label=""
-									fw-msg="" class="inputTypeText" placeholder="" value=""
-									type="text" /> <a href="#none" class="search-button"
-									onclick="BOARD.form_submit('boardSearchForm');"></a>
-							</fieldset>
-						</div>
-						<div
-						class="xans-element- xans-board xans-board-buttonlist board-admin-actions  ">
-						<a href="noticeWrite_view" class="primary-button "><span>WRITE</span></a>
-					</div>
-					</form>
+<form id="nameSearchForm" action="qnaSearch_admin" method="post">
+    <select name="query" id="query">
+        <option value="userId">이름</option>
+        <option value="qnaCategory">카테고리</option>
+    </select>
+    <input type="text" name="content" placeholder="검색어 입력">
+    <input type="hidden" name="page" value="${currentPage}"> <!-- 현재 페이지 정보 전달 -->
+    <button type="submit">검색</button>
+</form>
+
+
+    <div class="xans-element- xans-board xans-board-buttonlist board-admin-actions  ">
+        <a href="qnaWrite_view1" class="primary-button"><span>WRITE</span></a>
+    </div>
+
 				</div>
 				<!-- 여기까지 작성 -->
 				<!-- ============================== [[ Body  section]] ==============================-->
