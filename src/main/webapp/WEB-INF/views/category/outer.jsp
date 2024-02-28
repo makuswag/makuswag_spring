@@ -10,8 +10,11 @@
 <link rel="stylesheet" href="./css/all2.css">
 <link rel="icon" href="./images/CompanyLogo.png">
 <!-- 인터넷 창 아이콘에 로고 나오게 하기 -->
+
+
 </head>
 <body class="nav-expended">
+
 	<!-- ============================== [[ Header  section]] ==============================-->
 
 	<%@ include file="../include/header.jsp"%>
@@ -38,27 +41,6 @@
 						class="xans-element- xans-product xans-product-headcategory category-title ">
 						<h2>Outer</h2>
 					</div>
-					<div class="catalog-nav">
-						<div
-							class="xans-element- xans-product xans-product-headcategory categories ">
-							<span class="item"> <a
-								href="/product/list.html?cate_no=24">All</a>
-							</span> <span style="display:;"
-								class="xans-element- xans-product xans-product-displaycategory item  xans-record-"><a
-								href="/category/jackets-jumper/29/">Jackets & Jumper</a> </span> <span
-								style="display:;"
-								class="xans-element- xans-product xans-product-displaycategory item  xans-record-"><a
-								href="/category/coats/30/">Coats</a> </span> <span style="display:;"
-								class="xans-element- xans-product xans-product-displaycategory item  xans-record-"><a
-								href="/category/blazers/31/">Blazers</a> </span> <span
-								style="display:;"
-								class="xans-element- xans-product xans-product-displaycategory item  xans-record-"><a
-								href="/category/cardigan/42/">Cardigan</a> </span> <span
-								style="display:;"
-								class="xans-element- xans-product xans-product-displaycategory item  xans-record-"><a
-								href="/category/vest/92/">Vest</a> </span>
-						</div>
-					</div>
 				</div>
 				<div class="product-tiles">
 					<c:forEach items="${productlist}" var="dto" varStatus="loop">
@@ -66,23 +48,22 @@
 							<a href="/product/next-short-yasang/526/category/24/display/1/">
 								<div class="product-image">
 									<img
+										onmouseout="this.src = '${pageContext.request.contextPath}/images/admin/${dto.proImage1}'"
+										onmouseover="this.src = '${pageContext.request.contextPath}/images/admin/${dto.proImage2}'"
 										src="${pageContext.request.contextPath}/images/admin/${dto.proImage1}"
-										class="primary-image" alt="NEXT SHORT YASANG"> 
-									<img
-										src="${pageContext.request.contextPath}/images/admin/${dto.proImage2}"
-										class="secondary-image" alt="NEXT SHORT YASANG">
+										class="primary-image" alt="${dto.proName } "> &nbsp
 								</div>
 								<div class="product-name">
 									<span style="font-size: 12px; color: #555555;">${dto.proName}</span>
 								</div>
 								<div class="product-price" data-price-was="" data-price-now=""
 									data-stock="">
-									<span style="font-size: 12px; color: #555555;">${dto.proColor} / ${dto.proGender}</span>
+									<span style="font-size: 12px; color: #555555;">${dto.proColor}
+										/ ${dto.proGender}</span>
 									</li>
 								</div>
 								<div class="product-info">
-								<span
-										style="font-size: 12px; color: #555555;">${dto.proPrice}</span><span
+									<span style="font-size: 12px; color: #555555;">${dto.proPrice}</span><span
 										id="span_product_tax_type_text" style=""> </span>
 								</div>
 								<ul
@@ -122,8 +103,6 @@
 				</div>
 			</div>
 		</div>
-
-
 
 		<!-- 여기까지 작성 -->
 
