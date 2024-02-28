@@ -18,7 +18,7 @@ public class OuterController {
 	
 	@GetMapping("outer")
 	public String list(@RequestParam(defaultValue = "1") int page, Model model) throws Exception {
-	    int numOfTuplePerPage = 10; // 페이지당 튜플 개수
+	    int numOfTuplePerPage = 9; // 페이지당 튜플 개수
 	    List<OuterDto> listDao = service.listDao(page, numOfTuplePerPage); // 서비스 계층에서 데이터 조회
 	    model.addAttribute("productlist", listDao);
 
