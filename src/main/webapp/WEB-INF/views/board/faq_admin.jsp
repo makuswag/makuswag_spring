@@ -36,7 +36,7 @@
 			<div class="board">
 				<div class="xans-element- xans-board xans-board-title board-header ">
 					<h3>
-						<font color="#555555">&nbsp;&nbsp;FAQ</font>
+						<font color="#555555">FAQ</font>
 					</h3>
 					</div>
 					<div class="wrap">

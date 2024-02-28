@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@charset "UTF-8";
+
 
 
 .board {
@@ -7,12 +7,16 @@
 	max-width: 800px;
 	min-height: calc(100vh - 510px);
 	margin: 0 auto;
+	max-height: 500px; /* 최대 높이를 500px로 지정합니다. */
+   
 }
 
 .board-header {
-	margin-bottom: 60px;
+	margin-bottom: 30px;
 }
-
+.board-header .board-categories {
+	display: none;
+}
 
 .board-admin-actions {
 	margin-top: 60px;
@@ -39,6 +43,7 @@ body {
 	font-weight: 270;
 	font-style: normal;
 	line-height: 1.9;
+	max-height: 200vh;
 }
 
 h1 {
@@ -216,5 +221,386 @@ button.field-button {
 	padding: 30px 40px;
 	color: #777;
 }
+.qna-list .list-item .post-link {
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	padding: 15px;
+	position: relative;
+}
 
+.qna-list .list-item .post-link .number {
+	display: inline-block;
+	font-weight: 500;
+	width: 85px;
+	 text-align: center; 
+}
+
+.qna-list .list-item .post-link .title {
+	font-weight: 600;
+}
+
+.qna-list .list-item .post-link .date {
+	float: right;
+	font-weight: 500;
+}
+
+.qna-list .list-item .post-link .description {
+	display: inline-block;
+	font-size: 12px;
+	font-weight: 400;
+	opacity: 0.8;
+}
+.qna-notice .list-item .post-link>* {
+	font-weight: 700 !important;
+}
+.qna-list .list-item .post-link .number1 {
+    display: inline-block;
+    font-weight: 500;
+    width: 150px;
+    text-align: center;
+}
+.qna-list .list-item .post-link .number2 {
+    display: inline-block;
+    font-weight: 500;
+    width: 100px;
+    text-align: center;
+}
+
+.qna-list .list-item .post-link .number3 {
+    display: inline-block;
+    font-weight: 500;
+    width: 160px;
+    text-align: center;
+}
+.qna-list .list-item .post-link {
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	padding: 15px;
+	position: relative;
+}
+
+.qna-list .list-item .post-link .number {
+	display: inline-block;
+	font-weight: 500;
+	width: 85px;
+	 text-align: center; 
+}
+
+.qna-list .list-item .post-link .title {
+	font-weight: 600;
+}
+
+.qna-list .list-item .post-link .date {
+	float: right;
+	font-weight: 500;
+}
+
+.qna-list .list-item .post-link .description {
+	display: inline-block;
+	font-size: 12px;
+	font-weight: 400;
+	opacity: 0.8;
+}
+
+.qna-list .list-item .accordion-content {
+	font-size: 13px;
+	opacity: 0;
+	padding: 0 22px 22px;
+	position: relative;
+	transition: opacity 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.qna-list .list-item {
+	border-bottom: 1px solid #0e3773;
+	height: 55px;
+	overflow: hidden;
+	transition: height 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.qna-list .list-item .accordion-content * {
+	font-family: 'Avenir Next', 'Noto Sans KR', sans-serif !important;
+}
+
+.qna-list .list-item .accordion-content img {
+	width: 100% !important;
+	height: auto !important;
+}
+
+.qna-list .list-item.is-active .accordion-content {
+	opacity: 1;
+}
+
+.qna-notice .list-item:last-child {
+	border-bottom: none;
+}
+
+.qna-notice .list-item .post-link>* {
+	font-weight: 700 !important;
+}
+
+@media ( max-width : 900px) {
+	.qna-list .list-item {
+		height: 55px;
+	}
+	.qna-list .list-item .post-link {
+		padding: 15px 12px;
+	}
+	.qna-list .list-item .post-link:after {
+		right: 12px;
+		width: 12px;
+		height: 12px;
+	}
+	.qna-list .list-item .post-link .title {
+		font-size: 13px;
+	}
+	.qna-list .list-item .post-link .number, .qna-list .list-item .post-link .category
+		{
+		width: auto;
+		font-size: 13px;
+		margin-right: 5px;
+	}
+	.qna-list .list-item .post-link .description {
+		display: none;
+	}
+	.qna-list .list-item .accordion-content {
+		padding: 0 12px 22px;
+	}
+}
+.board-search-form fieldset {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	margin-top: 30px;
+}
+
+.board-search-form .select-field+.select-field {
+	margin-left: 5px;
+}
+
+.board-search-form #search {
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px solid #0e3773;
+	display: inline-block;
+	font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+	font-size: 14px;
+	height: auto;
+	padding: 10px 0;
+	outline: none;
+	margin-left: 10px;
+}
+
+.board-search-form .search-button {
+	background-image: url('../images/search-icon.png');
+	background-size: 30px;
+	background-repeat: no-repeat;
+	background-position: center;
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	pointer-events: auto;
+}
+
+@media ( max-width : 600px) {
+	.board-search-form {
+		border-bottom: 1px solid #0e3773;
+	}
+	.board-search-form .select-field {
+		width: calc(50% - 3px);
+		margin-bottom: 15px;
+	}
+	.board-search-form #search {
+		border-bottom: none;
+		margin-left: 0;
+		width: calc(100% - 40px);
+	}
+}
+.site-nav .search-bar input[type="text"] {
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px solid #0e3773;
+	border-radius: 0;
+	box-shadow: none;
+	color: #0e3773;
+	font-size: 14px;
+	font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+	height: auto;
+	line-height: normal;
+	outline: none;
+	padding: 5px 0;
+	width: 120px;
+	transition: width 0.2s ease-out;
+}
+
+.site-nav .search-bar input[type="text"]:focus {
+	width: 150px;
+}
+
+.site-nav .search-bar input[type="image"] {
+	width: 30px;
+	height: 30px;
+	position: relative;
+	top: 2px;
+}
+
+.search-form {
+	background-color: #d0c9ba;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 60px;
+	padding: 40px;
+	position: relative;
+}
+
+.search-form .select-field {
+	display: none;
+}
+
+.search-form input[type="text"] {
+	background-color: transparent;
+	border: 1px solid #0e3773;
+	border-radius: 0;
+	box-shadow: none;
+	color: #0e3773;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 15px;
+	outline: none;
+	width: calc(100% - 110px);
+	max-width: 260px;
+	height: 46px;
+	margin-right: 5px;
+	padding: 5px 15px;
+	-webkit-appearance: none;
+}
+
+.search-form .primary-button {
+	border-width: 2px;
+	font-size: 14px;
+	font-weight: 700;
+	position: relative;
+	top: 2px;
+	width: 100px;
+	height: 48px;
+}
+
+.search-container .no-results {
+	font-size: 18px;
+	text-align: center;
+	padding: 200px 0;
+}
+@media ( max-width : 900px) {
+	.site-nav .search-bar {
+		padding: 20px 30px;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+	}
+	.site-nav .search-bar fieldset {
+		position: relative;
+	}
+	.site-nav .search-bar input[type="text"] {
+		width: 100% !important;
+		padding: 10px 5px;
+	}
+	.site-nav .search-bar input[type="image"] {
+		position: absolute;
+		top: 4px;
+		right: -4px;
+	}
+}
+@media ( max-width : 600px) {
+
+	.site-nav .search-bar {
+		padding: 20px;
+	}
+}
+.account-toolbar .search-order .period a {
+	border: 1px solid #0e3773;
+	border-right: none;
+	float: left;
+	font-size: 13px;
+	height: 46px;
+	line-height: 46px;
+	padding: 0 15px;
+	text-decoration: none;
+}
+
+.account-toolbar .search-order fieldset>div {
+	float: left;
+	padding: 5px 0;
+	margin-right: 20px;
+}
+
+.account-toolbar .search-order .period a:last-child {
+	border-right: 1px solid #0e3773;
+}
+
+
+.account-toolbar .search-order fieldset>div {
+	float: left;
+	padding: 5px 0;
+	margin-right: 20px;
+}
+.account-toolbar .search-order .date-range {
+	display: flex;
+	align-items: center;
+}
+
+.account-toolbar .search-order .date-range input[type="text"] {
+	background-color: transparent;
+	border: 1px solid #0e3773;
+	border-radius: 0;
+	color: #0e3773;
+	font-family: 'Avenir Next', 'Noto Sans KR', sans-serif;
+	font-size: 13px;
+	height: 46px;
+	line-height: 46px;
+	text-align: center;
+	width: 100px;
+	-webkit-appearance: none;
+}
+
+.account-toolbar .search-order .date-range input[type="text"]+button {
+	display: none;
+}
+
+.account-toolbar .search-order .date-range span {
+	display: inline-block;
+	margin: 0 7px;
+}
+
+.account-toolbar .search-order .date-range .primary-button input {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.post-header {
+	border-top: 1px solid #0e3773;
+	border-bottom: 1px solid #0e3773;
+	padding: 30px 0;
+}
+
+.post-header h3 {
+	margin-top: 5px;
+}
+.post-content {
+	border-bottom: 1px solid #0e3773;
+	padding: 45px 0;
+	margin-bottom: 30px;
+}
+
+.post-content img {
+	width: 100% !important;
+	height: auto !important;
+}
+.post-footer .button {
+	font-weight: 700;
+	margin-right: 7px;
+}
 
