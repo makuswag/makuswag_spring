@@ -1,9 +1,11 @@
 package com.springlec.base.controller;
 
+import java.util.Map;
 import java.util.Properties;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -473,5 +475,13 @@ public class UserController {
 		session.invalidate();
 		return "member/join";
 	}
-
+	
+	// 아이디 중복체크 AJAX 및 email 중복체크 후 인증번호 발송 
+	@PostMapping("/duplicatedCheck")
+	public ResponseEntity<Map<String,Object>> duplicatedCheckAction(HttpServletRequest request) throws Exception {
+		return ResponseEntity.ok(request.getParameter("userId") != null ? 
+				service.checkDuplicatedId(request.getParameter("userId")) : 
+					service.checkDuplicatedEmail(request.getParameter("email"), request));
+	}
+	
 }
