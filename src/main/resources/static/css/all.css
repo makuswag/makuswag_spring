@@ -1,5 +1,16 @@
 @charset "UTF-8";
 
+.tile .product-image img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+
+
 .product-tiles {
     display: flex;
     flex-wrap: wrap;
