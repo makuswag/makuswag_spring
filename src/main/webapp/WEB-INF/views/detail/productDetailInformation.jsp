@@ -60,12 +60,12 @@
 						<div class="slide ">
 							<img
 								src="${pageContext.request.contextPath}/images/product/${productDetailInformation.proImage2}"
-								class="primary-image" ">
+								class="primary-image"">
 						</div>
 						<div class="slide ">
 							<img
 								src="${pageContext.request.contextPath}/images/product/${productDetailInformation.proImage3}"
-								class="primary-image" ">
+								class="primary-image"">
 						</div>
 					</div>
 				</div>
@@ -79,8 +79,7 @@
 						<div class="product-price" data-price-was="0.00"
 							data-price-now="68000" data-stock>
 							<span class="price-now">${productDetailInformation.proPrice}KRW<br>
-							<br>
-							<br></span>
+								<br> <br></span>
 						</div>
 						<div class="product-description"
 							style="margin-left: -40px; margin-top: 0px !important;">
@@ -89,52 +88,42 @@
 								style="font-size: 12px; color: #555555; line-height: 1; padding-left: 40px;">
 
 								${productDetailInformation.proIntroduction } </span>
-							<div class="more-info"
-								style="margin-left: 35px; padding-left: 10px;">
-								<span class="sizeguide-button"
-									style="display: inline-block; margin-right: 10px;">Size
-									Guide</span> <span class="checklist-button"
-									style="display: inline-block;">Check List</span>
-							</div>
 						</div>
-
 
 					</div>
 					<div
 						class="xans-element- xans-product xans-product-detaildesign product-meta">
 						<ul>
-							<li class=" xans-record-"><li class=" xans-record-">
-                                    <span
-								style="font-size:12px;color:#008BCC;font-weight:bold;"></span>
-                                </li>	
-                            </ul>
-                        </div>
-  ₩                      <div
+							<li class=" xans-record-">
+							<li class=" xans-record-"><span
+								style="font-size: 12px; color: #008BCC; font-weight: bold;"></span>
+							</li>
+						</ul>
+					</div>
+					<div
 						class="xans-element- xans-product xans-product-action product-actions"
 						id="productActions" style="margin-top: -20px;">
-						    <span class="primary-button sold-out displaynone">
-						        <span>SOLD OUT</span>
-						    </span>
-						    <span class="primary-button buy-now displaynone">
-						        <span>BUY NOW</span>
-						    </span>
-</div>
-                    </div>
-</div>
+						 <span class="primary-button buy-now displaynone"> 
+						 <span>BUY NOW</span>
+						</span>
+					</div>
+				</div>
+			</div>
 
-                </div>
-				
-
-				
-								<!-- 여기까지 작성 --> <!-- ============================== [[ Body  section]] ==============================-->
-
-				<!-- =============================  [[ Footer section ]]  ============================= -->
-
-				<%@ include file="../include/footer.jsp"%>
-
-			
-							</div>
 		</div>
+
+
+
+		<!-- 여기까지 작성 -->
+		<!-- ============================== [[ Body  section]] ==============================-->
+
+		<!-- =============================  [[ Footer section ]]  ============================= -->
+
+		<%@ include file="../include/footer.jsp"%>
+
+
+	</div>
+	</div>
 	</div>
 	<!-- =============================  [[ Footer section ]]  ============================= -->
 </body>
