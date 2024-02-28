@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.springlec.base.model.ProductDetailInformationDto;
 import com.springlec.base.model.UserDto;
@@ -16,27 +17,29 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-public class productDetailInformation {
+public class ProductDetailInformationController {
 	
 	@Autowired
 	ProductDetailInformationDaoService service;
 	
 	//제품 상세페이지 화면 보여주기(이미지,상세내용), @RequestParam("proName") String proName 삭제,detail(proName)삭제(정민이형 끝나면 추가하기)
 	@GetMapping("productDetailInformation")
-	public String detail(HttpServletRequest request, Model model) throws Exception{
-		ProductDetailInformationDto productDetailInformation = service.productdetail(); // bId에 해당하는 게시물 정보를 가져옴(사진이랑 상품정보 다 가져옴)
+	public String detail(@RequestParam(name = "proName") String proName,HttpServletRequest request, Model model) throws Exception{
+		ProductDetailInformationDto productDetailInformation = service.productdetail(proName); // bId에 해당하는 게시물 정보를 가져옴(사진이랑 상품정보 다 가져옴)
 		model.addAttribute("productDetailInformation", productDetailInformation); 
-		//컬러값 못가져옴 (js파일 나누는거 완료하고 처리!)
+		 // proSeq 세션에 저장
+	    HttpSession session = request.getSession();
+	    session.setAttribute("proSeq", productDetailInformation.getProSeq());
 		List<String> colors = service.color();
 		model.addAttribute("colors", colors);
-		
+		System.out.println("받아온 상품이름"+proName);
 		System.out.println("제품정보: "+productDetailInformation);
 		System.out.println("색 정보: "+colors);
 //		List<String> colors = service.color(proName);
 //		model.addAttribute("colors", colors);
 		return "detail/productDetailInformation"; 
 }
-	//선택한 상품 구매하는 메소드
+	//선택한 상품 구매하는 메소드 받아와야될 데이터 
 	@PostMapping("productPurchaseSubmit")
 	public String productPurchase(HttpServletRequest request ) throws Exception{
 		//userId 가져오는 session값
@@ -51,7 +54,7 @@ public class productDetailInformation {
 		UserDto user = (UserDto) session.getAttribute("user");
 		String userId = user.getUserId();
 		
-		System.out.println(userId);
+		System.out.println("유저아이디"+userId);
 		
 		String pQty = request.getParameter("pQty");
 		String pPrice = request.getParameter("pPrice");

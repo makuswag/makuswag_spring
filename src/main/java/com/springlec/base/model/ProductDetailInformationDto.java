@@ -1,6 +1,6 @@
 package com.springlec.base.model;
 
-import com.springlec.base.controller.productDetailInformation;
+import com.springlec.base.controller.ProductDetailInformationController;
 
 public class ProductDetailInformationDto {
 
