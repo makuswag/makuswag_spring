@@ -69,7 +69,7 @@
 											<div class="content">
 												<div class="images"></div>
 												 <div class="article"><div class="fr-view fr-view-article"><p>${content_view.noContent }</p><br></div></div>
-												<div><img src="${pageContext.request.contextPath}/images/board/${content_view.noImage}" width="100" height="100"></div>
+												<div><img src="${pageContext.request.contextPath}/images/board/${content_view.noImage}" alt="" width="100" height="100" style="${content_view.qnaImage != null ? '' : 'display: none;'}"></div>
 											</div>
 										</div>
 							<div class="post-footer">

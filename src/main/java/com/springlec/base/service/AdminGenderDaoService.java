@@ -55,5 +55,14 @@ public interface AdminGenderDaoService {
 	 public void deleteDao(int noSeq) throws Exception;
 	 public void deleteQna(int qnaSeq) throws Exception;
 	 public void modify_no(AdminDto adminDto) throws Exception;
+	 public void modify_no1(AdminDto adminDto) throws Exception;
+	 public void modify_qna(AdminDto adminDto) throws Exception;
+	 public void modify_qna1(AdminDto adminDto) throws Exception;
 	 public AdminDto modifyselect(int noSeq) throws Exception;
+	 public AdminDto modifyselect1(int qnaSeq) throws Exception;
+	 public void writeDao1(String qnaTitle, String qnaCategory, String qnaContent, String qnaImage, String userId) throws Exception;
+	 public String uploadfile2(MultipartFile file) throws Exception;
+	 public List<AdminDto> qnaQueryadmin(String query, String content) throws Exception;
+	 public void parents(AdminDto adminDto) throws Exception;
+	 public void writeanswer(String qnaTitle, String qnaCategory, String qnaContent, String qnaImage, String userId, int qnaSeq) throws Exception;
 }
