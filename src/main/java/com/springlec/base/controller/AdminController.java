@@ -612,5 +612,42 @@ public class AdminController {
 			service.deleteDao(noSeq);
 			return "redirect:notice_admin";
 		}
+		@GetMapping("qnaDelete_admin")
+		public String delete2(HttpServletRequest request) throws Exception{
+			int qnaSeq = Integer.parseInt(request.getParameter("qnaSeq"));
+			service.deleteQna(qnaSeq);
+			return "redirect:qna_admin";
+		}
+		@GetMapping("noUpdate")
+		public String update(HttpServletRequest request, Model model) throws Exception {
+		    int noSeq = Integer.parseInt(request.getParameter("noSeq"));
+		    AdminDto contentView = service.modifyselect(noSeq);
+		    
+		    // 모델에 contentView를 추가
+		    model.addAttribute("contentView", contentView);
+		    
+		    return "board/noticeModify_admin";
+		}
+		@PostMapping("noUpdateSubmit")
+		public String submit(HttpServletRequest request, 
+	                            @RequestParam("content_image") MultipartFile proImage1) throws Exception {
+			
+			HttpSession session = request.getSession();
+			UserDto user = (UserDto) session.getAttribute("user");
+			String userId = user.getUserId();
+			
+			AdminDto adminDto = new AdminDto();
+	        String proImage2 = service.uploadfile1(proImage1);
+	        adminDto.setNoImage(proImage2);
+	        adminDto.setNoSeq(Integer.parseInt(request.getParameter("noSeq")));
+	        adminDto.setNoTitle(request.getParameter("noTitle"));
+	        adminDto.setNoContent(request.getParameter("noContent"));
+	        adminDto.setUserId(userId);
+			
+	        service.modify_no(adminDto);
+	        
+			return "redirect:notice_admin";
+			
+		}
 		
 }

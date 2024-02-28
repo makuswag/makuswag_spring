@@ -320,6 +320,28 @@ public class AdminGenderDaoServiceImpl implements AdminGenderDaoService {
 		dao.deleteDao(noSeq);
 	}
 
+	@Override
+	public void deleteQna(int qnaSeq) throws Exception {
+		// TODO Auto-generated method stub
+		dao.deleteQna(qnaSeq);
+	}
+
+	@Override
+	public void modify_no(AdminDto adminDto) throws Exception {
+		// TODO Auto-generated method stub
+		dao.modify_no(adminDto);
+	}
+
+	@Override
+	public AdminDto modifyselect(int noSeq) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.modifyselect(noSeq);
+	}
+
+
+
+
+
 
 
 

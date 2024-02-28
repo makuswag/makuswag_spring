@@ -237,9 +237,9 @@
 <div class="single-product">
 
 	<div class="xans-element- xans-product xans-product-image product-images">
-	<div class="slide "><img src="${pageContext.request.contextPath}/images/admin/${allinone_detail.proImage1}" class="primary-image" alt="${detailDto.proName}"></div>
-	<div class="slide "><img src="${pageContext.request.contextPath}/images/admin/${allinone_detail.proImage2}" class="primary-image" alt="${detailDto.proName}"></div>
-	<div class="slide "><img src="${pageContext.request.contextPath}/images/admin/${allinone_detail.proImage3}" class="primary-image" alt="${detailDto.proName}"></div>
+	<div class="slide "><img src="${pageContext.request.contextPath}/images/product/${allinone_detail.proImage1}" class="primary-image" alt="${detailDto.proName}"></div>
+	<div class="slide "><img src="${pageContext.request.contextPath}/images/product/${allinone_detail.proImage2}" class="primary-image" alt="${detailDto.proName}"></div>
+	<div class="slide "><img src="${pageContext.request.contextPath}/images/product/${allinone_detail.proImage3}" class="primary-image" alt="${detailDto.proName}"></div>
 </div>
 </div>
                 <div class="product-essential"style="top: 15%;">

@@ -163,8 +163,8 @@ h2 {
                 <div class="tile xans-record-">
                     <a href="allinone_detail?proName=${dto.proName}">  
                         <div class="product-image">
-                            <img src="${pageContext.request.contextPath}/images/admin/${dto.proImage1}" class="primary-image" alt="${dto.proName}">
-                            <img src="${pageContext.request.contextPath}/images/admin/${dto.proImage2}" class="secondary-image" alt="${dto.proName}">
+                            <img src="${pageContext.request.contextPath}/images/product/${dto.proImage1}" class="primary-image" alt="${dto.proName}">
+                            <img src="${pageContext.request.contextPath}/images/product/${dto.proImage2}" class="secondary-image" alt="${dto.proName}">
                         </div>
                         <div class="product-name"><span style="font-size:12px;color:#555555;">${dto.proName}</span></div>
                         <div class="product-price" data-price-was="" data-price-now="${dto.proPrice}" data-stock=""></div>
