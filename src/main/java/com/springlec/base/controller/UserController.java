@@ -476,11 +476,16 @@ public class UserController {
 		return "member/join";
 	}
 	
-	// 주소
-	@GetMapping("addressTest")
-	public String addressTest(HttpSession session) throws Exception {
-		session.invalidate();
-		return "rndTest/addressTest";
+	// 회원가입(정보 입력)
+	@PostMapping("sendInformation")
+	public String sendInformation(HttpServletRequest request,HttpSession session) throws Exception {
+		String userId = request.getParameter("userId");
+		String userPw = request.getParameter("userPasswd");
+		String name = request.getParameter("name");
+		String postcode = request.getParameter("postcode");
+		String address = request.getParameter("address");
+		String email = request.getParameter("email");
+		return "member/join";
 	}
 	
 	// 아이디 중복체크 AJAX 및 email 중복체크 후 인증번호 발송 
