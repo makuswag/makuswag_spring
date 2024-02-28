@@ -167,7 +167,7 @@ public class AdminGenderDaoServiceImpl implements AdminGenderDaoService {
 		if(proImage1 != null) {
 			try {
 				
-				String path = System.getProperty("user.dir")+"/src/main/resources/static/images/admin";
+				String path = System.getProperty("user.dir")+"/src/main/resources/static/images/product";
 				file.transferTo(new File(path + "/"+proImage1));
 			}catch(IOException e) {
 				e.printStackTrace();
@@ -299,6 +299,26 @@ public class AdminGenderDaoServiceImpl implements AdminGenderDaoService {
 		}
 			
  		return noImage;}
+
+	@Override
+	public AdminDto contentDao(int qnaSeq, String qnaTitle, String qnaContent, String qnaImage, String qnaDate)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return dao.contentDao(qnaSeq, qnaTitle, qnaContent, qnaImage, qnaDate);
+	}
+
+	@Override
+	public AdminDto contentDao1(int noSeq, String noTitle, String noContent, String noImage, String noDate)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return dao.contentDao1(noSeq, noTitle, noContent, noImage, noDate);
+	}
+
+	@Override
+	public void deleteDao(int noSeq) throws Exception {
+		// TODO Auto-generated method stub
+		dao.deleteDao(noSeq);
+	}
 
 
 

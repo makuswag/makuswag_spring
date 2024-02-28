@@ -194,5 +194,17 @@ FROM product
 		values
 		(#{userId}, #{noTitle},  #{noCategory},  #{noContent},  #{noImage}, now())
 	</insert>
-
+		<select id="contentDao" resultType="com.springlec.base.model.AdminDto">
+		SELECT qnaSeq, qnaTitle, qnaContent,qnaImage, qnaDate 
+		FROM qna
+		WHERE qnaSeq = #{qnaSeq}
+	</select>
+			<select id="contentDao1" resultType="com.springlec.base.model.AdminDto">
+		SELECT noSeq, noTitle, noContent, noImage, noDate
+		FROM notice
+		WHERE noSeq = #{noSeq}
+	</select>
+	<delete id="deleteDao" parameterType="com.springlec.base.model.AdminDto">
+	    delete from notice where noSeq=#{noSeq}
+	</delete>
 </mapper>

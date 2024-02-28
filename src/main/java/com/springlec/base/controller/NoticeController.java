@@ -42,7 +42,7 @@ public class NoticeController {
 	@GetMapping("notice_admin")
 	public String admin(@RequestParam(defaultValue = "1") int page, Model model) throws Exception {
 	    int numOfTuplePerPage = 10; // 페이지당 튜플 개수
-	    List<NoticeDto> listDao = service.listDao(page, numOfTuplePerPage); // 서비스 계층에서 데이터 조회
+	    List<NoticeDto> listDao = service.listDao1(page, numOfTuplePerPage); // 서비스 계층에서 데이터 조회
 	    model.addAttribute("Noticelist", listDao);
 
 	    int totalCount = service.getTotalCount(); // 전체 데이터 개수 조회
