@@ -24,8 +24,15 @@ public class ProductDetailInformationController {
 	
 	//제품 상세페이지 화면 보여주기(이미지,상세내용), @RequestParam("proName") String proName 삭제,detail(proName)삭제(정민이형 끝나면 추가하기)
 	@GetMapping("productDetailInformation")
-	public String detail(@RequestParam(name = "proName") String proName,HttpServletRequest request, Model model) throws Exception{
+	public String detail(@RequestParam(name = "proName", required = false) String proName,HttpServletRequest request, Model model) throws Exception{
 		ProductDetailInformationDto productDetailInformation = service.productdetail(proName); // bId에 해당하는 게시물 정보를 가져옴(사진이랑 상품정보 다 가져옴)
+		 // 오류확인(나중에 지우
+	    if (productDetailInformation == null) {
+	        System.out.println("productDetailInformation is null");
+	    } else {
+	        System.out.println("productDetailInformation: " + productDetailInformation.toString());
+	    }
+	    //여기까지
 		model.addAttribute("productDetailInformation", productDetailInformation); 
 		 // proSeq 세션에 저장
 	    HttpSession session = request.getSession();
@@ -44,22 +51,21 @@ public class ProductDetailInformationController {
 	public String productPurchase(HttpServletRequest request ) throws Exception{
 		//userId 가져오는 session값
 		HttpSession session = request.getSession();
-		// **************세션에서 뭐뭐 가져올껀지,파라미터로 넘길껀지 결정후 재작성 필요
 		HttpSession sessionProductSeq = request.getSession();
 		
-		// ***************세션에서 뭐뭐 가져올껀지,파라미터로 넘길껀지 결정후 재작성 필요
 		int proSeq = (int) sessionProductSeq.getAttribute("proSeq");
 		System.out.println("상품의 시퀀스넘버"+proSeq);
 		//userId값은 세션으로 가져와야됨(fix)
 		UserDto user = (UserDto) session.getAttribute("user");
+		// 로그인 확인
+	    if (user == null || user.getUserId() == null) {
+	    	//로그인 안되있으면 로그인페이지로
+	        return "redirect:/login?error=login_required";
+	    }
 		String userId = user.getUserId();
 		
 		System.out.println("유저아이디"+userId);
 		
-		String pQty = request.getParameter("pQty");
-		String pPrice = request.getParameter("pPrice");
-//		String proSeq = request.getParameter("proSeq"); //세션으로 받을껀지 아니면 그냥 리퀘로 받을껀지 결정하고나서 주석해
-		System.out.println(pQty+pPrice);
 		String revContent = request.getParameter("reviewContent");
 //		service.
 		
