@@ -514,9 +514,11 @@ public class UserController {
 		String birthDay = request.getParameter("birthDay");
 		String birthday = birthYear + "-" + birthMonth + "-" + birthDay;
 		
+		String howToLogin = "일반회원";
+		
 		try {
 			// 사용자 정보 수정 
-			service.sign(userId, userPw, name, postcode, address, phone, email, gender, birthday);
+			service.sign(userId, userPw, name, postcode, address, phone, email, gender, birthday, howToLogin);
 			
 			return "status/signSuccess";
 			

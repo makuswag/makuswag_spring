@@ -73,8 +73,8 @@ public class UserServiceImpl implements UserDaoService {
 
 	@Override
 	public void sign(String userId, String userPw, String name, String postcode, String address, String phone,
-			String email, String gender, String birthday) throws Exception {
-		dao.sign(userId, userPw, name, postcode, address, phone, email, gender, birthday);
+			String email, String gender, String birthday, String howToLogin) throws Exception {
+		dao.sign(userId, userPw, name, postcode, address, phone, email, gender, birthday, howToLogin);
 		
 	}
 

@@ -12,7 +12,10 @@
 	</select>
 
 	<insert id="sign">
-		INSERT 
+		INSERT INTO user
+		(userId, userPw, name, postcode, address, phone, email, gender, birthday, point, howToLogin, active) 
+		VALUES
+		(#{userId}, #{userPw},  #{name},  #{postcode},  #{address}, #{phone}, #{email}, #{gender}, #{birthday}, '0', #{howToLogin}, now())
 	</insert>
 
 	<select id="whologin" resultType="com.springlec.base.model.UserDto">
