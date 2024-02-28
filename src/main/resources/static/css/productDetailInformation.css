@@ -1,9 +1,90 @@
 
 @charset "UTF-8";
 
+.remodal .close-button {
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMzAgMzAiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDMwIDMwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4uc3Qwe2ZpbGw6bm9uZTtzdHJva2U6IzBFMzc3MztzdHJva2Utd2lkdGg6MS41O3N0cm9rZS1taXRlcmxpbWl0OjEwO308L3N0eWxlPjxsaW5lIGNsYXNzPSJzdDAiIHgxPSI2LjUiIHkxPSI2LjUiIHgyPSIyMy41IiB5Mj0iMjMuNSIvPjxsaW5lIGNsYXNzPSJzdDAiIHgxPSI2LjUiIHkxPSIyMy41IiB4Mj0iMjMuNSIgeTI9IjYuNSIvPjwvc3ZnPg==);
+    background-size: 24px 24px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.order-widget .product-option-summary table tr td .quantity_opt {
+    background-color: transparent;
+    border: none;
+    color: #0e3773;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-family: 'Avenir Next','KoPub Dotum',sans-serif;
+    outline: none;
+    padding: 10px;
+    text-align: center;
+}
+input[type=text], input[type=password] {
+    height: 18px;
+    line-height: 20px;
+    padding: 2px 4px;
+    border: 1px solid #d5d5d5;
+    color: #353535;
+    font-size: 12px;
+}
+
+
+input, select, textarea {
+    font-size: 100%;
+    font-family: "돋움",Dotum;
+    color: #353535;
+    vertical-align: middle;
+}
+.order-widget .product-option-summary table tr td .quantity .up:after, .order-widget .product-option-summary table tr td p.product + p .up:after {
+    content: '+';
+}
+.order-widget .product-option-summary table tr td .quantity .down:after, .order-widget .product-option-summary table tr td p.product + p .down:after {
+    content: '-';
+}
+.order-widget .product-option-summary table tr td p.product span {
+    font-size: 12px;
+    line-height: 30px;
+}
+.order-widget .product-option-summary table tr td p.product {
+    font-size: 0;
+}
+.order-widget .product-option-summary table tr td:first-child {
+    padding: 10px 0 10px 15px;
+}
+.order-widget .product-option-summary table tr td {
+    background-color: #ddd9cf;
+    border-top: 5px solid #e6e5e0;
+    position: relative;
+}
+table {
+    width: 100%;
+    border: 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.order-widget .product-actions .buy-now {
+    margin-right: 10px;
+}
+.order-widget .product-actions .buy-now, .order-widget .product-actions .add-to-cart {
+    background-color: #0e3773;
+    color: #fff;
+    float: left;
+    width: calc(50% - 5px);
+}
+
   .product-name h2 {
-    margin-bottom: 5px; /* 제목과 가격 사이의 간격을 조정합니다. */
-    top:20px;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 .product-price {
