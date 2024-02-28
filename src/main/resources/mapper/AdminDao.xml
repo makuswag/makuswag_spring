@@ -195,7 +195,7 @@ FROM product
 		(#{userId}, #{noTitle},  #{noCategory},  #{noContent},  #{noImage}, now())
 	</insert>
 		<select id="contentDao" resultType="com.springlec.base.model.AdminDto">
-		SELECT qnaSeq, qnaTitle, qnaContent,qnaImage, qnaDate 
+		SELECT qnaSeq, qnaTitle, qnaContent,qnaImage, qnaDate,qnaCategory 
 		FROM qna
 		WHERE qnaSeq = #{qnaSeq}
 	</select>
@@ -249,17 +249,22 @@ FROM qna
 WHERE ${query} LIKE #{content} ORDER BY qnaSeq DESC
 	
 	</select>
-	<insert id="parents">
-		insert into qna
-		(parents) 
-		values
-		(#{parents})
-	</insert>
+	<select id="parents">
+		update qna
+		set parents = #{parents} 
+		where qnaSeq=#{qnaSeq}
+	</select>
 			<insert id="writeanswer">
 		insert into qna
 		(userId, qnaTitle, qnaCategory, qnaContent, qnaImage, qnaDate,parents1,parents) 
 		values
 		(#{userId}, #{qnaTitle},  #{qnaCategory},  #{qnaContent},  #{qnaImage}, now(),"1",#{parents})
+	</insert>
+			<insert id="writeanswer1">
+		insert into qna
+		(userId, qnaTitle, qnaCategory, qnaContent, qnaDate,parents1,parents) 
+		values
+		(#{userId}, #{qnaTitle},  #{qnaCategory},  #{qnaContent}, now(),"1",#{parents})
 	</insert>
 
 </mapper>

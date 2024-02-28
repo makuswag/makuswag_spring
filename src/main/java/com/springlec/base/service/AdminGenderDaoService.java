@@ -50,7 +50,7 @@ public interface AdminGenderDaoService {
 	 public List<String> color(String proName) throws Exception;
 	 public void writeDao(String noTitle, String noCategory, String noContent, String noImage, String userId) throws Exception;
 	 public String uploadfile1(MultipartFile file) throws Exception;
-	 public AdminDto contentDao(int qnaSeq, String qnaTitle, String qnaContent, String qnaImage, String qnaDate) throws Exception;
+	 public AdminDto contentDao(int qnaSeq, String qnaTitle, String qnaContent, String qnaImage, String qnaDate,String qnaCategory) throws Exception;
 	 public AdminDto contentDao1(int noSeq, String noTitle, String noContent, String noImage, String noDate) throws Exception; 
 	 public void deleteDao(int noSeq) throws Exception;
 	 public void deleteQna(int qnaSeq) throws Exception;
@@ -64,5 +64,7 @@ public interface AdminGenderDaoService {
 	 public String uploadfile2(MultipartFile file) throws Exception;
 	 public List<AdminDto> qnaQueryadmin(String query, String content) throws Exception;
 	 public void parents(AdminDto adminDto) throws Exception;
-	 public void writeanswer(String qnaTitle, String qnaCategory, String qnaContent, String qnaImage, String userId, int qnaSeq) throws Exception;
+	 public void writeanswer(AdminDto adminDto) throws Exception;
+	 public void writeanswer1(AdminDto adminDto) throws Exception;
+
 }
