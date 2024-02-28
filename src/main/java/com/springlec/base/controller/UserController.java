@@ -476,6 +476,59 @@ public class UserController {
 		return "member/join";
 	}
 	
+	// 회원가입(정보 입력)
+	@PostMapping("sendInformation")
+	public String sendInformation(HttpServletRequest request,HttpSession session) throws Exception {
+		String userId = request.getParameter("userId");
+		String userPw = request.getParameter("userPasswd");
+		String name = request.getParameter("name");
+		
+		String postcode = request.getParameter("postcode");
+		String addr1 = request.getParameter("addr1");
+		String addr2 = request.getParameter("addr2");
+		String address = addr1 + " " + addr2;
+		
+		String mobile1 = request.getParameter("mobile1");
+		String mobile2 = request.getParameter("mobile2");
+		String mobile3 = request.getParameter("mobile3");
+		String phone = mobile1 + "-" + mobile2 + "-" + mobile3;
+		
+		String email = request.getParameter("email");
+		String gender = request.getParameter("gender");
+		if(gender.equals("M")) {
+			gender = "남";
+		}else {
+			gender = "여";
+		}
+		
+		String birthYear = request.getParameter("birthYear");
+		String birthMonthStr = request.getParameter("birthMonth");
+		int birthMonthInt = Integer.parseInt(birthMonthStr); // String을 int로 변환
+		String birthMonth;
+		
+		if(birthMonthInt < 10) {
+			birthMonth = "0" + birthMonthInt;
+		}else {
+			birthMonth = String.valueOf(birthMonthInt); // int를 다시 String으로 변환
+		}
+		String birthDay = request.getParameter("birthDay");
+		String birthday = birthYear + "-" + birthMonth + "-" + birthDay;
+		
+		String howToLogin = "일반회원";
+		
+		try {
+			// 사용자 정보 수정 
+			service.sign(userId, userPw, name, postcode, address, phone, email, gender, birthday, howToLogin);
+			
+			return "status/signSuccess";
+			
+		} catch (Exception e) {
+			// 예외 처리
+			return "redirect:/findError";
+		}
+		
+	}
+	
 	// 아이디 중복체크 AJAX 및 email 중복체크 후 인증번호 발송 
 	@PostMapping("/duplicatedCheck")
 	public ResponseEntity<Map<String,Object>> duplicatedCheckAction(HttpServletRequest request) throws Exception {

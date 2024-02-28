@@ -4,7 +4,7 @@
 <mapper namespace="com.springlec.base.dao.TopLongDao">
 	<select id="listDao"
 		resultType="com.springlec.base.model.TopLongDto">
-		SELECT proName, proPrice, proGender, proColor, proImage1, proImage2
+		SELECT proSeq, proName, proPrice, proGender, proColor, proImage1, proImage2
 		FROM product
 		WHERE proCategory = 'Top(long sleeve)'
 		LIMIT #{requestPage}, #{numOfTuplePerPage}
