@@ -15,7 +15,7 @@
 </select>
 <!-- 선택된 옷의 색을 가져오는 쿼리 -->
 <select id="color" parameterType="String" resultType="String" >
-    SELECT DISTINCT proColor FROM product WHERE proName='BAKERSETUPSHIRT'
+    SELECT DISTINCT proColor FROM product WHERE proName='${proName}'
 </select>
 <!-- id 수정필요 -->
  <insert id="productPurchase">

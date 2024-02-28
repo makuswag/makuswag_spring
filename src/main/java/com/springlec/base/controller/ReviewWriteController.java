@@ -69,7 +69,7 @@ public class ReviewWriteController {
 			UserDto user = (UserDto) session.getAttribute("user");
 			String userId = user.getUserId();
 			
-			System.out.println(userId);
+			System.out.println("유저아이디:"+userId);
 			
 			String revTitle = request.getParameter("reviewTitle");
 			System.out.println(revTitle);

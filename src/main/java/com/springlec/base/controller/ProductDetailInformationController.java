@@ -30,7 +30,7 @@ public class ProductDetailInformationController {
 		 // proSeq 세션에 저장
 	    HttpSession session = request.getSession();
 	    session.setAttribute("proSeq", productDetailInformation.getProSeq());
-		List<String> colors = service.color();
+		List<String> colors = service.color(proName);
 		model.addAttribute("colors", colors);
 		System.out.println("받아온 상품이름"+proName);
 		System.out.println("제품정보: "+productDetailInformation);

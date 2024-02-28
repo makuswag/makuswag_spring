@@ -22,9 +22,9 @@ public class ProductDetailInformationDaoServiceImpl implements ProductDetailInfo
 		return dao.productdetail(proName);
 	}
 	@Override
-	public List<String> color() throws Exception {
+	public List<String> color(String proName) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.color();
+		return dao.color(proName);
 	}
 	
 	@Override
