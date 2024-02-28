@@ -20,7 +20,11 @@
 <link rel="stylesheet" href="./css/slick2.css">
 <link rel="stylesheet" href="./css/all.css">
 <link rel="stylesheet" href="./css/all2.css">
+<!-- css파일 -->
 <link rel="stylesheet" href="./css/productDetailInformation.css">
+<!-- js파일 -->
+<script src="./js/productDetailInformation.js"></script>
+
 <link rel="icon" href="./images/CompanyLogo.png">
 <!-- 인터넷 창 아이콘에 로고 나오게 하기 -->
 </head>
@@ -49,20 +53,19 @@
 					<div
 						class="xans-element- xans-product xans-product-image product-images">
 						<div class="slide ">
-							가나
 							<img
-								src="${pageContext.request.contextPath}/images/admin/${allinone_detail.proImage1}"
-								class="primary-image" alt="${detailDto.proName}">
+								src="${pageContext.request.contextPath}/images/product/${productDetailInformation.proImage1}"
+								class="primary-image" >
 						</div>
 						<div class="slide ">
 							<img
-								src="${pageContext.request.contextPath}/images/admin/${allinone_detail.proImage2}"
-								class="primary-image" alt="${detailDto.proName}">
+								src="${pageContext.request.contextPath}/images/product/${productDetailInformation.proImage2}"
+								class="primary-image" ">
 						</div>
 						<div class="slide ">
 							<img
-								src="${pageContext.request.contextPath}/images/admin/${allinone_detail.proImage3}"
-								class="primary-image" alt="${detailDto.proName}">
+								src="${pageContext.request.contextPath}/images/product/${productDetailInformation.proImage3}"
+								class="primary-image" ">
 						</div>
 					</div>
 				</div>
@@ -71,11 +74,11 @@
 					<div
 						class="xans-element- xans-product xans-product-detail product-info sidebar">
 						<div class="product-name">
-							<h2>${allinone_detail.proName}</h2>
+							<h2>${productDetailInformation.proName}</h2>
 						</div>
 						<div class="product-price" data-price-was="0.00"
 							data-price-now="68000" data-stock>
-							<span class="price-now">${allinone_detail.proPrice}KRW<br>
+							<span class="price-now">${productDetailInformation.proPrice}KRW<br>
 							<br>
 							<br></span>
 						</div>
@@ -85,7 +88,7 @@
 							<span
 								style="font-size: 12px; color: #555555; line-height: 1; padding-left: 40px;">
 
-								${allinone_detail.proIntroduction } </span>
+								${productDetailInformation.proIntroduction } </span>
 							<div class="more-info"
 								style="margin-left: 35px; padding-left: 10px;">
 								<span class="sizeguide-button"
@@ -106,7 +109,7 @@
                                 </li>	
                             </ul>
                         </div>
-                        <div
+  ₩                      <div
 						class="xans-element- xans-product xans-product-action product-actions"
 						id="productActions" style="margin-top: -20px;">
 						    <span class="primary-button sold-out displaynone">

@@ -51,6 +51,12 @@ public class AdminDto {
 	private String noContent;
 	private String noImage;
 	private String noDate;
+	private int qnaSeq;
+	private String qnaTitle;
+	private String qnaContent;
+	private String qnaImage;
+	private String qnaDate;
+	private int noSeq;
     
     
     
@@ -59,8 +65,42 @@ public class AdminDto {
     
     
     
-    
-    
+	public int getNoSeq() {
+		return noSeq;
+	}
+	public void setNoSeq(int noSeq) {
+		this.noSeq = noSeq;
+	}
+	public int getQnaSeq() {
+		return qnaSeq;
+	}
+	public void setQnaSeq(int qnaSeq) {
+		this.qnaSeq = qnaSeq;
+	}
+	public String getQnaTitle() {
+		return qnaTitle;
+	}
+	public void setQnaTitle(String qnaTitle) {
+		this.qnaTitle = qnaTitle;
+	}
+	public String getQnaContent() {
+		return qnaContent;
+	}
+	public void setQnaContent(String qnaContent) {
+		this.qnaContent = qnaContent;
+	}
+	public String getQnaImage() {
+		return qnaImage;
+	}
+	public void setQnaImage(String qnaImage) {
+		this.qnaImage = qnaImage;
+	}
+	public String getQnaDate() {
+		return qnaDate;
+	}
+	public void setQnaDate(String qnaDate) {
+		this.qnaDate = qnaDate;
+	}
 	public String getNoTitle() {
 		return noTitle;
 	}

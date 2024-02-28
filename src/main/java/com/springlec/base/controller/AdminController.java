@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.springlec.base.model.AdminDto;
 import com.springlec.base.model.FaqDto;
+import com.springlec.base.model.QnaContentDto;
 import com.springlec.base.model.UserDto;
 import com.springlec.base.service.AdminGenderDaoService;
 
@@ -569,4 +570,47 @@ public class AdminController {
 			return "redirect:notice_admin";
 			
 		}
+		@GetMapping("qnaContent_admin")
+		public String contentview(HttpServletRequest request, Model model) throws Exception {
+			
+			
+			
+			int qnaSeq = Integer.parseInt(request.getParameter("qnaSeq"));
+			String qnaTitle = request.getParameter("qnaTitle");
+			String qnaContent = request.getParameter("qnaContent");
+			String qnaImage = request.getParameter("qnaImage");
+			String qnaDate = request.getParameter("qnaDate");
+			AdminDto contentDao = service.contentDao(qnaSeq, qnaTitle, qnaContent, qnaImage, qnaDate);
+					
+			model.addAttribute("content_view", contentDao);
+			
+			
+			return "board/qnaContent_admin";
+			
+		}
+		@GetMapping("noticeContent_admin")
+		public String contentview1(HttpServletRequest request, Model model) throws Exception {
+			
+			
+			
+			int noSeq = Integer.parseInt(request.getParameter("noSeq"));
+			String noTitle = request.getParameter("noTitle");
+			String noContent = request.getParameter("noContent");
+			String noImage = request.getParameter("noImage");
+			String noDate = request.getParameter("noDate");
+			AdminDto contentDao = service.contentDao1(noSeq, noTitle, noContent, noImage, noDate);
+					
+			model.addAttribute("content_view", contentDao);
+			
+			
+			return "board/noticeContent_admin";
+			
+		}
+		@GetMapping("noDelete")
+		public String delete1(HttpServletRequest request) throws Exception{
+			int noSeq = Integer.parseInt(request.getParameter("noSeq"));
+			service.deleteDao(noSeq);
+			return "redirect:notice_admin";
+		}
+		
 }

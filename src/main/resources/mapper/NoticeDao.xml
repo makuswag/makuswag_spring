@@ -12,4 +12,10 @@
 	<select id="getTotalCount" resultType="int">
 		SELECT COUNT(*) FROM notice
 	</select>
+	<select id="listDao1" resultType="com.springlec.base.model.NoticeDto">
+    SELECT noSeq, noCategory, noTitle, DATE(noDate) AS noDate, noContent, noImage
+    FROM notice
+    ORDER BY noSeq DESC 
+    LIMIT #{requestPage}, #{numOfTuplePerPage}
+</select>
 </mapper>
