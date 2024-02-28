@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.springlec.base.dao.OuterDao">
+<mapper namespace="com.springlec.base.dao.TopShortDao">
 	<select id="listDao"
-		resultType="com.springlec.base.model.OuterDto">
+		resultType="com.springlec.base.model.TopShortDto">
 		SELECT proName, proPrice, proGender, proColor, proImage1, proImage2
 		FROM product
-		WHERE proCategory = 'outer'
+		WHERE proCategory = 'Top(short sleeve)'
 		LIMIT #{requestPage}, #{numOfTuplePerPage}
 	</select>
 	<select id="getTotalCount" resultType="int">
 		SELECT COUNT(*) FROM
 		product
-		WHERE proCategory = 'outer'
+		WHERE proCategory = 'Top(short sleeve)'
 	</select>
 </mapper>
