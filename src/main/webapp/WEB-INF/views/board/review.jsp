@@ -101,9 +101,6 @@
                     </div>
                 </div>
 
-                <div class="xans-element- xans-board xans-board-buttonlist board-admin-actions  ">
-                    <a href="/noticeWrite.do" class="primary-button "><span>WRITE</span></a>
-                </div>
 
                 <!-- 여기까지 작성 -->
 

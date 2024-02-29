@@ -74,7 +74,7 @@
 										<!-- 이미지가  있으면  출력한다-->
 										<c:if test="${not empty dto.noImage}">
 											<span> <img
-												src="${pageContext.request.contextPath}/images/${dto.noImage}"
+												src="${pageContext.request.contextPath}/images/board/${dto.noImage}"
 												width="756px" height="945px">
 											</span>
 										</c:if>
