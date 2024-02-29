@@ -35,7 +35,7 @@
 					class="xans-element- xans-product xans-product-menupackage catalog-header ">
 					<div
 						class="xans-element- xans-product xans-product-headcategory category-title ">
-						<h2>TOP(LONG SLEEVE)</h2>
+						<h2>Bottoms</h2>
 					</div>
 				</div>
 				<div class="product-tiles">
