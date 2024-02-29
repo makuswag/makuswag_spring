@@ -74,7 +74,7 @@
 					</div>
 				</div>
 				<div class="product-essential" style="top: 20%;">
-
+				
 					<div
 						class="xans-element- xans-product xans-product-detail product-info sidebar">
 						<div class="product-name">
@@ -106,7 +106,7 @@
 					</div>
 					<div
 						class="xans-element- xans-product xans-product-action product-actions"
-						id="productActions" style="margin-top: -20px;">
+						id="productActions" style="margin-top: 80px;">
 						<span class="primary-button sold-out displaynone"> <span>SOLD
 								OUT</span>
 						</span> <span class="primary-button buy-now displaynone"> <span>BUY
@@ -121,8 +121,9 @@
 		<!-- 팝업에 표시할 내용 -->
 		<div class="popup-content"
 			style="display: none; align-content: center;">
-			<span data-remodal-action="close" class="close-button"></span>
-			<div class = "product-name">			
+			
+			<div class="close-button" onclick="closePopup()">X</div> <!-- 우측 상단에 닫기 버튼 -->
+			<div class = "product-name">
 			<h2>${productDetailInformation.proName}</h2><br><br>
 			</div>
 			<div
@@ -176,7 +177,7 @@
 				<p id="selectedSize"></p>
 				<p id="selectedColor"></p>
 				<div class="purchase-action">
-				<a class="primary-button buy-now " onclick="submitPurchaseForm()" ><span id="btnBuy">BUY NOW</span></a>
+				<a class="primary-button buy-now" onclick="submitPurchaseForm()" ><span id="btnBuy">BUY NOW</span></a>
 				<a href="#none" class="primary-button buy-now " onclick="product_submit(1, '/exec/front/order/basket/', this)"><span id="btnBuy">CART</span></a>
 				</div>
 			</div>
@@ -258,7 +259,26 @@ function submitPurchaseForm() {
     form.submit();
  // "구매 완료되었습니다." 알림 추가
     alert('구매 완료되었습니다.');
+}    
+function closePopup() {
+    var overlay = document.querySelector('.overlay');
+    var popup = document.querySelector('.popup');
+
+    // 오버레이와 팝업을 숨깁니다.
+    overlay.classList.remove('show');
+    popup.classList.remove('show');
+
+    // 오버레이와 팝업을 제거합니다.
+    overlay.parentNode.removeChild(overlay);
+    popup.parentNode.removeChild(popup);
 }
+
+document.querySelector('.close-button').addEventListener('click', function() {
+    closePopup();
+});
+
+
+
 </script>
 <!--*****************************************js코드*************************************************-->
 
