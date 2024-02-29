@@ -60,6 +60,7 @@ public class AdminDto {
 	private int parents1;
 	private int parents;
 	private String qnaCategory;
+	private int parents2;
     
     
     
@@ -68,6 +69,12 @@ public class AdminDto {
     
     
     
+	public int getParents2() {
+		return parents2;
+	}
+	public void setParents2(int parents2) {
+		this.parents2 = parents2;
+	}
 	public int getParents1() {
 		return parents1;
 	}

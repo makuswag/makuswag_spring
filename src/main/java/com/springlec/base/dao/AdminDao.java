@@ -67,5 +67,6 @@ public interface AdminDao {
 	public void parents(AdminDto adminDto) throws Exception;
 	public void writeanswer(AdminDto adminDto) throws Exception;
 	public void writeanswer1(AdminDto adminDto) throws Exception;
+	public int count(int qnaSeq) throws Exception;
 
 }

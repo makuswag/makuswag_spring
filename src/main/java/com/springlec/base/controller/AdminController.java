@@ -636,22 +636,20 @@ public class AdminController {
 		
 		@GetMapping("qnaContent_admin")
 		public String contentview(HttpServletRequest request, Model model) throws Exception {
-			
-			
-			
-			int qnaSeq = Integer.parseInt(request.getParameter("qnaSeq"));
-			String qnaTitle = request.getParameter("qnaTitle");
-			String qnaContent = request.getParameter("qnaContent");
-			String qnaImage = request.getParameter("qnaImage");
-			String qnaDate = request.getParameter("qnaDate");
-			String qnaCategory = request.getParameter("qnaCategory");
-			AdminDto contentDao = service.contentDao(qnaSeq, qnaTitle, qnaContent, qnaImage, qnaDate,qnaCategory);
-					
-			model.addAttribute("content_view", contentDao);
-			
-			
-			return "board/qnaContent_admin";
-			
+		    int qnaSeq = Integer.parseInt(request.getParameter("qnaSeq"));
+		    String qnaTitle = request.getParameter("qnaTitle");
+		    String qnaContent = request.getParameter("qnaContent");
+		    String qnaImage = request.getParameter("qnaImage");
+		    String qnaDate = request.getParameter("qnaDate");
+		    String qnaCategory = request.getParameter("qnaCategory");
+
+		    AdminDto contentDao = service.contentDao(qnaSeq, qnaTitle, qnaContent, qnaImage, qnaDate, qnaCategory);
+		    int countResult = service.count(qnaSeq); // qnaSeq를 조건으로 해서 count를 가져옴
+
+		    model.addAttribute("countResult", countResult);
+		    model.addAttribute("content_view", contentDao);
+
+		    return "board/qnaContent_admin";
 		}
 		@GetMapping("noticeContent_admin")
 		public String contentview1(HttpServletRequest request, Model model) throws Exception {
@@ -683,6 +681,14 @@ public class AdminController {
 			service.deleteQna(qnaSeq);
 			return "redirect:qna_admin";
 		}
+		@GetMapping("qnaDelete1")
+		public String qnaDelete(HttpServletRequest request) throws Exception{
+			int qnaSeq = Integer.parseInt(request.getParameter("qnaSeq"));
+			service.deleteQna(qnaSeq);
+			return "redirect:qna_view";
+		}
+		
+		
 		@GetMapping("noUpdate")
 		public String update(HttpServletRequest request, Model model) throws Exception {
 		    int noSeq = Integer.parseInt(request.getParameter("noSeq"));
@@ -702,6 +708,16 @@ public class AdminController {
 			model.addAttribute("contentView",contentView);
 			return "board/qnaModify_admin";
 		}
+		@GetMapping("qnaUpdate")
+		public String qnaupdate(HttpServletRequest request, Model model) throws Exception{
+			int qnaSeq = Integer.parseInt(request.getParameter("qnaSeq"));
+			AdminDto contentView = service.modifyselect1(qnaSeq);
+			model.addAttribute("contentView",contentView);
+			
+			return "board/qnaModify";
+		}
+		
+		
 		@PostMapping("noUpdateSubmit")
 		public String submit(HttpServletRequest request, 
 	                            @RequestParam("noImage") MultipartFile proImage1) throws Exception {
@@ -754,7 +770,33 @@ public class AdminController {
 			return "redirect:qna_admin";
 			
 		}
-
+		@PostMapping("qnaUpdateSubmit1")
+		public String submit2(HttpServletRequest request, 
+				
+	                            @RequestParam("qnaImage") MultipartFile proImage1) throws Exception {
+			
+			HttpSession session = request.getSession();
+			UserDto user = (UserDto) session.getAttribute("user");
+			String userId = user.getUserId();
+			
+			AdminDto adminDto = new AdminDto();
+			adminDto.setQnaCategory(request.getParameter("qnaCategory"));
+			adminDto.setQnaSeq(Integer.parseInt(request.getParameter("qnaSeq")));
+			adminDto.setQnaTitle(request.getParameter("qnaTitle"));
+			adminDto.setQnaContent(request.getParameter("qnaContent"));
+			adminDto.setUserId(userId);
+			if(proImage1.isEmpty()) {
+				service.modify_qna1(adminDto);
+			}
+			else {
+	        String proImage2 = service.uploadfile2(proImage1);
+	        adminDto.setQnaImage(proImage2);
+	        service.modify_qna(adminDto);
+	        
+			}
+			return "redirect:qna_view";
+			
+		}
 		
 		@GetMapping("qnaAnswer_admin")
 		public String answer1(HttpServletRequest request,Model model ) throws Exception  {

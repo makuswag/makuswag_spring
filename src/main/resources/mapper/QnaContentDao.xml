@@ -8,4 +8,7 @@
 		FROM qna
 		WHERE qnaSeq = #{qnaSeq}
 	</select>
+		<select id="count">
+	SELECT COUNT(parents) AS parents2 FROM qna WHERE qnaSeq = #{qnaSeq};
+	</select>
 </mapper>
