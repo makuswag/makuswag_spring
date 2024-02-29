@@ -688,6 +688,7 @@ table.nneditor-table {
 	text-align: center;
 	transition: border-color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 	transform: translateX(6px);
+	width: 170px;
 }
 
 .primary-button .naver-pay-icon {
