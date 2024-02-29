@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,24 +96,22 @@
 							style="display: inline-block; margin: 10px;">&nbsp;다음</a>
 					</c:if>
 				</div>
+
+
+
+
+
+
+				<!-- 여기까지 작성 -->
+				<!-- ============================== [[ Body  section]] ==============================-->
+
+				<!-- =============================  [[ Footer section ]]  ============================= -->
+
+				<%@ include file="../include/footer.jsp"%>
+
+
 			</div>
 		</div>
-
-
-
-
-
-
-		<!-- 여기까지 작성 -->
-		<!-- ============================== [[ Body  section]] ==============================-->
-
-		<!-- =============================  [[ Footer section ]]  ============================= -->
-
-		<%@ include file="../include/footer.jsp"%>
-
-
-	</div>
-	</div>
 	</div>
 	<!-- =============================  [[ Footer section ]]  ============================= -->
 </body>

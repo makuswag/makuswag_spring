@@ -64,7 +64,8 @@
 								</div>
 								<ul
 									class="xans-element- xans-product xans-product-listitem product-meta">
-									<li class=" xans-record-"><li class=" xans-record-"></li>
+									<li class=" xans-record-">
+									<li class=" xans-record-"></li>
 								</ul>
 							</a>
 						</div>
@@ -95,22 +96,21 @@
 							style="display: inline-block; margin: 10px;">&nbsp;다음</a>
 					</c:if>
 				</div>
-			</div>
-		</div>
-				
-				
-				
-				
-				
-				
-										<!-- 여기까지 작성 --> <!-- ============================== [[ Body  section]] ==============================-->
 
-			<!-- =============================  [[ Footer section ]]  ============================= -->
+
+
+
+
+
+				<!-- 여기까지 작성 -->
+				<!-- ============================== [[ Body  section]] ==============================-->
+
+				<!-- =============================  [[ Footer section ]]  ============================= -->
 
 				<%@ include file="../include/footer.jsp"%>
 
-			
-									</div>
+
+			</div>
 		</div>
 	</div>
 	<!-- =============================  [[ Footer section ]]  ============================= -->
