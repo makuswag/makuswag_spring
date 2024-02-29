@@ -266,5 +266,8 @@ WHERE ${query} LIKE #{content} ORDER BY qnaSeq DESC
 		values
 		(#{userId}, #{qnaTitle},  #{qnaCategory},  #{qnaContent}, now(),"1",#{parents})
 	</insert>
+	<select id="count">
+	SELECT COUNT(parents) AS parents2 FROM qna WHERE qnaSeq = #{qnaSeq};
+	</select>
 
 </mapper>

@@ -74,7 +74,7 @@
             <div class="xans-element- xans-board xans-board-writepackage board ">
                 <div class="xans-element- xans-board xans-board-title board-header ">
                     <h3>
-                        <font color="#555555">NOTICE</font>
+                        <font color="#555555">Q&A</font>
                     </h3>
                 </div>
                 <form id="boardWriteForm" name="insertqnaForm" action="qnaUpdateSubmit"

@@ -18,7 +18,6 @@ window.onload = function() {
     categorySpans.forEach(function(categorySpan) {
         if (categorySpan.innerHTML === "답변") {
             categorySpan.innerHTML = "↳" + categorySpan.innerHTML;
-            categorySpan.style.float = "center"; // 오른쪽으로 10px 이동
         }
     });
 };
@@ -56,7 +55,19 @@ window.onload = function() {
 								<div class="list-item xans-record-">
 									<a href="qnaContent_admin?qnaSeq=${dto.qnaSeq}"
 										class="post-link"> <span class="number" style="color:#0e3773;">${dto.qnaSeq}</span>
-										<span class="title">${dto.qnaCategory}</span> <span class="date">${dto.userId}</span>
+										<span class="title">${dto.qnaCategory}</span> 
+										 <span class="date">
+                							<c:choose>
+                    							<c:when test="${dto.userId.contains('admin')}">
+                       								 관리자 <!-- 관리자로 이름을 변경 -->
+                    							</c:when>
+                    						<c:otherwise>
+                       								${dto.userId} <!-- 기존의 사용자 이름 유지 -->
+                    						</c:otherwise>
+                							</c:choose>
+            								</span>
+										
+										
 									</a>
 								</div>
 							</c:forEach>

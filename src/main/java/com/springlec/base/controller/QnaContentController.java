@@ -27,6 +27,10 @@ public class QnaContentController {
 		String qnaContent = request.getParameter("qnaContent");
 		String qnaImage = request.getParameter("qnaImage");
 		String qnaDate = request.getParameter("qnaDate");
+		int countResult = service.count(qnaSeq); // qnaSeq를 조건으로 해서 count를 가져옴
+
+	    model.addAttribute("countResult", countResult);
+
 		QnaContentDto contentDao = service.contentDao(qnaSeq, qnaTitle, qnaContent, qnaImage, qnaDate);
 				
 		model.addAttribute("content_view", contentDao);

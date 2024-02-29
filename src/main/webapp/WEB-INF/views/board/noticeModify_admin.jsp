@@ -16,24 +16,35 @@
 </style>
 <head>
     <title>MakUSwag</title>
-    <script type="text/javascript">
-        function insertno() {
-            // 필수 입력 필드의 값을 가져오기
-            var noCategory = document.getElementById("board_category").value;
-            var noTitle = document.getElementById("subject").value;
-            var noContent = document.getElementById("content").value;
-            // 값이 비어있는지 확인
-            if (noCategory === "" || noTitle === "" || noContent === "") {
-                // 비어있는 필드가 있을 경우 알림창으로 오류 메시지 표시
-                alert("모든 필드를 입력하세요.");
-                return false; // 폼 제출 중지
+<script type="text/javascript">
+    function insertno() {
+        // 제목, 내용, 카테고리 입력 필드를 가져옴
+        var title = document.getElementById('subject');
+        var content = document.getElementById('content');
+        var category = document.getElementById('board_category');
+        
+        // 제목, 내용, 카테고리가 비어 있는지 확인
+        if (title.value.trim() === '' && content.value.trim() === '' && category.value.trim() === '') {
+            alert('빈칸이 있습니다');
+            
+            // 필드가 비어 있을 때 포커스 설정
+            if (title.value.trim() === '') {
+                title.focus();
+            } else if (content.value.trim() === '') {
+                content.focus();
+            } else if (category.value.trim() === '') {
+                category.focus();
             }
             
-            alert("수정이 완료되었습니다.")
-            // 폼을 직접 제출
-            document.getElementById("boardWriteForm").submit();
+            event.preventDefault();
+            return false;
         }
-    </script>
+        
+        // 모든 필드가 채워져 있으면 제출
+        document.insertnoForm.submit();
+        return true;
+    }
+</script>
     <!-- CSS -->
     <link rel="stylesheet"
           href="//img.echosting.cafe24.com/editors/froala/3.2.2/css/froala_editor.pkgd.min.css?vs=2402071282">
