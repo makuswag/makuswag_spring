@@ -21,6 +21,15 @@ public class QnaContentServiceImpl implements QnaContentService{
 		// TODO Auto-generated method stub
 		return dao.contentDao(qnaSeq, qnaTitle, qnaContent, qnaImage, qnaDate);
 	}
+
+
+
+
+	@Override
+	public int count(int qnaSeq) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.count(qnaSeq);
+	}
 	
 	
 	

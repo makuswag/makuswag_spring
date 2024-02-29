@@ -421,6 +421,12 @@ public class AdminGenderDaoServiceImpl implements AdminGenderDaoService {
 		dao.writeanswer1(adminDto);
 	}
 
+	@Override
+	public int count(int qnaSeq) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.count(qnaSeq);
+	}
+
 
 
 

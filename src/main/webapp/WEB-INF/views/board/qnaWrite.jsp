@@ -40,6 +40,9 @@
 </script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+
+</script>	
 </head>
 <body class="nav-expended">
 	<!-- ============================== [[ Header  section]] ==============================-->
@@ -95,7 +98,7 @@
 										<div class="form-field subject">
 											<div class="field-label">제목</div>
 											<select id="board_category" name="qnaCategory">
-												<option value="입급/결제관련 문의">입급/결제관련 문의</option>
+												<option value="입금/결제관련 문의">입금/결제관련 문의</option>
 												<option value="배송관련 문의">배송관련 문의</option>
 												<option value="배송 전 변경/취소 문의">배송 전 변경/취소 문의</option>
 												<option value="교환/반품 문의">교환/반품 문의</option>
@@ -128,7 +131,8 @@
 											</script>
 										</div>
 										<div class="field-label">첨부파일</div>
-										<input name="qnaImage" type="file" value = "qnaImage">
+										<input name="qnaImage" id="qnaImage" type="file" onchange="previewImage()">
+										<img id="image_preview" src="" alt="" width="100" height="100" style="display: none;">
 									</div>
 								</div>
 							</div>
@@ -150,5 +154,26 @@
 		</div>
 	</div>
 	<!-- =============================  [[ Footer section ]]  ============================= -->
+	<script>
+// 파일 입력 필드의 변경(파일 선택) 이벤트 핸들러
+function previewImage() {
+    var input = document.getElementById('qnaImage');
+    var preview = document.getElementById('image_preview');
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            preview.style.display = 'block'; // 이미지 미리보기 보이기
+            preview.src = e.target.result;
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    } else {
+        preview.style.display = 'none'; // 이미지 미리보기 숨기기
+        preview.src = ""; // 이미지 초기화
+    }
+}
+</script>
 </body>
 </html>

@@ -35,10 +35,24 @@
     window.onload = function() {
         var qnaCategory = "${content_view.qnaCategory}";
         var userId = "${content_view.userId}";
-        if (qnaCategory === "답변" ) {
+        var count = ${countResult};
+        console.log(count);
+        if (qnaCategory === "답변") {
             var updateButton = document.getElementById("updateButton");
             var answerButton = document.getElementById("answerButton");
-            if (updateButton && answerButton) {
+            var deleteButton = document.getElementById("deleteButton");
+            if (updateButton && answerButton && deleteButton) {
+                updateButton.style.display = "none";
+                answerButton.style.display = "none";
+                deleteButton.style.display= "none";
+            }
+        }
+        else if(count==1){
+        	var deleteButton = document.getElementById("deleteButton");
+        	var updateButton = document.getElementById("updateButton");
+            var answerButton = document.getElementById("answerButton");
+            if (updateButton && answerButton && deleteButton) {
+            	deleteButton.style.display= "none";
                 updateButton.style.display = "none";
                 answerButton.style.display = "none";
             }
@@ -74,7 +88,9 @@
 				<!-- 여기서 부터 작성 -->
 				<div class="board">
 				<div class="xans-element- xans-board xans-board-title board-header ">
-				<h3 onclick="window.history.go(-1); return false;" style="cursor: pointer;"><font color="#555555">Q&A</font></h3>
+				<h3 onclick="window.history.go(-1); return false;" style="cursor: pointer;"><font color="#555555">Q&A</font></h3><br><br>
+				<h5>답변이 등록된 글은 수정,삭제가 불가능합니다.</h5>
+				<h5>성의없는 글이나 부적절한 글일 경우 임의로 삭제되거나 수정될 수 있습니다</h5>
 				</div>
 						<div class="xans-element- xans-board xans-board-read ">
 							<div class="post-header">
