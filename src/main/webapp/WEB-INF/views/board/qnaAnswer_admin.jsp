@@ -44,6 +44,13 @@
         document.insertqnaForm.submit();
         return true;
     }
+    
+    window.onload = function() {
+        var qnaTitleElement = document.getElementById("subject");
+        if (qnaTitleElement) {
+            qnaTitleElement.value = "RE: " + qnaTitleElement.value;
+        }
+    };
 </script>
     <!-- CSS -->
     <link rel="stylesheet"
@@ -114,10 +121,7 @@
                                         <div class="field-label">제목</div>
 									<select id="board_category" name="qnaCategory">
     							                <option value="답변">답변</option>
-                                        </select><input id="subject" name="qnaTitle"
-                                                         class="inputTypeText"
-                                                         placeholder="제목을 입력하세요" maxLength="125"
-                                                         type="text" />
+                                        </select><input id="subject" name="qnaTitle" class="inputTypeText" placeholder="제목을 입력하세요" maxLength="125" type="text" size="50" value="${contentView.qnaTitle}"/>
                                         <div class="checkbox"></div>
                                         <div class="checkbox"></div>
                                     </div>
