@@ -240,7 +240,7 @@ FROM product
 		insert into qna
 		(userId, qnaTitle, qnaCategory, qnaContent, qnaImage, qnaDate,parents1) 
 		values
-		(#{userId}, #{qnaTitle},  #{qnaCategory},  #{qnaContent},  #{qnaImage}, now(),"0")
+		(#{userId}, #{qnaTitle},  #{qnaCategory},  #{qnaContent},  #{qnaImage}, now(),"1")
 	</insert>
 	<select id="qnaQueryadmin" resultType="com.springlec.base.model.AdminDto">
 	<!--select * from book where ${query} like concat('%',#{content},'%')-->
@@ -258,7 +258,7 @@ WHERE ${query} LIKE #{content} ORDER BY qnaSeq DESC
 		insert into qna
 		(userId, qnaTitle, qnaCategory, qnaContent, qnaImage, qnaDate,parents1,parents) 
 		values
-		(#{userId}, #{qnaTitle},  #{qnaCategory},  #{qnaContent},  #{qnaImage}, now(),"1",#{parents})
+		(#{userId}, #{qnaTitle},  #{qnaCategory},  #{qnaContent},  #{qnaImage}, now(),"0",#{parents})
 	</insert>
 			<insert id="writeanswer1">
 		insert into qna
@@ -267,7 +267,7 @@ WHERE ${query} LIKE #{content} ORDER BY qnaSeq DESC
 		(#{userId}, #{qnaTitle},  #{qnaCategory},  #{qnaContent}, now(),"1",#{parents})
 	</insert>
 	<select id="count">
-	SELECT COUNT(parents) AS parents2 FROM qna WHERE qnaSeq = #{qnaSeq};
+	SELECT COUNT(parents) AS parents2 FROM qna WHERE parents = #{qnaSeq};
 	</select>
 
 </mapper>

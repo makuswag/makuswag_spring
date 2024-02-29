@@ -40,14 +40,23 @@
         if (qnaCategory === "답변") {
             var updateButton = document.getElementById("updateButton");
             var answerButton = document.getElementById("answerButton");
-            var deleteButton = document.getElementById("deleteButton");
-            if (updateButton && answerButton && deleteButton) {
+            if (updateButton && answerButton ) {
                 updateButton.style.display = "none";
                 answerButton.style.display = "none";
-                deleteButton.style.display= "none";
             }
         }
         else if(count==1){
+        	var deleteButton = document.getElementById("deleteButton");
+        	var updateButton = document.getElementById("updateButton");
+            var answerButton = document.getElementById("answerButton");
+            if (updateButton && answerButton && deleteButton) {
+            	deleteButton.style.display= "block";
+                updateButton.style.display = "block";
+                answerButton.style.display = "block";
+            }
+        }
+        
+        else if(count==2){
         	var deleteButton = document.getElementById("deleteButton");
         	var updateButton = document.getElementById("updateButton");
             var answerButton = document.getElementById("answerButton");
@@ -62,6 +71,13 @@
    <link rel="stylesheet" href="./css/notice.css">
    <link rel="stylesheet" href="./css/style1.css">
 <link rel="icon" href="./images/CompanyLogo.png"> <!-- 인터넷 창 아이콘에 로고 나오게 하기 -->
+<style>
+.post-footer span {
+    display: inline-block; /* 각 버튼을 인라인 블록으로 설정하여 한 줄에 표시 */
+     /* 각 버튼 사이의 간격 조절 */
+}
+
+</style>
 </head>
     <div class="sidebar-wrapper">
         <%@ include file="../include/sidebar.jsp" %>
