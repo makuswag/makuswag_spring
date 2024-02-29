@@ -3,7 +3,7 @@ package com.springlec.base.model;
 import java.sql.Timestamp;
 
 public class UserDto {
-
+	
 	String userId;
 	String userPw;
 	String name;

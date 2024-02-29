@@ -7,6 +7,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class ErrorController {
 
+	@GetMapping("/error/400")
+	public String handle400_1() {
+		return "error/400";
+	}
+	
+	@PostMapping("/error/400")
+	public String handle400_2() {
+		return "error/400";
+	}
+	
 	@GetMapping("/error/404")
 	public String handle404_1() {
 		return "error/404";
