@@ -177,9 +177,9 @@ public class UserController {
 			msg.addRecipient(javax.mail.Message.RecipientType.TO, new javax.mail.internet.InternetAddress(to_email));
 
 			// 메일 제목
-			msg.setSubject("Mak U Swag의 회원가입 인증번호");
+			msg.setSubject("Mak U Swag의 아이디 찾기 인증번호");
 			// 메일 내용
-			msg.setText("Mak U Swag의 회원가입을 위한 인증 번호는 [" + temp + "] 입니다");
+			msg.setText("Mak U Swag의 아이디 찾기를 위한 인증 번호는 [" + temp + "] 입니다");
 
 			javax.mail.Transport t = session3.getTransport("smtp");
 			t.connect(smtpEmail, password);
@@ -255,9 +255,9 @@ public class UserController {
 			msg.addRecipient(javax.mail.Message.RecipientType.TO, new javax.mail.internet.InternetAddress(to_email));
 
 			// 메일 제목
-			msg.setSubject("Mak U Swag의 회원가입 인증번호");
+			msg.setSubject("Mak U Swag의 비밀번호 찾기 인증번호");
 			// 메일 내용
-			msg.setText("Mak U Swag의 회원가입을 위한 인증 번호는 [" + temp + "] 입니다");
+			msg.setText("Mak U Swag의 비밀번호 찾기를 위한 인증 번호는 [" + temp + "] 입니다");
 
 			javax.mail.Transport t = session3.getTransport("smtp");
 			t.connect(smtpEmail, password);
